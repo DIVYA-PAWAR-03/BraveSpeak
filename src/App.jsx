@@ -8,6 +8,8 @@ import './App.css'
 import { Route, Routes } from 'react-router-dom';
 import Landingpage from './pages/Landingpage';
 import Footer from './components/Footer';
+import RapeStatsChart from './pages/RapeStatsChart';
+import HarassmentLaws from './pages/HarassmentLaws';
 function App() {
   
 
@@ -17,8 +19,8 @@ function App() {
    
     <Routes>
       <Route path='/' element={<Landingpage/>} />
-       
-     
+       <Route path='/statistics' element ={<RapeStatsChart/>} />
+       <Route path='/laws' element={<HarassmentLaws/>} />
     </Routes>
     <Footer/>
     
