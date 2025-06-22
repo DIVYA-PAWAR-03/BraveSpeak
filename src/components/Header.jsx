@@ -13,19 +13,19 @@ export default function Header(){
                 </div>
                     <ul className="flex space-x-6">
           <li>
-            <Link to="/" className="hover:text-red-400 text-[20px]">Home</Link>
+            <Link to="/" className="hover:text-purple-300 text-[20px]">Home</Link>
           </li>
           <li>
-            <Link to="/statistics" className="hover:text-red-400  text-[20px]">Statistics</Link>
+            <Link to="/statistics" className="hover:text-purple-300  text-[20px]">Statistics</Link>
           </li>
           <li>
-            <Link to="/laws" className="hover:text-red-400  text-[20px]">Laws</Link>
+            <Link to="/laws" className="hover:text-purple-300  text-[20px]">Laws</Link>
           </li>
           <li>
-            <Link to="/support" className="hover:text-red-400  text-[20px]">Support</Link>
+            <Link to="/support" className="hover:text-purple-300  text-[20px]">Support</Link>
           </li>
           <li>
-            <Link to="/contact" className="hover:text-red-400  text-[20px]">Contact</Link>
+            <Link to="/contact" className="hover:text-purple-300  text-[20px]">Contact</Link>
           </li>
         </ul>
                  </nav>
