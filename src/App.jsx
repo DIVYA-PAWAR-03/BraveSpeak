@@ -6,7 +6,7 @@ import React from 'react';
 import Header from './components/Header'
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
-import Landingpage from './pages/Landingpage';
+import Homepage from './pages/Homepage';
 import Footer from './components/Footer';
 import HarassmentLaws from './pages/HarassmentLaws';
 import StatisticsPage from './pages/StatisticsPage';
@@ -20,7 +20,7 @@ function App() {
     <Header/>
    
     <Routes>
-      <Route path='/' element={<Landingpage/>} />
+      <Route path='/' element={<Homepage/>} />
        <Route path='/statistics' element={<StatisticsPage/>} />
        <Route path='/laws' element={<HarassmentLaws/>} />
        <Route path='/survivorStories' element={<StoriesPage/>} />

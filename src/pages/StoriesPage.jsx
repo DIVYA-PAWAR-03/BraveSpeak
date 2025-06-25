@@ -68,7 +68,7 @@ export default function StoriesPage() {
         Survivor Stories & Testimonials
       </h1>
 
-      <p className="text-lg text-center text-gray-700 max-w-4xl mx-auto mb-10">
+      <p className="text-lg text-center text-purple-700 max-w-4xl mx-auto mb-10">
         These brave voices have come forward to share their journey of survival,
         courage, and hope. Each story is a beacon of strength, breaking stigma,
         and inspiring society to stand up for justice.
