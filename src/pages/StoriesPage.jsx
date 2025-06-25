@@ -63,33 +63,31 @@ export default function StoriesPage() {
   const [visibleIndex, setVisibleIndex] = useState(null);
 
   return (
-    <section className="max-w-7xl mx-auto px-6 py-14 bg-gradient-to-b from-purple-50 to-white">
+    <section className="max-w-7xl mx-auto px-6 py-16 bg-white">
       <h1 className="text-5xl font-extrabold text-center mb-12 text-purple-800">
         Survivor Stories & Testimonials
       </h1>
 
-      <p className="text-lg text-center text-purple-700 max-w-4xl mx-auto mb-10">
-        These brave voices have come forward to share their journey of survival,
-        courage, and hope. Each story is a beacon of strength, breaking stigma,
-        and inspiring society to stand up for justice.
+      <p className="text-lg text-center text-gray-700 max-w-4xl mx-auto mb-10">
+        These powerful testimonials shine a light on the resilience and strength of those who have endured harassment and violence. Their voices remind us why awareness, action, and compassion are essential.
       </p>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {survivorStories.map((story, index) => (
           <div
             key={index}
-            className="bg-white p-6 rounded-2xl shadow-xl border-l-8 border-purple-600 hover:shadow-2xl transition-all"
+            className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-md border-l-4 border-purple-600 hover:shadow-xl transition-all duration-300"
           >
-            <h2 className="text-2xl font-bold text-purple-800">
+            <h2 className="text-xl font-bold text-purple-800">
               {story.name}
-              <span className="block text-sm font-medium text-gray-500">
+              <span className="block text-sm font-medium text-gray-600">
                 ({story.age}, {story.city})
               </span>
             </h2>
             <p className="mt-2 text-purple-700 italic">"{story.quote}"</p>
             <button
               onClick={() => setVisibleIndex(visibleIndex === index ? null : index)}
-              className="mt-4 px-4 py-2 bg-purple-100 text-purple-800 rounded-md hover:bg-purple-200 font-medium"
+              className="mt-4 px-4 py-2 bg-purple-200 text-purple-900 rounded-md hover:bg-purple-300 font-medium"
             >
               {visibleIndex === index ? "Hide Story" : "Read Full Story"}
             </button>
@@ -102,7 +100,7 @@ export default function StoriesPage() {
         ))}
       </div>
 
-      <div className="mt-16 bg-purple-100 p-6 rounded-xl shadow-md text-center">
+      <div className="mt-16 bg-purple-50 p-6 rounded-xl shadow-md text-center">
         <p className="text-lg text-purple-800 font-semibold">
           “Real stories have the power to heal, inspire, and transform society.”
         </p>
