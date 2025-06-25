@@ -10,6 +10,8 @@ import Landingpage from './pages/Landingpage';
 import Footer from './components/Footer';
 import HarassmentLaws from './pages/HarassmentLaws';
 import StatisticsPage from './pages/StatisticsPage';
+import StoriesPage from './pages/StoriesPage';
+
 function App() {
   
 
@@ -21,6 +23,7 @@ function App() {
       <Route path='/' element={<Landingpage/>} />
        <Route path='/statistics' element={<StatisticsPage/>} />
        <Route path='/laws' element={<HarassmentLaws/>} />
+       <Route path='/survivorStories' element={<StoriesPage/>} />
     </Routes>
     <Footer/>
     

@@ -22,7 +22,7 @@ export default function Header(){
             <Link to="/laws" className="hover:text-purple-300  text-[20px]">Laws</Link>
           </li>
           <li>
-            <Link to="/support" className="hover:text-purple-300  text-[20px]">Support</Link>
+            <Link to="/survivorStories" className="hover:text-purple-300  text-[20px]">Stories</Link>
           </li>
           <li>
             <Link to="/contact" className="hover:text-purple-300  text-[20px]">Contact</Link>

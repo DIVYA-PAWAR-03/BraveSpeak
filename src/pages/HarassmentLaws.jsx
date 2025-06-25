@@ -150,6 +150,19 @@ const HarassmentLaws = () => {
             <li>Join survivor groups and mental health forums for healing</li>
           </ul>
         </div>
+           
+{/* ✅ Join the Movement Section */}
+<div className="bg-purple-50 p-6 rounded-xl shadow-md mb-8">
+  <h3 className="text-xl font-semibold text-purple-700 mb-3">🤝 Join the Movement</h3>
+  <ul className="list-disc list-inside text-purple-700 space-y-2">
+    <li><strong>Become a Volunteer:</strong> Support awareness drives, events, or digital campaigns.</li>
+    <li><strong>Partner with NGOs:</strong> Collaborate with organizations working for survivor support and women's safety.</li>
+    <li><strong>Donate or Sponsor:</strong> Help fund helplines, counseling, or create survivor resource kits.</li>
+    <li><strong>Spread Awareness:</strong> Share posts, use <span className="font-bold text-purple-800">#BraveSpeak</span>, and educate your circle.</li>
+  </ul>
+</div>
+
+
 
         <div className="bg-purple-100 p-4 rounded-lg shadow text-center">
           <p className="text-lg italic text-purple-800">
