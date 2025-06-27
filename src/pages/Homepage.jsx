@@ -1,15 +1,33 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { AlertTriangle, Clock4, BarChart3 } from 'lucide-react';
 
 export default function HomePage() {
+  const [caseCount, setCaseCount] = useState(() => {
+    const stored = localStorage.getItem('rape_case_count');
+    return stored ? parseInt(stored, 10) : 0;
+  });
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCaseCount((prev) => {
+        const updated = prev + 1;
+        localStorage.setItem('rape_case_count', updated.toString());
+        return updated;
+      });
+    }, 10000); // Change to 960000 in production
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <main className="bg-gradient-to-b from-purple-50 to-white">
+
       {/* Hero Section */}
       <section className='flex flex-col md:flex-row justify-around items-center bg-[#D6B4FC] py-16 px-6 rounded-b-3xl shadow-md'>
         <div className="left-section">
           <img src="/images/break-chain.png" alt="Break the Chain" className="w-full max-w-md drop-shadow-lg" />
         </div>
-
         <div className="right-section mt-10 md:mt-0 flex flex-col space-y-8 text-center md:text-left">
           <h1 className='text-[#2E003E] text-4xl md:text-5xl font-bold leading-tight'>
             “Breaking the <br className="hidden md:block" /> Silence, Seeking <br className="hidden md:block" /> Justice”
@@ -35,15 +53,38 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* Daily Case Stats */}
+      {/* Daily Case Stats with icons, animation, and persistence */}
       <section className='mt-24 px-6'>
-        <h2 className='text-center text-4xl font-semibold text-[#4d0864] mb-6'>Daily Rape Cases in India</h2>
-        <div className="bg-purple-50 p-6 max-w-3xl mx-auto rounded-xl shadow-md text-purple-700 text-center">
-          <p className="text-lg">
-            According to the NCRB (2022), a rape case is reported every <strong>16 minutes</strong> in India.
-            These numbers highlight the urgent need for awareness, legal protection, and community support.
-          </p>
+        <h2 className='text-center text-4xl font-semibold text-[#4d0864] mb-10'>
+          The Alarming Reality: Daily Rape Statistics in India
+        </h2>
+
+        <div className='max-w-5xl mx-auto grid md:grid-cols-3 gap-8 text-center'>
+          {/* Card 1 */}
+          <div className='bg-white shadow-lg rounded-2xl p-6 border-l-8 border-[#6A0DAD] transform hover:scale-105 transition duration-300'>
+            <AlertTriangle className='mx-auto text-[#6A0DAD]' size={40} />
+            <h3 className='text-5xl font-bold text-[#6A0DAD] mt-4'>87</h3>
+            <p className='text-purple-800 mt-2'>Rape cases reported <br /> every day*</p>
+          </div>
+
+          {/* Card 2 */}
+          <div className='bg-white shadow-lg rounded-2xl p-6 border-l-8 border-[#6A0DAD] transform hover:scale-105 transition duration-300'>
+            <Clock4 className='mx-auto text-[#6A0DAD]' size={40} />
+            <h3 className='text-5xl font-bold text-[#6A0DAD] mt-4'>1/16 min</h3>
+            <p className='text-purple-800 mt-2'>Estimated reporting frequency</p>
+          </div>
+
+          {/* Card 3 */}
+          <div className='bg-white shadow-lg rounded-2xl p-6 border-l-8 border-[#6A0DAD] transform hover:scale-105 transition duration-300'>
+            <BarChart3 className='mx-auto text-[#6A0DAD]' size={40} />
+            <h3 className='text-5xl font-bold text-[#6A0DAD] mt-4'>{caseCount}</h3>
+            <p className='text-purple-800 mt-2'>Estimated cases since page load</p>
+          </div>
         </div>
+
+        <p className='mt-10 text-center text-sm text-purple-600'>
+          Based on NCRB 2022 data. These reflect only reported cases.
+        </p>
       </section>
 
       {/* Awareness Section */}
@@ -57,7 +98,7 @@ export default function HomePage() {
           Lack of awareness often leads to silence, shame, and injustice. Many survivors don’t even know what counts as harassment, or that they have legal protection.
           <br /><br />
           Awareness isn’t just about reading laws — it’s about recognizing boundaries, understanding consent,
-          and creating a culture where victims feel safe to speak. When people are informed, they can act. 
+          and creating a culture where victims feel safe to speak. When people are informed, they can act.
           When a society is aware, it becomes safer, stronger, and more just.
         </p>
       </section>
@@ -75,7 +116,7 @@ export default function HomePage() {
       </section>
 
       {/* Call to Action Section */}
-      <section className='bg-purple-100 p-10 max-w-4xl mx-auto mt-24 rounded-xl shadow-lg text-purple-800 text-center'>
+      <section className='bg-purple-100 p-10 max-w-4xl mx-auto mt-24 rounded-xl shadow-lg text-purple-800 text-center mb-20'>
         <h2 className='text-4xl font-semibold mb-4'>Be the Voice for the Voiceless</h2>
         <p className='text-lg leading-relaxed'>
           Change begins with awareness, but it doesn't stop there. Stand up, speak out,
