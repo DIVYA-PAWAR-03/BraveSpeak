@@ -33,8 +33,8 @@ export default function HomePage() {
             “Breaking the <br className="hidden md:block" /> Silence, Seeking <br className="hidden md:block" /> Justice”
           </h1>
           <Link to={'/laws'}>
-            <button className='text-white px-10 py-4 bg-[#6A0DAD] rounded-full font-semibold shadow-lg hover:bg-[#5e0c9f] transition duration-300'>
-              Know Your Rights
+            <button className='text-white px-10 py-4 bg-[#6A0DAD] rounded-full font-semibold shadow-lg hover:bg-[#5e0c9f] transition duration-300 '>
+              Know Your Rights <i class="fa-solid fa-arrow-right-long"></i>
             </button>
           </Link>
         </div>
@@ -105,15 +105,16 @@ export default function HomePage() {
 
       {/* How You Can Help Section */}
       <section className='mt-24 px-6'>
-        <h2 className='text-center text-4xl font-semibold text-[#4d0864] mb-6'>How You Can Help</h2>
-        <ul className='list-disc max-w-4xl mx-auto text-purple-700 text-lg space-y-3 px-6'>
-          <li>Listen without judgment if someone confides in you.</li>
-          <li>Report incidents and stand as a witness if safe to do so.</li>
-          <li>Share verified information and resources.</li>
-          <li>Support organizations working for survivor safety and rights.</li>
-          <li>Use your voice on social media to spread awareness and empathy.</li>
-        </ul>
-      </section>
+  <h2 className='text-center text-4xl font-semibold text-[#4d0864] mb-6'>How You Can Help</h2>
+  <ul className='max-w-4xl mx-auto text-purple-700 text-lg space-y-3 list-disc flex flex-col items-center text-justify'>
+
+    <li>Listen without judgment if someone confides in you.</li>
+    <li>Report incidents and stand as a witness if safe to do so.</li>
+    <li>Share verified information and resources.</li>
+    <li>Support organizations working for survivor safety and rights.</li>
+    <li>Use your voice on social media to spread awareness and empathy.</li>
+  </ul>
+</section>
 
       {/* Call to Action Section */}
       <section className='bg-purple-100 p-10 max-w-4xl mx-auto mt-24 rounded-xl shadow-lg text-purple-800 text-center mb-20'>
@@ -124,8 +125,8 @@ export default function HomePage() {
         </p>
         <Link to='/survivorStories'>
           <button className='mt-6 px-6 py-3 bg-purple-800 text-white rounded-full hover:bg-purple-900 transition duration-300'>
-            Read Real Stories
-          </button>
+            Read Real Stories <i class="fa-solid fa-arrow-right-long"></i>
+          </button> 
         </Link>
       </section>
     </main>

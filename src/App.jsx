@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import HarassmentLaws from './pages/HarassmentLaws';
 import StatisticsPage from './pages/StatisticsPage';
 import StoriesPage from './pages/StoriesPage';
+import ContactUs from './pages/ContactUs';
 
 function App() {
   
@@ -24,6 +25,7 @@ function App() {
        <Route path='/statistics' element={<StatisticsPage/>} />
        <Route path='/laws' element={<HarassmentLaws/>} />
        <Route path='/survivorStories' element={<StoriesPage/>} />
+       <Route path='/contact' element={<ContactUs/>} />
     </Routes>
     <Footer/>
     
