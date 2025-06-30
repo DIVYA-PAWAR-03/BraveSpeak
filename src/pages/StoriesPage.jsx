@@ -68,10 +68,10 @@ export default function StoriesPage() {
         Survivor Stories & Testimonials
       </h1>
 
-      <p className="text-lg text-center text-gray-700 max-w-4xl mx-auto mb-10">
+      <p className="text-lg text-center text-purple-700 max-w-4xl mx-auto mb-10">
         These powerful testimonials shine a light on the resilience and strength of those who have endured harassment and violence. Their voices remind us why awareness, action, and compassion are essential.
       </p>
-
+       
       <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         {survivorStories.map((story, index) => (
           <div
