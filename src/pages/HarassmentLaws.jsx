@@ -80,7 +80,7 @@ const HarassmentLaws = () => {
 
   return (
     <>
-    <img src="/images/section_376.webp" alt="section_376" className=" w-full h-[300px] mt-5  " />
+    <img src="/images/section_376.webp" alt="section_376" className=" w-full h-[300px] mt-5   " />
     <section className="max-w-6xl mx-auto px-4 py-10">
       
       <h1 className="text-4xl font-bold text-center mb-10 text-purple-800">
@@ -91,7 +91,7 @@ const HarassmentLaws = () => {
         {data.map((item, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl p-6 shadow-lg shadow-black/30 border-l-8 border-purple-700"
+            className="bg-white rounded-2xl p-6 shadow-lg shadow-black/30 border-l-8 border-purple-700 transform hover:scale-105 transition duration-300"
           >
             <h2 className="text-2xl font-semibold text-purple-800">{item.title}</h2>
             <p className="mt-2 text-purple-700">{item.description}</p>

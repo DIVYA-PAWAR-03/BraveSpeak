@@ -2,15 +2,16 @@
 import React from 'react';
 export default function ContactUs() {
   return(
+    <form action="https://api.web3forms.com/submit" method="POST">
    <section className='bg-gray-100 m-20 shadow-2xl rounded-2xl'>
     <h1 className='text-center pt-10 text-4xl font-bold text-[#2E003E]'>Contact Us</h1>
     <div className="main-container flex  justify-around p-10">
       
-      
+       <input type="hidden" name="access_key" value="9620de68-693f-4589-b226-c7b3b900267d"></input>
       
       <div className="left-container flex flex-col">
            <label htmlFor="name" className='text-lg text-[#2E003E] font-medium'>Name</label>
-           <input type="text" id="name" name="name" placeholder='Your Name' required className=' p-2 mt-2  border border-purple-500 w-[500px] text-purple-950 rounded-[10px]' /> <br />
+           <input type="text" id="name" name="name" placeholder='Your Name' required className=' p-2 mt-2  border border-purple-500 w-[500px] text-purple-950 rounded-[10px] ' /> <br />
             <label htmlFor="email" className='text-lg text-[#2E003E] font-medium'>Email</label>
             <input type="email" id="email" name="email" placeholder='xyz@gmail.com' required className=' p-2 mt-2  border border-purple-500 w-[500px] text-purple-950 rounded-[10px]' /> <br />
             <label htmlFor="message" className='text-lg text-[#2E003E] font-medium'>Message</label>
@@ -25,7 +26,10 @@ export default function ContactUs() {
               <h1 className='text-lg text-[#2E003E] font-medium mb-1'>Email</h1>
               <p className=' text-purple-900 '>support@#BraveSpeak.com</p>
       </div>
+          
     </div>
+
     </section>
+    </form>
   )
 }

@@ -116,7 +116,7 @@ export default function HomePage() {
     <li>Use your voice on social media to spread awareness and empathy.</li>
   </ul>
   </div>
-  <img src="/images/ratio.jpg" alt="" className='h-[400px]' />
+  <img src="/images/help.jpg" alt="" className='h-[400px] rounded-3xl shadow-lg' />
 </section>
 
       {/* Call to Action Section */}
