@@ -104,20 +104,22 @@ export default function HomePage() {
       </section>
 
       {/* How You Can Help Section */}
-      <section className='mt-24 px-6 flex justify-around'>
-        <div>
-  <h2 className='text-4xl font-semibold text-[#4d0864] mb-6'>How You Can Help</h2>
-  
-  <ul className='max-w-4xl text-purple-700 text-lg space-y-3 list-disc pl-6'>
-    <li>Listen without judgment if someone confides in you.</li>
-    <li>Report incidents and stand as a witness if safe to do so.</li>
-    <li>Share verified information and resources.</li>
-    <li>Support organizations working for survivor safety and rights.</li>
-    <li>Use your voice on social media to spread awareness and empathy.</li>
-  </ul>
+      <section className='mt-24 px-6 flex flex-col lg:flex-row items-center justify-around gap-8'>
+  <div className='max-w-xl'>
+    <h2 className='text-3xl md:text-4xl font-semibold text-[#4d0864] mb-6 text-center lg:text-left'>
+      How You Can Help
+    </h2>
+    <ul className='text-purple-700 text-lg space-y-3 list-disc pl-6 text-justify'>
+      <li>Listen without judgment if someone confides in you.</li>
+      <li>Report incidents and stand as a witness if safe to do so.</li>
+      <li>Share verified information and resources.</li>
+      <li>Support organizations working for survivor safety and rights.</li>
+      <li>Use your voice on social media to spread awareness and empathy.</li>
+    </ul>
   </div>
-  <img src="/images/help.jpg" alt="" className='h-[400px] rounded-3xl shadow-lg' />
+  <img src="/images/help.jpg" alt="Help Illustration" className='w-full max-w-md h-auto rounded-3xl shadow-lg' />
 </section>
+
 
       {/* Call to Action Section */}
       <section className='bg-purple-100 p-10 max-w-4xl mx-auto mt-24 rounded-xl shadow-lg text-purple-800 text-center mb-20'>
