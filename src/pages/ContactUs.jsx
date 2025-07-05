@@ -19,11 +19,11 @@ export default function ContactUs() {
       </div>
       <div className="right-container flex flex-col">
               <h1 className='text-lg text-[#2E003E] font-medium mb-1'>Address</h1>
-              <p className='mb-3 text-purple-900 font-medium'>123 justice Lane, Safe City, India</p>
+              <p className='mb-3 text-purple-900 '>123 justice Lane, Safe City, India</p>
               <h1 className='text-lg text-[#2E003E] font-medium mb-1'>Phone</h1>
-              <p className='mb-3  text-purple-900 font-medium'>+91 12345 67890</p>
+              <p className='mb-3  text-purple-900 '>+91 12345 67890</p>
               <h1 className='text-lg text-[#2E003E] font-medium mb-1'>Email</h1>
-              <p className=' text-purple-900 font-medium'>support@#BraveSpeak.com</p>
+              <p className=' text-purple-900 '>support@#BraveSpeak.com</p>
       </div>
     </div>
     </section>

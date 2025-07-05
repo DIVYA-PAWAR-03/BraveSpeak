@@ -1,110 +1,36 @@
-import React, { useState } from "react";
-
-const survivorStories = [
-  {
-    name: "Anonymous Survivor 1",
-    age: 24,
-    city: "Mumbai",
-    story:
-      "I was afraid to speak up, but when I did, I realized how many people stood by me. I now help other women share their stories too. Speaking up changed my life.",
-    quote: "Your voice can be someone else's strength."
-  },
-  {
-    name: "Anonymous Survivor 2",
-    age: 31,
-    city: "Delhi",
-    story:
-      "I was cyber harassed for months. I finally took a stand by filing an online complaint. Justice takes time, but healing began the day I stood for myself.",
-    quote: "Healing starts with the courage to fight."
-  },
-  {
-    name: "Anonymous Survivor 3",
-    age: 28,
-    city: "Pune",
-    story:
-      "I didn’t think anyone would believe me. But after reporting the harassment, I received help from an NGO and a counselor. Now, I work with them to support others.",
-    quote: "You are not alone, and you never were."
-  },
-  {
-    name: "Nirbhaya Case (Delhi, 2012)",
-    age: 23,
-    city: "Delhi",
-    story:
-      "On 16 December 2012, a 23-year-old physiotherapy intern was brutally gang-raped on a moving bus in Delhi. The case sparked national outrage, massive protests, and reforms in Indian rape laws. Known as the 'Nirbhaya' case, it led to the formation of fast-track courts and stricter punishment for sexual assault.",
-    quote: "She was not just a victim; she became the voice of millions."
-  },
-  {
-    name: "Monideepa Bandyopadhyay (Kolkata)",
-    age: 27,
-    city: "Kolkata",
-    story:
-      "Monideepa, a journalist from Kolkata, faced persistent workplace harassment by a senior editor. She stood up against the abuse by filing a formal complaint under the Sexual Harassment of Women at Workplace Act, 2013. Her courage inspired others in media to come forward during India’s #MeToo movement.",
-    quote: "Silence is not strength. Speaking out brings change."
-  },
-  {
-    name: "Anonymous Survivor 4",
-    age: 35,
-    city: "Hyderabad",
-    story:
-      "After experiencing years of emotional and physical abuse, I found the courage to walk away and start anew. I now conduct community workshops for women’s rights and safety.",
-    quote: "Freedom begins the moment you stop being afraid."
-  },
-  {
-    name: "Anonymous Survivor 5",
-    age: 19,
-    city: "Nagpur",
-    story:
-      "I was harassed by a college senior and kept it to myself. A support group helped me realize I wasn’t alone. Today, I run a blog where survivors can anonymously share their stories.",
-    quote: "Your story matters, and so do you."
-  }
-];
-
+import React from 'react';
 export default function StoriesPage() {
-  const [visibleIndex, setVisibleIndex] = useState(null);
-
+  const ReportHandler = () => {
+    
+    
+   const url= 'https://images.app.goo.gl/wj2Yxfn5UF39yLhB9';
+    window.location.href = url;
+  }
   return (
-    <section className="max-w-7xl mx-auto px-6 py-16 bg-white">
-      <h1 className="text-5xl font-extrabold text-center mb-12 text-purple-800">
-        Survivor Stories & Testimonials
-      </h1>
-
-      <p className="text-lg text-center text-purple-700 max-w-4xl mx-auto mb-10">
-        These powerful testimonials shine a light on the resilience and strength of those who have endured harassment and violence. Their voices remind us why awareness, action, and compassion are essential.
-      </p>
-       
-      <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        {survivorStories.map((story, index) => (
-          <div
-            key={index}
-            className="bg-gradient-to-br from-purple-100 to-white p-6 rounded-2xl shadow-md border-l-4 border-purple-600 hover:shadow-xl transition-all duration-300"
-          >
-            <h2 className="text-xl font-bold text-purple-800">
-              {story.name}
-              <span className="block text-sm font-medium text-gray-600">
-                ({story.age}, {story.city})
-              </span>
-            </h2>
-            <p className="mt-2 text-purple-700 italic">"{story.quote}"</p>
-            <button
-              onClick={() => setVisibleIndex(visibleIndex === index ? null : index)}
-              className="mt-4 px-4 py-2 bg-purple-200 text-purple-900 rounded-md hover:bg-purple-300 font-medium"
-            >
-              {visibleIndex === index ? "Hide Story" : "Read Full Story"}
-            </button>
-            {visibleIndex === index && (
-              <p className="mt-4 text-gray-700 text-sm leading-relaxed">
-                {story.story}
-              </p>
-            )}
-          </div>
-        ))}
+  <>
+    <section className='bg-gray-100 m-10 shadow-2xl rounded-2xl p-10'>
+      <h1 className='text-center pt-10 text-5xl font-bold text-[#2E003E] mb-10'>Survivor Stories</h1>
+      <div className='flex space-x-3'>
+      <img src="/images/news_6.png" alt=""  />
+      <img src="/images/news_7.png" alt="" className='h-[500px] mt-5'/>
+      <img src="/images/news_8.png" alt=""  className='h-[500px]'/>
       </div>
-
-      <div className="mt-16 bg-purple-50 p-6 rounded-xl shadow-md text-center">
-        <p className="text-lg text-purple-800 font-semibold">
-          “Real stories have the power to heal, inspire, and transform society.”
-        </p>
-      </div>
+      <div className='flex space-x-3 justify-end'>
+       <img src="/images/news_3.jpg" alt=""  className='h-[400px]'/>
+        <img src="/images/news_11.webp" alt=""  className='h-[400px]'/>
+        </div>
+        <div className='flex space-x-3'>
+        <img src="/images/news_9.png" alt="" className='h-[400px] ' />
+        <img src="/images/news_10.webp" alt="" className='h-[400px] ' />
+        </div>
     </section>
+    
+    <div className="flex justify-center mt-8 mb-10">
+  <button onClick={ReportHandler} className="text-white px-10 py-4 bg-[#6A0DAD] rounded-full font-semibold shadow-lg hover:bg-[#5e0c9f] transition duration-300 " id='reportHandler'> More Reports <i className="fa-solid fa-arrow-right-long"></i>
+  </button>
+</div>
+
+
+    </>
   );
 }

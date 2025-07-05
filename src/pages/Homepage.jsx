@@ -24,7 +24,7 @@ export default function HomePage() {
     <main className="bg-gradient-to-b from-purple-50 to-white">
 
       {/* Hero Section */}
-      <section className='flex flex-col md:flex-row justify-around items-center bg-[#D6B4FC] py-16 px-6 rounded-b-3xl shadow-md'>
+      <section className='flex flex-col md:flex-row justify-around items-center bg-[#D6B4FC] py-16 px-6  shadow-md'>
         <div className="left-section">
           <img src="/images/break-chain.png" alt="Break the Chain" className="w-full max-w-md drop-shadow-lg" />
         </div>
@@ -125,7 +125,7 @@ export default function HomePage() {
         </p>
         <Link to='/survivorStories'>
           <button className='mt-6 px-6 py-3 bg-purple-800 text-white rounded-full hover:bg-purple-900 transition duration-300'>
-            Read Real Stories <i class="fa-solid fa-arrow-right-long"></i>
+            Survivor Stories <i class="fa-solid fa-arrow-right-long"></i>
           </button> 
         </Link>
       </section>

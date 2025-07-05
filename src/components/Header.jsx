@@ -5,7 +5,7 @@ export default function Header(){
     return(
         <>
         <header>
-            <nav className="navbar flex justify-between px-6  py-6 items-center  bg-[#2E003E] text-white ">
+            <nav className="navbar flex justify-between px-6  py-6 items-center  bg-[#2E003E] text-white">
                 <div className="logo">
                     <Link to={"/"}  >
                     <h1 className='text-3xl font-bold'>BraveSpeak</h1>
