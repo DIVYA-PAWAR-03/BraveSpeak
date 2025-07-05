@@ -104,16 +104,19 @@ export default function HomePage() {
       </section>
 
       {/* How You Can Help Section */}
-      <section className='mt-24 px-6'>
-  <h2 className='text-center text-4xl font-semibold text-[#4d0864] mb-6'>How You Can Help</h2>
-  <ul className='max-w-4xl mx-auto text-purple-700 text-lg space-y-3 list-disc flex flex-col items-center text-justify'>
-
+      <section className='mt-24 px-6 flex justify-around'>
+        <div>
+  <h2 className='text-4xl font-semibold text-[#4d0864] mb-6'>How You Can Help</h2>
+  
+  <ul className='max-w-4xl text-purple-700 text-lg space-y-3 list-disc pl-6'>
     <li>Listen without judgment if someone confides in you.</li>
     <li>Report incidents and stand as a witness if safe to do so.</li>
     <li>Share verified information and resources.</li>
     <li>Support organizations working for survivor safety and rights.</li>
     <li>Use your voice on social media to spread awareness and empathy.</li>
   </ul>
+  </div>
+  <img src="/images/ratio.jpg" alt="" className='h-[400px]' />
 </section>
 
       {/* Call to Action Section */}
