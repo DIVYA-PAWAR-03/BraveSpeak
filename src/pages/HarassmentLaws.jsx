@@ -80,7 +80,7 @@ const HarassmentLaws = () => {
 
   return (
     <>
-    <img src="/images/section_376.webp" alt="section_376" className=" w-full h-[300px] mt-5   " />
+    
     <section className="max-w-6xl mx-auto px-4 py-10">
       
       <h1 className="text-4xl font-bold text-center mb-10 text-purple-800">
@@ -178,4 +178,4 @@ const HarassmentLaws = () => {
   );
 };
 
-export default HarassmentLaws;
+export default HarassmentLaws; 
