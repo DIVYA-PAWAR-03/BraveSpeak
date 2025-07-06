@@ -13,41 +13,28 @@ export default function StoriesPage() {
           Survivor Stories
         </h1>
 
-        {/* Row 1 */}
-        <div className='flex flex-col md:flex-row flex-wrap justify-center gap-6 mb-6'>
-          <div className='max-w-sm'>
-            <img src="/images/news_6.png" alt="" className='rounded-xl shadow-md h-auto' />
-          </div>
-          <div className='max-w-sm'>
-            <img src="/images/news_7.png" alt="" className='rounded-xl shadow-md h-auto' />
-          </div>
-          <div className='max-w-sm'>
-            <img src="/images/news_8.png" alt="" className='rounded-xl shadow-md h-auto' />
-          </div>
+       
+        <div className='flex space-x-4'>
+          <img src="images/news_6.png" alt="" className='h-[500px]' />
+          <img src="images/news_7.png" alt="" className='h-[500px] mt-6' />
+          <img src="images/news_8.png" alt="" className='h-[500px]' />
         </div>
 
-        {/* Row 2 */}
-        <div className='flex flex-col md:flex-row flex-wrap justify-center gap-6 mb-6'>
-          <div className='max-w-sm'>
-            <img src="/images/news_3.jpg" alt="" className='rounded-xl shadow-md h-auto' />
-          </div>
-          <div className='max-w-sm'>
-            <img src="/images/news_11.webp" alt="" className='rounded-xl shadow-md h-auto' />
-          </div>
+        <div className='flex mt-5'>
+          <img src="images/news_9.png" alt="" className='h-[350px]' />
+          <img src="images/news_11.webp" alt="" className='h-[350px]' />
+           <img src="images/news_3.jpg" alt="" className='h-[350px]' />
         </div>
 
-        {/* Row 3 */}
-        <div className='flex flex-col md:flex-row flex-wrap justify-center gap-6'>
-          <div className='max-w-sm'>
-            <img src="/images/news_9.png" alt="" className='rounded-xl shadow-md h-auto' />
-          </div>
-          <div className='max-w-sm'>
-            <img src="/images/news_10.webp" alt="" className='rounded-xl shadow-md h-auto' />
-          </div>
+       
+        <div className='flex justify-end'>
+          <img src="images/news_10.webp" alt="" className='h-[300px]' />
+         
+          <img src="images/news_4.jpeg" alt="" className='h-[250px]' />
         </div>
       </section>
 
-      {/* Button */}
+    
       <div className="flex justify-center mt-8 mb-10">
         <button
           onClick={ReportHandler}
