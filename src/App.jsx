@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-// import {Route ,Routes } from 'react-router-dom'
+
+import { useState, Suspense } from 'react';
+import reactLogo from './assets/react.svg';
+import viteLogo from '/vite.svg';
 import React from 'react';
-import Header from './components/Header'
-import './App.css'
+import Header from './components/Header';
+import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import Homepage from './pages/Homepage';
 import Footer from './components/Footer';
@@ -12,6 +12,8 @@ import HarassmentLaws from './pages/HarassmentLaws';
 import StatisticsPage from './pages/StatisticsPage';
 import StoriesPage from './pages/StoriesPage';
 import ContactUs from './pages/ContactUs';
+
+const StoryDetail = React.lazy(() => import('./pages/StoryDetail'));
 
 function App() {
   
@@ -21,11 +23,16 @@ function App() {
     <Header/>
    
     <Routes>
-      <Route path='/' element={<Homepage/>} />
-       <Route path='/statistics' element={<StatisticsPage/>} />
-       <Route path='/laws' element={<HarassmentLaws/>} />
-       <Route path='/survivorStories' element={<StoriesPage/>} />
-       <Route path='/contact' element={<ContactUs/>} />
+      <Route path='/' element={<Homepage />} />
+      <Route path='/statistics' element={<StatisticsPage />} />
+      <Route path='/laws' element={<HarassmentLaws />} />
+      <Route path='/survivorStories' element={<StoriesPage />} />
+      <Route path='/contact' element={<ContactUs />} />
+      <Route path='/story/:id' element={
+        <Suspense fallback={<div>Loading...</div>}>
+          <StoryDetail />
+        </Suspense>
+      } />
     </Routes>
     <Footer/>
     
