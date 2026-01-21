@@ -300,14 +300,18 @@ export default function BraveSpeakDemo() {
             Change begins with awareness, but it doesn't stop there. Stand up, speak out, and support survivors in your community.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="group inline-flex items-center justify-center gap-2 px-10 py-5 bg-[#2E003E] text-white rounded-full font-semibold shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 text-lg cursor-pointer">
-              Read Survivor Stories
-              <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="group inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-[#2E003E] rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg cursor-pointer">
-              Support the Cause
-              <Heart size={22} />
-            </button>
+            <Link to="/survivorStories">
+              <button className="group inline-flex items-center justify-center gap-2 px-10 py-5 bg-[#2E003E] text-white rounded-full font-semibold shadow-2xl hover:shadow-3xl hover:scale-105 transition-all duration-300 text-lg cursor-pointer">
+                Read Survivor Stories
+                <ArrowRight size={22} className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+            <Link to="/contact">
+              <button className="group inline-flex items-center justify-center gap-2 px-10 py-5 bg-white text-[#2E003E] rounded-full font-semibold shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 text-lg cursor-pointer">
+                Support the Cause
+                <Heart size={22} />
+              </button>
+            </Link>
           </div>
         </div>
       </section>
