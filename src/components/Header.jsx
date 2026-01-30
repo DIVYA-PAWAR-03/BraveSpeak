@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Menu, X, Shield } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,9 +13,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto flex justify-between items-center px-6 py-5">
         {/* Logo */}
         <div className="text-2xl font-bold tracking-tight flex items-center gap-2">
-            <div className="w-10 h-10 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
-              <Shield size={24} />
-            </div>
+            <img src="/images/BraveSpeakLogoo.png" alt="BraveSpeak Logo" className="w-10 h-10" />
               <Link to="/" className="hover:opacity-90 transition-opacity">
                 BraveSpeak
               </Link>

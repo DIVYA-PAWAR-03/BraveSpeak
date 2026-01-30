@@ -18,7 +18,7 @@ export default function BraveSpeakDemo() {
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-[#D6B4FC] via-purple-200 to-purple-100 py-24 px-6 overflow-hidden">
         {/* Background Image with Opacity */}
-        <div className="absolute inset-0 bg-no-repeat bg-fixed opacity-100" style={{backgroundImage: 'url(/images/break-chain.png)', backgroundSize: 'contain', backgroundPosition: 'left top'}}></div>
+        <div className="absolute inset-0 bg-no-repeat bg-fixed opacity-100" style={{backgroundImage: 'url(/images/break-chain.png)', backgroundSize: '80%', backgroundPosition: 'left center'}}></div>
         <div className="absolute inset-0 bg-gradient-to-t from-white/50 to-transparent"></div>
         <div className="absolute inset-0 bg-gradient-to-br from-[#D6B4FC]/80 via-purple-200/60 to-purple-100/80"></div>
         <div className="absolute inset-0 opacity-10">
@@ -36,8 +36,8 @@ export default function BraveSpeakDemo() {
             <div className="relative group ml-12">
               <div className="left-section">
                  <motion.img
-                    src="/images/break-chain.png"
-                    alt="Break the Chain"
+                    src="/images/BraveSpeak111.png"
+                    alt="BraveSpeak"
                     className="w-full max-w-md drop-shadow-lg"
                     whileHover={{ scale: 1.05, rotate: 2 }}
                     transition={{ type: "spring", stiffness: 300 }}

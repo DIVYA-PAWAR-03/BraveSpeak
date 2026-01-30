@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Shield, Phone, Heart,  } from "lucide-react";
+import { Phone, Heart } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -9,9 +9,7 @@ export default function Footer() {
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-purple-600 rounded-lg flex items-center justify-center">
-                  <Shield size={24} />
-                </div>
+                <img src="/images/BraveSpeakLogoo.png" alt="BraveSpeak Logo" className="w-12 h-12" />
                 <h1 className="text-3xl font-bold">BraveSpeak</h1>
               </div>
               <p className="text-purple-200 leading-relaxed">
