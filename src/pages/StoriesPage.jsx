@@ -51,6 +51,7 @@ export default function StoriesPage() {
   const [form, setForm] = useState({ name: '', title: '', desc: '' });
   const [showForm, setShowForm] = useState(false);
   const [successMsg, setSuccessMsg] = useState('');
+  const [selectedStory, setSelectedStory] = useState(null);
 
 
   const ReportHandler = () => {
@@ -85,11 +86,13 @@ export default function StoriesPage() {
 
   return (
     <>
-      <section className='bg-gray-100 m-4 md:m-10 shadow-2xl rounded-2xl p-6 md:p-10'>
-        <h1 className='text-center pt-6 md:pt-10 text-3xl md:text-5xl font-bold text-[#2E003E] mb-8 md:mb-10'>
+      <section className='bg-gradient-to-br from-gray-50 to-purple-50 m-4 md:m-10 shadow-2xl rounded-2xl p-6 md:p-10'>
+        <h1 className='text-center pt-6 md:pt-10 text-3xl md:text-5xl font-bold text-[#2E003E] mb-4 md:mb-6'>
           Survivor Stories
         </h1>
-        {/* Removed top Share Your Story button */}
+        <p className='text-center text-lg md:text-xl text-gray-600 mb-8 md:mb-12 max-w-3xl mx-auto'>
+          Read inspiring stories from survivors who have overcome harassment and found their voice. These stories highlight courage, resilience, and the path to healing.
+        </p>
         {showForm && (
           <form onSubmit={handleSubmit} className="max-w-xl mx-auto bg-white rounded-xl shadow-md p-6 mb-8 flex flex-col gap-4">
             <h2 className="text-lg font-bold text-[#6A0DAD] mb-2">Share Your Story (Anonymous allowed)</h2>
@@ -135,26 +138,34 @@ export default function StoriesPage() {
         )}
         <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8'>
           {stories.map((story, idx) => (
-            <button
+            <div
               key={idx}
-              className='bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:scale-105 transition-transform duration-300 text-left focus:outline-none focus:ring-2 focus:ring-[#6A0DAD] cursor-pointer'
-              style={{ minHeight: '350px', cursor: 'pointer' }}
-              onClick={() => navigate(`/story/${idx}`, { state: { story } })}
+              className='bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl transition-all duration-300 text-left group cursor-pointer'
+              style={{ minHeight: '400px' }}
+              onClick={() => setSelectedStory(story)}
               aria-label={`Read more about ${story.title}`}
             >
-              <img
-                src={story.img}
-                alt={story.title}
-                className='w-full h-56 object-cover'
-              />
-              <div className='p-4 flex-1 flex flex-col justify-between'>
-                <h2 className='text-xl font-semibold text-[#6A0DAD] mb-2'>{story.title}</h2>
-                <p className='text-gray-700 text-base mb-4' style={{whiteSpace:'pre-line'}}>{story.desc}</p>
-                <span className='text-[#6A0DAD] font-medium mt-auto underline underline-offset-2'>Read More</span>
+              <div className='relative'>
+                <img
+                  src={story.img}
+                  alt={story.title}
+                  className='w-full h-56 object-cover group-hover:scale-105 transition-transform duration-300'
+                />
+                <div className='absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300'></div>
               </div>
-            </button>
+              <div className='p-6 flex-1 flex flex-col justify-between'>
+                <div>
+                  <h2 className='text-xl font-semibold text-[#6A0DAD] mb-3 group-hover:text-[#5e0c9f] transition-colors'>{story.title}</h2>
+                  <p className='text-gray-700 text-base leading-relaxed' style={{whiteSpace:'pre-line'}}>{story.desc}</p>
+                </div>
+                <button className='mt-4 bg-[#6A0DAD] text-white px-4 py-2 rounded-full font-medium hover:bg-[#5e0c9f] transition-colors duration-300 self-start'>
+                  Read More
+                </button>
+              </div>
+            </div>
           ))}
         </div>
+        <div className='mt-12 mb-8 border-t border-gray-300'></div>
       </section>
       {/* Bottom Buttons */}
       <div className="flex justify-center mt-8 mb-10 gap-4">
@@ -176,6 +187,35 @@ export default function StoriesPage() {
       </div>
       {successMsg && !showForm && (
         <div className="text-center text-purple-700 font-medium mb-6">{successMsg}</div>
+      )}
+      {selectedStory && (
+        <div className="fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50 p-4 animate-fade-in">
+          <div className="max-w-3xl w-full bg-white rounded-2xl shadow-2xl p-8 relative border border-purple-100">
+            <button 
+              onClick={() => setSelectedStory(null)} 
+              className="absolute top-6 right-6 text-gray-400 hover:text-gray-600 text-3xl font-light hover:bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center transition-all duration-200"
+              aria-label="Close story detail"
+            >
+              &times;
+            </button>
+            <div className="mb-6">
+              <img src={selectedStory.img} alt={selectedStory.title} className="w-full h-72 object-cover rounded-xl shadow-md" />
+            </div>
+            <div className="text-center">
+              <h1 className="text-4xl font-bold text-[#2E003E] mb-6 leading-tight">{selectedStory.title}</h1>
+              <div className="w-16 h-1 bg-gradient-to-r from-[#6A0DAD] to-[#9B4F96] mx-auto mb-6 rounded-full"></div>
+              <p className="text-gray-700 text-xl leading-relaxed max-w-2xl mx-auto" style={{whiteSpace:'pre-line'}}>{selectedStory.desc}</p>
+            </div>
+            <div className="mt-8 text-center">
+              <button 
+                onClick={() => setSelectedStory(null)}
+                className="bg-gradient-to-r from-[#6A0DAD] to-[#9B4F96] text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl hover:from-[#5e0c9f] hover:to-[#8a4a8a] transition-all duration-300"
+              >
+                Close Story
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </>
   );
