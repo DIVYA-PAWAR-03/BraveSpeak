@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { 
   AlertTriangle, Clock, BarChart3, ArrowRight, Shield, Heart, Users, Scale, 
-  BookOpen, PhoneCall, ShieldAlert, CheckCircle2, ChevronRight, Sparkles,
+  BookOpen, PhoneCall, ShieldAlert, ShieldCheck, CheckCircle2, ChevronRight, Sparkles,
   Phone, Eye, Lock, Award, FileText, ExternalLink, HelpCircle, X, Check
 } from "lucide-react";
 import { Link } from 'react-router-dom';
