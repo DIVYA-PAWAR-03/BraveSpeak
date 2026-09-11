@@ -319,7 +319,7 @@ export default function Homepage() {
       </section>
 
       {/* 2. 24/7 VERIFIED EMERGENCY DIRECT-DIAL RIBBON */}
-      <section className="py-12 px-4 sm:px-6 -mt-12 relative z-30">
+      <section className="pt-8 pb-12 sm:pt-12 sm:pb-16 px-4 sm:px-6 mt-6 sm:mt-10 relative z-30">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {emergencyHelplines.map((helpline, idx) => {
