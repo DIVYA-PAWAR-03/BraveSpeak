@@ -27,9 +27,9 @@ export default function Homepage() {
       subtitle: "24x7 Toll-Free Emergency",
       desc: "Instant connection for rescue, counseling, and crisis response.",
       icon: PhoneCall,
-      color: "from-rose-600 to-rose-700",
+      color: "from-rose-600 via-rose-700 to-pink-800",
       textColor: "text-rose-100",
-      badgeColor: "bg-rose-500/20 text-rose-200 border-rose-400/30"
+      badgeColor: "bg-white/20 text-white border-white/30"
     },
     {
       number: "112",
@@ -37,9 +37,9 @@ export default function Homepage() {
       subtitle: "All-in-One Emergency",
       desc: "Police, medical ambulance, and fire dispatch across all Indian states.",
       icon: ShieldAlert,
-      color: "from-purple-700 to-[#2E003E]",
+      color: "from-purple-800 via-indigo-900 to-[#2A0840]",
       textColor: "text-purple-100",
-      badgeColor: "bg-purple-500/20 text-purple-200 border-purple-400/30"
+      badgeColor: "bg-purple-400/20 text-purple-200 border-purple-300/30"
     },
     {
       number: "1091",
@@ -47,9 +47,9 @@ export default function Homepage() {
       subtitle: "Dedicated Police Cell",
       desc: "Trained female police personnel for on-ground urgent intervention.",
       icon: Shield,
-      color: "from-indigo-700 to-indigo-900",
+      color: "from-indigo-700 via-indigo-800 to-slate-900",
       textColor: "text-indigo-100",
-      badgeColor: "bg-indigo-500/20 text-indigo-200 border-indigo-400/30"
+      badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-300/30"
     },
     {
       number: "1930",
@@ -57,9 +57,9 @@ export default function Homepage() {
       subtitle: "Online Abuse & Blackmail",
       desc: "Emergency takedown of morphed photos, leaks, and cyber harassment.",
       icon: Lock,
-      color: "from-violet-700 to-slate-900",
+      color: "from-violet-800 via-purple-900 to-slate-900",
       textColor: "text-violet-100",
-      badgeColor: "bg-violet-500/20 text-violet-200 border-violet-400/30"
+      badgeColor: "bg-violet-400/20 text-violet-200 border-violet-300/30"
     }
   ];
 
@@ -82,7 +82,7 @@ export default function Homepage() {
       link: "/survivorStories",
       linkText: "Read Survivor Stories",
       tag: "Empowerment",
-      accent: "from-pink-600 to-purple-600"
+      accent: "from-pink-600 to-rose-600"
     },
     {
       title: "National Crime Analytics",
@@ -92,7 +92,7 @@ export default function Homepage() {
       link: "/statistics",
       linkText: "View Statistics Dashboard",
       tag: "NCRB Data",
-      accent: "from-indigo-600 to-purple-800"
+      accent: "from-indigo-600 to-cyan-700"
     },
     {
       title: "Free Legal Aid & Support",
@@ -102,7 +102,7 @@ export default function Homepage() {
       link: "/contact",
       linkText: "Get Support & FAQs",
       tag: "Free Legal Counsel",
-      accent: "from-rose-600 to-purple-700"
+      accent: "from-violet-600 to-purple-800"
     }
   ];
 
@@ -197,11 +197,11 @@ export default function Homepage() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 selection:bg-purple-200 selection:text-purple-900">
       {/* 1. ULTRA-MODERN HERO SECTION */}
-      <section className="relative bg-gradient-to-br from-[#240032] via-[#38044f] to-[#160020] text-white pt-16 pb-24 lg:pt-24 lg:pb-32 px-4 sm:px-6 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-[#290B3D] via-[#43125F] to-[#180424] text-white pt-16 pb-24 lg:pt-24 lg:pb-32 px-4 sm:px-6 overflow-hidden">
         {/* Background Gradients & Ambient Glow */}
-        <div className="absolute -top-32 -left-32 w-[34rem] h-[34rem] bg-purple-600/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute top-1/3 -right-32 w-[38rem] h-[38rem] bg-rose-600/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 left-1/4 w-[30rem] h-[30rem] bg-indigo-600/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -top-32 -left-32 w-[34rem] h-[34rem] bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute top-1/3 -right-32 w-[38rem] h-[38rem] bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute -bottom-24 left-1/4 w-[30rem] h-[30rem] bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
           {/* Left Hero Column */}
@@ -212,7 +212,7 @@ export default function Homepage() {
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
             {/* Safe platform badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-purple-200 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg shadow-black/20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-purple-100 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg shadow-black/20">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
@@ -222,12 +222,12 @@ export default function Homepage() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-white">
               Break The Silence. <br />
-              <span className="bg-gradient-to-r from-purple-200 via-pink-200 to-rose-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-200 via-pink-100 to-rose-200 bg-clip-text text-transparent">
                 Demand Your Justice.
               </span>
             </h1>
 
-            <p className="text-purple-200/90 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+            <p className="text-purple-100/90 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
               BraveSpeak empowers women across India with comprehensive legal rights, plain-English statutory guides, 24/7 emergency dispatch, and a safe survivor community.
             </p>
 
@@ -235,7 +235,7 @@ export default function Homepage() {
             <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
               <Link to="/laws">
                 <motion.button 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-[#6A0DAD] via-purple-600 to-indigo-600 hover:from-purple-600 hover:to-[#6A0DAD] text-white rounded-full font-bold shadow-xl shadow-purple-950/60 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-purple-400/40 text-base"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-[#7E22CE] via-purple-600 to-indigo-600 hover:from-purple-600 hover:to-[#7E22CE] text-white rounded-full font-bold shadow-xl shadow-purple-950/50 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-purple-300/30 text-base"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -247,7 +247,7 @@ export default function Homepage() {
               
               <a href="tel:181">
                 <motion.button 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-rose-600 hover:bg-rose-500 text-white rounded-full font-bold shadow-xl shadow-rose-950/60 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-rose-400/40 text-base"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white rounded-full font-bold shadow-xl shadow-rose-950/50 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-rose-300/30 text-base"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -259,21 +259,21 @@ export default function Homepage() {
 
             {/* Quick Micro Value Chips */}
             <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto lg:mx-0 text-left">
-              <div className="p-3 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
                 <div className="text-lg font-bold text-white">Zero FIR</div>
-                <div className="text-[11px] text-purple-300">Any Police Station</div>
+                <div className="text-[11px] text-purple-200">Any Police Station</div>
               </div>
-              <div className="p-3 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
                 <div className="text-lg font-bold text-white">Free Aid</div>
-                <div className="text-[11px] text-purple-300">DLSA Court Lawyers</div>
+                <div className="text-[11px] text-purple-200">DLSA Court Lawyers</div>
               </div>
-              <div className="p-3 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
                 <div className="text-lg font-bold text-white">24x7 SOS</div>
-                <div className="text-[11px] text-purple-300">Toll-Free Direct Dial</div>
+                <div className="text-[11px] text-purple-200">Toll-Free Direct Dial</div>
               </div>
-              <div className="p-3 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
                 <div className="text-lg font-bold text-white">Anonymous</div>
-                <div className="text-[11px] text-purple-300">Privacy Protected</div>
+                <div className="text-[11px] text-purple-200">Privacy Protected</div>
               </div>
             </div>
           </motion.div>
@@ -365,13 +365,13 @@ export default function Homepage() {
       </section>
 
       {/* 3. FOUR CORE SUPPORT PILLARS */}
-      <section className="py-16 px-4 sm:px-6">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-slate-100/60 border-y border-slate-200/70">
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full uppercase tracking-wider">
+            <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full border border-purple-200 uppercase tracking-wider">
               Comprehensive Ecosystem
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#2E003E] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               Everything You Need to Stand Strong
             </h2>
             <p className="text-slate-600 text-base sm:text-lg">
@@ -385,7 +385,7 @@ export default function Homepage() {
               return (
                 <div
                   key={idx}
-                  className="bg-white rounded-3xl p-7 shadow-md hover:shadow-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-white rounded-3xl p-7 shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group"
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
@@ -397,10 +397,10 @@ export default function Homepage() {
                       </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-[#2E003E] group-hover:text-purple-700 transition-colors mb-1">
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-purple-700 transition-colors mb-1">
                       {pillar.title}
                     </h3>
-                    <p className="text-xs font-semibold text-purple-600 mb-3">
+                    <p className="text-xs font-semibold text-purple-700 mb-3">
                       {pillar.subtitle}
                     </p>
                     <p className="text-sm text-slate-600 leading-relaxed mb-6">
@@ -423,13 +423,13 @@ export default function Homepage() {
       </section>
 
       {/* 4. ALARMING CRIME REALITY DASHBOARD */}
-      <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-purple-50/70 via-white to-purple-50/50 border-y border-purple-100">
+      <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-white via-purple-50/30 to-slate-50 border-b border-slate-200/70">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-rose-100 text-rose-800 rounded-full uppercase tracking-wider">
+            <span className="text-xs font-bold px-3 py-1 bg-rose-100 text-rose-800 rounded-full border border-rose-200 uppercase tracking-wider">
               National Crime Records Bureau (NCRB)
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight">
               The Reality We Cannot Ignore
             </h2>
             <p className="text-slate-600 text-base sm:text-lg">
@@ -440,7 +440,7 @@ export default function Homepage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* Stat Card 1 */}
             <motion.div 
-              className="bg-white rounded-3xl p-8 shadow-xl border border-purple-100 relative overflow-hidden"
+              className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl border border-slate-200/80 hover:border-rose-200 transition-all relative overflow-hidden"
               whileHover={{ y: -6 }}
             >
               <div className="flex items-center justify-between mb-4">
@@ -451,10 +451,10 @@ export default function Homepage() {
                   Daily Registered
                 </span>
               </div>
-              <h3 className="text-5xl font-black bg-gradient-to-r from-rose-600 to-purple-800 bg-clip-text text-transparent mb-2">
+              <h3 className="text-5xl font-black bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent mb-2">
                 87+
               </h3>
-              <p className="text-base font-bold text-[#2E003E]">Cases Reported Daily in India</p>
+              <p className="text-base font-bold text-slate-900">Cases Reported Daily in India</p>
               <p className="text-xs text-slate-500 mt-2 leading-relaxed">
                 Over 31,500 sexual violence cases are officially recorded every year in NCRB annual data compendiums.
               </p>
@@ -462,7 +462,7 @@ export default function Homepage() {
 
             {/* Stat Card 2 */}
             <motion.div 
-              className="bg-white rounded-3xl p-8 shadow-xl border border-purple-100 relative overflow-hidden"
+              className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all relative overflow-hidden"
               whileHover={{ y: -6 }}
             >
               <div className="flex items-center justify-between mb-4">
@@ -476,7 +476,7 @@ export default function Homepage() {
               <h3 className="text-5xl font-black bg-gradient-to-r from-purple-700 to-indigo-600 bg-clip-text text-transparent mb-2">
                 1 / 16
               </h3>
-              <p className="text-base font-bold text-[#2E003E]">Minutes per Reported Offense</p>
+              <p className="text-base font-bold text-slate-900">Minutes per Reported Offense</p>
               <p className="text-xs text-slate-500 mt-2 leading-relaxed">
                 On average, one sexual offense or modesty assault is registered every 16 minutes in India.
               </p>
@@ -484,7 +484,7 @@ export default function Homepage() {
 
             {/* Stat Card 3 */}
             <motion.div 
-              className="bg-white rounded-3xl p-8 shadow-xl border border-purple-100 relative overflow-hidden"
+              className="bg-white rounded-3xl p-8 shadow-md hover:shadow-xl border border-slate-200/80 hover:border-indigo-200 transition-all relative overflow-hidden"
               whileHover={{ y: -6 }}
             >
               <div className="flex items-center justify-between mb-4">
@@ -498,7 +498,7 @@ export default function Homepage() {
               <h3 className="text-5xl font-black bg-gradient-to-r from-indigo-600 to-purple-800 bg-clip-text text-transparent mb-2">
                 +{caseCount}
               </h3>
-              <p className="text-base font-bold text-[#2E003E]">Estimated Since You Opened This Page</p>
+              <p className="text-base font-bold text-slate-900">Estimated Since You Opened This Page</p>
               <p className="text-xs text-slate-500 mt-2 leading-relaxed">
                 A real-time awareness counter emphasizing the constant urgency of speaking up and seeking justice.
               </p>
@@ -508,7 +508,7 @@ export default function Homepage() {
           <div className="text-center pt-4">
             <Link
               to="/statistics"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#2E003E] hover:bg-purple-950 text-white rounded-full font-bold text-sm shadow-xl transition hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#290B3D] to-purple-900 hover:from-purple-950 hover:to-[#290B3D] text-white rounded-full font-bold text-sm shadow-xl transition hover:scale-105"
             >
               <span>Explore Full Statistics & Yearly Charts</span>
               <ArrowRight size={18} />
@@ -521,10 +521,10 @@ export default function Homepage() {
       <section className="py-20 px-4 sm:px-6 bg-white">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full uppercase tracking-wider">
+            <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full border border-purple-200 uppercase tracking-wider">
               Emergency Action Plan
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#2E003E] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               What to Do in an Emergency: 4 Steps
             </h2>
             <p className="text-slate-600 text-base sm:text-lg">
@@ -542,23 +542,23 @@ export default function Homepage() {
                   onClick={() => setActiveStep(idx)}
                   className={`p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? "bg-gradient-to-b from-purple-900 to-[#2E003E] text-white shadow-2xl scale-[1.03] border-purple-500/50"
-                      : "bg-purple-50/50 hover:bg-purple-50 text-slate-800 border-purple-100"
+                      ? "bg-gradient-to-b from-[#290B3D] to-purple-950 text-white shadow-xl scale-[1.03] border-purple-400/40"
+                      : "bg-slate-50 hover:bg-purple-50/50 text-slate-800 border-slate-200/80 hover:border-purple-200"
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className={`text-4xl font-black ${isSelected ? "text-purple-300" : "text-purple-300/80"}`}>
+                      <span className={`text-4xl font-black ${isSelected ? "text-purple-300" : "text-purple-400/70"}`}>
                         {step.num}
                       </span>
                       {isSelected && (
-                        <span className="text-[10px] font-bold px-2 py-0.5 bg-purple-400/20 text-purple-200 rounded-full border border-purple-400/30 uppercase">
+                        <span className="text-[10px] font-bold px-2 py-0.5 bg-white/20 text-purple-200 rounded-full border border-white/20 uppercase">
                           Active Step
                         </span>
                       )}
                     </div>
 
-                    <h3 className={`text-xl font-bold mb-2 ${isSelected ? "text-white" : "text-[#2E003E]"}`}>
+                    <h3 className={`text-xl font-bold mb-2 ${isSelected ? "text-white" : "text-slate-900"}`}>
                       {step.title}
                     </h3>
                     <p className={`text-xs leading-relaxed mb-4 ${isSelected ? "text-purple-200" : "text-slate-600"}`}>
@@ -567,7 +567,7 @@ export default function Homepage() {
                   </div>
 
                   <div className={`pt-3 border-t text-[11px] font-medium flex items-start gap-1.5 ${
-                    isSelected ? "border-purple-800 text-purple-200" : "border-purple-200/60 text-purple-900"
+                    isSelected ? "border-purple-800/80 text-purple-200" : "border-slate-200 text-purple-900"
                   }`}>
                     <CheckCircle2 size={15} className={`shrink-0 mt-0.5 ${isSelected ? "text-emerald-400" : "text-purple-600"}`} />
                     <span>{step.actionTip}</span>
@@ -578,13 +578,13 @@ export default function Homepage() {
           </div>
 
           {/* Detailed Display Box for the Active Step */}
-          <div className="bg-gradient-to-r from-purple-50 via-white to-purple-50 p-8 rounded-3xl border border-purple-200 shadow-lg">
+          <div className="bg-gradient-to-r from-purple-50/80 via-white to-purple-50/60 p-8 rounded-3xl border border-purple-200/80 shadow-md">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="space-y-2">
                 <span className="text-xs font-bold text-purple-700 uppercase tracking-wider">
                   Detailed Guidance for Step {emergencySteps[activeStep].num}
                 </span>
-                <h3 className="text-2xl font-bold text-[#2E003E]">
+                <h3 className="text-2xl font-bold text-slate-900">
                   {emergencySteps[activeStep].title}
                 </h3>
                 <p className="text-slate-700 text-sm leading-relaxed max-w-2xl">
@@ -595,13 +595,13 @@ export default function Homepage() {
               <div className="flex flex-wrap gap-3">
                 <a
                   href="tel:181"
-                  className="px-6 py-3 bg-rose-600 hover:bg-rose-500 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
                 >
                   <PhoneCall size={14} /> Call 181 Now
                 </a>
                 <Link
                   to="/laws"
-                  className="px-6 py-3 bg-[#2E003E] hover:bg-purple-900 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-[#290B3D] to-purple-900 hover:from-purple-900 hover:to-[#290B3D] text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
                 >
                   <Scale size={14} /> View All Laws
                 </Link>
@@ -612,16 +612,16 @@ export default function Homepage() {
       </section>
 
       {/* 6. FUNDAMENTAL SURVIVOR RIGHTS (INTERACTIVE EXPLORER) */}
-      <section className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#2E003E] via-[#3F0558] to-[#1F002B] text-white">
+      <section className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#290B3D] via-[#3E0E59] to-[#180424] text-white">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-purple-500/20 text-purple-200 rounded-full border border-purple-400/30 uppercase tracking-wider">
+            <span className="text-xs font-bold px-3 py-1 bg-white/10 text-purple-200 rounded-full border border-white/20 uppercase tracking-wider">
               Constitutional & Legal Rights
             </span>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               4 Non-Negotiable Rights of Every Survivor
             </h2>
-            <p className="text-purple-200/90 text-base sm:text-lg">
+            <p className="text-purple-100/90 text-base sm:text-lg">
               Knowledge is your greatest shield. Under Indian law, these 4 protections are guaranteed by statute.
             </p>
           </div>
@@ -644,7 +644,7 @@ export default function Homepage() {
                   <h3 className="text-2xl font-bold text-white mb-2">
                     {right.title}
                   </h3>
-                  <p className="text-purple-200/90 text-sm leading-relaxed">
+                  <p className="text-purple-100/90 text-sm leading-relaxed">
                     {right.desc}
                   </p>
                 </div>
@@ -660,7 +660,7 @@ export default function Homepage() {
           <div className="text-center pt-4">
             <Link
               to="/laws"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-[#2E003E] hover:bg-purple-50 rounded-full font-bold text-sm shadow-2xl transition hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold text-sm shadow-2xl transition hover:scale-105"
             >
               <Scale size={18} />
               <span>Explore Complete Indian Laws & Penalties Guide</span>
@@ -675,10 +675,10 @@ export default function Homepage() {
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
-              <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full uppercase tracking-wider">
+              <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full border border-purple-200 uppercase tracking-wider">
                 Real Journeys of Resilience
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#2E003E] tracking-tight">
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
                 Voices of Courage & Healing
               </h2>
               <p className="text-slate-600 text-base">
@@ -688,7 +688,7 @@ export default function Homepage() {
 
             <Link
               to="/survivorStories"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-100 hover:bg-purple-200 text-[#2E003E] rounded-full font-bold text-xs transition self-start md:self-auto"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-100 hover:bg-purple-200 text-purple-950 rounded-full font-bold text-xs transition self-start md:self-auto"
             >
               <span>View All Community Stories</span>
               <ArrowRight size={15} />
@@ -700,7 +700,7 @@ export default function Homepage() {
               <div
                 key={idx}
                 onClick={() => setSelectedStoryModal(story)}
-                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
               >
                 <div>
                   <div className="relative h-48 overflow-hidden bg-purple-950">
@@ -711,14 +711,14 @@ export default function Homepage() {
                       onError={(e) => { e.target.src = '/images/news_3.jpg'; }}
                     />
                     <div className="absolute top-3 left-3">
-                      <span className="px-3 py-1 bg-[#2E003E]/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-purple-400/30">
+                      <span className="px-3 py-1 bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-white/20">
                         {story.category}
                       </span>
                     </div>
                   </div>
 
                   <div className="p-6 space-y-3">
-                    <h3 className="text-xl font-bold text-[#2E003E] group-hover:text-purple-700 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-purple-700 transition-colors">
                       {story.title}
                     </h3>
                     <p className="text-slate-600 text-xs leading-relaxed line-clamp-3">
@@ -738,7 +738,7 @@ export default function Homepage() {
       </section>
 
       {/* 8. COMMUNITY PLEDGE & INSPIRING CALL TO ACTION BANNER */}
-      <section className="py-20 px-4 sm:px-6 bg-gradient-to-r from-[#240032] via-[#480562] to-[#240032] text-white relative overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 bg-gradient-to-r from-[#290B3D] via-[#4F136E] to-[#290B3D] text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-7">
           <span className="inline-block px-4 py-1.5 bg-white/10 rounded-full text-xs font-bold text-purple-200 border border-white/20 uppercase tracking-wider">
             Join the Movement • #BreakTheSilence
@@ -746,14 +746,14 @@ export default function Homepage() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
             You Are Not Alone. We Stand With You.
           </h2>
-          <p className="text-purple-200 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-purple-100/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Whether you need confidential guidance, wish to report an incident, or want to support someone in distress, BraveSpeak is always here for you.
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center pt-2">
             <button
               onClick={() => setPledgeTaken(true)}
-              className="px-8 py-4 bg-gradient-to-r from-pink-500 to-rose-600 hover:from-rose-600 hover:to-pink-500 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
+              className="px-8 py-4 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 hover:from-rose-600 hover:to-pink-600 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
             >
               {pledgeTaken ? (
                 <>
@@ -770,7 +770,7 @@ export default function Homepage() {
 
             <Link
               to="/contact"
-              className="px-8 py-4 bg-white text-[#2E003E] hover:bg-purple-50 rounded-full font-bold shadow-2xl transition hover:scale-105 text-sm"
+              className="px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold shadow-2xl transition hover:scale-105 text-sm"
             >
               Get Confidential Help & Support
             </Link>
