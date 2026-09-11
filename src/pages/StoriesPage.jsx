@@ -1,47 +1,45 @@
 
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default function StoriesPage() {
-    const navigate = useNavigate();
   const initialStories = [
     {
-      img: 'images/news_6.png',
+      img: '/images/news_6.png',
       title: 'Breaking the Silence',
       desc: 'A survivor shares her journey from fear to empowerment, inspiring others to speak up.'
     },
     {
-      img: 'images/news_7.png',
+      img: '/images/news_7.png',
       title: 'Finding Support',
       desc: 'How community and legal support helped a survivor rebuild her life.'
     },
     {
-      img: 'images/news_8.png',
+      img: '/images/news_8.png',
       title: 'Courage to Report',
       desc: 'Reporting harassment was tough, but it led to justice and healing.'
     },
     {
-      img: 'images/news_9.png',
+      img: '/images/news_9.png',
       title: 'A New Beginning',
       desc: 'After years of struggle, a survivor found hope and a fresh start.'
     },
     {
-      img: 'images/news_11.webp',
+      img: '/images/news_11.webp',
       title: 'Voices United',
       desc: 'Group support sessions helped many survivors regain confidence.'
     },
     {
-      img: 'images/news_3.jpg',
+      img: '/images/news_3.jpg',
       title: 'Strength in Numbers',
       desc: 'Together, survivors are changing the narrative and fighting for rights.'
     },
     {
-      img: 'images/news_10.webp',
+      img: '/images/news_10.webp',
       title: 'Healing Journey',
       desc: 'Therapy and self-care played a key role in recovery.'
     },
     {
-      img: 'images/news_4.jpeg',
+      img: '/images/news_4.jpeg',
       title: 'Empowered to Help',
       desc: 'A survivor now helps others find their voice and seek justice.'
     }

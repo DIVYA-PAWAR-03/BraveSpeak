@@ -3,23 +3,23 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
 } from 'recharts';
 
+const currentYear = new Date().getFullYear();
+const currentMonth = new Date().getMonth();
+
+const generateYearlyCases = () => {
+  const years = [];
+  for (let year = 2019; year <= currentYear; year++) {
+    let months = year === currentYear ? currentMonth + 1 : 12;
+    const monthlyCases = Array.from({ length: months }, () =>
+      Math.floor(Math.random() * (3200 - 2500) + 2500)
+    );
+    const total = monthlyCases.reduce((a, b) => a + b, 0);
+    years.push({ year: year.toString(), cases: total });
+  }
+  return years;
+};
+
 export default function StatisticsPage() {
-  const currentYear = new Date().getFullYear();
-  const currentMonth = new Date().getMonth();
-
-  const generateYearlyCases = () => {
-    const years = [];
-    for (let year = 2019; year <= currentYear; year++) {
-      let months = year === currentYear ? currentMonth + 1 : 12;
-      const monthlyCases = Array.from({ length: months }, () =>
-        Math.floor(Math.random() * (3200 - 2500) + 2500)
-      );
-      const total = monthlyCases.reduce((a, b) => a + b, 0);
-      years.push({ year: year.toString(), cases: total });
-    }
-    return years;
-  };
-
   const [data, setData] = useState([]);
 
   useEffect(() => {
