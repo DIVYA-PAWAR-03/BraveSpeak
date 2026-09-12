@@ -62,6 +62,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link to="/legal-assistant" onClick={scrollToTop} className="text-purple-200 hover:text-white transition-colors flex items-center gap-1.5 group">
+                  <span className="w-1.5 h-1.5 rounded-full bg-purple-400 group-hover:w-2.5 transition-all"></span>
+                  Legal Assistant & Drafter
+                </Link>
+              </li>
+              <li>
                 <Link to="/statistics" onClick={scrollToTop} className="text-purple-200 hover:text-white transition-colors flex items-center gap-1.5 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-purple-400 group-hover:w-2.5 transition-all"></span>
                   National Statistics & Trends

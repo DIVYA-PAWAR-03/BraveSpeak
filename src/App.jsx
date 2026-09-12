@@ -10,6 +10,7 @@ import StatisticsPage from './pages/StatisticsPage';
 import StoriesPage from './pages/StoriesPage';
 import ContactUs from './pages/ContactUs';
 import SafetyToolkit from './pages/SafetyToolkit';
+import LegalAssistant from './pages/LegalAssistant';
 import QuickCamouflage from './components/QuickCamouflage';
 
 const StoryDetail = React.lazy(() => import('./pages/StoryDetail'));
@@ -24,6 +25,7 @@ function App() {
     <Routes>
       <Route path='/' element={<Homepage />} />
       <Route path='/safety-toolkit' element={<SafetyToolkit />} />
+      <Route path='/legal-assistant' element={<LegalAssistant />} />
       <Route path='/statistics' element={<StatisticsPage />} />
       <Route path='/laws' element={<HarassmentLaws />} />
       <Route path='/survivorStories' element={<StoriesPage />} />

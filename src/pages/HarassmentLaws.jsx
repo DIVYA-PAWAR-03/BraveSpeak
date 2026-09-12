@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { 
   Scale, Shield, Search, ChevronDown, ChevronUp, Copy, Check, 
-  PhoneCall, ExternalLink, AlertCircle, FileText, BookmarkCheck, HeartHandshake 
+  PhoneCall, ExternalLink, AlertCircle, FileText, BookmarkCheck, HeartHandshake, Sparkles, ArrowRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -159,6 +160,17 @@ const HarassmentLaws = () => {
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
             Clear, actionable information on Indian Penal Code (IPC) sections, workplace safety acts, cyber safety laws, and victim rights.
           </p>
+
+          <div className="pt-2">
+            <Link
+              to="/legal-assistant"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white text-sm font-bold rounded-full shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
+            >
+              <Sparkles size={16} className="text-amber-300" />
+              <span>Open Interactive Legal Assistant & Complaint Drafter</span>
+              <ArrowRight size={16} />
+            </Link>
+          </div>
         </div>
 
         {/* Search & Filter Bar */}

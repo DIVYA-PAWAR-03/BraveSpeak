@@ -12,6 +12,7 @@ export default function Header() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Safety Toolkit", path: "/safety-toolkit" },
+    { name: "Legal Assistant", path: "/legal-assistant" },
     { name: "Laws & Rights", path: "/laws" },
     { name: "Statistics", path: "/statistics" },
     { name: "Survivor Stories", path: "/survivorStories" },
