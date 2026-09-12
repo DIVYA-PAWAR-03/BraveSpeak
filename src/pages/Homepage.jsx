@@ -245,9 +245,20 @@ export default function Homepage() {
                 </motion.button>
               </Link>
               
+              <Link to="/safety-toolkit">
+                <motion.button 
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-purple-900/80 hover:bg-purple-800 text-purple-100 hover:text-white rounded-full font-bold shadow-xl border border-purple-400/40 hover:scale-105 transition-all duration-300 cursor-pointer text-base"
+                  whileHover={{ scale: 1.03 }}
+                  whileTap={{ scale: 0.97 }}
+                >
+                  <ShieldAlert size={20} className="text-amber-300" />
+                  <span>Safety Toolkit & SOS</span>
+                </motion.button>
+              </Link>
+
               <a href="tel:181">
                 <motion.button 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white rounded-full font-bold shadow-xl shadow-rose-950/50 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-rose-300/30 text-base"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white rounded-full font-bold shadow-xl shadow-rose-950/50 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-rose-300/30 text-base"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
                 >
