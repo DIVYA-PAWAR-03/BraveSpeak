@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
-  AreaChart, Area
+  AreaChart, Area, Line, Legend
 } from 'recharts';
 import { 
   BarChart3, TrendingUp, AlertTriangle, ShieldCheck, Scale, PhoneCall, 
-  Info, Users, CheckCircle2 
+  Info, Users, CheckCircle2, Sparkles, ArrowUpRight
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -15,17 +15,17 @@ const yearlyData = [
   { year: "2019", cases: 32033, convictionRate: 27.8, chargeSheetRate: 74.2 },
   { year: "2020", cases: 28046, convictionRate: 29.8, chargeSheetRate: 75.8 },
   { year: "2021", cases: 31677, convictionRate: 28.6, chargeSheetRate: 77.1 },
-  { year: "2022", cases: 31516, convictionRate: 32.2, chargeSheetRate: 76.5 },
+  { year: "2022", primaryCases: 31516, cases: 31516, convictionRate: 32.2, chargeSheetRate: 76.5 },
   { year: "2023", cases: 32410, convictionRate: 33.4, chargeSheetRate: 78.0 },
   { year: "2024", cases: 33150, convictionRate: 34.1, chargeSheetRate: 79.2 },
   { year: `${currentYear}`, cases: 24890, convictionRate: 35.0, chargeSheetRate: 80.5 }
 ];
 
 const crimeCategoryData = [
-  { category: "Workplace Harassment", incidents: 8420, percent: "26%" },
   { category: "Assault on Modesty (IPC 354)", incidents: 14200, percent: "44%" },
+  { category: "Workplace Harassment (POSH)", incidents: 8420, percent: "26%" },
   { category: "Cyber Stalking & Blackmail", incidents: 6100, percent: "19%" },
-  { category: "Public & Transit Eve-Teasing", incidents: 3500, percent: "11%" }
+  { category: "Public Eve-Teasing & Transit", incidents: 3500, percent: "11%" }
 ];
 
 export default function StatisticsPage() {
@@ -34,13 +34,21 @@ export default function StatisticsPage() {
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload && payload.length) {
       return (
-        <div className="bg-[#1F002B] text-white p-3 rounded-xl shadow-xl border border-purple-500/30 text-xs">
-          <p className="font-bold text-purple-200 mb-1">{label}</p>
+        <div className="bg-slate-900/95 backdrop-blur-md text-white p-3.5 rounded-2xl shadow-2xl border border-slate-700 text-xs space-y-1.5 min-w-[170px]">
+          <div className="flex items-center justify-between border-b border-slate-700 pb-1">
+            <span className="font-bold text-slate-200">{label}</span>
+            <span className="text-[10px] text-purple-300 font-semibold uppercase">NCRB Report</span>
+          </div>
           {payload.map((entry, index) => (
-            <p key={index} style={{ color: entry.color || "#fff" }}>
-              <span className="font-semibold">{entry.name}: </span>
-              {entry.value.toLocaleString()} {entry.unit || "cases"}
-            </p>
+            <div key={index} className="flex items-center justify-between gap-3 text-xs">
+              <span className="text-slate-300 flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full" style={{ backgroundColor: entry.color || "#A855F7" }}></span>
+                {entry.name}:
+              </span>
+              <span className="font-bold text-white font-mono">
+                {entry.value.toLocaleString()} {entry.unit || "cases"}
+              </span>
+            </div>
           ))}
         </div>
       );
@@ -60,14 +68,14 @@ export default function StatisticsPage() {
             Harassment & Safety Statistics in India
           </h1>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-            These numbers represent real human lives, courage, and the ongoing struggle for accountability. Visualizing this data is key to driving systemic policy and community action.
+            Visualizing verified statutory crime records and disposal rates to raise public awareness, demand institutional accountability, and drive systemic legal reform.
           </p>
         </div>
 
         {/* 4 Key Metric KPI Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between"
+            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -77,16 +85,16 @@ export default function StatisticsPage() {
                 </span>
                 <AlertTriangle size={20} className="text-rose-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-[#2E003E]">31,500+</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">31,500+</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">Cases Registered Annually</p>
             </div>
-            <p className="text-[11px] text-slate-500 mt-4 pt-3 border-t border-slate-100">
+            <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
               According to the latest published National Crime Records Bureau reports.
             </p>
           </motion.div>
 
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between"
+            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -96,16 +104,16 @@ export default function StatisticsPage() {
                 </span>
                 <Users size={20} className="text-purple-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-[#2E003E]">89.2%</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">89.2%</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">Offenders Known to Survivor</p>
             </div>
-            <p className="text-[11px] text-slate-500 mt-4 pt-3 border-t border-slate-100">
+            <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
               Acquaintances, employers, neighbors, or domestic relations in majority cases.
             </p>
           </motion.div>
 
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between"
+            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -115,16 +123,16 @@ export default function StatisticsPage() {
                 </span>
                 <Scale size={20} className="text-indigo-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-[#2E003E]">32.2%</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">34.1%</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">National Conviction Rate</p>
             </div>
-            <p className="text-[11px] text-slate-500 mt-4 pt-3 border-t border-slate-100">
+            <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
               Fast-track special courts (FTSCs) continue to work on clearing trial backlog.
             </p>
           </motion.div>
 
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between"
+            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -134,111 +142,200 @@ export default function StatisticsPage() {
                 </span>
                 <ShieldCheck size={20} className="text-emerald-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-[#2E003E]">76.5%</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">79.2%</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">Average Charge-sheeting Rate</p>
             </div>
-            <p className="text-[11px] text-slate-500 mt-4 pt-3 border-t border-slate-100">
+            <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
               Cases where police completed formal investigation and framed charges.
             </p>
           </motion.div>
         </div>
 
         {/* Interactive Chart Container */}
-        <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-purple-100">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-200/80 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
             <div>
-              <h2 className="text-xl sm:text-2xl font-bold text-[#2E003E]">
-                {activeTab === "yearly" && "Reported Cases by Year (2019 – Present)"}
+              <span className="text-[11px] font-bold text-purple-800 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200 uppercase tracking-wider">
+                Official Analytical Trends
+              </span>
+              <h2 className="text-xl sm:text-2xl font-bold text-[#2E003E] mt-1.5">
+                {activeTab === "yearly" && "Reported Harassment Cases by Year (2019 – Present)"}
                 {activeTab === "categories" && "Incident Breakdown by Harassment Category"}
-                {activeTab === "disposal" && "Judicial Conviction & Disposal Trends (%)"}
+                {activeTab === "disposal" && "Judicial Conviction & Police Charge-Sheet Trends (%)"}
               </h2>
-              <p className="text-xs text-slate-500 mt-1">
-                Official NCRB Data compilation with annualized trends.
+              <p className="text-xs text-slate-500 mt-0.5">
+                Compiled from National Crime Records Bureau (NCRB) 'Crime in India' annual compendiums.
               </p>
             </div>
 
             {/* View Tabs */}
-            <div className="flex flex-wrap gap-1.5 p-1 bg-purple-50 rounded-2xl border border-purple-200">
+            <div className="flex flex-wrap gap-1 p-1 bg-slate-100 rounded-2xl border border-slate-200/80">
               <button
                 onClick={() => setActiveTab("yearly")}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
                   activeTab === "yearly"
-                    ? "bg-[#2E003E] text-white shadow-sm"
-                    : "text-purple-800 hover:bg-purple-100"
+                    ? "bg-purple-900 text-white shadow-md shadow-purple-950/20"
+                    : "text-slate-600 hover:text-purple-900 hover:bg-slate-200/70"
                 }`}
               >
-                Yearly Cases
+                Yearly Trend
               </button>
               <button
                 onClick={() => setActiveTab("categories")}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
                   activeTab === "categories"
-                    ? "bg-[#2E003E] text-white shadow-sm"
-                    : "text-purple-800 hover:bg-purple-100"
+                    ? "bg-purple-900 text-white shadow-md shadow-purple-950/20"
+                    : "text-slate-600 hover:text-purple-900 hover:bg-slate-200/70"
                 }`}
               >
                 Categories
               </button>
               <button
                 onClick={() => setActiveTab("disposal")}
-                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition ${
+                className={`px-4 py-2 rounded-xl text-xs font-bold transition cursor-pointer ${
                   activeTab === "disposal"
-                    ? "bg-[#2E003E] text-white shadow-sm"
-                    : "text-purple-800 hover:bg-purple-100"
+                    ? "bg-purple-900 text-white shadow-md shadow-purple-950/20"
+                    : "text-slate-600 hover:text-purple-900 hover:bg-slate-200/70"
                 }`}
               >
-                Conviction Rates
+                Legal Conviction
               </button>
             </div>
           </div>
 
-          {/* Render Active Chart */}
+          {/* Render Active Chart with Modern Gradients and Sleek Spacing */}
           <div className="w-full h-80 sm:h-96">
             {activeTab === "yearly" && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={yearlyData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1e6ff" vertical={false} />
-                  <XAxis dataKey="year" stroke="#6b21a8" fontSize={12} tickLine={false} />
-                  <YAxis stroke="#6b21a8" fontSize={12} tickLine={false} />
+                <BarChart data={yearlyData} margin={{ top: 20, right: 20, left: 0, bottom: 0 }} barSize={32}>
+                  <defs>
+                    <linearGradient id="barGradient" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stopColor="#7C3AED" stopOpacity={1} />
+                      <stop offset="100%" stopColor="#C084FC" stopOpacity={0.8} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="4 4" stroke="#F1F5F9" vertical={false} />
+                  <XAxis 
+                    dataKey="year" 
+                    stroke="#64748B" 
+                    fontSize={12} 
+                    fontWeight={600}
+                    tickLine={false} 
+                    axisLine={{ stroke: '#CBD5E1' }}
+                  />
+                  <YAxis 
+                    stroke="#64748B" 
+                    fontSize={12} 
+                    fontWeight={500}
+                    tickLine={false} 
+                    axisLine={{ stroke: '#CBD5E1' }}
+                    tickFormatter={(val) => `${(val / 1000).toFixed(0)}k`}
+                  />
                   <Tooltip content={<CustomTooltip />} />
-                  <Bar dataKey="cases" fill="#9333ea" radius={[8, 8, 0, 0]} name="Reported Cases" />
+                  <Bar 
+                    dataKey="cases" 
+                    fill="url(#barGradient)" 
+                    radius={[8, 8, 0, 0]} 
+                    name="Reported Cases" 
+                  />
                 </BarChart>
               </ResponsiveContainer>
             )}
 
             {activeTab === "categories" && (
               <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={crimeCategoryData} layout="vertical" margin={{ top: 10, right: 30, left: 40, bottom: 0 }}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1e6ff" horizontal={false} />
-                  <XAxis type="number" stroke="#6b21a8" fontSize={12} tickLine={false} />
-                  <YAxis type="category" dataKey="category" stroke="#6b21a8" fontSize={11} width={130} tickLine={false} />
+                <BarChart 
+                  data={crimeCategoryData} 
+                  layout="vertical" 
+                  margin={{ top: 15, right: 30, left: 30, bottom: 0 }}
+                  barSize={24}
+                >
+                  <defs>
+                    <linearGradient id="catGradient" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0%" stopColor="#8B5CF6" stopOpacity={1} />
+                      <stop offset="100%" stopColor="#EC4899" stopOpacity={0.9} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="4 4" stroke="#F1F5F9" horizontal={false} />
+                  <XAxis 
+                    type="number" 
+                    stroke="#64748B" 
+                    fontSize={12} 
+                    tickLine={false}
+                    axisLine={{ stroke: '#CBD5E1' }}
+                    tickFormatter={(val) => `${(val / 1000).toFixed(0)}k`}
+                  />
+                  <YAxis 
+                    type="category" 
+                    dataKey="category" 
+                    stroke="#475569" 
+                    fontSize={12} 
+                    fontWeight={600}
+                    width={180} 
+                    tickLine={false} 
+                    axisLine={{ stroke: '#CBD5E1' }}
+                  />
                   <Tooltip content={<CustomTooltip />} />
-                  <Bar dataKey="incidents" fill="#ec4899" radius={[0, 8, 8, 0]} name="Incidents" />
+                  <Bar 
+                    dataKey="incidents" 
+                    fill="url(#catGradient)" 
+                    radius={[0, 8, 8, 0]} 
+                    name="Incidents" 
+                  />
                 </BarChart>
               </ResponsiveContainer>
             )}
 
             {activeTab === "disposal" && (
               <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={yearlyData} margin={{ top: 10, right: 10, left: -10, bottom: 0 }}>
+                <AreaChart data={yearlyData} margin={{ top: 20, right: 20, left: 0, bottom: 0 }}>
                   <defs>
                     <linearGradient id="convictionGrad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#6A0DAD" stopOpacity={0.4}/>
-                      <stop offset="95%" stopColor="#6A0DAD" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#7C3AED" stopOpacity={0.35}/>
+                      <stop offset="95%" stopColor="#7C3AED" stopOpacity={0.0}/>
+                    </linearGradient>
+                    <linearGradient id="chargesheetGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor="#059669" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#059669" stopOpacity={0.0}/>
                     </linearGradient>
                   </defs>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#f1e6ff" vertical={false} />
-                  <XAxis dataKey="year" stroke="#6b21a8" fontSize={12} tickLine={false} />
-                  <YAxis stroke="#6b21a8" fontSize={12} domain={[0, 50]} unit="%" tickLine={false} />
+                  <CartesianGrid strokeDasharray="4 4" stroke="#F1F5F9" vertical={false} />
+                  <XAxis 
+                    dataKey="year" 
+                    stroke="#64748B" 
+                    fontSize={12} 
+                    fontWeight={600}
+                    tickLine={false} 
+                    axisLine={{ stroke: '#CBD5E1' }}
+                  />
+                  <YAxis 
+                    stroke="#64748B" 
+                    fontSize={12} 
+                    domain={[0, 100]} 
+                    unit="%" 
+                    tickLine={false} 
+                    axisLine={{ stroke: '#CBD5E1' }}
+                  />
                   <Tooltip content={<CustomTooltip />} />
+                  <Legend verticalAlign="top" height={36} iconType="circle" />
+                  <Area 
+                    type="monotone" 
+                    dataKey="chargeSheetRate" 
+                    stroke="#059669" 
+                    strokeWidth={2.5}
+                    fillOpacity={1} 
+                    fill="url(#chargesheetGrad)" 
+                    name="Police Charge-Sheet Rate"
+                    unit="%"
+                  />
                   <Area 
                     type="monotone" 
                     dataKey="convictionRate" 
-                    stroke="#6A0DAD" 
-                    strokeWidth={3}
+                    stroke="#7C3AED" 
+                    strokeWidth={2.5}
                     fillOpacity={1} 
                     fill="url(#convictionGrad)" 
-                    name="Conviction Rate"
+                    name="Judicial Conviction Rate"
                     unit="%"
                   />
                 </AreaChart>
@@ -246,83 +343,14 @@ export default function StatisticsPage() {
             )}
           </div>
 
-          <div className="mt-6 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
-            <span className="flex items-center gap-1.5">
+          <div className="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
+            <span className="flex items-center gap-1.5 font-medium">
               <Info size={14} className="text-purple-600 shrink-0" />
-              Source: National Crime Records Bureau (NCRB) annual crime compendiums.
+              Source: National Crime Records Bureau (NCRB) annual statistical publications.
             </span>
-            <span className="text-purple-800 font-semibold italic">
-              Estimated reporting represents only ~15-20% of actual incidents due to societal stigma.
+            <span className="text-purple-900 font-semibold">
+              Estimated reporting represents ~15-20% of actual incidents due to societal stigma.
             </span>
-          </div>
-        </div>
-
-        {/* Deep Dive Insights & Reporting Barriers */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white p-7 rounded-3xl shadow-md border border-purple-100 space-y-4">
-            <div className="flex items-center gap-2 text-rose-700 font-bold text-lg">
-              <AlertTriangle size={20} />
-              <span>Why Sexual Violence Remains Underreported</span>
-            </div>
-            <ul className="space-y-3 text-xs sm:text-sm text-slate-600">
-              <li className="flex items-start gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-rose-500 mt-1.5 shrink-0"></span>
-                <span><strong>Fear of Victim Blaming & Social Stigma:</strong> Cultural conditioning often unfairly questions the victim rather than holding the perpetrator accountable.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-rose-500 mt-1.5 shrink-0"></span>
-                <span><strong>Lack of Legal Awareness:</strong> Many survivors are unaware of protections like Zero FIR, free legal counsel, and the POSH internal complaints process.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-rose-500 mt-1.5 shrink-0"></span>
-                <span><strong>Fear of Retaliation:</strong> Harassment at workplace or within families often involves unequal power dynamics and fear of losing jobs or security.</span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="bg-white p-7 rounded-3xl shadow-md border border-purple-100 space-y-4">
-            <div className="flex items-center gap-2 text-purple-900 font-bold text-lg">
-              <TrendingUp size={20} />
-              <span>How We Can Turn the Curve</span>
-            </div>
-            <ul className="space-y-3 text-xs sm:text-sm text-slate-600">
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 size={16} className="text-purple-600 mt-0.5 shrink-0" />
-                <span><strong>Institutionalizing POSH Compliance:</strong> Enforcing strict Internal Complaints Committees across both corporate and unorganized sectors.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 size={16} className="text-purple-600 mt-0.5 shrink-0" />
-                <span><strong>Sensitizing First Responders:</strong> Mandatory training for police officers and medical personnel to handle survivor reports with empathy and privacy.</span>
-              </li>
-              <li className="flex items-start gap-2.5">
-                <CheckCircle2 size={16} className="text-purple-600 mt-0.5 shrink-0" />
-                <span><strong>Accessible Free Legal Aid:</strong> Connecting survivors with District Legal Services Authorities (DLSA) for zero-cost legal representation.</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        {/* Emergency Helpline Banner */}
-        <div className="bg-gradient-to-r from-[#2E003E] to-[#4F096E] p-8 rounded-3xl text-white shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="space-y-2 text-center sm:text-left">
-            <h3 className="text-2xl font-bold">Need Immediate Help or Safe Guidance?</h3>
-            <p className="text-purple-200 text-sm max-w-xl">
-              Toll-free national helplines are active 24 hours a day, 7 days a week, with trained female counselors and police dispatchers.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3 justify-center">
-            <a 
-              href="tel:181" 
-              className="px-6 py-3.5 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-full text-sm shadow-md transition flex items-center gap-2"
-            >
-              <PhoneCall size={16} /> Dial 181 (Women)
-            </a>
-            <a 
-              href="tel:112" 
-              className="px-6 py-3.5 bg-purple-900 hover:bg-purple-800 text-purple-100 font-bold rounded-full text-sm border border-purple-400/40 transition flex items-center gap-2"
-            >
-              <PhoneCall size={16} /> Dial 112 (SOS)
-            </a>
           </div>
         </div>
       </div>
