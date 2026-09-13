@@ -216,136 +216,144 @@ export default function Homepage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 selection:bg-purple-200 selection:text-purple-900">
-      {/* 1. ULTRA-MODERN HERO SECTION */}
-      <section className="relative bg-gradient-to-br from-[#290B3D] via-[#43125F] to-[#180424] text-white pt-16 pb-24 lg:pt-24 lg:pb-32 px-4 sm:px-6 overflow-hidden">
-        {/* Background Gradients & Ambient Glow */}
-        <div className="absolute -top-32 -left-32 w-[34rem] h-[34rem] bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute top-1/3 -right-32 w-[38rem] h-[38rem] bg-rose-500/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute -bottom-24 left-1/4 w-[30rem] h-[30rem] bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+      {/* 1. CLEAN, MODERN & PROFESSIONAL HERO SECTION */}
+      <section className="relative bg-gradient-to-b from-[#240032] via-[#1a0024] to-[#120019] text-white pt-16 pb-20 lg:pt-20 lg:pb-28 px-4 sm:px-6 border-b border-purple-900/40 overflow-hidden">
+        {/* Subtle Ambient Background Gradients */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
-          {/* Left Hero Column */}
-          <motion.div 
-            className="flex-1 text-center lg:text-left space-y-7"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            {/* Safe platform badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 border border-white/20 text-purple-100 text-xs sm:text-sm font-semibold backdrop-blur-md shadow-lg shadow-black/20">
-              <span className="relative flex h-2.5 w-2.5">
+        <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
+          {/* Left Column: Heading & Value Proposition */}
+          <div className="flex-1 text-center lg:text-left space-y-6">
+            {/* Trust & Confidentiality Pill */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/60 border border-purple-700/50 text-purple-200 text-xs font-semibold backdrop-blur-md">
+              <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              <span>100% Confidential • Free Legal Aid • Verified Emergency Helplines</span>
+              <span>100% Confidential • Free Legal Aid • 24/7 Crisis Dispatch</span>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-white">
+            {/* Headline */}
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
               Break The Silence. <br />
-              <span className="bg-gradient-to-r from-purple-200 via-pink-100 to-rose-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-200 via-pink-200 to-rose-200 bg-clip-text text-transparent">
                 Demand Your Justice.
               </span>
             </h1>
 
-            <p className="text-purple-100/90 text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-              BraveSpeak empowers women across India with comprehensive legal rights, plain-English statutory guides, 24/7 emergency dispatch, and a safe survivor community.
+            {/* Description */}
+            <p className="text-purple-200/90 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+              BraveSpeak provides women across India with plain-English statutory rights, official Zero FIR drafters, emergency tactical safety tools, and verified institutional support.
             </p>
 
-            {/* Hero Action Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 pt-2 justify-center lg:justify-start">
-              <Link to="/laws">
-                <motion.button 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-gradient-to-r from-[#7E22CE] via-purple-600 to-indigo-600 hover:from-purple-600 hover:to-[#7E22CE] text-white rounded-full font-bold shadow-xl shadow-purple-950/50 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-purple-300/30 text-base"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <Scale size={20} />
-                  <span>Know Your Legal Rights</span>
-                  <ArrowRight size={18} />
-                </motion.button>
-              </Link>
-              
-              <Link to="/safety-toolkit">
-                <motion.button 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-purple-900/80 hover:bg-purple-800 text-purple-100 hover:text-white rounded-full font-bold shadow-xl border border-purple-400/40 hover:scale-105 transition-all duration-300 cursor-pointer text-base"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <ShieldAlert size={20} className="text-amber-300" />
-                  <span>Safety Toolkit & SOS</span>
-                </motion.button>
+            {/* Action Buttons */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
+              <Link
+                to="/laws"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-950/50 hover:scale-105 transition-all cursor-pointer border border-purple-400/30"
+              >
+                <Scale size={18} />
+                <span>Know Your Legal Rights</span>
+                <ArrowRight size={16} />
               </Link>
 
-              <a href="tel:181">
-                <motion.button 
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white rounded-full font-bold shadow-xl shadow-rose-950/50 hover:shadow-2xl hover:scale-105 transition-all duration-300 cursor-pointer border border-rose-300/30 text-base"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <PhoneCall size={20} />
-                  <span>24/7 Helpline: 181</span>
-                </motion.button>
-              </a>
+              <Link
+                to="/safety-toolkit"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-rose-950/80 hover:bg-rose-900 text-rose-100 hover:text-white rounded-full text-sm font-bold shadow-lg border border-rose-700/50 hover:scale-105 transition-all cursor-pointer"
+              >
+                <ShieldAlert size={18} className="text-rose-400" />
+                <span>Emergency Safety Toolkit</span>
+              </Link>
+
+              <Link
+                to="/legal-assistant"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-purple-950/80 hover:bg-purple-900 text-purple-200 hover:text-white rounded-full text-sm font-bold border border-purple-700/50 hover:scale-105 transition-all cursor-pointer"
+              >
+                <FileText size={18} className="text-purple-300" />
+                <span>Draft Zero FIR / Complaint</span>
+              </Link>
             </div>
 
-            {/* Quick Micro Value Chips */}
-            <div className="pt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto lg:mx-0 text-left">
-              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
-                <div className="text-lg font-bold text-white">Zero FIR</div>
-                <div className="text-[11px] text-purple-200">Any Police Station</div>
-              </div>
-              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
-                <div className="text-lg font-bold text-white">Free Aid</div>
-                <div className="text-[11px] text-purple-200">DLSA Court Lawyers</div>
-              </div>
-              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
-                <div className="text-lg font-bold text-white">24x7 SOS</div>
-                <div className="text-[11px] text-purple-200">Toll-Free Direct Dial</div>
-              </div>
-              <div className="p-3 bg-white/10 rounded-2xl border border-white/15 backdrop-blur-sm shadow-sm">
-                <div className="text-lg font-bold text-white">Anonymous</div>
-                <div className="text-[11px] text-purple-200">Privacy Protected</div>
-              </div>
+            {/* Micro Highlights Banner */}
+            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-purple-200/80">
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Free DLSA Court Advocates
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Universal Zero FIR
+              </span>
+              <span className="flex items-center gap-1.5">
+                <CheckCircle2 size={14} className="text-emerald-400" /> Identity Protected under 228A IPC
+              </span>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Hero Visual Showcase */}
-          <motion.div 
-            className="flex-1 flex justify-center relative w-full max-w-md lg:max-w-none"
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-          >
-            <div className="relative w-full max-w-lg p-6 sm:p-8 bg-gradient-to-b from-white/15 to-white/5 backdrop-blur-2xl rounded-3xl border border-white/20 shadow-2xl shadow-purple-950/80">
-              <motion.img
-                src="/images/BraveSpeak111.png"
-                alt="BraveSpeak Emblem"
-                className="w-full h-auto object-contain drop-shadow-[0_15px_35px_rgba(0,0,0,0.6)] rounded-2xl"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 200 }}
-              />
-
-              {/* Top Right Floating Badge */}
-              <div className="absolute -top-4 -right-3 sm:-right-4 bg-[#1F002B]/95 backdrop-blur-md border border-purple-400/40 px-4 py-2.5 rounded-2xl shadow-2xl flex items-center gap-2.5">
-                <ShieldCheck size={20} className="text-emerald-400" />
-                <div>
-                  <p className="text-xs font-bold text-white">Section 228A IPC</p>
-                  <p className="text-[10px] text-purple-200">100% Identity Protection</p>
-                </div>
+          {/* Right Column: Clean Institutional Guarantees Card */}
+          <div className="w-full max-w-md lg:max-w-lg bg-gradient-to-b from-[#2e003e]/90 to-[#1e002a]/90 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-purple-700/40 shadow-2xl space-y-5">
+            <div className="flex items-center justify-between border-b border-purple-800/60 pb-3">
+              <div className="flex items-center gap-2.5">
+                <img 
+                  src="/images/BraveSpeakLogoo.png" 
+                  alt="Logo" 
+                  className="w-8 h-8 object-contain" 
+                />
+                <span className="font-bold text-sm tracking-wide text-white uppercase">
+                  Statutory Protections
+                </span>
               </div>
+              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-700/50">
+                Verified Indian Law
+              </span>
+            </div>
 
-              {/* Bottom Left Floating Badge */}
-              <div className="absolute -bottom-5 -left-3 sm:-left-5 bg-[#1F002B]/95 backdrop-blur-md border border-rose-500/40 p-3.5 rounded-2xl shadow-2xl flex items-center gap-3 text-left max-w-[260px]">
-                <div className="w-10 h-10 rounded-full bg-rose-500/20 border border-rose-500/40 flex items-center justify-center text-rose-300 shrink-0">
-                  <PhoneCall size={18} />
+            <div className="space-y-3">
+              <div className="p-3.5 bg-purple-950/50 rounded-2xl border border-purple-800/40 flex items-start gap-3">
+                <div className="p-2 rounded-xl bg-purple-800/60 text-purple-200 shrink-0 mt-0.5">
+                  <Scale size={16} />
                 </div>
                 <div>
-                  <p className="text-xs font-bold text-white">National Women Helpline</p>
-                  <p className="text-[11px] text-rose-200 font-bold">Dial 181 (Free 24x7)</p>
+                  <h4 className="text-xs font-bold text-white">Right to Zero FIR (Sec 154 CrPC)</h4>
+                  <p className="text-[11px] text-purple-200/80 mt-0.5 leading-relaxed">
+                    File at any police station across India without jurisdiction barrier; police cannot refuse.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-3.5 bg-purple-950/50 rounded-2xl border border-purple-800/40 flex items-start gap-3">
+                <div className="p-2 rounded-xl bg-indigo-800/60 text-indigo-200 shrink-0 mt-0.5">
+                  <Lock size={16} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white">Absolute Privacy (Sec 228A IPC)</h4>
+                  <p className="text-[11px] text-purple-200/80 mt-0.5 leading-relaxed">
+                    Revealing a survivor's name or identity is a non-bailable offense with up to 2 years imprisonment.
+                  </p>
+                </div>
+              </div>
+
+              <div className="p-3.5 bg-purple-950/50 rounded-2xl border border-purple-800/40 flex items-start gap-3">
+                <div className="p-2 rounded-xl bg-rose-800/60 text-rose-200 shrink-0 mt-0.5">
+                  <PhoneCall size={16} />
+                </div>
+                <div>
+                  <h4 className="text-xs font-bold text-white">24x7 Emergency Helplines</h4>
+                  <p className="text-[11px] text-purple-200/80 mt-0.5 leading-relaxed">
+                    Dial <strong>181</strong> (Women Helpline) or <strong>112</strong> (National SOS) for immediate rescue dispatch.
+                  </p>
                 </div>
               </div>
             </div>
-          </motion.div>
+
+            <div className="pt-2 flex items-center justify-between text-xs text-purple-300">
+              <Link to="/laws" className="text-purple-300 hover:text-white font-semibold underline flex items-center gap-1">
+                <span>View all 12+ harassment statutes</span>
+                <ChevronRight size={13} />
+              </Link>
+              <Link to="/contact" className="text-rose-300 hover:text-white font-semibold">
+                Get Helpline Support →
+              </Link>
+            </div>
+          </div>
         </div>
       </section>
 
