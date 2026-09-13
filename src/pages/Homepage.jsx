@@ -216,33 +216,33 @@ export default function Homepage() {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 selection:bg-purple-200 selection:text-purple-900">
-      {/* 1. CLEAN, MODERN & PROFESSIONAL HERO SECTION */}
-      <section className="relative bg-gradient-to-b from-[#240032] via-[#1a0024] to-[#120019] text-white pt-16 pb-20 lg:pt-20 lg:pb-28 px-4 sm:px-6 border-b border-purple-900/40 overflow-hidden">
-        {/* Subtle Ambient Background Gradients */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-purple-600/10 rounded-full blur-3xl pointer-events-none"></div>
+      {/* 1. CLEAN, MODERN & BRIGHT HERO SECTION */}
+      <section className="relative bg-gradient-to-b from-purple-50/80 via-slate-50 to-white text-slate-900 pt-16 pb-20 lg:pt-20 lg:pb-28 px-4 sm:px-6 border-b border-slate-200/80 overflow-hidden">
+        {/* Subtle Decorative Ambient Glow */}
+        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[48rem] h-80 bg-purple-200/40 rounded-full blur-3xl pointer-events-none"></div>
 
         <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           {/* Left Column: Heading & Value Proposition */}
           <div className="flex-1 text-center lg:text-left space-y-6">
             {/* Trust & Confidentiality Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-900/60 border border-purple-700/50 text-purple-200 text-xs font-semibold backdrop-blur-md">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider shadow-sm">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
               </span>
               <span>100% Confidential • Free Legal Aid • 24/7 Crisis Dispatch</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.15] text-white">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-950">
               Break The Silence. <br />
-              <span className="bg-gradient-to-r from-purple-200 via-pink-200 to-rose-200 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-purple-800 via-purple-700 to-indigo-700 bg-clip-text text-transparent">
                 Demand Your Justice.
               </span>
             </h1>
 
             {/* Description */}
-            <p className="text-purple-200/90 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+            <p className="text-slate-600 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
               BraveSpeak provides women across India with plain-English statutory rights, official Zero FIR drafters, emergency tactical safety tools, and verified institutional support.
             </p>
 
@@ -250,7 +250,7 @@ export default function Homepage() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
               <Link
                 to="/laws"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-950/50 hover:scale-105 transition-all cursor-pointer border border-purple-400/30"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-900/20 hover:scale-105 transition-all cursor-pointer"
               >
                 <Scale size={18} />
                 <span>Know Your Legal Rights</span>
@@ -259,97 +259,97 @@ export default function Homepage() {
 
               <Link
                 to="/safety-toolkit"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-rose-950/80 hover:bg-rose-900 text-rose-100 hover:text-white rounded-full text-sm font-bold shadow-lg border border-rose-700/50 hover:scale-105 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-rose-50 hover:bg-rose-100 text-rose-700 rounded-full text-sm font-bold shadow-sm border border-rose-200 hover:scale-105 transition-all cursor-pointer"
               >
-                <ShieldAlert size={18} className="text-rose-400" />
+                <ShieldAlert size={18} className="text-rose-600" />
                 <span>Emergency Safety Toolkit</span>
               </Link>
 
               <Link
                 to="/legal-assistant"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-purple-950/80 hover:bg-purple-900 text-purple-200 hover:text-white rounded-full text-sm font-bold border border-purple-700/50 hover:scale-105 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white hover:bg-slate-50 text-slate-800 rounded-full text-sm font-bold border border-slate-300 shadow-sm hover:scale-105 transition-all cursor-pointer"
               >
-                <FileText size={18} className="text-purple-300" />
+                <FileText size={18} className="text-purple-700" />
                 <span>Draft Zero FIR / Complaint</span>
               </Link>
             </div>
 
             {/* Micro Highlights Banner */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-purple-200/80">
+            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-medium text-slate-600">
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-emerald-400" /> Free DLSA Court Advocates
+                <CheckCircle2 size={15} className="text-emerald-600" /> Free DLSA Court Advocates
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-emerald-400" /> Universal Zero FIR
+                <CheckCircle2 size={15} className="text-emerald-600" /> Universal Zero FIR
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={14} className="text-emerald-400" /> Identity Protected under 228A IPC
+                <CheckCircle2 size={15} className="text-emerald-600" /> Identity Protected under 228A IPC
               </span>
             </div>
           </div>
 
           {/* Right Column: Clean Institutional Guarantees Card */}
-          <div className="w-full max-w-md lg:max-w-lg bg-gradient-to-b from-[#2e003e]/90 to-[#1e002a]/90 backdrop-blur-xl p-6 sm:p-8 rounded-3xl border border-purple-700/40 shadow-2xl space-y-5">
-            <div className="flex items-center justify-between border-b border-purple-800/60 pb-3">
+          <div className="w-full max-w-md lg:max-w-lg bg-white p-6 sm:p-8 rounded-3xl border border-purple-100 shadow-xl shadow-purple-950/5 space-y-5">
+            <div className="flex items-center justify-between border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2.5">
                 <img 
                   src="/images/BraveSpeakLogoo.png" 
                   alt="Logo" 
                   className="w-8 h-8 object-contain" 
                 />
-                <span className="font-bold text-sm tracking-wide text-white uppercase">
+                <span className="font-bold text-sm tracking-wide text-[#2E003E] uppercase">
                   Statutory Protections
                 </span>
               </div>
-              <span className="text-[10px] font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-full border border-emerald-700/50">
+              <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
                 Verified Indian Law
               </span>
             </div>
 
             <div className="space-y-3">
-              <div className="p-3.5 bg-purple-950/50 rounded-2xl border border-purple-800/40 flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-purple-800/60 text-purple-200 shrink-0 mt-0.5">
+              <div className="p-3.5 bg-purple-50/60 rounded-2xl border border-purple-100 flex items-start gap-3">
+                <div className="p-2 rounded-xl bg-purple-100 text-purple-800 shrink-0 mt-0.5">
                   <Scale size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">Right to Zero FIR (Sec 154 CrPC)</h4>
-                  <p className="text-[11px] text-purple-200/80 mt-0.5 leading-relaxed">
+                  <h4 className="text-xs font-bold text-slate-900">Right to Zero FIR (Sec 154 CrPC)</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
                     File at any police station across India without jurisdiction barrier; police cannot refuse.
                   </p>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-purple-950/50 rounded-2xl border border-purple-800/40 flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-indigo-800/60 text-indigo-200 shrink-0 mt-0.5">
+              <div className="p-3.5 bg-indigo-50/60 rounded-2xl border border-indigo-100 flex items-start gap-3">
+                <div className="p-2 rounded-xl bg-indigo-100 text-indigo-800 shrink-0 mt-0.5">
                   <Lock size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">Absolute Privacy (Sec 228A IPC)</h4>
-                  <p className="text-[11px] text-purple-200/80 mt-0.5 leading-relaxed">
+                  <h4 className="text-xs font-bold text-slate-900">Absolute Privacy (Sec 228A IPC)</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
                     Revealing a survivor's name or identity is a non-bailable offense with up to 2 years imprisonment.
                   </p>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-purple-950/50 rounded-2xl border border-purple-800/40 flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-rose-800/60 text-rose-200 shrink-0 mt-0.5">
+              <div className="p-3.5 bg-rose-50/60 rounded-2xl border border-rose-100 flex items-start gap-3">
+                <div className="p-2 rounded-xl bg-rose-100 text-rose-800 shrink-0 mt-0.5">
                   <PhoneCall size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-white">24x7 Emergency Helplines</h4>
-                  <p className="text-[11px] text-purple-200/80 mt-0.5 leading-relaxed">
+                  <h4 className="text-xs font-bold text-slate-900">24x7 Emergency Helplines</h4>
+                  <p className="text-[11px] text-slate-600 mt-0.5 leading-relaxed">
                     Dial <strong>181</strong> (Women Helpline) or <strong>112</strong> (National SOS) for immediate rescue dispatch.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-2 flex items-center justify-between text-xs text-purple-300">
-              <Link to="/laws" className="text-purple-300 hover:text-white font-semibold underline flex items-center gap-1">
+            <div className="pt-2 flex items-center justify-between text-xs font-semibold">
+              <Link to="/laws" className="text-purple-700 hover:text-purple-900 underline flex items-center gap-1">
                 <span>View all 12+ harassment statutes</span>
                 <ChevronRight size={13} />
               </Link>
-              <Link to="/contact" className="text-rose-300 hover:text-white font-semibold">
+              <Link to="/contact" className="text-rose-600 hover:text-rose-800">
                 Get Helpline Support →
               </Link>
             </div>
