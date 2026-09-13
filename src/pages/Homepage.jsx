@@ -65,44 +65,64 @@ export default function Homepage() {
 
   const corePillars = [
     {
-      title: "Know Your Legal Shield",
-      subtitle: "Plain-English Legal Statutes",
+      title: "Interactive Legal Drafter",
+      subtitle: "FIR & Complaint Generator",
+      desc: "Instant customized formal complaint and Zero FIR petitions formatted to Indian criminal and workplace POSH standards.",
+      icon: FileText,
+      link: "/legal-assistant",
+      linkText: "Draft Legal Complaint",
+      tag: "AI Legal Drafter",
+      accent: "from-purple-600 to-indigo-600"
+    },
+    {
+      title: "Tactical Safety & SOS Suite",
+      subtitle: "Offline Emergency Toolkit",
+      desc: "Simulate incoming calls to safely exit uncomfortable situations, trigger loud deterrence sirens, and dispatch GPS coordinates.",
+      icon: ShieldAlert,
+      link: "/safety-toolkit",
+      linkText: "Open Safety Toolkit",
+      tag: "1-Tap GPS & Alarm",
+      accent: "from-rose-600 to-red-700"
+    },
+    {
+      title: "Safe Spaces & Crisis Directory",
+      subtitle: "Verified Support Centers",
+      desc: "Instant search for 24/7 Sakhi One Stop Centres, DLSA Free Legal Aid desks, and All-Women Police Stations across India.",
+      icon: Users,
+      link: "/support-directory",
+      linkText: "Find Nearest Crisis Center",
+      tag: "Verified Desks",
+      accent: "from-emerald-600 to-teal-700"
+    },
+    {
+      title: "Digital Privacy & Cyber Shield",
+      subtitle: "Anti-Blackmail & StopNCII",
+      desc: "Interactive privacy health audit, non-consensual image removal guide via StopNCII hashes, and spy camera detection tips.",
+      icon: Lock,
+      link: "/digital-safety",
+      linkText: "Audit Privacy Score",
+      tag: "StopNCII & Cyber",
+      accent: "from-indigo-600 to-cyan-700"
+    },
+    {
+      title: "Statutory Laws & Rights",
+      subtitle: "Plain-English IPC & BNS",
       desc: "Demystifying Indian criminal and civil laws including POSH Act 2013, IPC 354A-D, POCSO, and IT Act sections.",
       icon: Scale,
       link: "/laws",
       linkText: "Explore Indian Laws",
       tag: "Statutory Rights",
-      accent: "from-purple-600 to-indigo-600"
+      accent: "from-violet-600 to-purple-800"
     },
     {
       title: "Survivor Voice Hub",
       subtitle: "Community Courage & Healing",
-      desc: "Read real stories of resilience from survivors who stood up against injustice, or share your story anonymously.",
+      desc: "Read real stories of resilience from survivors who stood up against injustice, or share your story safely and anonymously.",
       icon: Heart,
       link: "/survivorStories",
       linkText: "Read Survivor Stories",
       tag: "Empowerment",
       accent: "from-pink-600 to-rose-600"
-    },
-    {
-      title: "National Crime Analytics",
-      subtitle: "Data Transparency",
-      desc: "Interactive visual charts and official NCRB metrics tracking reporting frequencies, disposal rates, and gaps.",
-      icon: BarChart3,
-      link: "/statistics",
-      linkText: "View Statistics Dashboard",
-      tag: "NCRB Data",
-      accent: "from-indigo-600 to-cyan-700"
-    },
-    {
-      title: "Free Legal Aid & Support",
-      subtitle: "24/7 Verified Resources",
-      desc: "Direct access to District Legal Services Authority (DLSA) free legal advocates, trauma therapists, and crisis centers.",
-      icon: Users,
-      link: "/contact",
-      linkText: "Get Support & FAQs",
-      tag: "Free Legal Counsel",
-      accent: "from-violet-600 to-purple-800"
     }
   ];
 

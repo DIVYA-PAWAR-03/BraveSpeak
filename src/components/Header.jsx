@@ -12,11 +12,13 @@ export default function Header() {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Safety Toolkit", path: "/safety-toolkit" },
-    { name: "Legal Assistant", path: "/legal-assistant" },
+    { name: "Legal Drafter", path: "/legal-assistant" },
+    { name: "Safe Spaces Directory", path: "/support-directory" },
+    { name: "Digital Privacy", path: "/digital-safety" },
     { name: "Laws & Rights", path: "/laws" },
     { name: "Statistics", path: "/statistics" },
     { name: "Survivor Stories", path: "/survivorStories" },
-    { name: "Contact & Support", path: "/contact" },
+    { name: "Helplines", path: "/contact" },
   ];
 
   const isActive = (path) => {

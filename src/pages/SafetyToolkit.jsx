@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { 
   PhoneCall, PhoneOff, AlertOctagon, Volume2, VolumeX, 
   MapPin, Send, Plus, Trash2, Shield, Eye, ShieldAlert, 
@@ -103,7 +103,9 @@ export default function SafetyToolkit() {
         ringOscillatorRef.current.ctx.close();
         ringOscillatorRef.current = null;
       }
-    } catch (e) {}
+    } catch {
+      // ignore
+    }
   };
 
   const triggerFakeCall = (delaySeconds) => {
@@ -174,7 +176,9 @@ export default function SafetyToolkit() {
         sirenOscRef.current.ctx.close();
         sirenOscRef.current = null;
       }
-    } catch (e) {}
+    } catch {
+      // ignore
+    }
     setIsSirenActive(false);
     setIsStrobeActive(false);
   };
@@ -198,7 +202,7 @@ export default function SafetyToolkit() {
         });
         setLocLoading(false);
       },
-      (err) => {
+      () => {
         setLocError("Unable to retrieve GPS coordinates. Please grant location permission.");
         setLocLoading(false);
       },
@@ -257,7 +261,7 @@ export default function SafetyToolkit() {
 
       mediaRecorder.start();
       setIsRecording(true);
-    } catch (err) {
+    } catch {
       alert("Microphone permission denied or not supported.");
     }
   };
