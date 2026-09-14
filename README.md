@@ -2,187 +2,121 @@
 
 **Breaking the Silence, Seeking Justice**
 
-BraveSpeak is a comprehensive web application dedicated to supporting survivors of sexual violence and harassment. This platform serves as a safe space for awareness, education, and empowerment, providing essential information about legal rights, statistics, and survivor stories.
+BraveSpeak is a comprehensive full-stack web application dedicated to supporting survivors of sexual violence and harassment. This platform serves as a safe space for awareness, education, and empowerment, providing essential information about legal rights, statistics, survivor stories, evidence vaulting, emergency tactical tools, and institutional support directories.
+
+---
 
 ## 🌟 Features
 
-- **Legal Rights & Information**: Comprehensive guide to harassment laws and legal provisions
-- **Statistics Dashboard**: Real-time data visualization of sexual violence cases
-- **Survivor Stories**: Platform for sharing and reading survivor experiences
-- **Educational Content**: Information about different types of harassment and legal remedies
-- **Resource Hub**: Contact information and support resources
-- **Responsive Design**: Mobile-friendly interface for accessibility
+- **Survivor Stories & Safe Space**: Read verified survivor accounts, share stories anonymously or with an alias, support stories with likes, and leave messages of solidarity.
+- **AI Legal Assistant & FIR Drafter**: Diagnose statutory provisions under IPC, Bharatiya Nyaya Sanhita (BNS) 2023, POSH Act, and IT Act; generate and print formal legal complaint drafts.
+- **Institutional Support Directory**: Search government-verified Sakhi One Stop Centres, DLSA Free Legal Aid cells, Cyber Crime Desks, and Women Police Stations with real-time GPS nearby geolocation.
+- **Tactical Safety Suite**: 
+  - Fake incoming call simulator with customizable caller & web audio ringtone synthesis.
+  - Ear-piercing oscillating deterrence siren & strobe alarm.
+  - 1-tap live GPS coordinates broadcast via WhatsApp & SMS to trusted emergency contacts.
+  - Discreet voice recording & cloud evidence vaulting.
+- **Community Safety Hotspots**: Crowd-sourced unsafe dark spots, missing streetlights, and hazard reporting heatmap.
+- **Confidential Case Tracking**: Submit inquiries with anonymous tracking codes (`BS-XXXXXX`) to check updates without compromising identity.
+- **Digital Privacy Health Meter**: Interactive checklist and guidance on StopNCII hash shielding and hidden camera detection.
+
+---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React 19.1.0
-- **Routing**: React Router DOM
-- **Styling**: Tailwind CSS 4.1.10
-- **Charts**: Recharts for data visualization
-- **Icons**: Lucide React
+- **Frontend**: React 19, React Router DOM v7, Tailwind CSS, Lucide React, Framer Motion, Recharts
+- **Backend**: Node.js, Express.js, SQLite (`better-sqlite3`), Multer, Morgan, CORS, Dotenv
 - **Build Tool**: Vite
-- **Development**: ESLint for code quality
+
+---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
-- npm or yarn package manager
+- Node.js (v18 or higher recommended)
+- npm
 
 ### Installation
 
 1. **Clone the repository**
-
    ```bash
-   git clone https://github.com/Chetan-KK/BraveSpeak.git
+   git clone https://github.com/DIVYA-PAWAR-03/BraveSpeak.git
    cd BraveSpeak
    ```
 
 2. **Install dependencies**
-
    ```bash
    npm install
    ```
 
-3. **Start the development server**
-
+3. **Start Full-Stack Development (Frontend + Backend Server)**
    ```bash
-   npm run dev
+   npm run dev:all
    ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:5173` to view the application
+   - **Frontend UI**: `http://localhost:5173`
+   - **Backend REST API**: `http://localhost:5000/api`
 
 ### Available Scripts
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint for code quality
+- `npm run dev:all` - Concurrently run Express API server and Vite frontend
+- `npm run server` - Run Express API server independently
+- `npm run dev` - Run Vite frontend independently
+- `npm run build` - Build production bundle with Vite
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint code checks
+
+---
 
 ## 📁 Project Structure
 
 ```
 BraveSpeak/
-├── public/
-│   ├── images/          # Static images and assets
-│   └── vite.svg
+├── server/
+│   ├── db.js                 # SQLite database & auto-seeding
+│   ├── index.js              # Main Express API entrypoint
+│   └── routes/
+│       ├── stories.js        # Stories & Comments REST API
+│       ├── legal.js          # Legal analysis & statutory lookup
+│       ├── support.js        # Support centers & GPS nearby finder
+│       ├── contact.js        # Inquiries & anonymous case tracking
+│       ├── emergency.js      # SOS logs & Evidence Vault uploads
+│       └── safety.js         # Hotspots heatmap & analytics
 ├── src/
-│   ├── components/      # Reusable UI components
-│   │   ├── Header.jsx
-│   │   └── Footer.jsx
-│   ├── pages/           # Main application pages
+│   ├── components/           # UI components (Header, Footer, Camouflage)
+│   ├── pages/                # Main application views
 │   │   ├── Homepage.jsx
-│   │   ├── HarassmentLaws.jsx
-│   │   ├── StatisticsPage.jsx
 │   │   ├── StoriesPage.jsx
+│   │   ├── StoryDetail.jsx
+│   │   ├── LegalAssistant.jsx
+│   │   ├── HarassmentLaws.jsx
+│   │   ├── SupportDirectory.jsx
+│   │   ├── SafetyToolkit.jsx
+│   │   ├── DigitalSafety.jsx
+│   │   ├── StatisticsPage.jsx
 │   │   └── ContactUs.jsx
-│   ├── assets/          # React assets
-│   ├── App.jsx          # Main application component
-│   ├── main.jsx         # Application entry point
-│   ├── App.css          # Global styles
-│   └── index.css        # Base styles
+│   ├── services/
+│   │   └── api.js            # Centralized API service
+│   ├── App.jsx               # Routes & layout
+│   └── main.jsx
 ├── package.json
-├── vite.config.js
 └── README.md
 ```
 
-## 🎯 Key Pages
+---
 
-### Homepage
-
-- Motivational hero section with "Break the Chain" imagery
-- Live counter showing reported cases
-- Call-to-action for learning about legal rights
-
-### Legal Rights & Laws
-
-- Detailed information about harassment laws (IPC Sections)
-- Types of harassment and their legal definitions
-- Punishment details and legal remedies
-
-### Statistics Dashboard
-
-- Interactive charts showing case statistics
-- Yearly data visualization
-- Real-time case tracking
-
-### Survivor Stories
-
-- Safe space for sharing experiences
-- Community support platform
-- Inspiration and healing through shared stories
-
-### Contact & Support
-
-- Resource information
-- Support contacts
-- Emergency helplines
-
-## 🎨 Design Philosophy
-
-BraveSpeak uses a thoughtful color palette with:
-
-- **Purple tones**: Representing dignity, strength, and empowerment
-- **Clean layout**: Ensuring accessibility and ease of navigation
-- **Responsive design**: Mobile-first approach for universal access
-- **Intuitive UI**: User-friendly interface for sensitive content
-
-## 🤝 Contributing
-
-We welcome contributions to make BraveSpeak better and more impactful:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-### Guidelines
-
-- Ensure code follows the existing style guidelines
-- Add appropriate comments for complex logic
-- Test your changes thoroughly
-- Respect the sensitive nature of the content
-
-## 📞 Support & Resources
-
-If you or someone you know needs immediate help:
+## 📞 24/7 National Emergency Helplines (India)
 
 - **National Emergency**: 112
-- **Women Helpline**: 1091
+- **Women Helpline**: 181
+- **Women Police Cell**: 1091
+- **National Cybercrime Helpline**: 1930
 - **Childline**: 1098
+
+---
 
 ## 📝 License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🛡️ Privacy & Safety
-
-BraveSpeak is committed to user privacy and safety:
-
-- No personal data collection without consent
-- Secure handling of sensitive information
-- Anonymous support options available
-- HTTPS encryption for all communications
-
-## 🌍 Impact
-
-Our mission is to:
-
-- Break the silence around sexual violence
-- Educate about legal rights and remedies
-- Provide a supportive community platform
-- Raise awareness through data and stories
-- Empower survivors with knowledge and resources
-
----
-
-**Remember**: Every voice matters. Every story deserves to be heard. Together, we can break the silence and seek justice.
-
-For questions, suggestions, or support, please reach out through our contact page or open an issue in this repository.
-
----
-
-_Built with ❤️ for survivors, by advocates_
+_Built with ❤️ for survivors, advocates, and safer public spaces._

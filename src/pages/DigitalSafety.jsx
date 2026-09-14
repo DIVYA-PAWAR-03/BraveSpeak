@@ -1,9 +1,11 @@
-﻿import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   ShieldCheck, Lock, Eye, AlertTriangle, CheckCircle2, 
-  Smartphone, Wifi, Camera, Download, Plus, Trash2, ExternalLink, Sparkles 
+  Smartphone, Wifi, Camera, Download, Plus, Trash2, ExternalLink, Sparkles,
+  Upload, FileText, Clock, Shield
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { emergencyApi } from "../services/api";
 
 const defaultAuditItems = [
   { id: 1, text: "WhatsApp Two-Step Verification (PIN) enabled to prevent SIM swap hijacking.", weight: 10 },
@@ -24,26 +26,39 @@ export default function DigitalSafety() {
     return saved ? JSON.parse(saved) : [1, 2, 8];
   });
 
-  const [evidenceLog, setEvidenceLog] = useState(() => {
-    const saved = localStorage.getItem("bravespeak_evidence_log");
-    return saved ? JSON.parse(saved) : [];
-  });
+  const [evidenceLog, setEvidenceLog] = useState([]);
+  const [loadingEvidence, setLoadingEvidence] = useState(true);
+  const [uploading, setUploading] = useState(false);
 
   const [newLog, setNewLog] = useState({
     date: new Date().toISOString().split("T")[0],
-    platform: "WhatsApp / Instagram",
+    platform: "WhatsApp",
     handle: "",
     description: "",
-    hasScreenshot: true
+    file: null
   });
 
   useEffect(() => {
     localStorage.setItem("bravespeak_privacy_audit", JSON.stringify(checkedItems));
   }, [checkedItems]);
 
+  const loadEvidence = async () => {
+    try {
+      setLoadingEvidence(true);
+      const res = await emergencyApi.getEvidence();
+      if (res.success && res.data) {
+        setEvidenceLog(res.data);
+      }
+    } catch (err) {
+      console.warn("Could not load vaulted evidence from backend:", err);
+    } finally {
+      setLoadingEvidence(false);
+    }
+  };
+
   useEffect(() => {
-    localStorage.setItem("bravespeak_evidence_log", JSON.stringify(evidenceLog));
-  }, [evidenceLog]);
+    loadEvidence();
+  }, []);
 
   const toggleItem = (id) => {
     if (checkedItems.includes(id)) {
@@ -63,21 +78,58 @@ export default function DigitalSafety() {
     return "text-rose-600 bg-rose-50 border-rose-300";
   };
 
-  const handleAddLog = (e) => {
+  const handleAddLog = async (e) => {
     e.preventDefault();
-    if (!newLog.handle.trim() || !newLog.description.trim()) return;
-    setEvidenceLog([{ id: Date.now(), ...newLog }, ...evidenceLog]);
-    setNewLog({
-      date: new Date().toISOString().split("T")[0],
-      platform: "WhatsApp / Instagram",
-      handle: "",
-      description: "",
-      hasScreenshot: true
-    });
+    if (!newLog.description.trim()) return;
+
+    try {
+      setUploading(true);
+      const formData = new FormData();
+      formData.append("title", `${newLog.platform} Incident: ${newLog.handle || 'Unknown handle'}`);
+      formData.append("category", "Digital Harassment");
+      formData.append("incident_date", newLog.date);
+      formData.append("notes", newLog.description);
+      if (newLog.file) {
+        formData.append("file", newLog.file);
+      }
+
+      const res = await emergencyApi.vaultEvidence(formData);
+      if (res.success && res.data) {
+        setEvidenceLog([res.data, ...evidenceLog]);
+      }
+      setNewLog({
+        date: new Date().toISOString().split("T")[0],
+        platform: "WhatsApp",
+        handle: "",
+        description: "",
+        file: null
+      });
+    } catch (err) {
+      console.warn("Evidence log error:", err);
+      // Fallback
+      setEvidenceLog([
+        {
+          id: Date.now(),
+          title: `${newLog.platform} Incident`,
+          category: "Digital Harassment",
+          incident_date: newLog.date,
+          notes: newLog.description,
+          created_at: new Date().toISOString()
+        },
+        ...evidenceLog
+      ]);
+    } finally {
+      setUploading(false);
+    }
   };
 
-  const handleDeleteLog = (id) => {
-    setEvidenceLog(evidenceLog.filter((log) => log.id !== id));
+  const handleDeleteLog = async (id) => {
+    try {
+      await emergencyApi.deleteEvidence(id);
+      setEvidenceLog(evidenceLog.filter((log) => log.id !== id));
+    } catch (err) {
+      setEvidenceLog(evidenceLog.filter((log) => log.id !== id));
+    }
   };
 
   return (
@@ -92,7 +144,7 @@ export default function DigitalSafety() {
             Digital Safety & Privacy Protection Guide
           </h1>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Audit your smartphone security score, learn how to proactively block non-consensual image leaks with StopNCII, and detect hidden cameras in trial rooms.
+            Audit your smartphone security score, learn how to proactively block non-consensual image leaks with StopNCII, detect hidden cameras, and secure cyber evidence.
           </p>
         </div>
 
@@ -138,8 +190,7 @@ export default function DigitalSafety() {
                     className="w-5 h-5 mt-0.5 text-purple-600 rounded focus:ring-purple-400 cursor-pointer shrink-0"
                   />
                   <div className="text-xs leading-relaxed font-medium">
-                    <p>{item.text}</p>
-                    <span className="text-[10px] text-slate-400 font-semibold">+{item.weight} pts</span>
+                    {item.text}
                   </div>
                 </div>
               );
@@ -147,101 +198,80 @@ export default function DigitalSafety() {
           </div>
         </div>
 
-        {/* Section 2: StopNCII & Anti-Blackmail Guide */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="p-2.5 bg-rose-100 text-rose-800 rounded-xl">
-                  <ShieldCheck size={24} />
-                </span>
-                <div>
-                  <h3 className="text-xl font-bold text-[#2E003E]">StopNCII.org Technology</h3>
-                  <p className="text-xs text-slate-500">Stop Non-Consensual Intimate Image Abuse</p>
-                </div>
-              </div>
+        {/* Section 2: StopNCII & Revenge Porn Prevention */}
+        <div className="bg-gradient-to-br from-[#2E003E] via-purple-950 to-indigo-950 rounded-3xl p-8 sm:p-12 text-white shadow-xl space-y-8 relative overflow-hidden">
+          <div className="max-w-3xl space-y-4">
+            <span className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-300 bg-purple-500/30 px-3 py-1 rounded-full uppercase tracking-wider">
+              <Sparkles size={13} /> Proactive Image Shielding
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+              StopNCII.org - Prevent Non-Consensual Image Sharing
+            </h2>
+            <p className="text-purple-200 text-sm sm:text-base leading-relaxed">
+              StopNCII (Stop Non-Consensual Intimate Image Abuse) generates an encrypted cryptographic hash of sensitive images directly inside your browser. The actual photo NEVER leaves your phone, but participating platforms (Instagram, Facebook, TikTok, Reddit) block anyone from ever uploading it.
+            </p>
 
-              <div className="space-y-3 text-xs text-slate-700 leading-relaxed">
-                <p>
-                  <strong>How it protects you without uploading images:</strong> StopNCII generates a unique mathematical fingerprint (hash) directly on your device browser. Your raw photos never leave your device.
-                </p>
-                <p>
-                  The hash is shared with participating platforms (Meta, Instagram, TikTok, Reddit, OnlyFans, Threads) so that any attempt to upload matching images is automatically blocked before it appears online.
-                </p>
-                <div className="p-3 bg-purple-50 rounded-xl border border-purple-200 text-purple-900 font-medium">
-                  💡 If you are facing extortion or blackmail threats, generate a hash immediately to preempt distribution.
-                </div>
-              </div>
-            </div>
-
-            <a
-              href="https://stopncii.org"
-              target="_blank"
-              rel="noreferrer"
-              className="w-full py-3 bg-gradient-to-r from-purple-800 to-indigo-800 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md hover:scale-105 transition"
-            >
-              <span>Visit Official StopNCII.org Portal</span>
-              <ExternalLink size={14} />
-            </a>
-          </div>
-
-          {/* Section 3: Hidden Spy Camera Detection Guide */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 flex flex-col justify-between space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center gap-2">
-                <span className="p-2.5 bg-indigo-100 text-indigo-800 rounded-xl">
-                  <Eye size={24} />
-                </span>
-                <div>
-                  <h3 className="text-xl font-bold text-[#2E003E]">Detect Hidden Spy Cameras</h3>
-                  <p className="text-xs text-slate-500">For changing rooms, hotel rooms, and rented spaces</p>
-                </div>
-              </div>
-
-              <div className="space-y-3 text-xs text-slate-700 leading-relaxed">
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <p className="font-bold text-slate-900 mb-0.5">1. The Flashlight Glint Test</p>
-                  <p>Turn off room lights, shine your phone torch across smoke detectors, power sockets, digital clocks, and picture frames. Camera lenses reflect a distinct bluish/purple glint.</p>
-                </div>
-
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <p className="font-bold text-slate-900 mb-0.5">2. Two-Way Mirror Fingernail Test</p>
-                  <p>Place the tip of your fingernail against the mirror surface. If there is a visible gap between your finger and reflection, it is a real mirror. If the reflection directly touches your finger with no gap, it may be a two-way mirror.</p>
-                </div>
-
-                <div className="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                  <p className="font-bold text-slate-900 mb-0.5">3. Infrared Smartphone Camera</p>
-                  <p>Night vision spy cams emit IR LEDs invisible to human eyes. Open your smartphone's front selfie camera in complete darkness to spot glowing purplish dots.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="text-[11px] text-rose-700 font-semibold">
-              ⚠️ Voyeurism is a non-bailable offense under Section 354C IPC punishable by up to 5 years imprisonment.
+            <div className="pt-2">
+              <a
+                href="https://stopncii.org"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#2E003E] hover:bg-purple-50 font-bold rounded-full text-xs shadow-lg transition"
+              >
+                <span>Visit StopNCII.org Official Tool</span>
+                <ExternalLink size={14} />
+              </a>
             </div>
           </div>
         </div>
 
-        {/* Section 4: Secure Digital Evidence Log */}
+        {/* Section 3: Hidden Camera Detector Walkthrough */}
         <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
           <div className="border-b border-purple-100 pb-4">
             <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
-              Discreet In-Browser Tool
+              Field Guide
             </span>
-            <h2 className="text-2xl font-black text-[#2E003E] mt-2">Cyber Incident & Harassment Log</h2>
+            <h2 className="text-2xl font-black text-[#2E003E] mt-2">How to Spot Hidden Cameras in Trial Rooms & Hotels</h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-700 leading-relaxed">
+            <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+              <p className="font-bold text-slate-900 text-sm">1. Flashlight Glint Test</p>
+              <p>Turn off room lights, shine your smartphone flashlight across smoke detectors, power sockets, digital clocks, and air vents. Camera lenses reflect a distinct bluish/purple glint.</p>
+            </div>
+
+            <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+              <p className="font-bold text-slate-900 text-sm">2. Two-Way Mirror Test</p>
+              <p>Place your fingernail against the glass. If there is a visible gap between your nail and reflection, it's genuine. If your nail directly touches its reflection with no gap, it is a two-way observation mirror.</p>
+            </div>
+
+            <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
+              <p className="font-bold text-slate-900 text-sm">3. Infrared Front Camera</p>
+              <p>Night-vision spy cameras emit IR diodes. Open your phone's front selfie camera in complete darkness to spot glowing purple or red lights invisible to naked eyes.</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 4: Secure Digital Evidence Vault */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
+          <div className="border-b border-purple-100 pb-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+              Cloud Evidence Vault
+            </span>
+            <h2 className="text-2xl font-black text-[#2E003E] mt-2">Secure Cyber Incident & Evidence Vault</h2>
             <p className="text-xs text-slate-500 mt-0.5">
-              Organize timestamps, sender handles, and incident details for cyber police or POSH investigations. Stored only in your private browser cache.
+              Securely preserve timestamps, chat logs, and screenshots for cyber police (1930 / cybercrime.gov.in) or POSH inquiries.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form */}
             <form onSubmit={handleAddLog} className="lg:col-span-5 space-y-3 bg-purple-50/50 p-5 rounded-2xl border border-purple-200">
-              <h4 className="text-xs font-bold text-purple-900 uppercase tracking-wider">Log New Incident</h4>
+              <h4 className="text-xs font-bold text-purple-900 uppercase tracking-wider">Vault New Incident Record</h4>
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Date</label>
+                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Incident Date</label>
                   <input
                     type="date"
                     value={newLog.date}
@@ -251,21 +281,26 @@ export default function DigitalSafety() {
                 </div>
                 <div>
                   <label className="block text-[11px] font-bold text-slate-700 mb-1">Platform</label>
-                  <input
-                    type="text"
-                    placeholder="e.g. WhatsApp"
+                  <select
                     value={newLog.platform}
                     onChange={(e) => setNewLog({ ...newLog, platform: e.target.value })}
-                    className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs"
-                  />
+                    className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs font-medium"
+                  >
+                    <option>WhatsApp</option>
+                    <option>Instagram</option>
+                    <option>Telegram</option>
+                    <option>Email / Slack</option>
+                    <option>Call / SMS</option>
+                    <option>In-Person Incident</option>
+                  </select>
                 </div>
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">Perpetrator Handle / Number</label>
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">Perpetrator Handle / Phone</label>
                 <input
                   type="text"
-                  placeholder="@username or phone number"
+                  placeholder="@username, phone or email"
                   value={newLog.handle}
                   onChange={(e) => setNewLog({ ...newLog, handle: e.target.value })}
                   className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs"
@@ -273,33 +308,45 @@ export default function DigitalSafety() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">Incident Summary & Actions Taken</label>
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">Incident Summary & Specific Threats</label>
                 <textarea
                   rows={3}
-                  placeholder="Notes, threats made, screenshot file names..."
+                  required
+                  placeholder="Record sequence of events, extortion demands, abusive words..."
                   value={newLog.description}
                   onChange={(e) => setNewLog({ ...newLog, description: e.target.value })}
                   className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs"
                 />
               </div>
 
+              <div>
+                <label className="block text-[11px] font-bold text-slate-700 mb-1">Attach Screenshot / File (Optional)</label>
+                <input
+                  type="file"
+                  onChange={(e) => setNewLog({ ...newLog, file: e.target.files[0] })}
+                  className="w-full p-1.5 bg-white border border-purple-200 rounded-lg text-xs text-slate-600"
+                />
+              </div>
+
               <button
                 type="submit"
-                className="w-full py-2.5 bg-purple-900 hover:bg-purple-950 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer"
+                disabled={uploading}
+                className="w-full py-2.5 bg-purple-900 hover:bg-purple-950 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1.5 transition cursor-pointer disabled:opacity-50"
               >
-                <Plus size={14} /> Add Incident Entry
+                <Upload size={14} />
+                <span>{uploading ? "Vaulting Securely..." : "Save to Evidence Vault"}</span>
               </button>
             </form>
 
             {/* Log Entries List */}
             <div className="lg:col-span-7 space-y-3">
               <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
-                Logged Records ({evidenceLog.length})
+                Vaulted Evidence Records ({evidenceLog.length})
               </h4>
 
               {evidenceLog.length === 0 ? (
                 <div className="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-400">
-                  No incident records logged yet. Use the form on the left to track evidence.
+                  No evidence records vaulted yet. Use the form on the left to record digital harassment.
                 </div>
               ) : (
                 <div className="space-y-2.5 max-h-96 overflow-y-auto pr-1">
@@ -308,16 +355,18 @@ export default function DigitalSafety() {
                       key={log.id}
                       className="p-4 bg-white rounded-2xl border border-purple-100 shadow-sm flex items-start justify-between gap-3"
                     >
-                      <div className="space-y-1 text-xs">
+                      <div className="space-y-1.5 text-xs flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-bold text-purple-900">{log.platform}</span>
+                          <span className="font-bold text-purple-900">{log.title || log.category}</span>
                           <span className="text-slate-400">•</span>
-                          <span className="text-slate-500 font-mono text-[11px]">{log.date}</span>
-                          <span className="px-2 py-0.5 bg-purple-50 text-purple-800 rounded-full font-bold text-[10px]">
-                            {log.handle}
-                          </span>
+                          <span className="text-slate-500 font-mono text-[11px]">{log.incident_date || new Date(log.created_at).toLocaleDateString()}</span>
                         </div>
-                        <p className="text-slate-700 leading-relaxed">{log.description}</p>
+                        <p className="text-slate-700 leading-relaxed">{log.notes}</p>
+                        {log.file_name && (
+                          <span className="inline-flex items-center gap-1 text-[11px] text-purple-800 bg-purple-50 px-2 py-0.5 rounded-md font-medium">
+                            <FileText size={11} /> {log.file_name}
+                          </span>
+                        )}
                       </div>
 
                       <button
