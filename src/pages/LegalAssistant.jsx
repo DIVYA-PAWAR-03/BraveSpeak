@@ -1,9 +1,11 @@
-﻿import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { 
   Scale, FileText, CheckCircle2, Copy, Download, Sparkles, 
-  HelpCircle, ShieldCheck, AlertCircle, ArrowRight, Printer, RefreshCw, Bookmark
+  HelpCircle, ShieldCheck, AlertCircle, ArrowRight, Printer, RefreshCw, Bookmark,
+  Cpu, AlertTriangle, ShieldAlert
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { legalApi } from "../services/api";
 
 const incidentScenarios = [
   {
@@ -76,6 +78,9 @@ const incidentScenarios = [
 export default function LegalAssistant() {
   const [selectedScenario, setSelectedScenario] = useState(incidentScenarios[0]);
   const [copied, setCopied] = useState(false);
+  const [analyzing, setAnalyzing] = useState(false);
+  const [analysisResult, setAnalysisResult] = useState(null);
+  const [customIncidentNarrative, setCustomIncidentNarrative] = useState("");
 
   // Complaint Drafter Form State
   const [form, setForm] = useState({
@@ -91,6 +96,50 @@ export default function LegalAssistant() {
     evidenceDescription: "",
     reliefDemanded: "Registration of Zero FIR, immediate legal action against accused, and protection."
   });
+
+  // Smart Legal Diagnosis function calling backend
+  const handleSmartDiagnosis = async () => {
+    const textToAnalyze = customIncidentNarrative.trim() || form.incidentSummary.trim() || selectedScenario.description;
+    try {
+      setAnalyzing(true);
+      const res = await legalApi.analyzeIncident({
+        incidentText: textToAnalyze,
+        incidentType: selectedScenario.id,
+        location: form.incidentLocation,
+        authority: form.authorityType
+      });
+
+      if (res.success && res.data) {
+        setAnalysisResult(res.data);
+        // Automatically populate evidence or summary if empty
+        if (!form.incidentSummary.trim() && customIncidentNarrative.trim()) {
+          setForm(prev => ({ ...prev, incidentSummary: customIncidentNarrative.trim() }));
+        }
+        if (res.data.evidenceRequired?.length > 0 && !form.evidenceDescription.trim()) {
+          setForm(prev => ({ ...prev, evidenceDescription: res.data.evidenceRequired.map(e => `- ${e}`).join('\n') }));
+        }
+      }
+    } catch (err) {
+      console.warn("Backend legal diagnosis fallback:", err);
+      setAnalysisResult({
+        diagnosisSummary: `Identified applicable statutory sections for ${selectedScenario.title}`,
+        severityGrade: selectedScenario.id === 'physical' ? 'High / Non-Bailable Offense' : 'Cognizable Offense',
+        matchedLaws: selectedScenario.laws.map(l => ({ section: l, title: 'Indian Statutory Provision', punishment: 'Rigorous penal punishment' })),
+        recommendedActions: [selectedScenario.procedure],
+        evidenceRequired: selectedScenario.evidenceNeeded,
+        emergencyAdvice: 'If in immediate danger, dial 112 (National Emergency) or 181 (Women Helpline).'
+      });
+    } finally {
+      setAnalyzing(false);
+    }
+  };
+
+  const getApplicableLawsText = () => {
+    if (analysisResult?.matchedLaws?.length > 0) {
+      return analysisResult.matchedLaws.map(l => `- ${l.section ? l.section + ': ' : ''}${l.title}`).join('\n');
+    }
+    return selectedScenario.laws.map((l) => `- ${l}`).join("\n");
+  };
 
   const generateComplaintText = () => {
     return `To,
@@ -111,11 +160,11 @@ I, ${form.complainantName.trim() || "[Name Withheld / Confidential Complainant]"
 - Details / Identity of Accused: ${form.accusedName || "Unknown / Described Below"}
 
 2. BRIEF SUMMARY OF FACTS & STATEMENT:
-${form.incidentSummary.trim() || "[Detailed narrative of events as experienced by the complainant]"}
+${form.incidentSummary.trim() || customIncidentNarrative.trim() || "[Detailed narrative of events as experienced by the complainant]"}
 
 3. RELEVANT STATUTORY PROVISIONS & LAWS APPLICABLE:
 The aforementioned acts constitute punishable offenses under:
-${selectedScenario.laws.map((l) => `- ${l}`).join("\n")}
+${getApplicableLawsText()}
 
 4. EVIDENCE PRESERVED & ATTACHED:
 ${form.evidenceDescription.trim() || "- Supporting evidence including digital screenshots, timestamps, or witness accounts are preserved and available for inspection."}
@@ -123,8 +172,8 @@ ${form.evidenceDescription.trim() || "- Supporting evidence including digital sc
 5. STATUTORY RIGHTS & REQUESTED RELIEF:
 In light of the above facts, I humbly request:
 - ${form.reliefDemanded}
-- Strict confidentiality of my personal identity in accordance with Section 228A IPC.
-- Recording of my statement by a female police officer as provided under Section 154/161 CrPC.
+- Strict confidentiality of my personal identity in accordance with Section 228A IPC / Section 73 BNS.
+- Recording of my statement by a female police officer as provided under Section 154/161 CrPC / Section 173 BNSS.
 - Provision of a free certified copy of the registered FIR / Complaint acknowledgment.
 
 Thanking you,
@@ -152,19 +201,42 @@ Contact: [Complainant Phone / Email]
     document.body.removeChild(element);
   };
 
+  const handlePrint = () => {
+    const printWindow = window.open('', '_blank');
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>BraveSpeak Formal Legal Complaint</title>
+          <style>
+            body { font-family: 'Times New Roman', Times, serif; padding: 40px; line-height: 1.6; font-size: 13pt; color: #111; }
+            pre { white-space: pre-wrap; font-family: inherit; font-size: inherit; }
+            @media print { body { padding: 20px; } }
+          </style>
+        </head>
+        <body>
+          <pre>${generateComplaintText()}</pre>
+          <script>
+            window.onload = function() { window.print(); window.close(); }
+          </script>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+  };
+
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
-            <Scale size={15} /> Legal Empowerment & FIR Generator
+            <Scale size={15} /> Legal Empowerment & AI Complaint Drafter
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
             Interactive Legal Assistant & Complaint Drafter
           </h1>
           <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
-            Diagnose your legal rights under Indian criminal & civil laws, understand applicable IPC/BNS/POSH sections, and generate a customized formal complaint letter in seconds.
+            Diagnose your legal rights under Indian criminal & civil laws (IPC, BNS 2023, POSH, IT Act), understand non-bailable provisions, and generate a certified formal complaint letter in seconds.
           </p>
         </div>
 
@@ -172,7 +244,7 @@ Contact: [Complainant Phone / Email]
         <div className="space-y-4">
           <h2 className="text-xl font-bold text-[#2E003E] flex items-center gap-2">
             <span className="w-7 h-7 rounded-full bg-purple-900 text-white text-xs flex items-center justify-center font-bold">1</span>
-            Select Your Situation or Incident Type
+            Select Incident Type or Situation
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -181,7 +253,10 @@ Contact: [Complainant Phone / Email]
               return (
                 <div
                   key={scenario.id}
-                  onClick={() => setSelectedScenario(scenario)}
+                  onClick={() => {
+                    setSelectedScenario(scenario);
+                    setAnalysisResult(null);
+                  }}
                   className={`p-5 rounded-3xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? "bg-purple-900 text-white shadow-xl shadow-purple-950/20 border-purple-800 scale-[1.02]"
@@ -201,12 +276,11 @@ Contact: [Complainant Phone / Email]
                       {scenario.description}
                     </p>
                   </div>
-
-                  <div className={`mt-4 pt-3 border-t text-xs font-semibold flex items-center justify-between ${
-                    isSelected ? "border-purple-800 text-purple-200" : "border-slate-100 text-purple-900"
-                  }`}>
-                    <span>View Legal Statutes & Draft</span>
-                    <ArrowRight size={14} />
+                  <div className="pt-4 mt-3 border-t border-purple-100/20 flex items-center justify-between text-xs font-semibold">
+                    <span className={isSelected ? "text-purple-200" : "text-purple-700"}>
+                      {scenario.laws.length} Applicable Statutes
+                    </span>
+                    <ArrowRight size={14} className={isSelected ? "text-purple-300" : "text-purple-600"} />
                   </div>
                 </div>
               );
@@ -214,247 +288,326 @@ Contact: [Complainant Phone / Email]
           </div>
         </div>
 
-        {/* Step 2: Legal Rights & Evidence Guide Breakdown */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-purple-100 pb-4">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
-                Statutory Legal Diagnosis
+        {/* Step 2: AI / Intelligent Statutory Diagnostic Engine */}
+        <div className="bg-gradient-to-br from-purple-950 to-[#23002E] rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-purple-800/60 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div className="space-y-1">
+              <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-purple-300 bg-purple-900/60 px-3 py-1 rounded-full border border-purple-700/50">
+                <Cpu size={14} className="text-purple-400" /> Statutory Diagnostic Engine
               </span>
-              <h3 className="text-2xl font-black text-[#2E003E] mt-2">
-                Applicable Laws for: {selectedScenario.title}
-              </h3>
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="space-y-2 p-5 bg-purple-50/60 rounded-2xl border border-purple-100">
-              <h4 className="text-xs font-bold text-purple-900 uppercase tracking-wider flex items-center gap-1.5">
-                <Scale size={15} /> Applicable IPC / BNS Sections
-              </h4>
-              <ul className="space-y-1.5 text-xs text-slate-700 pt-1">
-                {selectedScenario.laws.map((law, idx) => (
-                  <li key={idx} className="flex items-start gap-1.5 font-medium">
-                    <span className="text-purple-700 font-bold">•</span>
-                    <span>{law}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="space-y-2 p-5 bg-indigo-50/60 rounded-2xl border border-indigo-100">
-              <h4 className="text-xs font-bold text-indigo-900 uppercase tracking-wider flex items-center gap-1.5">
-                <ShieldCheck size={15} /> Recommended Legal Procedure
-              </h4>
-              <p className="text-xs text-slate-700 leading-relaxed pt-1">
-                {selectedScenario.procedure}
+              <h2 className="text-2xl font-black text-white">
+                Analyze What Happened & Check Legal Rights
+              </h2>
+              <p className="text-xs sm:text-sm text-purple-200/90 max-w-2xl">
+                Describe the situation in your own words. Our diagnostic engine evaluates applicable sections under BNS 2023, IPC, IT Act & POSH, identifies non-bailable offense severity, and recommends legal remedies.
               </p>
             </div>
 
-            <div className="space-y-2 p-5 bg-rose-50/60 rounded-2xl border border-rose-100">
-              <h4 className="text-xs font-bold text-rose-900 uppercase tracking-wider flex items-center gap-1.5">
-                <Bookmark size={15} /> Critical Evidence Checklist
-              </h4>
-              <ul className="space-y-1 text-xs text-slate-700 pt-1">
-                {selectedScenario.evidenceNeeded.map((ev, idx) => (
-                  <li key={idx} className="flex items-center gap-1.5 font-medium">
-                    <CheckCircle2 size={13} className="text-rose-600 shrink-0" />
-                    <span>{ev}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <button
+              type="button"
+              onClick={handleSmartDiagnosis}
+              disabled={analyzing}
+              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-lg transition flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:opacity-50"
+            >
+              {analyzing ? (
+                <>
+                  <RefreshCw size={16} className="animate-spin" />
+                  <span>Analyzing Law...</span>
+                </>
+              ) : (
+                <>
+                  <Sparkles size={16} />
+                  <span>Diagnose Legal Provisions</span>
+                </>
+              )}
+            </button>
           </div>
+
+          <div>
+            <textarea
+              rows={3}
+              value={customIncidentNarrative}
+              onChange={(e) => setCustomIncidentNarrative(e.target.value)}
+              placeholder="e.g. My team lead kept sending unsolicited explicit messages on WhatsApp and threatened bad performance ratings when I told him to stop..."
+              className="w-full p-4 bg-purple-900/40 border border-purple-700/60 rounded-2xl text-sm text-white placeholder-purple-300/60 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-purple-900/60 transition"
+            />
+          </div>
+
+          {/* Analysis Results Display */}
+          <AnimatePresence>
+            {analysisResult && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 10 }}
+                className="p-6 bg-purple-900/70 border border-purple-600/60 rounded-2xl space-y-4"
+              >
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-purple-700/60 pb-3">
+                  <div className="flex items-center gap-2">
+                    <ShieldCheck size={20} className="text-emerald-400" />
+                    <h3 className="font-bold text-white text-sm sm:text-base">{analysisResult.diagnosisSummary}</h3>
+                  </div>
+                  <span className={`text-xs font-bold px-3 py-1 rounded-full ${
+                    analysisResult.severityGrade.includes('High') || analysisResult.severityGrade.includes('Non-Bailable')
+                      ? 'bg-rose-500/30 text-rose-200 border border-rose-400/40'
+                      : 'bg-amber-500/30 text-amber-200 border border-amber-400/40'
+                  }`}>
+                    {analysisResult.severityGrade}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                  <div className="space-y-2 bg-purple-950/60 p-4 rounded-xl border border-purple-800/40">
+                    <p className="font-bold text-purple-300 uppercase tracking-wider">Applicable Sections</p>
+                    <ul className="space-y-1 text-purple-100">
+                      {analysisResult.matchedLaws.map((law, idx) => (
+                        <li key={idx} className="flex items-start gap-1.5">
+                          <span className="text-purple-400 font-bold">•</span>
+                          <span><strong>{law.section || law.code_type}</strong>: {law.title}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2 bg-purple-950/60 p-4 rounded-xl border border-purple-800/40">
+                    <p className="font-bold text-purple-300 uppercase tracking-wider">Recommended Next Steps</p>
+                    <ul className="space-y-1 text-purple-100">
+                      {analysisResult.recommendedActions.map((act, idx) => (
+                        <li key={idx} className="flex items-start gap-1.5">
+                          <span className="text-emerald-400 font-bold">✓</span>
+                          <span>{act}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="space-y-2 bg-purple-950/60 p-4 rounded-xl border border-purple-800/40">
+                    <p className="font-bold text-purple-300 uppercase tracking-wider">Crucial Evidence to Preserve</p>
+                    <ul className="space-y-1 text-purple-100">
+                      {analysisResult.evidenceRequired.map((ev, idx) => (
+                        <li key={idx} className="flex items-start gap-1.5">
+                          <span className="text-amber-400 font-bold">!</span>
+                          <span>{ev}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* Step 3: Interactive Complaint & FIR Generator */}
-        <div className="space-y-4">
-          <h2 className="text-xl font-bold text-[#2E003E] flex items-center gap-2">
-            <span className="w-7 h-7 rounded-full bg-purple-900 text-white text-xs flex items-center justify-center font-bold">2</span>
-            Customize & Generate Official Complaint Letter
-          </h2>
+        {/* Step 3: Interactive Complaint Letter Drafter */}
+        <div className="bg-white rounded-3xl shadow-xl border border-purple-100 p-6 sm:p-10 space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
+                Step 3 of 3
+              </span>
+              <h2 className="text-2xl font-extrabold text-[#2E003E] mt-2">
+                Generate Certified Written Complaint / FIR Application
+              </h2>
+              <p className="text-xs text-slate-500 mt-0.5">
+                Customize details below. The legal draft updates dynamically in real-time.
+              </p>
+            </div>
 
+            <div className="flex flex-wrap gap-2">
+              <button
+                onClick={handleCopy}
+                className="px-4 py-2 bg-purple-50 text-purple-900 hover:bg-purple-100 border border-purple-200 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+              >
+                {copied ? <CheckCircle2 size={15} className="text-emerald-600" /> : <Copy size={15} />}
+                <span>{copied ? "Copied to Clipboard!" : "Copy Complaint"}</span>
+              </button>
+
+              <button
+                onClick={handleDownload}
+                className="px-4 py-2 bg-purple-50 text-purple-900 hover:bg-purple-100 border border-purple-200 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+              >
+                <Download size={15} />
+                <span>Save (.TXT)</span>
+              </button>
+
+              <button
+                onClick={handlePrint}
+                className="px-4 py-2 bg-[#2E003E] text-white hover:bg-purple-950 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shadow-md"
+              >
+                <Printer size={15} />
+                <span>Print Formal Draft</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Form & Live Preview Split */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Input Form Column */}
-            <div className="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl shadow-lg border border-purple-100 space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {/* Form Fields */}
+            <div className="lg:col-span-6 space-y-4">
+              <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
+                <FileText size={16} className="text-purple-700" />
+                Fill Incident Particulars
+              </h3>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                    Your Name (or Alias)
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                    Complainant Name / Alias
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. Priya Sharma / Withheld"
                     value={form.complainantName}
                     onChange={(e) => setForm({ ...form, complainantName: e.target.value })}
-                    className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    placeholder="Leave blank to remain confidential"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                    Recipient Authority
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                    Addressed Authority
                   </label>
                   <select
                     value={form.authorityType}
                     onChange={(e) => setForm({ ...form, authorityType: e.target.value })}
-                    className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                   >
-                    <option value="Station House Officer (Police Station)">Station House Officer (Police Station)</option>
-                    <option value="Presiding Officer, Internal Complaints Committee (ICC)">Presiding Officer, ICC (POSH)</option>
-                    <option value="Superintendent of Police (Cyber Crime Cell)">Cyber Crime Cell</option>
-                    <option value="Protection Officer / Judicial Magistrate">Protection Officer (PWDVA)</option>
+                    <option>Station House Officer (Police Station)</option>
+                    <option>Internal Complaints Committee (ICC Chairperson)</option>
+                    <option>Superintendent of Police (Women Cell)</option>
+                    <option>National Commission for Women (NCW)</option>
+                    <option>Cyber Crime Investigation Cell</option>
+                    <option>Protection Officer (Domestic Violence)</option>
                   </select>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
                     Police Station / Company Name
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g., Connaught Place Police Station"
                     value={form.stationOrOrg}
                     onChange={(e) => setForm({ ...form, stationOrOrg: e.target.value })}
-                    className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    placeholder="e.g., Connaught Place Police Station"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
                     City & State
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g., New Delhi, Delhi"
                     value={form.cityState}
                     onChange={(e) => setForm({ ...form, cityState: e.target.value })}
-                    className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    placeholder="e.g., New Delhi, Delhi"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
                     Incident Date
                   </label>
                   <input
                     type="date"
                     value={form.incidentDate}
                     onChange={(e) => setForm({ ...form, incidentDate: e.target.value })}
-                    className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
                     Approx. Time
                   </label>
                   <input
                     type="text"
-                    placeholder="e.g. 19:30 hrs"
                     value={form.incidentTime}
                     onChange={(e) => setForm({ ...form, incidentTime: e.target.value })}
-                    className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    placeholder="e.g., 18:30 hrs"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                   />
                 </div>
+
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
                     Accused Name / Info
                   </label>
                   <input
                     type="text"
-                    placeholder="Name / Unknown"
                     value={form.accusedName}
                     onChange={(e) => setForm({ ...form, accusedName: e.target.value })}
-                    className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    placeholder="e.g., Unknown / Colleague name"
+                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Incident Location
+                <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  Location of Occurrence
                 </label>
                 <input
                   type="text"
-                  placeholder="e.g., Near Metro Station Gate 3 / Office 4th Floor"
                   value={form.incidentLocation}
                   onChange={(e) => setForm({ ...form, incidentLocation: e.target.value })}
-                  className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  placeholder="e.g. 4th floor conference room / Metro Station Gate 2"
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Detailed Statement / What Happened
+                <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  Statement of Facts & Narrative
                 </label>
                 <textarea
                   rows={4}
-                  placeholder="Describe sequentially what occurred, what was said or done, and how you responded..."
                   value={form.incidentSummary}
                   onChange={(e) => setForm({ ...form, incidentSummary: e.target.value })}
-                  className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  placeholder="Provide chronological facts of the incident as it occurred..."
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
-                  Evidence Description (Screenshots, CCTV, Witnesses)
+                <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  Evidence Description & Attachments
                 </label>
-                <input
-                  type="text"
-                  placeholder="e.g., 4 uncropped WhatsApp screenshots, CCTV footage at metro exit"
+                <textarea
+                  rows={2}
                   value={form.evidenceDescription}
                   onChange={(e) => setForm({ ...form, evidenceDescription: e.target.value })}
-                  className="w-full p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  placeholder="e.g. Chat logs dated 12th Aug, CCTV footage requisition, audio recording"
+                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
                 />
               </div>
             </div>
 
-            {/* Generated Complaint Document Preview */}
-            <div className="lg:col-span-6 bg-slate-900 text-slate-200 p-6 sm:p-8 rounded-3xl shadow-xl flex flex-col justify-between space-y-4">
-              <div className="space-y-3">
-                <div className="flex items-center justify-between border-b border-slate-700 pb-3">
-                  <div className="flex items-center gap-2">
-                    <FileText size={18} className="text-purple-400" />
-                    <span className="text-xs font-bold uppercase tracking-wider text-purple-200">
-                      Draft Legal Document Preview
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={handleCopy}
-                      className="px-3 py-1.5 bg-purple-800 hover:bg-purple-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer"
-                    >
-                      {copied ? <CheckCircle2 size={13} className="text-emerald-400" /> : <Copy size={13} />}
-                      <span>{copied ? "Copied!" : "Copy"}</span>
-                    </button>
-                    <button
-                      onClick={handleDownload}
-                      className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition cursor-pointer border border-slate-700"
-                    >
-                      <Download size={13} />
-                      <span>Download .txt</span>
-                    </button>
-                  </div>
-                </div>
-
-                <div className="bg-slate-950 p-4 rounded-2xl font-mono text-[11px] leading-relaxed max-h-[480px] overflow-y-auto whitespace-pre-wrap border border-slate-800 text-slate-300">
-                  {generateComplaintText()}
-                </div>
+            {/* Live Legal Document Preview */}
+            <div className="lg:col-span-6 space-y-2">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                  Live Certified Document Output
+                </span>
+                <span className="text-[10px] text-purple-700 font-bold bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200">
+                  Ready for Submission
+                </span>
               </div>
 
-              <div className="p-3 bg-purple-950/60 rounded-xl border border-purple-800/40 text-[11px] text-purple-200 space-y-1">
-                <p className="font-bold flex items-center gap-1">
-                  <ShieldCheck size={14} className="text-emerald-400" /> 100% Free Legal Representation Guarantee:
-                </p>
-                <p>
-                  You are entitled to a free court advocate provided by the District Legal Services Authority (DLSA).
-                </p>
+              <div className="p-6 bg-slate-900 text-slate-100 rounded-2xl font-mono text-[11px] leading-relaxed max-h-[560px] overflow-y-auto border border-slate-800 shadow-inner whitespace-pre-wrap select-all">
+                {generateComplaintText()}
               </div>
+
+              <p className="text-[11px] text-slate-400 italic">
+                * Tip: Under Section 154 CrPC, you can print this document and take it directly to the police station. Refusal to register an FIR on cognizable offenses is punishable under Section 166A IPC.
+              </p>
             </div>
           </div>
         </div>

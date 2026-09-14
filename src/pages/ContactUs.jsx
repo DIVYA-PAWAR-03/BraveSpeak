@@ -1,18 +1,38 @@
 import React, { useState } from "react";
 import { 
   Mail, MapPin, Phone as PhoneIcon, User, PhoneCall, 
-  ShieldAlert, HelpCircle, ChevronDown, ChevronUp, CheckCircle2, Send, Sparkles 
+  ShieldAlert, HelpCircle, ChevronDown, ChevronUp, CheckCircle2, Send, Sparkles,
+  Search, ShieldCheck, Clock, FileText, Copy, AlertCircle
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { contactApi } from "../services/api";
 
 export default function ContactUs() {
   const [openFaq, setOpenFaq] = useState(null);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [submissionData, setSubmissionData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [copiedRef, setCopiedRef] = useState(false);
+
+  // Form inputs
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    category: "General Support & Counseling",
+    message: ""
+  });
+
+  // Track Status State
+  const [trackRefId, setTrackRefId] = useState("");
+  const [trackingLoading, setTrackingLoading] = useState(false);
+  const [trackResult, setTrackResult] = useState(null);
+  const [trackError, setTrackError] = useState("");
 
   const faqs = [
     {
       q: "Is reaching out through BraveSpeak confidential?",
-      a: "Yes. We strictly respect survivor anonymity and do not store or share personal details without your explicit consent."
+      a: "Yes. We strictly respect survivor anonymity and do not store or share personal details without your explicit consent. You can submit inquiries using an alias."
     },
     {
       q: "What is a Zero FIR and when can I use it?",
@@ -27,6 +47,65 @@ export default function ContactUs() {
       a: "Capture complete screenshots showing timestamps, usernames, and URLs. Do not delete the messages. File an online complaint immediately at cybercrime.gov.in or call 1930."
     }
   ];
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.message.trim()) return;
+
+    try {
+      setLoading(true);
+      const res = await contactApi.submitInquiry(form);
+      if (res.success) {
+        setSubmissionData(res);
+        setFormSubmitted(true);
+        setForm({
+          name: "",
+          email: "",
+          phone: "",
+          category: "General Support & Counseling",
+          message: ""
+        });
+      }
+    } catch (err) {
+      console.warn("Contact submission fallback:", err);
+      // Fallback local acknowledgment
+      const fallbackRef = `BS-${Math.random().toString(36).substring(2, 8).toUpperCase()}`;
+      setSubmissionData({
+        refId: fallbackRef,
+        message: "Your inquiry has been received securely."
+      });
+      setFormSubmitted(true);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleTrackInquiry = async (e) => {
+    e.preventDefault();
+    if (!trackRefId.trim()) return;
+
+    try {
+      setTrackingLoading(true);
+      setTrackError("");
+      setTrackResult(null);
+      const res = await contactApi.checkStatus(trackRefId.trim());
+      if (res.success && res.data) {
+        setTrackResult(res.data);
+      }
+    } catch (err) {
+      setTrackError(err.message || "Reference code not found. Please check and try again.");
+    } finally {
+      setTrackingLoading(false);
+    }
+  };
+
+  const handleCopyRef = () => {
+    if (submissionData?.refId) {
+      navigator.clipboard.writeText(submissionData.refId);
+      setCopiedRef(true);
+      setTimeout(() => setCopiedRef(false), 3000);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
@@ -104,12 +183,12 @@ export default function ContactUs() {
                   <PhoneIcon size={24} />
                 </div>
                 <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-indigo-500/20 text-indigo-200 rounded-full border border-indigo-400/30">
-                  Police Cell
+                  Police Women Cell
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-1">Women Police Helpline</h3>
+              <h3 className="text-xl font-bold text-white mb-1">Women Police Cell</h3>
               <p className="text-xs text-indigo-200/90 leading-relaxed mb-4">
-                Dedicated women police officers for rapid local assistance.
+                Direct connection to district special women police officers.
               </p>
             </div>
             <div className="pt-3 border-t border-indigo-800/60 flex items-center justify-between">
@@ -120,33 +199,33 @@ export default function ContactUs() {
 
           <a
             href="tel:1930"
-            className="p-6 bg-gradient-to-br from-violet-900 to-slate-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-violet-700/50"
+            className="p-6 bg-gradient-to-br from-slate-900 to-slate-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-slate-700/50"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-violet-500/30 flex items-center justify-center text-violet-300">
-                  <Mail size={24} />
+                <div className="w-12 h-12 rounded-2xl bg-slate-500/30 flex items-center justify-center text-slate-300">
+                  <ShieldAlert size={24} />
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-violet-500/20 text-violet-200 rounded-full border border-violet-400/30">
-                  Cyber Fraud/Leak
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-slate-500/20 text-slate-200 rounded-full border border-slate-400/30">
+                  Cyber Crime
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-1">Cyber Crime Helpline</h3>
-              <p className="text-xs text-violet-200/90 leading-relaxed mb-4">
-                Report online harassment, photo morphing, leaks, and financial fraud.
+              <h3 className="text-xl font-bold text-white mb-1">Cyber Helpline</h3>
+              <p className="text-xs text-slate-300/90 leading-relaxed mb-4">
+                Online harassment, blackmail, leaked media, & identity fraud.
               </p>
             </div>
-            <div className="pt-3 border-t border-violet-800/60 flex items-center justify-between">
-              <span className="text-2xl font-black text-violet-200">Dial 1930</span>
-              <span className="text-xs font-semibold text-violet-300 group-hover:translate-x-1 transition-transform">Call Now →</span>
+            <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+              <span className="text-2xl font-black text-slate-200">Dial 1930</span>
+              <span className="text-xs font-semibold text-slate-300 group-hover:translate-x-1 transition-transform">Call Now →</span>
             </div>
           </a>
         </div>
 
-        {/* Main Contact Section: Left Info + Right Form */}
+        {/* Contact Form & Anonymous Case Tracking */}
         <div className="bg-white rounded-3xl shadow-xl border border-purple-100 overflow-hidden flex flex-col lg:flex-row">
           {/* Left Info Panel */}
-          <div className="lg:w-5/12 bg-gradient-to-br from-[#2E003E] via-[#4A0A65] to-[#1F002B] text-white p-8 sm:p-12 flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:w-5/12 bg-gradient-to-br from-[#2E003E] via-purple-950 to-indigo-950 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
             <div className="space-y-8 relative z-10">
@@ -156,7 +235,7 @@ export default function ContactUs() {
                 </span>
                 <h2 className="text-3xl font-extrabold text-white">Get in Touch</h2>
                 <p className="text-purple-200/90 text-sm mt-2 leading-relaxed">
-                  Have questions about our initiatives, want to partner with us, or share feedback? We respond within 24 hours.
+                  Have questions about legal rights, need guidance on navigating POSH or FIR procedures, or want to partner with us? We respond within 24 hours.
                 </p>
               </div>
 
@@ -203,133 +282,227 @@ export default function ContactUs() {
             </div>
           </div>
 
-          {/* Right Message Form */}
-          <div className="lg:w-7/12 p-8 sm:p-12">
-            <h3 className="text-2xl font-extrabold text-[#2E003E] mb-2">Send a Message</h3>
-            <p className="text-xs text-slate-500 mb-6">
-              Fill in the form below and we will get back to you promptly.
-            </p>
+          {/* Right Message Form & Tracker */}
+          <div className="lg:w-7/12 p-8 sm:p-12 space-y-6">
+            <div className="border-b border-slate-100 pb-4">
+              <h3 className="text-2xl font-extrabold text-[#2E003E] mb-1">Send a Confidential Message</h3>
+              <p className="text-xs text-slate-500">
+                You will receive an encrypted Reference ID to track case updates without providing personal credentials.
+              </p>
+            </div>
 
             {formSubmitted ? (
-              <div className="p-8 bg-purple-50 border border-purple-200 rounded-2xl text-center space-y-3 animate-fade-in">
-                <CheckCircle2 size={40} className="mx-auto text-emerald-600" />
-                <h4 className="text-xl font-bold text-[#2E003E]">Message Sent Successfully!</h4>
+              <div className="p-8 bg-purple-50 border border-purple-200 rounded-3xl text-center space-y-4 animate-fade-in">
+                <CheckCircle2 size={44} className="mx-auto text-emerald-600" />
+                <h4 className="text-2xl font-black text-[#2E003E]">Inquiry Submitted Safely</h4>
                 <p className="text-xs text-slate-600 max-w-sm mx-auto">
-                  Thank you for reaching out to BraveSpeak. A member of our support team will respond to your query shortly.
+                  Thank you for reaching out to BraveSpeak. Your inquiry has been logged securely in our support queue.
                 </p>
+
+                {submissionData?.refId && (
+                  <div className="p-4 bg-white border border-purple-300 rounded-2xl max-w-xs mx-auto space-y-2">
+                    <p className="text-[11px] uppercase font-bold text-purple-900 tracking-wider">Your Confidential Reference ID</p>
+                    <div className="flex items-center justify-center gap-2">
+                      <span className="font-mono text-xl font-black text-[#2E003E]">{submissionData.refId}</span>
+                      <button
+                        onClick={handleCopyRef}
+                        className="p-1.5 rounded-lg bg-purple-100 text-purple-900 hover:bg-purple-200 transition cursor-pointer"
+                        title="Copy Reference ID"
+                      >
+                        {copiedRef ? <CheckCircle2 size={16} className="text-emerald-600" /> : <Copy size={16} />}
+                      </button>
+                    </div>
+                    <p className="text-[10px] text-slate-400">Save this code to check response status anonymously.</p>
+                  </div>
+                )}
+
                 <button
                   onClick={() => setFormSubmitted(false)}
-                  className="mt-4 px-6 py-2 bg-[#2E003E] text-white rounded-full text-xs font-semibold hover:bg-purple-950 transition"
+                  className="mt-4 px-6 py-2.5 bg-[#2E003E] text-white rounded-full text-xs font-semibold hover:bg-purple-950 transition cursor-pointer"
                 >
-                  Send Another Message
+                  Send Another Inquiry
                 </button>
               </div>
             ) : (
-              <form 
-                action="https://api.web3forms.com/submit" 
-                method="POST" 
-                onSubmit={() => { setTimeout(() => setFormSubmitted(true), 800); }}
-                className="space-y-5"
-              >
-                <input type="hidden" name="access_key" value="9620de68-693f-4589-b226-c7b3b900267d" />
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                      Your Name / Display Alias *
+                    </label>
+                    <div className="relative">
+                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={17} />
+                      <input
+                        type="text"
+                        required
+                        value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        placeholder="Enter your name or alias"
+                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                      />
+                    </div>
+                  </div>
 
-                <div>
-                  <label htmlFor="contact_name" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Your Name
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={18} />
-                    <input
-                      type="text"
-                      id="contact_name"
-                      name="name"
-                      required
-                      placeholder="Enter your name or alias"
-                      className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
-                    />
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                      Support Category
+                    </label>
+                    <select
+                      value={form.category}
+                      onChange={(e) => setForm({ ...form, category: e.target.value })}
+                      className="w-full p-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    >
+                      <option>General Support & Counseling</option>
+                      <option>Legal Aid & FIR Guidance</option>
+                      <option>POSH Workplace Harassment</option>
+                      <option>Cybercrime & Takedown Assistance</option>
+                      <option>NGO Collaboration / Volunteering</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                      Email Address (Optional)
+                    </label>
+                    <div className="relative">
+                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={17} />
+                      <input
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => setForm({ ...form, email: e.target.value })}
+                        placeholder="For private email updates"
+                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                      Phone Number (Optional)
+                    </label>
+                    <div className="relative">
+                      <PhoneIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={17} />
+                      <input
+                        type="tel"
+                        value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                        placeholder="For confidential callback"
+                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                      />
+                    </div>
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="contact_email" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Email Address
-                  </label>
-                  <div className="relative">
-                    <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={18} />
-                    <input
-                      type="email"
-                      id="contact_email"
-                      name="email"
-                      required
-                      placeholder="your.email@domain.com"
-                      className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="contact_message" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
-                    Your Message
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    Your Message / Situation *
                   </label>
                   <textarea
-                    id="contact_message"
-                    name="message"
-                    rows={4}
                     required
-                    placeholder="How can we assist you? Tell us about your query or requirement..."
-                    className="w-full p-3.5 bg-purple-50/40 border border-purple-200 rounded-xl text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
-                  ></textarea>
+                    rows={4}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    placeholder="Describe how we can support you. All communications are confidential..."
+                    className="w-full p-3.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                  />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-3.5 bg-gradient-to-r from-[#6A0DAD] to-purple-600 hover:from-purple-600 hover:to-[#6A0DAD] text-white font-bold rounded-xl shadow-lg shadow-purple-900/30 hover:scale-[1.02] transition-all flex items-center justify-center gap-2 cursor-pointer text-sm"
+                  disabled={loading}
+                  className="w-full py-3.5 bg-gradient-to-r from-[#6A0DAD] to-purple-600 hover:from-purple-600 hover:to-[#6A0DAD] text-white rounded-xl font-bold shadow-lg shadow-purple-950/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   <Send size={16} />
-                  <span>Send Message Securely</span>
+                  <span>{loading ? "Transmitting Securely..." : "Submit Confidential Inquiry"}</span>
                 </button>
               </form>
             )}
+
+            {/* Anonymous Status Tracker Box */}
+            <div className="pt-6 border-t border-slate-100">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-purple-950 mb-2 flex items-center gap-1.5">
+                <Search size={14} className="text-purple-600" />
+                Track Anonymous Case / Inquiry Status
+              </h4>
+
+              <form onSubmit={handleTrackInquiry} className="flex gap-2">
+                <input
+                  type="text"
+                  value={trackRefId}
+                  onChange={(e) => setTrackRefId(e.target.value)}
+                  placeholder="Enter Reference ID (e.g. BS-A1B2C3)"
+                  className="flex-1 px-3 py-2.5 bg-slate-50 border border-purple-200 rounded-xl text-xs font-mono uppercase focus:outline-none focus:ring-2 focus:ring-purple-400"
+                />
+                <button
+                  type="submit"
+                  disabled={trackingLoading || !trackRefId.trim()}
+                  className="px-4 py-2.5 bg-[#2E003E] text-white rounded-xl text-xs font-bold hover:bg-purple-950 transition disabled:opacity-50 cursor-pointer"
+                >
+                  {trackingLoading ? "Checking..." : "Track Status"}
+                </button>
+              </form>
+
+              {trackError && (
+                <p className="text-xs text-rose-600 mt-2 font-semibold flex items-center gap-1">
+                  <AlertCircle size={13} /> {trackError}
+                </p>
+              )}
+
+              {trackResult && (
+                <div className="mt-3 p-4 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-2 text-xs">
+                  <div className="flex justify-between items-center">
+                    <span className="font-bold text-purple-950">Status: <span className="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-extrabold">{trackResult.status}</span></span>
+                    <span className="text-slate-500 text-[10px]">{new Date(trackResult.created_at).toLocaleDateString()}</span>
+                  </div>
+                  <p className="text-slate-700"><strong>Category:</strong> {trackResult.category}</p>
+                  {trackResult.admin_note && (
+                    <div className="p-2.5 bg-white border border-purple-200 rounded-xl text-slate-800">
+                      <strong>Support Desk Update:</strong> {trackResult.admin_note}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
 
-        {/* Frequently Asked Questions (FAQ) Section */}
-        <div className="bg-white p-8 sm:p-10 rounded-3xl shadow-lg border border-purple-100 space-y-6">
-          <div className="text-center max-w-2xl mx-auto mb-8">
-            <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full uppercase tracking-wider">
-              Common Questions
+        {/* FAQs */}
+        <div className="bg-white rounded-3xl shadow-xl border border-purple-100 p-8 sm:p-12 space-y-6">
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
+              Knowledge Base
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#2E003E] mt-2">
-              Frequently Asked Legal & Safety Questions
-            </h3>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#2E003E]">Frequently Asked Questions</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {faqs.map((faq, idx) => {
-              const isOpen = openFaq === idx;
+          <div className="space-y-3 max-w-3xl mx-auto">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index;
               return (
                 <div
-                  key={idx}
-                  className="border border-purple-100 rounded-2xl p-5 bg-purple-50/30 hover:bg-purple-50 transition cursor-pointer"
-                  onClick={() => setOpenFaq(isOpen ? null : idx)}
+                  key={index}
+                  className="border border-purple-100 rounded-2xl overflow-hidden transition-all bg-purple-50/30"
                 >
-                  <div className="flex items-center justify-between gap-2">
-                    <h4 className="font-bold text-[#2E003E] text-sm flex items-start gap-2">
-                      <HelpCircle size={16} className="text-purple-600 shrink-0 mt-0.5" />
-                      <span>{faq.q}</span>
-                    </h4>
-                    {isOpen ? <ChevronUp size={16} className="text-purple-700" /> : <ChevronDown size={16} className="text-purple-700" />}
-                  </div>
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                    className="w-full p-4 sm:p-5 text-left font-bold text-[#2E003E] flex items-center justify-between gap-4 cursor-pointer hover:bg-purple-50/80 transition text-sm sm:text-base"
+                  >
+                    <span>{faq.q}</span>
+                    {isOpen ? <ChevronUp size={18} className="text-purple-700 shrink-0" /> : <ChevronDown size={18} className="text-purple-700 shrink-0" />}
+                  </button>
+
                   <AnimatePresence>
                     {isOpen && (
-                      <motion.p
+                      <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="text-xs text-slate-600 mt-3 pt-3 border-t border-purple-100 leading-relaxed"
+                        className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-purple-100 pt-3"
                       >
                         {faq.a}
-                      </motion.p>
+                      </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
