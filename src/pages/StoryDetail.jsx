@@ -1,11 +1,118 @@
-import React from 'react';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { ArrowLeft, Heart, Shield, PhoneCall, Clock, Share2 } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate, useParams, Link } from 'react-router-dom';
+import { ArrowLeft, Heart, Shield, PhoneCall, Clock, Share2, MessageCircle, Send, User } from 'lucide-react';
+import { storiesApi } from '../services/api';
 
 export default function StoryDetail() {
+  const { id } = useParams();
   const location = useLocation();
   const navigate = useNavigate();
-  const story = location.state?.story;
+  const [story, setStory] = useState(location.state?.story || null);
+  const [loading, setLoading] = useState(!location.state?.story);
+  const [likes, setLikes] = useState(location.state?.story?.likes || 0);
+  const [isLiked, setIsLiked] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [commentInput, setCommentInput] = useState('');
+  const [commentAuthor, setCommentAuthor] = useState('');
+  const [submittingComment, setSubmittingComment] = useState(false);
+
+  useEffect(() => {
+    if (id) {
+      storiesApi.getById(id)
+        .then((res) => {
+          if (res.success && res.data) {
+            const s = res.data;
+            setStory({
+              id: s.id,
+              img: s.image_url || '/images/news_3.jpg',
+              title: s.title,
+              category: s.category,
+              desc: s.description,
+              author: s.is_anonymous ? 'Anonymous' : s.author,
+              readTime: s.read_time || '3 min read',
+              likes: s.likes || 0,
+              date: new Date(s.created_at).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+            });
+            setLikes(s.likes || 0);
+            if (s.comments) setComments(s.comments);
+          }
+        })
+        .catch((err) => {
+          console.warn('Could not fetch story by ID:', err);
+        })
+        .finally(() => setLoading(false));
+
+      storiesApi.getComments(id)
+        .then((res) => {
+          if (res.success) setComments(res.data);
+        })
+        .catch(() => {});
+    }
+  }, [id]);
+
+  const handleLike = async () => {
+    const updated = !isLiked;
+    setIsLiked(updated);
+    setLikes((prev) => prev + (updated ? 1 : -1));
+    if (updated && story?.id) {
+      try {
+        await storiesApi.like(story.id);
+      } catch (e) {
+        console.warn('Like sync failed:', e);
+      }
+    }
+  };
+
+  const handleShare = () => {
+    if (!story) return;
+    if (navigator.share) {
+      navigator.share({
+        title: story.title,
+        text: story.desc,
+        url: window.location.href,
+      }).catch(() => {});
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Story link copied to clipboard!");
+    }
+  };
+
+  const handleAddComment = async (e) => {
+    e.preventDefault();
+    if (!commentInput.trim() || !story?.id) return;
+
+    try {
+      setSubmittingComment(true);
+      const res = await storiesApi.addComment(story.id, {
+        author: commentAuthor.trim() || 'Supporter',
+        content: commentInput.trim()
+      });
+
+      if (res.success && res.data) {
+        setComments([res.data, ...comments]);
+        setCommentInput('');
+      }
+    } catch (err) {
+      setComments([{
+        id: Date.now(),
+        author: commentAuthor.trim() || 'Supporter',
+        content: commentInput.trim(),
+        created_at: new Date().toISOString()
+      }, ...comments]);
+      setCommentInput('');
+    } finally {
+      setSubmittingComment(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center">
+        <div className="w-10 h-10 border-4 border-purple-200 border-t-purple-800 rounded-full animate-spin mb-3"></div>
+        <p className="text-xs font-semibold text-purple-900">Loading story details...</p>
+      </div>
+    );
+  }
 
   if (!story) {
     return (
@@ -26,19 +133,6 @@ export default function StoryDetail() {
       </div>
     );
   }
-
-  const handleShare = () => {
-    if (navigator.share) {
-      navigator.share({
-        title: story.title,
-        text: story.desc,
-        url: window.location.href,
-      }).catch(() => {});
-    } else {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Story link copied to clipboard!");
-    }
-  };
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
@@ -81,14 +175,27 @@ export default function StoryDetail() {
                 <span className="font-bold text-purple-900">By {story.author || 'Anonymous Survivor'}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1"><Clock size={12} /> {story.readTime || '3 min read'}</span>
+                <span>•</span>
+                <span>{story.date}</span>
               </div>
 
-              <button
-                onClick={handleShare}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg text-xs font-bold transition"
-              >
-                <Share2 size={13} /> Share Story
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handleLike}
+                  className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
+                    isLiked ? 'bg-rose-50 text-rose-600 border border-rose-300' : 'bg-slate-50 text-slate-600 hover:bg-rose-50 hover:text-rose-600'
+                  }`}
+                >
+                  <Heart size={13} className={isLiked ? 'fill-rose-500 text-rose-500' : ''} />
+                  <span>{likes} Supported</span>
+                </button>
+                <button
+                  onClick={handleShare}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg text-xs font-bold transition cursor-pointer"
+                >
+                  <Share2 size={13} /> Share
+                </button>
+              </div>
             </div>
 
             <p className="text-slate-700 text-base sm:text-lg leading-relaxed whitespace-pre-line">
@@ -105,6 +212,68 @@ export default function StoryDetail() {
                 <a href="tel:181" className="px-4 py-2 bg-rose-600 hover:bg-rose-500 text-white font-bold rounded-full text-xs transition flex items-center gap-1.5">
                   <PhoneCall size={13} /> Helpline: 181
                 </a>
+                <a href="tel:112" className="px-4 py-2 bg-purple-600 hover:bg-purple-500 text-white font-bold rounded-full text-xs transition flex items-center gap-1.5">
+                  Emergency: 112
+                </a>
+              </div>
+            </div>
+
+            {/* Comments / Messages of Support Section */}
+            <div className="pt-6 border-t border-slate-100 space-y-4">
+              <h3 className="text-lg font-bold text-[#2E003E] flex items-center gap-2">
+                <MessageCircle size={20} className="text-purple-700" />
+                <span>Messages of Support ({comments.length})</span>
+              </h3>
+
+              <form onSubmit={handleAddComment} className="space-y-3 bg-purple-50/60 p-4 rounded-2xl border border-purple-200">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  <input
+                    type="text"
+                    value={commentAuthor}
+                    onChange={(e) => setCommentAuthor(e.target.value)}
+                    placeholder="Your Name / Supporter Alias (Optional)"
+                    className="px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                  />
+                </div>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    required
+                    value={commentInput}
+                    onChange={(e) => setCommentInput(e.target.value)}
+                    placeholder="Write a warm note of encouragement or solidarity..."
+                    className="flex-1 px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                  />
+                  <button
+                    type="submit"
+                    disabled={submittingComment || !commentInput.trim()}
+                    className="px-4 py-2 bg-purple-900 text-white rounded-xl text-xs font-bold hover:bg-purple-950 transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+                  >
+                    <Send size={13} />
+                    <span>Send</span>
+                  </button>
+                </div>
+              </form>
+
+              <div className="space-y-3">
+                {comments.length === 0 ? (
+                  <p className="text-xs text-slate-400 italic text-center py-4">
+                    No messages yet. Be the first to leave a message of strength!
+                  </p>
+                ) : (
+                  comments.map((c) => (
+                    <div key={c.id} className="p-4 bg-slate-50 border border-slate-200/80 rounded-xl text-xs space-y-1.5">
+                      <div className="flex justify-between items-center text-slate-500">
+                        <span className="font-bold text-purple-950 flex items-center gap-1.5">
+                          <User size={13} className="text-purple-600" />
+                          {c.author}
+                        </span>
+                        <span className="text-[10px]">{new Date(c.created_at).toLocaleDateString()}</span>
+                      </div>
+                      <p className="text-slate-700 text-sm leading-relaxed">{c.content}</p>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>

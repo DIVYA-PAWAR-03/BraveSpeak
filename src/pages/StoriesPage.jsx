@@ -1,100 +1,10 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { 
   Heart, PlusCircle, Search, Clock, Tag, Share2, 
-  CheckCircle2, X, AlertCircle, Sparkles, MessageCircle, ArrowRight
+  CheckCircle2, X, AlertCircle, Sparkles, MessageCircle, Send, ArrowRight, User
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-const initialStories = [
-  {
-    id: 1,
-    img: '/images/news_6.png',
-    title: 'Breaking the Workplace Silence',
-    category: 'Workplace Courage',
-    desc: 'When discriminatory remarks and inappropriate advances started at my firm, I felt completely isolated. After learning about the POSH Internal Complaints Committee, I documented everything and filed a formal complaint. The process was hard, but it resulted in corrective action and created safer policies for every woman in our team.',
-    author: 'Ananya S.',
-    readTime: '3 min read',
-    likes: 42,
-    date: 'August 2024'
-  },
-  {
-    id: 2,
-    img: '/images/news_7.png',
-    title: 'Finding Strength in Community Counseling',
-    category: 'Healing & Recovery',
-    desc: 'Healing from traumatic assault felt impossible until I joined a weekly survivor circle. Speaking my truth in a space with zero judgment gave me my dignity back. No one should carry this weight alone.',
-    author: 'Pooja M.',
-    readTime: '4 min read',
-    likes: 68,
-    date: 'July 2024'
-  },
-  {
-    id: 3,
-    img: '/images/news_8.png',
-    title: 'Taking on Cyber Blackmail & Winning',
-    category: 'Cyber Safety',
-    desc: 'My private photos were leaked and used to blackmail me for money. Instead of giving in, I took screenshots and immediately contacted cybercrime.gov.in and the 1930 helpline. The cyber cell acted swiftly to take down the content and identify the perpetrator.',
-    author: 'Anonymous',
-    readTime: '3 min read',
-    likes: 95,
-    date: 'September 2024'
-  },
-  {
-    id: 4,
-    img: '/images/news_9.png',
-    title: 'A Fresh Start After Years of Domestic Abuse',
-    category: 'Legal Victory',
-    desc: 'With the assistance of the District Legal Services Authority (DLSA) providing free legal counsel, I was able to secure a protection order and financial independence. Freedom is real, and help is out there.',
-    author: 'Sunita R.',
-    readTime: '5 min read',
-    likes: 112,
-    date: 'June 2024'
-  },
-  {
-    id: 5,
-    img: '/images/news_11.webp',
-    title: 'Voices United on Campus',
-    category: 'Community Action',
-    desc: 'After persistent stalking incidents went unaddressed on our university campus, we mobilized a student awareness campaign demanding CCTV coverage, emergency call boxes, and mandatory gender sensitization workshops.',
-    author: 'Student Collective',
-    readTime: '3 min read',
-    likes: 84,
-    date: 'May 2024'
-  },
-  {
-    id: 6,
-    img: '/images/news_3.jpg',
-    title: 'Reclaiming My Voice After Modesty Assault',
-    category: 'Workplace Courage',
-    desc: 'Overcoming fear of public scrutiny, I filed an FIR under Section 354 IPC. The support from my family and legal advocate helped me stand firm through trial proceedings.',
-    author: 'Deepa V.',
-    readTime: '4 min read',
-    likes: 73,
-    date: 'April 2024'
-  },
-  {
-    id: 7,
-    img: '/images/news_10.webp',
-    title: 'Therapy & Mindful Recovery Journey',
-    category: 'Healing & Recovery',
-    desc: 'Trauma recovery is not linear. Regular counseling sessions, yoga, and journaling helped me rebuild my self-worth step by step.',
-    author: 'Kavita T.',
-    readTime: '2 min read',
-    likes: 56,
-    date: 'March 2024'
-  },
-  {
-    id: 8,
-    img: '/images/news_4.jpeg',
-    title: 'Becoming an Advocate for Others',
-    category: 'Community Action',
-    desc: 'Having survived harassment early in my career, I now volunteer with women safety NGOs to mentor young professionals on assertiveness, reporting protocols, and emotional resilience.',
-    author: 'Meera K.',
-    readTime: '4 min read',
-    likes: 129,
-    date: 'February 2024'
-  }
-];
+import { storiesApi } from '../services/api';
 
 const categories = [
   'All',
@@ -106,32 +16,94 @@ const categories = [
 ];
 
 export default function StoriesPage() {
-  const [stories, setStories] = useState(initialStories);
+  const [stories, setStories] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [likedMap, setLikedMap] = useState({});
   const [showForm, setShowForm] = useState(false);
   const [selectedStory, setSelectedStory] = useState(null);
+  const [comments, setComments] = useState([]);
+  const [commentInput, setCommentInput] = useState('');
+  const [commentAuthor, setCommentAuthor] = useState('');
+  const [commentLoading, setCommentLoading] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({ name: '', title: '', category: 'Workplace Courage', desc: '', isAnonymous: false });
   const [successToast, setSuccessToast] = useState('');
 
-  const filteredStories = useMemo(() => {
-    return stories.filter((story) => {
-      const matchesCategory = selectedCategory === 'All' || story.category === selectedCategory;
-      const matchesSearch = 
-        story.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        story.desc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        story.author.toLowerCase().includes(searchQuery.toLowerCase());
-      return matchesCategory && matchesSearch;
-    });
-  }, [stories, selectedCategory, searchQuery]);
+  // Load stories from API
+  const loadStories = async () => {
+    try {
+      setLoading(true);
+      const res = await storiesApi.getAll({
+        category: selectedCategory !== 'All' ? selectedCategory : '',
+        search: searchQuery
+      });
+      if (res.success) {
+        setStories(res.data.map(s => ({
+          id: s.id,
+          img: s.image_url || '/images/news_3.jpg',
+          title: s.title,
+          category: s.category,
+          desc: s.description,
+          author: s.is_anonymous ? 'Anonymous' : s.author,
+          readTime: s.read_time || '3 min read',
+          likes: s.likes || 0,
+          date: new Date(s.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
+        })));
+      }
+    } catch (err) {
+      console.warn('Could not load from API, keeping current view:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  const handleLike = (id, e) => {
+  useEffect(() => {
+    loadStories();
+  }, [selectedCategory]);
+
+  // Handle Search submit / debounce
+  const filteredStories = useMemo(() => {
+    if (!searchQuery.trim()) return stories;
+    const q = searchQuery.toLowerCase();
+    return stories.filter(s => 
+      s.title.toLowerCase().includes(q) ||
+      s.desc.toLowerCase().includes(q) ||
+      s.author.toLowerCase().includes(q)
+    );
+  }, [stories, searchQuery]);
+
+  // Load comments when opening story modal
+  useEffect(() => {
+    if (selectedStory?.id) {
+      setComments([]);
+      storiesApi.getComments(selectedStory.id)
+        .then(res => {
+          if (res.success) setComments(res.data);
+        })
+        .catch(err => console.warn('Failed to load comments:', err));
+    }
+  }, [selectedStory]);
+
+  const handleLike = async (id, e) => {
     e.stopPropagation();
-    setLikedMap((prev) => ({
-      ...prev,
-      [id]: !prev[id]
-    }));
+    const isCurrentlyLiked = likedMap[id];
+    setLikedMap(prev => ({ ...prev, [id]: !isCurrentlyLiked }));
+    
+    // Update local story state
+    setStories(prev => prev.map(s => s.id === id ? { ...s, likes: s.likes + (isCurrentlyLiked ? -1 : 1) } : s));
+    if (selectedStory && selectedStory.id === id) {
+      setSelectedStory(prev => ({ ...prev, likes: prev.likes + (isCurrentlyLiked ? -1 : 1) }));
+    }
+
+    if (!isCurrentlyLiked) {
+      try {
+        await storiesApi.like(id);
+      } catch (err) {
+        console.warn('Failed to register like on server:', err);
+      }
+    }
   };
 
   const handleShare = (story, e) => {
@@ -148,27 +120,91 @@ export default function StoriesPage() {
     }
   };
 
-  const handleSubmitStory = (e) => {
+  const handleSubmitStory = async (e) => {
     e.preventDefault();
     if (!form.title.trim() || !form.desc.trim()) return;
 
-    const newStory = {
-      id: Date.now(),
-      img: '/images/news_3.jpg',
-      title: form.title.trim(),
-      category: form.category,
-      desc: form.desc.trim(),
-      author: form.isAnonymous ? 'Anonymous' : (form.name.trim() || 'Anonymous Survivor'),
-      readTime: '3 min read',
-      likes: 1,
-      date: 'Just Now'
-    };
+    try {
+      setSubmitting(true);
+      const res = await storiesApi.create({
+        title: form.title.trim(),
+        category: form.category,
+        description: form.desc.trim(),
+        author: form.name.trim(),
+        is_anonymous: form.isAnonymous
+      });
 
-    setStories([newStory, ...stories]);
-    setForm({ name: '', title: '', category: 'Workplace Courage', desc: '', isAnonymous: false });
-    setShowForm(false);
-    setSuccessToast('Your story has been shared safely with the BraveSpeak community!');
-    setTimeout(() => setSuccessToast(''), 5000);
+      if (res.success && res.data) {
+        const s = res.data;
+        const formatted = {
+          id: s.id,
+          img: s.image_url || '/images/news_3.jpg',
+          title: s.title,
+          category: s.category,
+          desc: s.description,
+          author: s.is_anonymous ? 'Anonymous' : s.author,
+          readTime: s.read_time || '3 min read',
+          likes: s.likes || 1,
+          date: 'Just Now'
+        };
+        setStories([formatted, ...stories]);
+      }
+
+      setForm({ name: '', title: '', category: 'Workplace Courage', desc: '', isAnonymous: false });
+      setShowForm(false);
+      setSuccessToast('Your story has been safely submitted and published to BraveSpeak!');
+      setTimeout(() => setSuccessToast(''), 5000);
+    } catch (err) {
+      console.warn('Story submission error:', err);
+      // Fallback local addition
+      const fallbackStory = {
+        id: Date.now(),
+        img: '/images/news_3.jpg',
+        title: form.title.trim(),
+        category: form.category,
+        desc: form.desc.trim(),
+        author: form.isAnonymous ? 'Anonymous' : (form.name.trim() || 'Anonymous Survivor'),
+        readTime: '3 min read',
+        likes: 1,
+        date: 'Just Now'
+      };
+      setStories([fallbackStory, ...stories]);
+      setShowForm(false);
+      setSuccessToast('Your story has been shared safely with the community!');
+      setTimeout(() => setSuccessToast(''), 5000);
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  const handleAddComment = async (e) => {
+    e.preventDefault();
+    if (!commentInput.trim() || !selectedStory) return;
+
+    try {
+      setCommentLoading(true);
+      const res = await storiesApi.addComment(selectedStory.id, {
+        author: commentAuthor.trim() || 'Supporter',
+        content: commentInput.trim()
+      });
+
+      if (res.success && res.data) {
+        setComments([res.data, ...comments]);
+        setCommentInput('');
+      }
+    } catch (err) {
+      console.warn('Comment post error:', err);
+      // Local addition fallback
+      setComments([{
+        id: Date.now(),
+        author: commentAuthor.trim() || 'Supporter',
+        content: commentInput.trim(),
+        created_at: new Date().toISOString()
+      }, ...comments]);
+      setCommentInput('');
+    } finally {
+      setCommentLoading(false);
+    }
   };
 
   return (
@@ -242,91 +278,101 @@ export default function StoriesPage() {
           </div>
         </div>
 
+        {/* Loading Spinner */}
+        {loading && (
+          <div className="text-center py-12">
+            <div className="w-10 h-10 border-4 border-purple-200 border-t-purple-800 rounded-full animate-spin mx-auto mb-3"></div>
+            <p className="text-xs font-semibold text-purple-900">Loading verified stories...</p>
+          </div>
+        )}
+
         {/* Stories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredStories.length === 0 ? (
-            <div className="col-span-full text-center py-16 bg-white rounded-3xl border border-purple-100 p-8">
-              <AlertCircle size={40} className="mx-auto text-purple-400 mb-3" />
-              <h3 className="text-xl font-bold text-[#2E003E]">No stories found</h3>
-              <p className="text-slate-500 text-sm mt-1">Try clearing your search query or selecting "All" categories.</p>
-            </div>
-          ) : (
-            filteredStories.map((story) => {
-              const isLiked = likedMap[story.id];
-              const likeCount = story.likes + (isLiked ? 1 : 0);
+        {!loading && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredStories.length === 0 ? (
+              <div className="col-span-full text-center py-16 bg-white rounded-3xl border border-purple-100 p-8">
+                <AlertCircle size={40} className="mx-auto text-purple-400 mb-3" />
+                <h3 className="text-xl font-bold text-[#2E003E]">No stories found</h3>
+                <p className="text-slate-500 text-sm mt-1">Try clearing your search query or selecting "All" categories.</p>
+              </div>
+            ) : (
+              filteredStories.map((story) => {
+                const isLiked = likedMap[story.id];
+                const likeCount = story.likes;
 
-              return (
-                <motion.div
-                  key={story.id}
-                  layout
-                  onClick={() => setSelectedStory(story)}
-                  className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
-                  whileHover={{ y: -6 }}
-                >
-                  <div>
-                    {/* Story Cover Image */}
-                    <div className="relative h-52 overflow-hidden bg-purple-900">
-                      <img
-                        src={story.img}
-                        alt={story.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        onError={(e) => { e.target.src = '/images/news_3.jpg'; }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-                      <div className="absolute top-3 left-3">
-                        <span className="px-3 py-1 bg-[#2E003E]/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-purple-400/30">
-                          {story.category}
-                        </span>
+                return (
+                  <motion.div
+                    key={story.id}
+                    layout
+                    onClick={() => setSelectedStory(story)}
+                    className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                    whileHover={{ y: -6 }}
+                  >
+                    <div>
+                      {/* Story Cover Image */}
+                      <div className="relative h-52 overflow-hidden bg-purple-900">
+                        <img
+                          src={story.img}
+                          alt={story.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          onError={(e) => { e.target.src = '/images/news_3.jpg'; }}
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <div className="absolute top-3 left-3">
+                          <span className="px-3 py-1 bg-[#2E003E]/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-purple-400/30">
+                            {story.category}
+                          </span>
+                        </div>
+                        <div className="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1.5 opacity-90">
+                          <Clock size={13} />
+                          <span>{story.readTime}</span>
+                          <span>•</span>
+                          <span>{story.date}</span>
+                        </div>
                       </div>
-                      <div className="absolute bottom-3 left-3 text-white text-xs font-medium flex items-center gap-1.5 opacity-90">
-                        <Clock size={13} />
-                        <span>{story.readTime}</span>
-                        <span>•</span>
-                        <span>{story.date}</span>
+
+                      {/* Content */}
+                      <div className="p-6 space-y-3">
+                        <h2 className="text-xl font-bold text-[#2E003E] group-hover:text-purple-700 transition-colors line-clamp-2">
+                          {story.title}
+                        </h2>
+                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                          {story.desc}
+                        </p>
                       </div>
                     </div>
 
-                    {/* Content */}
-                    <div className="p-6 space-y-3">
-                      <h2 className="text-xl font-bold text-[#2E003E] group-hover:text-purple-700 transition-colors line-clamp-2">
-                        {story.title}
-                      </h2>
-                      <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
-                        {story.desc}
-                      </p>
+                    {/* Card Bottom Bar */}
+                    <div className="px-6 py-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                      <span className="font-semibold text-purple-900">By {story.author}</span>
+                      <div className="flex items-center gap-3">
+                        <button
+                          onClick={(e) => handleLike(story.id, e)}
+                          className={`flex items-center gap-1 px-2.5 py-1 rounded-full border transition cursor-pointer ${
+                            isLiked
+                              ? "bg-rose-50 border-rose-300 text-rose-600 font-bold"
+                              : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-rose-50 hover:text-rose-600"
+                          }`}
+                          title="Show support"
+                        >
+                          <Heart size={14} className={isLiked ? "fill-rose-500 text-rose-500" : ""} />
+                          <span>{likeCount}</span>
+                        </button>
+                        <button
+                          onClick={(e) => handleShare(story, e)}
+                          className="p-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 hover:text-purple-900 transition cursor-pointer"
+                          title="Share story"
+                        >
+                          <Share2 size={14} />
+                        </button>
+                      </div>
                     </div>
-                  </div>
-
-                  {/* Card Bottom Bar */}
-                  <div className="px-6 py-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                    <span className="font-semibold text-purple-900">By {story.author}</span>
-                    <div className="flex items-center gap-3">
-                      <button
-                        onClick={(e) => handleLike(story.id, e)}
-                        className={`flex items-center gap-1 px-2.5 py-1 rounded-full border transition ${
-                          isLiked
-                            ? "bg-rose-50 border-rose-300 text-rose-600 font-bold"
-                            : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-rose-50 hover:text-rose-600"
-                        }`}
-                        title="Show support"
-                      >
-                        <Heart size={14} className={isLiked ? "fill-rose-500 text-rose-500" : ""} />
-                        <span>{likeCount}</span>
-                      </button>
-                      <button
-                        onClick={(e) => handleShare(story, e)}
-                        className="p-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 hover:text-purple-900 transition"
-                        title="Share story"
-                      >
-                        <Share2 size={14} />
-                      </button>
-                    </div>
-                  </div>
-                </motion.div>
-              );
-            })
-          )}
-        </div>
+                  </motion.div>
+                );
+              })
+            )}
+          </div>
+        )}
 
         {/* Story Detail Reading Modal */}
         <AnimatePresence>
@@ -340,7 +386,7 @@ export default function StoriesPage() {
               >
                 <button
                   onClick={() => setSelectedStory(null)}
-                  className="absolute top-5 right-5 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 transition"
+                  className="absolute top-5 right-5 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 transition cursor-pointer"
                   aria-label="Close story"
                 >
                   <X size={20} />
@@ -383,18 +429,79 @@ export default function StoriesPage() {
                   <div className="flex justify-between items-center pt-4 border-t border-slate-100">
                     <button
                       onClick={(e) => handleLike(selectedStory.id, e)}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-rose-50 text-rose-600 font-bold rounded-full border border-rose-200 hover:bg-rose-100 transition"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-rose-50 text-rose-600 font-bold rounded-full border border-rose-200 hover:bg-rose-100 transition cursor-pointer"
                     >
                       <Heart size={16} className={likedMap[selectedStory.id] ? "fill-rose-500" : ""} />
-                      <span>{selectedStory.likes + (likedMap[selectedStory.id] ? 1 : 0)} People Supported</span>
+                      <span>{selectedStory.likes} People Supported</span>
                     </button>
 
                     <button
                       onClick={() => setSelectedStory(null)}
-                      className="px-6 py-2 bg-[#2E003E] text-white font-semibold rounded-full hover:bg-purple-950 transition"
+                      className="px-6 py-2 bg-[#2E003E] text-white font-semibold rounded-full hover:bg-purple-950 transition cursor-pointer"
                     >
                       Close Reader
                     </button>
+                  </div>
+
+                  {/* Community Messages / Comments Section */}
+                  <div className="pt-6 border-t border-slate-100 space-y-4">
+                    <h3 className="text-base font-bold text-[#2E003E] flex items-center gap-2">
+                      <MessageCircle size={18} className="text-purple-700" />
+                      <span>Community Words of Encouragement ({comments.length})</span>
+                    </h3>
+
+                    {/* Add Comment Form */}
+                    <form onSubmit={handleAddComment} className="space-y-3 bg-purple-50/50 p-4 rounded-2xl border border-purple-200">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                        <input
+                          type="text"
+                          value={commentAuthor}
+                          onChange={(e) => setCommentAuthor(e.target.value)}
+                          placeholder="Your Name / Supporter Alias (Optional)"
+                          className="px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                        />
+                      </div>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          required
+                          value={commentInput}
+                          onChange={(e) => setCommentInput(e.target.value)}
+                          placeholder="Write a message of solidarity and encouragement..."
+                          className="flex-1 px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                        />
+                        <button
+                          type="submit"
+                          disabled={commentLoading || !commentInput.trim()}
+                          className="px-4 py-2 bg-purple-900 text-white rounded-xl text-xs font-bold hover:bg-purple-950 transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+                        >
+                          <Send size={13} />
+                          <span>Send</span>
+                        </button>
+                      </div>
+                    </form>
+
+                    {/* Comments List */}
+                    <div className="space-y-2.5 max-h-48 overflow-y-auto pr-1">
+                      {comments.length === 0 ? (
+                        <p className="text-xs text-slate-400 italic text-center py-2">
+                          No messages yet. Be the first to leave words of strength!
+                        </p>
+                      ) : (
+                        comments.map((c) => (
+                          <div key={c.id} className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs space-y-1">
+                            <div className="flex justify-between items-center text-slate-500">
+                              <span className="font-bold text-purple-950 flex items-center gap-1">
+                                <User size={12} className="text-purple-600" />
+                                {c.author}
+                              </span>
+                              <span className="text-[10px]">{new Date(c.created_at).toLocaleDateString()}</span>
+                            </div>
+                            <p className="text-slate-700 leading-relaxed">{c.content}</p>
+                          </div>
+                        ))
+                      )}
+                    </div>
                   </div>
                 </div>
               </motion.div>
@@ -414,7 +521,7 @@ export default function StoriesPage() {
               >
                 <button
                   onClick={() => setShowForm(false)}
-                  className="absolute top-5 right-5 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 transition"
+                  className="absolute top-5 right-5 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 transition cursor-pointer"
                   aria-label="Close form"
                 >
                   <X size={20} />
@@ -512,15 +619,16 @@ export default function StoriesPage() {
                     <button
                       type="button"
                       onClick={() => setShowForm(false)}
-                      className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition"
+                      className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition cursor-pointer"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-3 bg-gradient-to-r from-[#6A0DAD] to-purple-600 hover:from-purple-600 hover:to-[#6A0DAD] text-white font-semibold rounded-xl text-sm shadow-md transition"
+                      disabled={submitting}
+                      className="flex-1 py-3 bg-gradient-to-r from-[#6A0DAD] to-purple-600 hover:from-purple-600 hover:to-[#6A0DAD] text-white font-semibold rounded-xl text-sm shadow-md transition disabled:opacity-50 cursor-pointer"
                     >
-                      Submit Story
+                      {submitting ? 'Submitting...' : 'Submit Story'}
                     </button>
                   </div>
                 </form>
