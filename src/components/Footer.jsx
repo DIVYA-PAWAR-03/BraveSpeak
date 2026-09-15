@@ -23,7 +23,7 @@ export default function Footer() {
                 alt="BraveSpeak Logo" 
                 className="w-11 h-11 object-contain group-hover:scale-105 transition-transform drop-shadow-[0_2px_10px_rgba(214,180,252,0.4)]" 
               />
-              <span className="text-2xl font-extrabold bg-gradient-to-r from-white via-purple-100 to-purple-300 bg-clip-text text-transparent">
+              <span className="text-2xl font-extrabold bg-gradient-to-r from-white via-purple-100 to-amber-300 bg-clip-text text-transparent">
                 BraveSpeak
               </span>
             </Link>
