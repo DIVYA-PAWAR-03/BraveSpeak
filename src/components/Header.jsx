@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { 
   Menu, X, PhoneCall, ShieldAlert, ChevronDown, 
@@ -66,9 +66,9 @@ export default function Header() {
 
   const resourceItems = [
     {
-      name: "Laws & Statutory Rights",
+      name: "Crime vs Law Awareness",
       path: "/laws",
-      desc: "IPC, BNS 2023, POSH Act & women's legal rights",
+      desc: "Interactive Which-Crime-Has-Which-Law guide, IPC & BNS 2023",
       icon: Scale,
       color: "text-purple-600 bg-purple-50"
     },

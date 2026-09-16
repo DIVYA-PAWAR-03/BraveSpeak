@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
+import CrimeLawAwareness from "../components/CrimeLawAwareness";
 
 export default function Homepage() {
   const [caseCount, setCaseCount] = useState(0);
@@ -649,6 +650,9 @@ export default function Homepage() {
           </div>
         </div>
       </section>
+
+      {/* CRIME TO LAW AWARENESS SECTION */}
+      <CrimeLawAwareness />
 
       {/* 6. FUNDAMENTAL SURVIVOR RIGHTS (INTERACTIVE EXPLORER) */}
       <section className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#290B3D] via-[#3E0E59] to-[#180424] text-white">

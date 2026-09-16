@@ -5,6 +5,7 @@ import {
   PhoneCall, ExternalLink, AlertCircle, FileText, BookmarkCheck, HeartHandshake, Sparkles, ArrowRight
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import CrimeLawAwareness from "../components/CrimeLawAwareness";
 
 const categories = [
   "All",
@@ -171,6 +172,11 @@ const HarassmentLaws = () => {
               <ArrowRight size={16} />
             </Link>
           </div>
+        </div>
+
+        {/* Crime-to-Law Awareness Section */}
+        <div className="-mx-4 sm:-mx-6">
+          <CrimeLawAwareness />
         </div>
 
         {/* Search & Filter Bar */}
