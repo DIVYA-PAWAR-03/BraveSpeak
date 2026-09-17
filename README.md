@@ -83,7 +83,7 @@ BraveSpeak/
 │       ├── emergency.js      # SOS logs & Evidence Vault uploads
 │       └── safety.js         # Hotspots heatmap & analytics
 ├── src/
-│   ├── components/           # UI components (Header, Footer, Camouflage)
+│   ├── components/           # UI components (Header, Footer, etc.)
 │   ├── pages/                # Main application views
 │   │   ├── Homepage.jsx
 │   │   ├── StoriesPage.jsx

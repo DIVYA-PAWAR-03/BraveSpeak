@@ -13,7 +13,6 @@ import SafetyToolkit from './pages/SafetyToolkit';
 import LegalAssistant from './pages/LegalAssistant';
 import SupportDirectory from './pages/SupportDirectory';
 import DigitalSafety from './pages/DigitalSafety';
-import QuickCamouflage from './components/QuickCamouflage';
 
 const StoryDetail = React.lazy(() => import('./pages/StoryDetail'));
 
@@ -41,7 +40,6 @@ function App() {
       } />
     </Routes>
     <Footer/>
-    <QuickCamouflage />
     </>
   );
 }
