@@ -548,7 +548,7 @@ export default function Homepage() {
           <div className="text-center pt-4">
             <Link
               to="/statistics"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#290B3D] to-purple-900 hover:from-purple-950 hover:to-[#290B3D] text-white rounded-full font-bold text-sm shadow-xl transition hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-sm shadow-xl transition hover:scale-105"
             >
               <span>Explore Full Statistics & Yearly Charts</span>
               <ArrowRight size={18} />
@@ -635,13 +635,13 @@ export default function Homepage() {
               <div className="flex flex-wrap gap-3">
                 <a
                   href="tel:181"
-                  className="px-6 py-3 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
                 >
                   <PhoneCall size={14} /> Call 181 Now
                 </a>
                 <Link
                   to="/laws"
-                  className="px-6 py-3 bg-gradient-to-r from-[#290B3D] to-purple-900 hover:from-purple-900 hover:to-[#290B3D] text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
+                  className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
                 >
                   <Scale size={14} /> View All Laws
                 </Link>
@@ -796,7 +796,7 @@ export default function Homepage() {
           <div className="flex flex-wrap gap-4 justify-center pt-2">
             <button
               onClick={() => setPledgeTaken(true)}
-              className="px-8 py-4 bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 hover:from-rose-600 hover:to-pink-600 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
+              className="px-8 py-4 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
             >
               {pledgeTaken ? (
                 <>

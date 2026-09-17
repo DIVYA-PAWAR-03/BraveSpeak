@@ -307,7 +307,7 @@ Contact: [Complainant Phone / Email]
               type="button"
               onClick={handleSmartDiagnosis}
               disabled={analyzing}
-              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-400 hover:to-indigo-500 text-white font-bold rounded-2xl shadow-lg transition flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:opacity-50"
+              className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white font-bold rounded-2xl shadow-lg transition flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:opacity-50"
             >
               {analyzing ? (
                 <>

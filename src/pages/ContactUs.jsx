@@ -412,7 +412,7 @@ export default function ContactUs() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3.5 bg-gradient-to-r from-[#6A0DAD] to-purple-600 hover:from-purple-600 hover:to-[#6A0DAD] text-white rounded-xl font-bold shadow-lg shadow-purple-950/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3.5 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-xl font-bold shadow-lg shadow-purple-950/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   <Send size={16} />
                   <span>{loading ? "Transmitting Securely..." : "Submit Confidential Inquiry"}</span>

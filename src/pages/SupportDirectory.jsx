@@ -132,7 +132,7 @@ export default function SupportDirectory() {
             <button
               onClick={handleFindNearby}
               disabled={locating}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#6A0DAD] to-purple-600 hover:from-purple-600 hover:to-[#6A0DAD] text-white rounded-full font-bold shadow-lg shadow-purple-950/20 hover:scale-105 transition cursor-pointer disabled:opacity-60"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold shadow-lg shadow-purple-950/20 hover:scale-105 transition cursor-pointer disabled:opacity-60"
             >
               <Navigation size={16} className={locating ? "animate-spin" : ""} />
               <span>{locating ? "Locating Nearest Centers..." : "Find Support Centers Near Me (GPS)"}</span>

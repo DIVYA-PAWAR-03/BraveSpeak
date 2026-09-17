@@ -126,7 +126,7 @@ export default function StoryDetail() {
         </p>
         <Link
           to="/survivorStories"
-          className="bg-gradient-to-r from-[#6A0DAD] to-purple-600 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition"
+          className="bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition"
         >
           Return to Survivor Stories
         </Link>
