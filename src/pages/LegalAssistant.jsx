@@ -225,7 +225,7 @@ Contact: [Complainant Phone / Email]
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -260,7 +260,7 @@ Contact: [Complainant Phone / Email]
                   className={`p-5 rounded-3xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? "bg-purple-900 text-white shadow-xl shadow-purple-950/20 border-purple-800 scale-[1.02]"
-                      : "bg-white text-slate-800 hover:border-purple-300 shadow-md border-slate-200"
+                      : "bg-white text-slate-800 hover:border-purple-300 shadow-md border-slate-200 dark:border-slate-700"
                   }`}
                 >
                   <div className="space-y-2">
@@ -399,7 +399,7 @@ Contact: [Complainant Phone / Email]
         </div>
 
         {/* Step 3: Interactive Complaint Letter Drafter */}
-        <div className="bg-white rounded-3xl shadow-xl border border-purple-100 p-6 sm:p-10 space-y-8">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 p-6 sm:p-10 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
@@ -615,3 +615,4 @@ Contact: [Complainant Phone / Email]
     </div>
   );
 }
+

@@ -2,9 +2,11 @@ import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { 
   Menu, X, PhoneCall, ShieldAlert, ChevronDown, 
-  Scale, Lock, Users, BarChart3, Heart, Building2, Sparkles, CheckCircle2
+  Scale, Lock, Users, BarChart3, Heart, Building2, Sparkles, CheckCircle2,
+  Sun, Moon
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +14,7 @@ export default function Header() {
   const [resourcesDropdown, setResourcesDropdown] = useState(false);
   const location = useLocation();
   const navRef = useRef(null);
+  const { isDark, toggleTheme } = useTheme();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => {
@@ -92,9 +95,9 @@ export default function Header() {
   const isResourceActive = resourceItems.some((item) => location.pathname === item.path);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm" ref={navRef}>
+    <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-700/80 shadow-sm" ref={navRef}>
       {/* Top Emergency Micro-Bar */}
-      <div className="bg-slate-900 px-4 py-1 text-xs text-slate-200 border-b border-slate-800">
+      <div className="bg-slate-900 dark:bg-slate-950 px-4 py-1 text-xs text-slate-200 border-b border-slate-800">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2 font-medium">
             <span className="relative flex h-2 w-2">
@@ -137,10 +140,10 @@ export default function Header() {
             />
           </div>
           <div>
-            <span className="text-xl sm:text-2xl font-black tracking-tight text-[#2E003E]">
+            <span className="text-xl sm:text-2xl font-black tracking-tight text-[#2E003E] dark:text-purple-200">
               BraveSpeak
             </span>
-            <span className="block text-[9px] sm:text-[10px] tracking-wider uppercase text-purple-700 font-bold -mt-0.5">
+            <span className="block text-[9px] sm:text-[10px] tracking-wider uppercase text-purple-700 dark:text-purple-400 font-bold -mt-0.5">
               Justice • Safety • Support
             </span>
           </div>
@@ -153,8 +156,8 @@ export default function Header() {
               to="/"
               className={`px-3.5 py-2 rounded-full text-sm font-medium transition-all ${
                 location.pathname === "/"
-                  ? "bg-purple-100 text-purple-900 font-bold shadow-sm"
-                  : "text-slate-700 hover:text-purple-800 hover:bg-purple-50"
+                  ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold shadow-sm"
+                  : "text-slate-700 dark:text-slate-300 hover:text-purple-800 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/40"
               }`}
             >
               Home
@@ -170,12 +173,12 @@ export default function Header() {
               }}
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
                 isToolActive || toolsDropdown
-                  ? "bg-purple-100 text-purple-900 font-bold shadow-sm"
-                  : "text-slate-700 hover:text-purple-800 hover:bg-purple-50"
+                  ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold shadow-sm"
+                  : "text-slate-700 dark:text-slate-300 hover:text-purple-800 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/40"
               }`}
             >
               <ShieldAlert size={15} className="text-rose-600" />
-              <span>Safety & Tools</span>
+              <span>Safety &amp; Tools</span>
               <ChevronDown size={14} className={`transition-transform duration-200 ${toolsDropdown ? "rotate-180" : ""}`} />
             </button>
 
@@ -187,7 +190,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute left-0 mt-2 w-80 bg-white border border-slate-200 rounded-2xl shadow-xl p-2 z-50 overflow-hidden"
+                  className="absolute left-0 mt-2 w-80 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl p-2 z-50 overflow-hidden"
                 >
                   <div className="space-y-1">
                     {toolItems.map((item) => {
@@ -200,8 +203,8 @@ export default function Header() {
                           onClick={closeMenu}
                           className={`flex items-start gap-3 p-3 rounded-xl transition-all ${
                             active
-                              ? "bg-purple-50 text-purple-900 font-semibold border border-purple-200"
-                              : "text-slate-700 hover:bg-slate-50 hover:text-purple-900"
+                              ? "bg-purple-50 dark:bg-purple-900/40 text-purple-900 dark:text-purple-200 font-semibold border border-purple-200 dark:border-purple-700"
+                              : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-purple-900 dark:hover:text-purple-200"
                           }`}
                         >
                           <div className={`p-2 rounded-xl ${item.color} shrink-0 mt-0.5`}>
@@ -209,14 +212,14 @@ export default function Header() {
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center justify-between">
-                              <p className="text-xs font-bold text-slate-900">{item.name}</p>
+                              <p className="text-xs font-bold text-slate-900 dark:text-slate-100">{item.name}</p>
                               {item.badge && (
-                                <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-purple-100 text-purple-800 border border-purple-200">
+                                <span className="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-purple-100 dark:bg-purple-900/60 text-purple-800 dark:text-purple-300 border border-purple-200 dark:border-purple-700">
                                   {item.badge}
                                 </span>
                               )}
                             </div>
-                            <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{item.desc}</p>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">{item.desc}</p>
                           </div>
                         </Link>
                       );
@@ -236,12 +239,12 @@ export default function Header() {
               }}
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium transition-all cursor-pointer ${
                 isResourceActive || resourcesDropdown
-                  ? "bg-purple-100 text-purple-900 font-bold shadow-sm"
-                  : "text-slate-700 hover:text-purple-800 hover:bg-purple-50"
+                  ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold shadow-sm"
+                  : "text-slate-700 dark:text-slate-300 hover:text-purple-800 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/40"
               }`}
             >
-              <Scale size={15} className="text-purple-700" />
-              <span>Legal & Resources</span>
+              <Scale size={15} className="text-purple-700 dark:text-purple-400" />
+              <span>Legal &amp; Resources</span>
               <ChevronDown size={14} className={`transition-transform duration-200 ${resourcesDropdown ? "rotate-180" : ""}`} />
             </button>
 
@@ -253,7 +256,7 @@ export default function Header() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.15 }}
-                  className="absolute left-0 mt-2 w-80 bg-white border border-slate-200 rounded-2xl shadow-xl p-2 z-50 overflow-hidden"
+                  className="absolute left-0 mt-2 w-80 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl p-2 z-50 overflow-hidden"
                 >
                   <div className="space-y-1">
                     {resourceItems.map((item) => {
@@ -266,16 +269,16 @@ export default function Header() {
                           onClick={closeMenu}
                           className={`flex items-start gap-3 p-3 rounded-xl transition-all ${
                             active
-                              ? "bg-purple-50 text-purple-900 font-semibold border border-purple-200"
-                              : "text-slate-700 hover:bg-slate-50 hover:text-purple-900"
+                              ? "bg-purple-50 dark:bg-purple-900/40 text-purple-900 dark:text-purple-200 font-semibold border border-purple-200 dark:border-purple-700"
+                              : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-purple-900 dark:hover:text-purple-200"
                           }`}
                         >
                           <div className={`p-2 rounded-xl ${item.color} shrink-0 mt-0.5`}>
                             <Icon size={18} />
                           </div>
                           <div className="flex-1">
-                            <p className="text-xs font-bold text-slate-900">{item.name}</p>
-                            <p className="text-[11px] text-slate-500 mt-0.5 leading-snug">{item.desc}</p>
+                            <p className="text-xs font-bold text-slate-900 dark:text-slate-100">{item.name}</p>
+                            <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-0.5 leading-snug">{item.desc}</p>
                           </div>
                         </Link>
                       );
@@ -292,8 +295,8 @@ export default function Header() {
               to="/survivorStories"
               className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-sm font-medium transition-all ${
                 location.pathname === "/survivorStories"
-                  ? "bg-purple-100 text-purple-900 font-bold shadow-sm"
-                  : "text-slate-700 hover:text-purple-800 hover:bg-purple-50"
+                  ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold shadow-sm"
+                  : "text-slate-700 dark:text-slate-300 hover:text-purple-800 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/40"
               }`}
             >
               <Heart size={14} className="text-pink-600" />
@@ -307,17 +310,25 @@ export default function Header() {
               to="/contact"
               className={`px-3.5 py-2 rounded-full text-sm font-medium transition-all ${
                 location.pathname === "/contact"
-                  ? "bg-purple-100 text-purple-900 font-bold shadow-sm"
-                  : "text-slate-700 hover:text-purple-800 hover:bg-purple-50"
+                  ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold shadow-sm"
+                  : "text-slate-700 dark:text-slate-300 hover:text-purple-800 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/40"
               }`}
             >
-              Helplines & Help
+              Helplines &amp; Help
             </Link>
           </li>
         </ul>
 
-        {/* Right CTA Button */}
+        {/* Right CTA + Dark Mode Toggle */}
         <div className="hidden lg:flex items-center gap-3">
+          {/* Dark Mode Toggle */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+            className="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all"
+          >
+            {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-600" />}
+          </button>
           <Link
             to="/safety-toolkit"
             className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full text-xs font-bold shadow-md shadow-purple-950/20 hover:scale-105 transition-all"
@@ -328,13 +339,22 @@ export default function Header() {
         </div>
 
         {/* Mobile Toggle Button */}
-        <button 
-          onClick={toggleMenu}
-          className="lg:hidden p-2 text-slate-700 hover:text-purple-900 hover:bg-slate-100 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
-          aria-label="Toggle navigation menu"
-        >
-          {isOpen ? <X size={26} /> : <Menu size={26} />}
-        </button>
+        <div className="lg:hidden flex items-center gap-2">
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+            className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+          >
+            {isDark ? <Sun size={20} className="text-amber-400" /> : <Moon size={20} />}
+          </button>
+          <button 
+            onClick={toggleMenu}
+            className="p-2 text-slate-700 dark:text-slate-300 hover:text-purple-900 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-purple-400"
+            aria-label="Toggle navigation menu"
+          >
+            {isOpen ? <X size={26} /> : <Menu size={26} />}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Drawer Backdrop */}
@@ -347,19 +367,19 @@ export default function Header() {
 
       {/* Mobile Drawer Sidebar */}
       <div
-        className={`fixed top-0 right-0 h-full w-84 max-w-[88vw] bg-white text-slate-900 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl border-l border-slate-200 flex flex-col justify-between overflow-y-auto ${
+        className={`fixed top-0 right-0 h-full w-84 max-w-[88vw] bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl border-l border-slate-200 dark:border-slate-700 flex flex-col justify-between overflow-y-auto ${
           isOpen ? "translate-x-0" : "translate-x-full"
         } lg:hidden`}
       >
         <div className="p-5 space-y-6">
-          <div className="flex justify-between items-center pb-4 border-b border-slate-100">
+          <div className="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2.5">
               <img src="/images/BraveSpeakLogoo.png" alt="Logo" className="w-8 h-8 object-contain" />
-              <span className="font-extrabold text-lg text-[#2E003E]">BraveSpeak</span>
+              <span className="font-extrabold text-lg text-[#2E003E] dark:text-purple-200">BraveSpeak</span>
             </div>
             <button 
               onClick={closeMenu}
-              className="p-2 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors"
+              className="p-2 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors"
               aria-label="Close menu"
             >
               <X size={22} />
@@ -371,7 +391,7 @@ export default function Header() {
             to="/" 
             onClick={closeMenu} 
             className={`px-4 py-2.5 rounded-xl text-sm font-semibold transition-colors flex items-center justify-between ${
-              location.pathname === "/" ? "bg-purple-100 text-purple-900 font-bold border-l-4 border-purple-600" : "text-slate-700 hover:bg-slate-50"
+              location.pathname === "/" ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold border-l-4 border-purple-600" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
             }`}
           >
             <span>Home</span>
@@ -380,7 +400,7 @@ export default function Header() {
           {/* Section: Tactical Safety & Tools */}
           <div className="space-y-2">
             <p className="text-[10px] font-bold uppercase tracking-wider text-rose-600 px-2 flex items-center gap-1.5">
-              <ShieldAlert size={12} /> Tactical Safety & Tools
+              <ShieldAlert size={12} /> Tactical Safety &amp; Tools
             </p>
             <div className="space-y-1">
               {toolItems.map((item) => {
@@ -392,10 +412,10 @@ export default function Header() {
                     to={item.path}
                     onClick={closeMenu}
                     className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-colors ${
-                      active ? "bg-purple-100 text-purple-900 font-bold border-l-4 border-purple-600" : "text-slate-700 hover:bg-purple-50 hover:text-purple-900"
+                      active ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold border-l-4 border-purple-600" : "text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-slate-800 hover:text-purple-900 dark:hover:text-purple-200"
                     }`}
                   >
-                    <Icon size={16} className="text-purple-700 shrink-0" />
+                    <Icon size={16} className="text-purple-700 dark:text-purple-400 shrink-0" />
                     <span>{item.name}</span>
                   </Link>
                 );
@@ -405,8 +425,8 @@ export default function Header() {
 
           {/* Section: Legal & Resources */}
           <div className="space-y-2">
-            <p className="text-[10px] font-bold uppercase tracking-wider text-purple-700 px-2 flex items-center gap-1.5">
-              <Scale size={12} /> Legal Rights & Information
+            <p className="text-[10px] font-bold uppercase tracking-wider text-purple-700 dark:text-purple-400 px-2 flex items-center gap-1.5">
+              <Scale size={12} /> Legal Rights &amp; Information
             </p>
             <div className="space-y-1">
               {resourceItems.map((item) => {
@@ -418,10 +438,10 @@ export default function Header() {
                     to={item.path}
                     onClick={closeMenu}
                     className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-colors ${
-                      active ? "bg-purple-100 text-purple-900 font-bold border-l-4 border-purple-600" : "text-slate-700 hover:bg-purple-50 hover:text-purple-900"
+                      active ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold border-l-4 border-purple-600" : "text-slate-700 dark:text-slate-300 hover:bg-purple-50 dark:hover:bg-slate-800 hover:text-purple-900 dark:hover:text-purple-200"
                     }`}
                   >
-                    <Icon size={16} className="text-purple-700 shrink-0" />
+                    <Icon size={16} className="text-purple-700 dark:text-purple-400 shrink-0" />
                     <span>{item.name}</span>
                   </Link>
                 );
@@ -430,39 +450,39 @@ export default function Header() {
           </div>
 
           {/* Section: Community & Support */}
-          <div className="space-y-1 pt-2 border-t border-slate-100">
+          <div className="space-y-1 pt-2 border-t border-slate-100 dark:border-slate-800">
             <Link
               to="/survivorStories"
               onClick={closeMenu}
               className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-colors ${
-                location.pathname === "/survivorStories" ? "bg-purple-100 text-purple-900 font-bold border-l-4 border-purple-600" : "text-slate-700 hover:bg-slate-50"
+                location.pathname === "/survivorStories" ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold border-l-4 border-purple-600" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
               <Heart size={16} className="text-pink-600 shrink-0" />
-              <span>Survivor Stories & Community</span>
+              <span>Survivor Stories &amp; Community</span>
             </Link>
 
             <Link
               to="/contact"
               onClick={closeMenu}
               className={`px-3 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-2.5 transition-colors ${
-                location.pathname === "/contact" ? "bg-purple-100 text-purple-900 font-bold border-l-4 border-purple-600" : "text-slate-700 hover:bg-slate-50"
+                location.pathname === "/contact" ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold border-l-4 border-purple-600" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
-              <PhoneCall size={16} className="text-purple-700 shrink-0" />
-              <span>Helplines & Support Desk</span>
+              <PhoneCall size={16} className="text-purple-700 dark:text-purple-400 shrink-0" />
+              <span>Helplines &amp; Support Desk</span>
             </Link>
           </div>
         </div>
 
         {/* Mobile Drawer Bottom SOS */}
-        <div className="p-5 border-t border-slate-100 bg-slate-50 space-y-3">
-          <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider">24x7 Direct Helplines</p>
+        <div className="p-5 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-3">
+          <p className="text-[10px] text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">24x7 Direct Helplines</p>
           <div className="grid grid-cols-2 gap-2">
-            <a href="tel:181" className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs font-bold hover:bg-rose-100 transition-colors">
+            <a href="tel:181" className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-rose-50 dark:bg-rose-950/60 border border-rose-200 dark:border-rose-800 text-rose-700 dark:text-rose-300 rounded-xl text-xs font-bold hover:bg-rose-100 dark:hover:bg-rose-900/60 transition-colors">
               <PhoneCall size={13} /> 181 (Women)
             </a>
-            <a href="tel:112" className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-purple-50 border border-purple-200 text-purple-800 rounded-xl text-xs font-bold hover:bg-purple-100 transition-colors">
+            <a href="tel:112" className="flex items-center justify-center gap-1.5 py-2.5 px-3 bg-purple-50 dark:bg-purple-950/60 border border-purple-200 dark:border-purple-800 text-purple-800 dark:text-purple-300 rounded-xl text-xs font-bold hover:bg-purple-100 dark:hover:bg-purple-900/60 transition-colors">
               <PhoneCall size={13} /> 112 (SOS)
             </a>
           </div>
@@ -472,7 +492,7 @@ export default function Header() {
             className="w-full py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white font-bold rounded-xl text-center flex items-center justify-center gap-2 shadow-md text-xs transition-all"
           >
             <ShieldAlert size={16} />
-            <span>Open Safety Toolkit & GPS</span>
+            <span>Open Safety Toolkit &amp; GPS</span>
           </Link>
         </div>
       </div>

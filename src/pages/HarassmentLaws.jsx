@@ -148,7 +148,7 @@ const HarassmentLaws = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header Title Section */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -180,7 +180,7 @@ const HarassmentLaws = () => {
         </div>
 
         {/* Search & Filter Bar */}
-        <div className="bg-white p-6 rounded-3xl shadow-lg border border-purple-100 space-y-4">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-lg border border-purple-100 space-y-4">
           {/* Search input */}
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400" size={20} />
@@ -232,7 +232,7 @@ const HarassmentLaws = () => {
                 <motion.div
                   key={index}
                   layout
-                  className="bg-white rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-xl border border-purple-100 transition-all duration-300 flex flex-col justify-between"
+                  className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-xl border border-purple-100 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     {/* Top Row: Category & Severity */}
@@ -302,7 +302,7 @@ const HarassmentLaws = () => {
                           exit={{ opacity: 0, height: 0 }}
                           className="space-y-3 pt-2 text-xs text-slate-700 overflow-hidden"
                         >
-                          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200">
+                          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 dark:border-slate-700">
                             <p className="font-bold text-[#2E003E] mb-1">Key Legal Insight:</p>
                             <p className="leading-relaxed">{item.more}</p>
                           </div>
@@ -383,7 +383,7 @@ const HarassmentLaws = () => {
 
         {/* Quick Resource & Reporting Channels */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
             <div>
               <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center mb-4">
                 <PhoneCall size={20} />
@@ -411,7 +411,7 @@ const HarassmentLaws = () => {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
             <div>
               <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-4">
                 <ExternalLink size={20} />
@@ -456,14 +456,14 @@ const HarassmentLaws = () => {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
             <div>
               <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4">
                 <HeartHandshake size={20} />
               </div>
               <h3 className="text-lg font-bold text-[#2E003E] mb-1">Support & Counseling NGOs</h3>
               <p className="text-xs text-slate-500 mb-4">Confidential survivor advocacy networks</p>
-              <ul className="space-y-2 text-xs text-slate-700">
+              <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
                 <li className="p-2 rounded-lg bg-slate-50 border border-slate-100">
                   <span className="font-bold text-[#2E003E]">SNEHA: </span>
                   <span className="text-slate-600">Crisis intervention & women safety (+91 98330 52684)</span>
@@ -486,3 +486,4 @@ const HarassmentLaws = () => {
 };
 
 export default HarassmentLaws;
+

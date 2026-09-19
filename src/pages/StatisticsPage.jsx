@@ -76,17 +76,17 @@ export default function StatisticsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
-            <BarChart3 size={15} /> National Crime Records Bureau (NCRB) & Community Data
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-700 text-purple-900 dark:text-purple-200 text-xs font-bold uppercase tracking-wider">
+            <BarChart3 size={15} /> National Crime Records Bureau (NCRB) &amp; Community Data
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
-            Harassment & Safety Statistics in India
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] dark:text-purple-100 tracking-tight">
+            Harassment &amp; Safety Statistics in India
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
             Visualizing verified statutory crime records, conviction rates, and crowd-sourced hazard alerts to demand institutional accountability.
           </p>
         </div>
@@ -94,7 +94,7 @@ export default function StatisticsPage() {
         {/* 4 Key Metric KPI Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
+            className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-700 hover:border-purple-200 dark:hover:border-purple-700 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -104,7 +104,7 @@ export default function StatisticsPage() {
                 </span>
                 <AlertTriangle size={20} className="text-rose-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">31,500+</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-slate-100">31,500+</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">Cases Registered Annually</p>
             </div>
             <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
@@ -113,7 +113,7 @@ export default function StatisticsPage() {
           </motion.div>
 
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
+            className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-700 hover:border-purple-200 dark:hover:border-purple-700 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -123,7 +123,7 @@ export default function StatisticsPage() {
                 </span>
                 <Users size={20} className="text-purple-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">{summary.totalStories} Stories</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-slate-100">{summary.totalStories} Stories</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">Shared by Courageous Survivors</p>
             </div>
             <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
@@ -132,7 +132,7 @@ export default function StatisticsPage() {
           </motion.div>
 
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
+            className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-700 hover:border-purple-200 dark:hover:border-purple-700 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -142,7 +142,7 @@ export default function StatisticsPage() {
                 </span>
                 <Scale size={20} className="text-indigo-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">34.1%</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-slate-100">34.1%</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">National Conviction Rate</p>
             </div>
             <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
@@ -151,7 +151,7 @@ export default function StatisticsPage() {
           </motion.div>
 
           <motion.div 
-            className="bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 hover:border-purple-200 transition-all flex flex-col justify-between"
+            className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-sm hover:shadow-xl border border-slate-200/80 dark:border-slate-700 hover:border-purple-200 dark:hover:border-purple-700 transition-all flex flex-col justify-between"
             whileHover={{ y: -5 }}
           >
             <div>
@@ -161,7 +161,7 @@ export default function StatisticsPage() {
                 </span>
                 <Building2 size={20} className="text-emerald-600" />
               </div>
-              <h3 className="text-3xl sm:text-4xl font-black text-slate-900">{summary.totalCenters} Centers</h3>
+              <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-slate-100">{summary.totalCenters} Centers</h3>
               <p className="text-xs font-semibold text-slate-500 mt-1">Verified Institutional Desks</p>
             </div>
             <p className="text-[11px] text-slate-400 mt-4 pt-3 border-t border-slate-100">
@@ -171,13 +171,13 @@ export default function StatisticsPage() {
         </div>
 
         {/* Interactive Chart Container */}
-        <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-200/80 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
+        <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-200/80 dark:border-slate-700 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700 pb-5">
             <div>
-              <span className="text-[11px] font-bold text-purple-800 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200 uppercase tracking-wider">
+              <span className="text-[11px] font-bold text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/40 px-2.5 py-0.5 rounded-full border border-purple-200 dark:border-purple-700 uppercase tracking-wider">
                 Official Analytical Trends
               </span>
-              <h2 className="text-2xl font-black text-[#2E003E] mt-1">
+              <h2 className="text-2xl font-black text-[#2E003E] dark:text-purple-100 mt-1">
                 {activeTab === "yearly" && "Year-wise Reported Cases in India"}
                 {activeTab === "categories" && "Breakdown by Crime Category"}
                 {activeTab === "disposal" && "Judicial Conviction & Police Charge-sheet Rates"}

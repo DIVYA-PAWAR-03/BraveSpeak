@@ -114,7 +114,7 @@ export default function SupportDirectory() {
   }, [centers, searchQuery]);
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -156,7 +156,7 @@ export default function SupportDirectory() {
         </div>
 
         {/* Filter Controls Bar */}
-        <div className="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-purple-100 space-y-5">
+        <div className="bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-3xl shadow-xl border border-purple-100 space-y-5">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400" size={20} />
             <input
@@ -235,7 +235,7 @@ export default function SupportDirectory() {
                 <motion.div
                   key={center.id}
                   layout
-                  className="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl border border-purple-100 hover:border-purple-300 transition-all flex flex-col justify-between group space-y-5"
+                  className="bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-md hover:shadow-xl border border-purple-100 hover:border-purple-300 transition-all flex flex-col justify-between group space-y-5"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between gap-2">
@@ -258,7 +258,7 @@ export default function SupportDirectory() {
                       {center.name}
                     </h2>
 
-                    <div className="space-y-2 text-xs text-slate-600">
+                    <div className="space-y-2 text-xs text-slate-600 dark:text-slate-400">
                       <div className="flex items-start gap-2">
                         <MapPin size={15} className="text-purple-500 shrink-0 mt-0.5" />
                         <span className="leading-relaxed">{center.address}</span>
@@ -318,3 +318,4 @@ export default function SupportDirectory() {
     </div>
   );
 }
+

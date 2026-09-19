@@ -133,7 +133,7 @@ export default function DigitalSafety() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -149,7 +149,7 @@ export default function DigitalSafety() {
         </div>
 
         {/* Section 1: Privacy Audit Scorecard */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 space-y-6">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 space-y-6">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-purple-100 pb-6">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
@@ -180,7 +180,7 @@ export default function DigitalSafety() {
                   className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3 ${
                     isDone
                       ? "bg-purple-50/70 border-purple-300 text-purple-950"
-                      : "bg-white border-slate-200 text-slate-700 hover:border-purple-200"
+                      : "bg-white dark:bg-slate-800 border-slate-200 text-slate-700 hover:border-purple-200"
                   }`}
                 >
                   <input
@@ -226,7 +226,7 @@ export default function DigitalSafety() {
         </div>
 
         {/* Section 3: Hidden Camera Detector Walkthrough */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
           <div className="border-b border-purple-100 pb-4">
             <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
               Field Guide
@@ -253,7 +253,7 @@ export default function DigitalSafety() {
         </div>
 
         {/* Section 4: Secure Digital Evidence Vault */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
           <div className="border-b border-purple-100 pb-4">
             <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
               Cloud Evidence Vault
@@ -324,7 +324,7 @@ export default function DigitalSafety() {
                 <input
                   type="file"
                   onChange={(e) => setNewLog({ ...newLog, file: e.target.files[0] })}
-                  className="w-full p-1.5 bg-white border border-purple-200 rounded-lg text-xs text-slate-600"
+                  className="w-full p-1.5 bg-white border border-purple-200 rounded-lg text-xs text-slate-600 dark:text-slate-400"
                 />
               </div>
 
@@ -387,3 +387,4 @@ export default function DigitalSafety() {
     </div>
   );
 }
+

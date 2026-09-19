@@ -135,7 +135,7 @@ export default function StoryDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Back Button */}
         <button
@@ -147,7 +147,7 @@ export default function StoryDetail() {
         </button>
 
         {/* Story Card */}
-        <div className="bg-white rounded-3xl shadow-xl border border-purple-100 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 overflow-hidden">
           <div className="relative h-72 sm:h-96 w-full">
             <img 
               src={story.img} 
@@ -262,7 +262,7 @@ export default function StoryDetail() {
                   </p>
                 ) : (
                   comments.map((c) => (
-                    <div key={c.id} className="p-4 bg-slate-50 border border-slate-200/80 rounded-xl text-xs space-y-1.5">
+                    <div key={c.id} className="p-4 bg-slate-50 border border-slate-200 dark:border-slate-700/80 rounded-xl text-xs space-y-1.5">
                       <div className="flex justify-between items-center text-slate-500">
                         <span className="font-bold text-purple-950 flex items-center gap-1.5">
                           <User size={13} className="text-purple-600" />
@@ -282,3 +282,4 @@ export default function StoryDetail() {
     </div>
   );
 }
+

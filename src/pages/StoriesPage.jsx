@@ -208,7 +208,7 @@ export default function StoriesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Page Title Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -249,7 +249,7 @@ export default function StoriesPage() {
         </AnimatePresence>
 
         {/* Search & Category Filter Bar */}
-        <div className="bg-white p-6 rounded-3xl shadow-lg border border-purple-100 space-y-4">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-lg border border-purple-100 space-y-4">
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400" size={20} />
             <input
@@ -305,7 +305,7 @@ export default function StoriesPage() {
                     key={story.id}
                     layout
                     onClick={() => setSelectedStory(story)}
-                    className="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                    className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                     whileHover={{ y: -6 }}
                   >
                     <div>
@@ -351,7 +351,7 @@ export default function StoriesPage() {
                           className={`flex items-center gap-1 px-2.5 py-1 rounded-full border transition cursor-pointer ${
                             isLiked
                               ? "bg-rose-50 border-rose-300 text-rose-600 font-bold"
-                              : "bg-slate-50 border-slate-200 text-slate-600 hover:bg-rose-50 hover:text-rose-600"
+                              : "bg-slate-50 dark:bg-slate-900 border-slate-200 text-slate-600 hover:bg-rose-50 hover:text-rose-600"
                           }`}
                           title="Show support"
                         >
@@ -382,7 +382,7 @@ export default function StoriesPage() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 p-6 sm:p-8 relative"
+                className="bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 p-6 sm:p-8 relative"
               >
                 <button
                   onClick={() => setSelectedStory(null)}
@@ -489,7 +489,7 @@ export default function StoriesPage() {
                         </p>
                       ) : (
                         comments.map((c) => (
-                          <div key={c.id} className="p-3 bg-slate-50 border border-slate-200/80 rounded-xl text-xs space-y-1">
+                          <div key={c.id} className="p-3 bg-slate-50 border border-slate-200 dark:border-slate-700/80 rounded-xl text-xs space-y-1">
                             <div className="flex justify-between items-center text-slate-500">
                               <span className="font-bold text-purple-950 flex items-center gap-1">
                                 <User size={12} className="text-purple-600" />
@@ -517,7 +517,7 @@ export default function StoriesPage() {
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 p-6 sm:p-8 relative"
+                className="bg-white dark:bg-slate-800 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 p-6 sm:p-8 relative"
               >
                 <button
                   onClick={() => setShowForm(false)}
@@ -640,3 +640,4 @@ export default function StoriesPage() {
     </div>
   );
 }
+

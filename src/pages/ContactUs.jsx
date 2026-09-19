@@ -108,7 +108,7 @@ export default function ContactUs() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
@@ -223,7 +223,7 @@ export default function ContactUs() {
         </div>
 
         {/* Contact Form & Anonymous Case Tracking */}
-        <div className="bg-white rounded-3xl shadow-xl border border-purple-100 overflow-hidden flex flex-col lg:flex-row">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 overflow-hidden flex flex-col lg:flex-row">
           {/* Left Info Panel */}
           <div className="lg:w-5/12 bg-gradient-to-br from-[#2E003E] via-purple-950 to-indigo-950 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
@@ -458,7 +458,7 @@ export default function ContactUs() {
                   </div>
                   <p className="text-slate-700"><strong>Category:</strong> {trackResult.category}</p>
                   {trackResult.admin_note && (
-                    <div className="p-2.5 bg-white border border-purple-200 rounded-xl text-slate-800">
+                    <div className="p-2.5 bg-white border border-purple-200 rounded-xl text-slate-800 dark:text-slate-200">
                       <strong>Support Desk Update:</strong> {trackResult.admin_note}
                     </div>
                   )}
@@ -469,7 +469,7 @@ export default function ContactUs() {
         </div>
 
         {/* FAQs */}
-        <div className="bg-white rounded-3xl shadow-xl border border-purple-100 p-8 sm:p-12 space-y-6">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 p-8 sm:p-12 space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
               Knowledge Base
@@ -514,3 +514,4 @@ export default function ContactUs() {
     </div>
   );
 }
+
