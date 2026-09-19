@@ -251,6 +251,41 @@ export default function StatisticsPage() {
             </ResponsiveContainer>
           </div>
         </div>
+
+        {/* Key Insights Banner */}
+        <div className="bg-gradient-to-br from-[#2E003E] to-[#4a0060] rounded-3xl p-8 shadow-xl border border-purple-700/40">
+          <div className="flex items-center gap-3 mb-6">
+            <Flame size={22} className="text-amber-400" />
+            <h2 className="text-xl font-black text-white tracking-tight">Key Insights You Should Know</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <motion.div
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 flex flex-col gap-2"
+              whileHover={{ scale: 1.03 }}
+            >
+              <span className="text-3xl font-black text-amber-300">93%</span>
+              <p className="text-sm font-semibold text-purple-100">of sexual assault cases go unreported due to stigma, fear, and lack of awareness.</p>
+              <span className="text-[10px] text-purple-400 mt-auto">Source: RAINN / National Survey Data</span>
+            </motion.div>
+            <motion.div
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 flex flex-col gap-2"
+              whileHover={{ scale: 1.03 }}
+            >
+              <span className="text-3xl font-black text-rose-300">1 in 3</span>
+              <p className="text-sm font-semibold text-purple-100">women in India have experienced some form of workplace harassment or gender-based violence.</p>
+              <span className="text-[10px] text-purple-400 mt-auto">Source: National Family Health Survey (NFHS-5)</span>
+            </motion.div>
+            <motion.div
+              className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-2xl p-5 flex flex-col gap-2"
+              whileHover={{ scale: 1.03 }}
+            >
+              <span className="text-3xl font-black text-emerald-300">181</span>
+              <p className="text-sm font-semibold text-purple-100">is the free national helpline available 24×7 — yet over 70% of survivors are unaware it exists.</p>
+              <span className="text-[10px] text-purple-400 mt-auto">Source: Ministry of Women &amp; Child Development</span>
+            </motion.div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
