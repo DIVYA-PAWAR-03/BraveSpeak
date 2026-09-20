@@ -7,12 +7,14 @@ import {
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
 import CrimeLawAwareness from "../components/CrimeLawAwareness";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Homepage() {
   const [caseCount, setCaseCount] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [pledgeTaken, setPledgeTaken] = useState(false);
   const [selectedStoryModal, setSelectedStoryModal] = useState(null);
+  const { isDark } = useTheme();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -73,7 +75,8 @@ export default function Homepage() {
       link: "/legal-assistant",
       linkText: "Draft Legal Complaint",
       tag: "AI Legal Drafter",
-      accent: "from-purple-600 to-indigo-600"
+      accent: "from-purple-600 to-indigo-600",
+      glow: "rgba(124,58,237,0.15)"
     },
     {
       title: "Tactical Safety & SOS Suite",
@@ -83,7 +86,8 @@ export default function Homepage() {
       link: "/safety-toolkit",
       linkText: "Open Safety Toolkit",
       tag: "1-Tap GPS & Alarm",
-      accent: "from-rose-600 to-red-700"
+      accent: "from-rose-600 to-red-700",
+      glow: "rgba(225,29,72,0.15)"
     },
     {
       title: "Safe Spaces & Crisis Directory",
@@ -93,7 +97,8 @@ export default function Homepage() {
       link: "/support-directory",
       linkText: "Find Nearest Crisis Center",
       tag: "Verified Desks",
-      accent: "from-emerald-600 to-teal-700"
+      accent: "from-emerald-600 to-teal-700",
+      glow: "rgba(16,185,129,0.15)"
     },
     {
       title: "Digital Privacy & Cyber Shield",
@@ -103,7 +108,8 @@ export default function Homepage() {
       link: "/digital-safety",
       linkText: "Audit Privacy Score",
       tag: "StopNCII & Cyber",
-      accent: "from-indigo-600 to-cyan-700"
+      accent: "from-indigo-600 to-cyan-700",
+      glow: "rgba(99,102,241,0.15)"
     },
     {
       title: "Statutory Laws & Rights",
@@ -113,7 +119,8 @@ export default function Homepage() {
       link: "/laws",
       linkText: "Explore Indian Laws",
       tag: "Statutory Rights",
-      accent: "from-violet-600 to-purple-800"
+      accent: "from-violet-600 to-purple-800",
+      glow: "rgba(109,40,217,0.15)"
     },
     {
       title: "Survivor Voice Hub",
@@ -123,7 +130,8 @@ export default function Homepage() {
       link: "/survivorStories",
       linkText: "Read Survivor Stories",
       tag: "Empowerment",
-      accent: "from-pink-600 to-rose-600"
+      accent: "from-pink-600 to-rose-600",
+      glow: "rgba(219,39,119,0.15)"
     }
   ];
 
@@ -215,38 +223,82 @@ export default function Homepage() {
     }
   ];
 
-  return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 selection:bg-purple-200 selection:text-purple-900">
+  /* ─── Dark-mode style helpers ─── */
+  const dk = {
+    pageBg:        isDark ? "bg-[#050505]"    : "bg-slate-50",
+    cardBg:        isDark ? "bg-[#0d0d0d]"    : "bg-white",
+    cardBorder:    isDark ? "border-white/[0.06]" : "border-slate-200",
+    hoverCardBg:   isDark ? "hover:bg-[#111]" : "hover:bg-purple-50/30",
+    sectionAlt:    isDark ? "bg-[#080808]"    : "bg-slate-100/60",
+    sectionDivider:isDark ? "border-white/[0.05]" : "border-slate-200",
+    headingPrimary:isDark ? "text-white"       : "text-slate-900",
+    headingDeep:   isDark ? "text-white"       : "text-slate-950",
+    bodyText:      isDark ? "text-[#c8c8c8]"  : "text-slate-600",
+    mutedText:     isDark ? "text-[#6b6b6b]"  : "text-slate-500",
+    pillPurple:    isDark ? "bg-purple-950/70 border-purple-700/40 text-purple-300"  : "bg-purple-100 border-purple-200 text-purple-900",
+    pillRose:      isDark ? "bg-rose-950/70 border-rose-700/40 text-rose-300"        : "bg-rose-100 border-rose-200 text-rose-800",
+    pillIndigo:    isDark ? "bg-indigo-950/70 border-indigo-700/40 text-indigo-300"  : "bg-indigo-100 border-indigo-200 text-indigo-800",
+    pillEmerald:   isDark ? "bg-emerald-950/70 border-emerald-700/40 text-emerald-400" : "bg-emerald-50 border-emerald-200 text-emerald-800",
+    innerPanel:    isDark ? "bg-[#111] border-white/[0.06]" : "bg-purple-50/60 border-purple-100",
+    innerPanelRose:isDark ? "bg-[#111] border-rose-900/40"  : "bg-rose-50/60 border-rose-100",
+    innerPanelIndigo:isDark ? "bg-[#111] border-indigo-900/40" : "bg-indigo-50/60 border-indigo-100",
+    iconBgPurple:  isDark ? "bg-purple-900/40 text-purple-400" : "bg-purple-100 text-purple-800",
+    iconBgRose:    isDark ? "bg-rose-900/40 text-rose-400"     : "bg-rose-100 text-rose-800",
+    iconBgIndigo:  isDark ? "bg-indigo-900/40 text-indigo-400" : "bg-indigo-100 text-indigo-800",
+    linkText:      isDark ? "text-purple-400 hover:text-purple-300" : "text-purple-700 hover:text-purple-900",
+    linkRose:      isDark ? "text-rose-400 hover:text-rose-300"     : "text-rose-600 hover:text-rose-800",
+    heroBtnOutline:isDark ? "bg-[#0d0d0d] hover:bg-[#151515] text-slate-100 border-white/10" : "bg-white hover:bg-slate-50 text-slate-800 border-slate-300",
+    heroBtnRose:   isDark ? "bg-rose-950/60 hover:bg-rose-950/80 text-rose-300 border-rose-800/40" : "bg-rose-50 hover:bg-rose-100 text-rose-700 border-rose-200",
+    statCard:      isDark ? "bg-[#0d0d0d] border-white/[0.06] hover:border-purple-500/20" : "bg-white border-slate-200 hover:border-purple-200",
+    stepInactive:  isDark ? "bg-[#0d0d0d] border-white/[0.06] text-slate-100 hover:bg-[#111] hover:border-purple-600/30" : "bg-slate-50 border-slate-200 text-slate-800 hover:bg-purple-50/50 hover:border-purple-200",
+    stepPanel:     isDark ? "bg-[#0d0d0d] border-white/[0.05]" : "bg-gradient-to-r from-purple-50/80 via-white to-purple-50/60 border-purple-200/80",
+    storyCard:     isDark ? "bg-[#0d0d0d] border-white/[0.06] hover:border-purple-500/30" : "bg-white border-slate-200 hover:border-purple-300",
+    modalBg:       isDark ? "bg-[#0d0d0d] border-white/[0.08]" : "bg-white border-purple-100",
+    closeBtn:      isDark ? "bg-[#1a1a1a] hover:bg-[#222] text-[#888]" : "bg-slate-100 hover:bg-slate-200 text-slate-600",
+    footerCard:    isDark ? "bg-[#0d0d0d] border-white/[0.06]" : "bg-white border-purple-100",
+    divider:       isDark ? "border-white/[0.05]" : "border-slate-100",
+  };
 
-      {/* ═══════════════════════════════════════════════════
+  return (
+    <div className={`min-h-screen ${dk.pageBg} ${dk.headingPrimary} selection:bg-purple-200 selection:text-purple-900 transition-colors duration-300`}>
+
+      {/* ══════════════════════════════════════════════════════════════
           1. HERO SECTION
-      ═══════════════════════════════════════════════════ */}
-      <section className="relative bg-gradient-to-b from-purple-50/80 via-slate-50 to-white dark:from-[#0d0010] dark:via-[#0a0a0a] dark:to-[#0a0a0a] text-slate-900 dark:text-slate-100 pt-16 pb-20 lg:pt-20 lg:pb-28 px-4 sm:px-6 border-b border-slate-200 dark:border-slate-700/80 overflow-hidden">
-        {/* Ambient glow – subtle purple in dark */}
-        <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[48rem] h-80 bg-purple-200/40 dark:bg-purple-900/20 rounded-full blur-3xl pointer-events-none"></div>
+      ══════════════════════════════════════════════════════════════ */}
+      <section className={`relative overflow-hidden pt-16 pb-20 lg:pt-20 lg:pb-28 px-4 sm:px-6 border-b ${dk.sectionDivider} ${isDark ? "bg-[#000]" : "bg-gradient-to-b from-purple-50/80 via-slate-50 to-white"}`}>
+        {/* Ambient glow — vivid purple on black */}
+        {isDark && (
+          <>
+            <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[60rem] h-96 bg-purple-900/20 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-96 h-80 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
+          </>
+        )}
+        {!isDark && (
+          <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[48rem] h-80 bg-purple-200/40 rounded-full blur-3xl pointer-events-none" />
+        )}
 
         <div className="relative max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-16">
           {/* Left Column */}
           <div className="flex-1 text-center lg:text-left space-y-6">
             {/* Trust Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-700/60 text-purple-900 dark:text-purple-200 text-xs font-bold uppercase tracking-wider shadow-sm">
+            <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider shadow-sm ${dk.pillPurple}`}>
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
               <span>100% Confidential • Free Legal Aid • 24/7 Crisis Dispatch</span>
             </div>
 
             {/* Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] text-slate-950 dark:text-white">
+            <h1 className={`text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] ${dk.headingDeep}`}>
               Break The Silence. <br />
-              <span className="bg-gradient-to-r from-purple-800 via-purple-700 to-indigo-700 dark:from-purple-400 dark:via-purple-300 dark:to-indigo-400 bg-clip-text text-transparent">
+              <span className={`bg-clip-text text-transparent ${isDark ? "bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400" : "bg-gradient-to-r from-purple-800 via-purple-700 to-indigo-700"}`}>
                 Demand Your Justice.
               </span>
             </h1>
 
             {/* Description */}
-            <p className="text-slate-600 dark:text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+            <p className={`text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal ${dk.bodyText}`}>
               BraveSpeak provides women across India with plain-English statutory rights, official Zero FIR drafters, emergency tactical safety tools, and verified institutional support.
             </p>
 
@@ -254,7 +306,7 @@ export default function Homepage() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
               <Link
                 to="/laws"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-900/20 hover:scale-105 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-900/30 hover:scale-105 transition-all cursor-pointer"
               >
                 <Scale size={18} />
                 <span>Know Your Legal Rights</span>
@@ -263,97 +315,96 @@ export default function Homepage() {
 
               <Link
                 to="/safety-toolkit"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-rose-50 dark:bg-rose-900/30 hover:bg-rose-100 dark:hover:bg-rose-900/50 text-rose-700 dark:text-rose-300 rounded-full text-sm font-bold shadow-sm border border-rose-200 dark:border-rose-700/50 hover:scale-105 transition-all cursor-pointer"
+                className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-bold shadow-sm border hover:scale-105 transition-all cursor-pointer ${dk.heroBtnRose}`}
               >
-                <ShieldAlert size={18} className="text-rose-600 dark:text-rose-400" />
+                <ShieldAlert size={18} />
                 <span>Emergency Safety Toolkit</span>
               </Link>
 
               <Link
                 to="/legal-assistant"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 rounded-full text-sm font-bold border border-slate-300 dark:border-slate-600 shadow-sm hover:scale-105 transition-all cursor-pointer"
+                className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-bold border shadow-sm hover:scale-105 transition-all cursor-pointer ${dk.heroBtnOutline}`}
               >
-                <FileText size={18} className="text-purple-700 dark:text-purple-400" />
+                <FileText size={18} className={isDark ? "text-violet-400" : "text-purple-700"} />
                 <span>Draft Zero FIR / Complaint</span>
               </Link>
             </div>
 
-            {/* Micro Highlights Banner */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-medium text-slate-600 dark:text-slate-400">
+            {/* Micro Highlights */}
+            <div className={`pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-medium ${dk.mutedText}`}>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400" /> Free DLSA Court Advocates
+                <CheckCircle2 size={15} className={isDark ? "text-emerald-400" : "text-emerald-600"} /> Free DLSA Court Advocates
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400" /> Universal Zero FIR
+                <CheckCircle2 size={15} className={isDark ? "text-emerald-400" : "text-emerald-600"} /> Universal Zero FIR
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={15} className="text-emerald-600 dark:text-emerald-400" /> Identity Protected under 228A IPC
+                <CheckCircle2 size={15} className={isDark ? "text-emerald-400" : "text-emerald-600"} /> Identity Protected under 228A IPC
               </span>
             </div>
           </div>
 
           {/* Right Column: Statutory Protections Card */}
-          <div className="w-full max-w-md lg:max-w-lg bg-white dark:bg-slate-800 p-6 sm:p-8 rounded-3xl border border-purple-100 dark:border-slate-700 shadow-xl shadow-purple-950/5 dark:shadow-black/30 space-y-5">
-            <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-700 pb-3">
+          <div className={`w-full max-w-md lg:max-w-lg p-6 sm:p-8 rounded-3xl border shadow-xl space-y-5 ${dk.footerCard} ${isDark ? "shadow-black/60" : "shadow-purple-950/5"}`}>
+            <div className={`flex items-center justify-between border-b pb-3 ${dk.divider}`}>
               <div className="flex items-center gap-2.5">
-                <img 
-                  src="/images/BraveSpeakLogoo.png" 
-                  alt="Logo" 
-                  className="w-8 h-8 object-contain" 
-                />
-                <span className="font-bold text-sm tracking-wide text-[#2E003E] dark:text-purple-200 uppercase">
+                <img src="/images/BraveSpeakLogoo.png" alt="Logo" className="w-8 h-8 object-contain" />
+                <span className={`font-bold text-sm tracking-wide uppercase ${isDark ? "text-purple-300" : "text-[#2E003E]"}`}>
                   Statutory Protections
                 </span>
               </div>
-              <span className="text-[10px] font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/30 px-2.5 py-1 rounded-full border border-emerald-200 dark:border-emerald-700/60">
+              <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border ${dk.pillEmerald}`}>
                 Verified Indian Law
               </span>
             </div>
 
             <div className="space-y-3">
-              <div className="p-3.5 bg-purple-50/60 dark:bg-purple-900/20 rounded-2xl border border-purple-100 dark:border-purple-800/50 flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-purple-100 dark:bg-purple-800/50 text-purple-800 dark:text-purple-200 shrink-0 mt-0.5">
+              {/* Zero FIR */}
+              <div className={`p-3.5 rounded-2xl border flex items-start gap-3 ${dk.innerPanel}`}>
+                <div className={`p-2 rounded-xl shrink-0 mt-0.5 ${dk.iconBgPurple}`}>
                   <Scale size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100">Right to Zero FIR (Sec 154 CrPC)</h4>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
+                  <h4 className={`text-xs font-bold ${dk.headingPrimary}`}>Right to Zero FIR (Sec 154 CrPC)</h4>
+                  <p className={`text-[11px] mt-0.5 leading-relaxed ${dk.bodyText}`}>
                     File at any police station across India without jurisdiction barrier; police cannot refuse.
                   </p>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-indigo-50/60 dark:bg-indigo-900/20 rounded-2xl border border-indigo-100 dark:border-indigo-800/50 flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-indigo-100 dark:bg-indigo-800/50 text-indigo-800 dark:text-indigo-200 shrink-0 mt-0.5">
+              {/* Privacy */}
+              <div className={`p-3.5 rounded-2xl border flex items-start gap-3 ${dk.innerPanelIndigo}`}>
+                <div className={`p-2 rounded-xl shrink-0 mt-0.5 ${dk.iconBgIndigo}`}>
                   <Lock size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100">Absolute Privacy (Sec 228A IPC)</h4>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
+                  <h4 className={`text-xs font-bold ${dk.headingPrimary}`}>Absolute Privacy (Sec 228A IPC)</h4>
+                  <p className={`text-[11px] mt-0.5 leading-relaxed ${dk.bodyText}`}>
                     Revealing a survivor's name or identity is a non-bailable offense with up to 2 years imprisonment.
                   </p>
                 </div>
               </div>
 
-              <div className="p-3.5 bg-rose-50/60 dark:bg-rose-900/20 rounded-2xl border border-rose-100 dark:border-rose-800/50 flex items-start gap-3">
-                <div className="p-2 rounded-xl bg-rose-100 dark:bg-rose-800/50 text-rose-800 dark:text-rose-200 shrink-0 mt-0.5">
+              {/* Helpline */}
+              <div className={`p-3.5 rounded-2xl border flex items-start gap-3 ${dk.innerPanelRose}`}>
+                <div className={`p-2 rounded-xl shrink-0 mt-0.5 ${dk.iconBgRose}`}>
                   <PhoneCall size={16} />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900 dark:text-slate-100">24x7 Emergency Helplines</h4>
-                  <p className="text-[11px] text-slate-600 dark:text-slate-400 mt-0.5 leading-relaxed">
-                    Dial <strong>181</strong> (Women Helpline) or <strong>112</strong> (National SOS) for immediate rescue dispatch.
+                  <h4 className={`text-xs font-bold ${dk.headingPrimary}`}>24x7 Emergency Helplines</h4>
+                  <p className={`text-[11px] mt-0.5 leading-relaxed ${dk.bodyText}`}>
+                    Dial <strong className={isDark ? "text-rose-300" : ""}>181</strong> (Women Helpline) or <strong className={isDark ? "text-rose-300" : ""}>112</strong> (National SOS) for immediate rescue dispatch.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="pt-2 flex items-center justify-between text-xs font-semibold">
-              <Link to="/laws" className="text-purple-700 dark:text-purple-400 hover:text-purple-900 dark:hover:text-purple-300 underline flex items-center gap-1">
+            <div className={`pt-2 flex items-center justify-between text-xs font-semibold`}>
+              <Link to="/laws" className={`underline flex items-center gap-1 ${dk.linkText}`}>
                 <span>View all 12+ harassment statutes</span>
                 <ChevronRight size={13} />
               </Link>
-              <Link to="/contact" className="text-rose-600 dark:text-rose-400 hover:text-rose-800 dark:hover:text-rose-300">
+              <Link to="/contact" className={dk.linkRose}>
                 Get Helpline Support →
               </Link>
             </div>
@@ -361,10 +412,10 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          2. EMERGENCY HELPLINE RIBBON (gradient cards – already dark)
-      ═══════════════════════════════════════════════════ */}
-      <section className="pt-8 pb-12 sm:pt-12 sm:pb-16 px-4 sm:px-6 mt-6 sm:mt-10 relative z-30">
+      {/* ══════════════════════════════════════════════════════════════
+          2. EMERGENCY HELPLINE RIBBON (gradient cards — always vivid)
+      ══════════════════════════════════════════════════════════════ */}
+      <section className={`pt-8 pb-12 sm:pt-12 sm:pb-16 px-4 sm:px-6 mt-6 sm:mt-10 relative z-30 ${isDark ? "bg-[#050505]" : ""}`}>
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {emergencyHelplines.map((helpline, idx) => {
@@ -385,19 +436,11 @@ export default function Homepage() {
                         {helpline.subtitle}
                       </span>
                     </div>
-
-                    <h3 className="text-xl font-bold text-white mb-1">
-                      {helpline.name}
-                    </h3>
-                    <p className={`text-xs ${helpline.textColor} opacity-90 leading-relaxed mb-4`}>
-                      {helpline.desc}
-                    </p>
+                    <h3 className="text-xl font-bold text-white mb-1">{helpline.name}</h3>
+                    <p className={`text-xs ${helpline.textColor} opacity-90 leading-relaxed mb-4`}>{helpline.desc}</p>
                   </div>
-
                   <div className="pt-3 border-t border-white/20 flex items-center justify-between">
-                    <span className="text-2xl font-black text-white">
-                      Dial {helpline.number}
-                    </span>
+                    <span className="text-2xl font-black text-white">Dial {helpline.number}</span>
                     <span className="text-xs font-bold text-white group-hover:translate-x-1 transition-transform flex items-center gap-1">
                       Call <ChevronRight size={14} />
                     </span>
@@ -409,19 +452,19 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
+      {/* ══════════════════════════════════════════════════════════════
           3. CORE SUPPORT PILLARS
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 bg-slate-100/60 dark:bg-slate-900/80 border-y border-slate-200 dark:border-slate-700/70">
+      ══════════════════════════════════════════════════════════════ */}
+      <section className={`py-16 sm:py-20 px-4 sm:px-6 border-y ${dk.sectionDivider} ${dk.sectionAlt}`}>
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-900 dark:text-purple-300 rounded-full border border-purple-200 dark:border-purple-700/60 uppercase tracking-wider">
+            <span className={`text-xs font-bold px-3 py-1 rounded-full border uppercase tracking-wider ${dk.pillPurple}`}>
               Comprehensive Ecosystem
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${dk.headingPrimary}`}>
               Everything You Need to Stand Strong
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
+            <p className={`text-base sm:text-lg ${dk.bodyText}`}>
               Navigating harassment and trauma requires knowledge, community, and fast action. BraveSpeak provides every critical pillar in one secure place.
             </p>
           </div>
@@ -432,32 +475,31 @@ export default function Homepage() {
               return (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-slate-800 rounded-3xl p-7 shadow-sm hover:shadow-xl border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 flex flex-col justify-between group"
+                  className={`rounded-3xl p-7 border transition-all duration-300 flex flex-col justify-between group ${dk.cardBg} ${dk.cardBorder} ${dk.hoverCardBg} ${isDark ? "hover:border-purple-500/25 hover:shadow-[0_0_30px_rgba(124,58,237,0.12)]" : "hover:border-purple-300 hover:shadow-xl"}`}
+                  style={isDark ? { boxShadow: "0 1px 20px rgba(0,0,0,0.5)" } : {}}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
                       <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pillar.accent} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
                         <IconComponent size={26} />
                       </div>
-                      <span className="text-[11px] font-bold text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/30 px-3 py-1 rounded-full border border-purple-100 dark:border-purple-800/60">
+                      <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${dk.pillPurple}`}>
                         {pillar.tag}
                       </span>
                     </div>
-
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors mb-1">
+                    <h3 className={`text-xl font-bold mb-1 transition-colors ${dk.headingPrimary} ${isDark ? "group-hover:text-violet-400" : "group-hover:text-purple-700"}`}>
                       {pillar.title}
                     </h3>
-                    <p className="text-xs font-semibold text-purple-700 dark:text-purple-400 mb-3">
+                    <p className={`text-xs font-semibold mb-3 ${isDark ? "text-violet-400" : "text-purple-700"}`}>
                       {pillar.subtitle}
                     </p>
-                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                    <p className={`text-sm leading-relaxed mb-6 ${dk.bodyText}`}>
                       {pillar.desc}
                     </p>
                   </div>
-
                   <Link
                     to={pillar.link}
-                    className="inline-flex items-center justify-between text-sm font-bold text-purple-700 dark:text-purple-400 group-hover:text-purple-950 dark:group-hover:text-purple-300 pt-4 border-t border-slate-100 dark:border-slate-700 transition"
+                    className={`inline-flex items-center justify-between text-sm font-bold pt-4 border-t transition ${dk.divider} ${isDark ? "text-violet-400 hover:text-violet-300" : "text-purple-700 hover:text-purple-950"}`}
                   >
                     <span>{pillar.linkText}</span>
                     <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
@@ -469,86 +511,74 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
+      {/* ══════════════════════════════════════════════════════════════
           4. CRIME REALITY DASHBOARD
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-gradient-to-b from-white via-purple-50/30 to-slate-50 dark:from-slate-900 dark:via-[#0d0010]/60 dark:to-slate-900 border-b border-slate-200 dark:border-slate-700/70">
-        <div className="max-w-6xl mx-auto space-y-12">
+      ══════════════════════════════════════════════════════════════ */}
+      <section className={`py-20 px-4 sm:px-6 border-b ${dk.sectionDivider} ${isDark ? "bg-[#000]" : "bg-gradient-to-b from-white via-purple-50/30 to-slate-50"}`}>
+        {isDark && (
+          <div className="absolute left-1/2 -translate-x-1/2 w-[40rem] h-64 bg-rose-950/20 rounded-full blur-3xl pointer-events-none" />
+        )}
+        <div className="relative max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-rose-100 dark:bg-rose-900/40 text-rose-800 dark:text-rose-300 rounded-full border border-rose-200 dark:border-rose-700/60 uppercase tracking-wider">
+            <span className={`text-xs font-bold px-3 py-1 rounded-full border uppercase tracking-wider ${dk.pillRose}`}>
               National Crime Records Bureau (NCRB)
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight ${dk.headingPrimary}`}>
               The Reality We Cannot Ignore
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
+            <p className={`text-base sm:text-lg ${dk.bodyText}`}>
               Behind every statistic is a human life, a story of struggle, and an urgent necessity for legal accountability.
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Stat Card 1 */}
-            <motion.div 
-              className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-md hover:shadow-xl border border-slate-200 dark:border-slate-700 hover:border-rose-200 dark:hover:border-rose-700/60 transition-all relative overflow-hidden"
+            {/* Stat Card 1 — Rose */}
+            <motion.div
+              className={`rounded-3xl p-8 border transition-all relative overflow-hidden ${dk.statCard} ${isDark ? "shadow-[0_1px_20px_rgba(0,0,0,0.6)]" : "shadow-md"}`}
               whileHover={{ y: -6 }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-3.5 bg-rose-100 dark:bg-rose-900/40 rounded-2xl text-rose-700 dark:text-rose-400">
-                  <AlertTriangle size={28} />
-                </div>
-                <span className="text-xs font-bold text-rose-700 dark:text-rose-400 bg-rose-50 dark:bg-rose-900/30 px-3 py-1 rounded-full border border-rose-200 dark:border-rose-700/60">
-                  Daily Registered
-                </span>
+              {isDark && <div className="absolute inset-0 bg-gradient-to-br from-rose-950/30 via-transparent to-transparent pointer-events-none rounded-3xl" />}
+              <div className="relative flex items-center justify-between mb-4">
+                <div className={`p-3.5 rounded-2xl ${dk.iconBgRose}`}><AlertTriangle size={28} /></div>
+                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillRose}`}>Daily Registered</span>
               </div>
-              <h3 className="text-5xl font-black bg-gradient-to-r from-rose-600 to-pink-600 bg-clip-text text-transparent mb-2">
-                87+
-              </h3>
-              <p className="text-base font-bold text-slate-900 dark:text-slate-100">Cases Reported Daily in India</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              <h3 className="text-5xl font-black bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent mb-2">87+</h3>
+              <p className={`text-base font-bold ${dk.headingPrimary}`}>Cases Reported Daily in India</p>
+              <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 Over 31,500 sexual violence cases are officially recorded every year in NCRB annual data compendiums.
               </p>
             </motion.div>
 
-            {/* Stat Card 2 */}
-            <motion.div 
-              className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-md hover:shadow-xl border border-slate-200 dark:border-slate-700 hover:border-purple-200 dark:hover:border-purple-700/60 transition-all relative overflow-hidden"
+            {/* Stat Card 2 — Purple */}
+            <motion.div
+              className={`rounded-3xl p-8 border transition-all relative overflow-hidden ${dk.statCard} ${isDark ? "shadow-[0_1px_20px_rgba(0,0,0,0.6)]" : "shadow-md"}`}
               whileHover={{ y: -6 }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-3.5 bg-purple-100 dark:bg-purple-900/40 rounded-2xl text-purple-700 dark:text-purple-400">
-                  <Clock size={28} />
-                </div>
-                <span className="text-xs font-bold text-purple-700 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/30 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-700/60">
-                  National Frequency
-                </span>
+              {isDark && <div className="absolute inset-0 bg-gradient-to-br from-purple-950/30 via-transparent to-transparent pointer-events-none rounded-3xl" />}
+              <div className="relative flex items-center justify-between mb-4">
+                <div className={`p-3.5 rounded-2xl ${dk.iconBgPurple}`}><Clock size={28} /></div>
+                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillPurple}`}>National Frequency</span>
               </div>
-              <h3 className="text-5xl font-black bg-gradient-to-r from-purple-700 to-indigo-600 bg-clip-text text-transparent mb-2">
-                1 / 16
-              </h3>
-              <p className="text-base font-bold text-slate-900 dark:text-slate-100">Minutes per Reported Offense</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              <h3 className="text-5xl font-black bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent mb-2">1 / 16</h3>
+              <p className={`text-base font-bold ${dk.headingPrimary}`}>Minutes per Reported Offense</p>
+              <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 On average, one sexual offense or modesty assault is registered every 16 minutes in India.
               </p>
             </motion.div>
 
-            {/* Stat Card 3 */}
-            <motion.div 
-              className="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-md hover:shadow-xl border border-slate-200 dark:border-slate-700 hover:border-indigo-200 dark:hover:border-indigo-700/60 transition-all relative overflow-hidden"
+            {/* Stat Card 3 — Indigo */}
+            <motion.div
+              className={`rounded-3xl p-8 border transition-all relative overflow-hidden ${dk.statCard} ${isDark ? "shadow-[0_1px_20px_rgba(0,0,0,0.6)]" : "shadow-md"}`}
               whileHover={{ y: -6 }}
             >
-              <div className="flex items-center justify-between mb-4">
-                <div className="p-3.5 bg-indigo-100 dark:bg-indigo-900/40 rounded-2xl text-indigo-700 dark:text-indigo-400">
-                  <BarChart3 size={28} />
-                </div>
-                <span className="text-xs font-bold text-indigo-700 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900/30 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-700/60">
-                  Live Session
-                </span>
+              {isDark && <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/30 via-transparent to-transparent pointer-events-none rounded-3xl" />}
+              <div className="relative flex items-center justify-between mb-4">
+                <div className={`p-3.5 rounded-2xl ${dk.iconBgIndigo}`}><BarChart3 size={28} /></div>
+                <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillIndigo}`}>Live Session</span>
               </div>
-              <h3 className="text-5xl font-black bg-gradient-to-r from-indigo-600 to-purple-800 bg-clip-text text-transparent mb-2">
-                +{caseCount}
-              </h3>
-              <p className="text-base font-bold text-slate-900 dark:text-slate-100">Estimated Since You Opened This Page</p>
-              <p className="text-xs text-slate-500 dark:text-slate-400 mt-2 leading-relaxed">
+              <h3 className="text-5xl font-black bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent mb-2">+{caseCount}</h3>
+              <p className={`text-base font-bold ${dk.headingPrimary}`}>Estimated Since You Opened This Page</p>
+              <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 A real-time awareness counter emphasizing the constant urgency of speaking up and seeking justice.
               </p>
             </motion.div>
@@ -566,24 +596,23 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
+      {/* ══════════════════════════════════════════════════════════════
           5. INTERACTIVE 4-STEP EMERGENCY GUIDE
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-white dark:bg-slate-900">
+      ══════════════════════════════════════════════════════════════ */}
+      <section className={`py-20 px-4 sm:px-6 ${isDark ? "bg-[#050505]" : "bg-white"}`}>
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-900 dark:text-purple-300 rounded-full border border-purple-200 dark:border-purple-700/60 uppercase tracking-wider">
+            <span className={`text-xs font-bold px-3 py-1 rounded-full border uppercase tracking-wider ${dk.pillPurple}`}>
               Emergency Action Plan
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${dk.headingPrimary}`}>
               What to Do in an Emergency: 4 Steps
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg">
+            <p className={`text-base sm:text-lg ${dk.bodyText}`}>
               Click on each step below to view crucial safety actions, legal rights, and practical evidence tips.
             </p>
           </div>
 
-          {/* Interactive Steps Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
             {emergencySteps.map((step, idx) => {
               const isSelected = activeStep === idx;
@@ -594,12 +623,12 @@ export default function Homepage() {
                   className={`p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                     isSelected
                       ? "bg-gradient-to-b from-[#290B3D] to-purple-950 text-white shadow-xl scale-[1.03] border-purple-400/40"
-                      : "bg-slate-50 dark:bg-slate-800 hover:bg-purple-50/50 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-100 border-slate-200 dark:border-slate-700 hover:border-purple-200 dark:hover:border-purple-700/60"
+                      : `${dk.stepInactive}`
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className={`text-4xl font-black ${isSelected ? "text-purple-300" : "text-purple-400/70 dark:text-purple-500"}`}>
+                      <span className={`text-4xl font-black ${isSelected ? "text-purple-300" : isDark ? "text-purple-500/60" : "text-purple-400/70"}`}>
                         {step.num}
                       </span>
                       {isSelected && (
@@ -608,19 +637,17 @@ export default function Homepage() {
                         </span>
                       )}
                     </div>
-
-                    <h3 className={`text-xl font-bold mb-2 ${isSelected ? "text-white" : "text-slate-900 dark:text-white"}`}>
+                    <h3 className={`text-xl font-bold mb-2 ${isSelected ? "text-white" : dk.headingPrimary}`}>
                       {step.title}
                     </h3>
-                    <p className={`text-xs leading-relaxed mb-4 ${isSelected ? "text-purple-200" : "text-slate-600 dark:text-slate-400"}`}>
+                    <p className={`text-xs leading-relaxed mb-4 ${isSelected ? "text-purple-200" : dk.bodyText}`}>
                       {step.summary}
                     </p>
                   </div>
-
                   <div className={`pt-3 border-t text-[11px] font-medium flex items-start gap-1.5 ${
-                    isSelected ? "border-purple-800/80 text-purple-200" : "border-slate-200 dark:border-slate-700 text-purple-900 dark:text-purple-400"
+                    isSelected ? "border-purple-800/80 text-purple-200" : `${dk.divider} ${isDark ? "text-violet-400" : "text-purple-900"}`
                   }`}>
-                    <CheckCircle2 size={15} className={`shrink-0 mt-0.5 ${isSelected ? "text-emerald-400" : "text-purple-600 dark:text-purple-500"}`} />
+                    <CheckCircle2 size={15} className={`shrink-0 mt-0.5 ${isSelected ? "text-emerald-400" : isDark ? "text-violet-500" : "text-purple-600"}`} />
                     <span>{step.actionTip}</span>
                   </div>
                 </div>
@@ -628,32 +655,23 @@ export default function Homepage() {
             })}
           </div>
 
-          {/* Detailed Display Box */}
-          <div className="bg-gradient-to-r from-purple-50/80 via-white to-purple-50/60 dark:from-slate-800 dark:via-slate-800/80 dark:to-slate-800 p-8 rounded-3xl border border-purple-200/80 dark:border-slate-700 shadow-md">
+          {/* Detail Panel */}
+          <div className={`p-8 rounded-3xl border shadow-md ${dk.stepPanel}`}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="space-y-2">
-                <span className="text-xs font-bold text-purple-700 dark:text-purple-400 uppercase tracking-wider">
+                <span className={`text-xs font-bold uppercase tracking-wider ${isDark ? "text-violet-400" : "text-purple-700"}`}>
                   Detailed Guidance for Step {emergencySteps[activeStep].num}
                 </span>
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
-                  {emergencySteps[activeStep].title}
-                </h3>
-                <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed max-w-2xl">
+                <h3 className={`text-2xl font-bold ${dk.headingPrimary}`}>{emergencySteps[activeStep].title}</h3>
+                <p className={`text-sm leading-relaxed max-w-2xl ${isDark ? "text-[#b0b0b0]" : "text-slate-700"}`}>
                   {emergencySteps[activeStep].details}
                 </p>
               </div>
-
               <div className="flex flex-wrap gap-3">
-                <a
-                  href="tel:181"
-                  className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
-                >
+                <a href="tel:181" className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2">
                   <PhoneCall size={14} /> Call 181 Now
                 </a>
-                <Link
-                  to="/laws"
-                  className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2"
-                >
+                <Link to="/laws" className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2">
                   <Scale size={14} /> View All Laws
                 </Link>
               </div>
@@ -662,13 +680,12 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* CRIME TO LAW AWARENESS SECTION */}
+      {/* CRIME TO LAW AWARENESS */}
       <CrimeLawAwareness />
 
-      {/* ═══════════════════════════════════════════════════
-          6. FUNDAMENTAL SURVIVOR RIGHTS
-          (Already dark purple gradient — minor color tweaks)
-      ═══════════════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════════════════════
+          6. FUNDAMENTAL SURVIVOR RIGHTS (dark gradient — always rich)
+      ══════════════════════════════════════════════════════════════ */}
       <section className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#290B3D] via-[#3E0E59] to-[#180424] text-white">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
@@ -682,30 +699,17 @@ export default function Homepage() {
               Knowledge is your greatest shield. Under Indian law, these 4 protections are guaranteed by statute.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {fundamentalRights.map((right, idx) => (
-              <div 
-                key={idx}
-                className="p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/15 shadow-xl hover:bg-white/15 transition-all duration-300 space-y-4 flex flex-col justify-between"
-              >
+              <div key={idx} className="p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/15 shadow-xl hover:bg-white/15 transition-all duration-300 space-y-4 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-purple-300 uppercase tracking-wider">
-                      {right.section}
-                    </span>
-                    <span className="w-8 h-8 rounded-full bg-purple-500/30 flex items-center justify-center text-purple-200 font-bold text-xs">
-                      0{idx + 1}
-                    </span>
+                    <span className="text-xs font-bold text-purple-300 uppercase tracking-wider">{right.section}</span>
+                    <span className="w-8 h-8 rounded-full bg-purple-500/30 flex items-center justify-center text-purple-200 font-bold text-xs">0{idx + 1}</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">
-                    {right.title}
-                  </h3>
-                  <p className="text-purple-100/90 text-sm leading-relaxed">
-                    {right.desc}
-                  </p>
+                  <h3 className="text-2xl font-bold text-white mb-2">{right.title}</h3>
+                  <p className="text-purple-100/90 text-sm leading-relaxed">{right.desc}</p>
                 </div>
-
                 <div className="p-3 bg-white/10 rounded-2xl border border-white/10 text-xs font-semibold text-emerald-300 flex items-center gap-2">
                   <CheckCircle2 size={16} className="shrink-0 text-emerald-400" />
                   <span>{right.highlight}</span>
@@ -713,12 +717,8 @@ export default function Homepage() {
               </div>
             ))}
           </div>
-
           <div className="text-center pt-4">
-            <Link
-              to="/laws"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold text-sm shadow-2xl transition hover:scale-105"
-            >
+            <Link to="/laws" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold text-sm shadow-2xl transition hover:scale-105">
               <Scale size={18} />
               <span>Explore Complete Indian Laws & Penalties Guide</span>
               <ArrowRight size={16} />
@@ -727,27 +727,26 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
+      {/* ══════════════════════════════════════════════════════════════
           7. FEATURED SURVIVOR STORIES
-      ═══════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-slate-50 dark:bg-slate-900">
+      ══════════════════════════════════════════════════════════════ */}
+      <section className={`py-20 px-4 sm:px-6 ${isDark ? "bg-[#050505]" : "bg-slate-50"}`}>
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
-              <span className="text-xs font-bold px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-900 dark:text-purple-300 rounded-full border border-purple-200 dark:border-purple-700/60 uppercase tracking-wider">
+              <span className={`text-xs font-bold px-3 py-1 rounded-full border uppercase tracking-wider ${dk.pillPurple}`}>
                 Real Journeys of Resilience
               </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              <h2 className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${dk.headingPrimary}`}>
                 Voices of Courage & Healing
               </h2>
-              <p className="text-slate-600 dark:text-slate-400 text-base">
+              <p className={`text-base ${dk.bodyText}`}>
                 Read how courageous women navigated harassment, exercised their legal rights, and rebuilt their strength.
               </p>
             </div>
-
             <Link
               to="/survivorStories"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-100 dark:bg-purple-900/40 hover:bg-purple-200 dark:hover:bg-purple-900/60 text-purple-950 dark:text-purple-200 rounded-full font-bold text-xs transition self-start md:self-auto border border-transparent dark:border-purple-700/50"
+              className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold text-xs transition self-start md:self-auto border ${dk.pillPurple}`}
             >
               <span>View All Community Stories</span>
               <ArrowRight size={15} />
@@ -759,7 +758,7 @@ export default function Homepage() {
               <div
                 key={idx}
                 onClick={() => setSelectedStoryModal(story)}
-                className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-slate-200 dark:border-slate-700 hover:border-purple-300 dark:hover:border-purple-600 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                className={`rounded-3xl overflow-hidden border transition-all duration-300 flex flex-col justify-between group cursor-pointer ${dk.storyCard} ${isDark ? "shadow-[0_1px_20px_rgba(0,0,0,0.6)] hover:shadow-[0_0_30px_rgba(124,58,237,0.12)]" : "shadow-sm hover:shadow-xl"}`}
               >
                 <div>
                   <div className="relative h-48 overflow-hidden bg-purple-950">
@@ -775,20 +774,16 @@ export default function Homepage() {
                       </span>
                     </div>
                   </div>
-
                   <div className="p-6 space-y-3">
-                    <h3 className="text-xl font-bold text-slate-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors">
+                    <h3 className={`text-xl font-bold transition-colors ${dk.headingPrimary} ${isDark ? "group-hover:text-violet-400" : "group-hover:text-purple-700"}`}>
                       {story.title}
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed line-clamp-3">
-                      "{story.preview}"
-                    </p>
+                    <p className={`text-xs leading-relaxed line-clamp-3 ${dk.bodyText}`}>"{story.preview}"</p>
                   </div>
                 </div>
-
-                <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-700 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
-                  <span className="font-bold text-purple-900 dark:text-purple-300">By {story.author}</span>
-                  <span className="text-purple-700 dark:text-purple-400 font-bold group-hover:underline">Read Full Story →</span>
+                <div className={`px-6 py-4 border-t flex items-center justify-between text-xs ${dk.divider} ${dk.mutedText}`}>
+                  <span className={`font-bold ${isDark ? "text-violet-400" : "text-purple-900"}`}>By {story.author}</span>
+                  <span className={`font-bold group-hover:underline ${isDark ? "text-violet-400" : "text-purple-700"}`}>Read Full Story →</span>
                 </div>
               </div>
             ))}
@@ -796,9 +791,9 @@ export default function Homepage() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          8. COMMUNITY PLEDGE CTA (already dark gradient — no change)
-      ═══════════════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════════════════════
+          8. COMMUNITY PLEDGE CTA (always dark gradient)
+      ══════════════════════════════════════════════════════════════ */}
       <section className="py-20 px-4 sm:px-6 bg-gradient-to-r from-[#290B3D] via-[#4F136E] to-[#290B3D] text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-7">
           <span className="inline-block px-4 py-1.5 bg-white/10 rounded-full text-xs font-bold text-purple-200 border border-white/20 uppercase tracking-wider">
@@ -810,83 +805,62 @@ export default function Homepage() {
           <p className="text-purple-100/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Whether you need confidential guidance, wish to report an incident, or want to support someone in distress, BraveSpeak is always here for you.
           </p>
-
           <div className="flex flex-wrap gap-4 justify-center pt-2">
             <button
               onClick={() => setPledgeTaken(true)}
               className="px-8 py-4 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
             >
               {pledgeTaken ? (
-                <>
-                  <Check size={18} />
-                  <span>Pledge Taken! Thank You for Standing Strong</span>
-                </>
+                <><Check size={18} /><span>Pledge Taken! Thank You for Standing Strong</span></>
               ) : (
-                <>
-                  <Heart size={18} className="fill-white" />
-                  <span>Take the #BreakTheSilence Pledge</span>
-                </>
+                <><Heart size={18} className="fill-white" /><span>Take the #BreakTheSilence Pledge</span></>
               )}
             </button>
-
-            <Link
-              to="/contact"
-              className="px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold shadow-2xl transition hover:scale-105 text-sm"
-            >
+            <Link to="/contact" className="px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold shadow-2xl transition hover:scale-105 text-sm">
               Get Confidential Help & Support
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ═══════════════════════════════════════════════════
-          STORY QUICK-READ MODAL
-      ═══════════════════════════════════════════════════ */}
+      {/* ══════════════════════════════════════════════════════════════
+          STORY MODAL
+      ══════════════════════════════════════════════════════════════ */}
       <AnimatePresence>
         {selectedStoryModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="bg-white dark:bg-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl border border-purple-100 dark:border-slate-700 space-y-4 max-h-[90vh] overflow-y-auto"
+              className={`rounded-3xl max-w-xl w-full p-6 sm:p-8 relative shadow-2xl border space-y-4 max-h-[90vh] overflow-y-auto ${dk.modalBg} ${isDark ? "shadow-black/80" : ""}`}
             >
               <button
                 onClick={() => setSelectedStoryModal(null)}
-                className="absolute top-5 right-5 p-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full text-slate-600 dark:text-slate-300 transition"
+                className={`absolute top-5 right-5 p-2 rounded-full transition ${dk.closeBtn}`}
                 aria-label="Close"
               >
                 <X size={20} />
               </button>
-
-              <span className="text-xs font-bold px-3 py-1 bg-purple-100 dark:bg-purple-900/40 text-purple-900 dark:text-purple-300 rounded-full">
+              <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillPurple}`}>
                 {selectedStoryModal.category}
               </span>
-
-              <h2 className="text-2xl font-bold text-[#2E003E] dark:text-white">
+              <h2 className={`text-2xl font-bold ${isDark ? "text-white" : "text-[#2E003E]"}`}>
                 {selectedStoryModal.title}
               </h2>
-
-              <p className="text-xs text-slate-500 dark:text-slate-400 font-semibold">
+              <p className={`text-xs font-semibold ${dk.mutedText}`}>
                 By {selectedStoryModal.author} • {selectedStoryModal.readTime}
               </p>
-
               <div className="h-56 rounded-2xl overflow-hidden shadow">
-                <img
-                  src={selectedStoryModal.img}
-                  alt={selectedStoryModal.title}
-                  className="w-full h-full object-cover"
-                />
+                <img src={selectedStoryModal.img} alt={selectedStoryModal.title} className="w-full h-full object-cover" />
               </div>
-
-              <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed whitespace-pre-line">
+              <p className={`text-sm leading-relaxed whitespace-pre-line ${dk.bodyText}`}>
                 {selectedStoryModal.fullStory}
               </p>
-
-              <div className="pt-4 border-t border-slate-100 dark:border-slate-700 flex justify-end">
+              <div className={`pt-4 border-t flex justify-end ${dk.divider}`}>
                 <button
                   onClick={() => setSelectedStoryModal(null)}
-                  className="px-6 py-2 bg-[#2E003E] dark:bg-purple-700 hover:bg-purple-900 dark:hover:bg-purple-600 text-white rounded-full font-semibold text-xs transition"
+                  className="px-6 py-2 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-semibold text-xs transition"
                 >
                   Close Story
                 </button>

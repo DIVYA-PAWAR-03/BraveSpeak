@@ -5,13 +5,110 @@
 
 /* Smooth dark/light transitions */
 *, *::before, *::after {
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.15s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease, box-shadow 0.25s ease;
 }
 
 :root {
   color-scheme: light;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   TRUE-BLACK DARK THEME — Premium dark canvas
+   ───────────────────────────────────────────────────────────── */
 .dark {
   color-scheme: dark;
+
+  /* Page background layers — pure black hierarchy */
+  --color-slate-950: #000000;   /* deepest black                     */
+  --color-slate-900: #050505;   /* page background                   */
+  --color-slate-800: #0d0d0d;   /* cards / panels                    */
+  --color-slate-700: #171717;   /* hover surfaces / inner panels     */
+  --color-slate-600: #252525;   /* subtle borders                    */
+
+  /* Text on black — crisp contrast */
+  --color-slate-100: #ffffff;   /* pure white headings               */
+  --color-slate-200: #e5e5e5;   /* secondary headings                */
+  --color-slate-300: #c8c8c8;   /* body text                         */
+  --color-slate-400: #8a8a8a;   /* muted / caption text              */
+  --color-slate-500: #555555;   /* placeholder / disabled            */
+
+  /* Purple accents — vivid on black */
+  --color-purple-50:  #160d25;
+  --color-purple-100: #1e1035;
+  --color-purple-200: #3b1f6e;
+  --color-purple-300: #a78bfa;
+  --color-purple-400: #c084fc;
+  --color-purple-700: #7c3aed;
+  --color-purple-800: #6d28d9;
+  --color-purple-900: #1e1035;
+  --color-purple-950: #0f0820;
+
+  /* Rose accents — vivid on black */
+  --color-rose-50:  #1a0810;
+  --color-rose-100: #200e16;
+  --color-rose-200: #4c1020;
+  --color-rose-300: #fda4af;
+  --color-rose-400: #fb7185;
+  --color-rose-800: #9f1239;
+  --color-rose-900: #1a0810;
+  --color-rose-950: #0d0408;
+
+  /* Indigo accents */
+  --color-indigo-50:  #0d0f2e;
+  --color-indigo-100: #121535;
+  --color-indigo-200: #232b6e;
+  --color-indigo-300: #a5b4fc;
+  --color-indigo-400: #818cf8;
+  --color-indigo-800: #3730a3;
+  --color-indigo-900: #121535;
+  --color-indigo-950: #08091a;
+
+  /* Amber / Emerald accents */
+  --color-amber-50:  #1c1200;
+  --color-amber-100: #231800;
+  --color-amber-200: #4d3500;
+  --color-amber-300: #fcd34d;
+  --color-amber-900: #231800;
+  --color-emerald-50:  #031a0e;
+  --color-emerald-100: #052014;
+  --color-emerald-400: #34d399;
+  --color-emerald-900: #052014;
+}
+
+/* ── Premium dark glow utilities ── */
+.dark .dark-card {
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.6), 0 4px 20px rgba(0,0,0,0.4);
+}
+.dark .dark-card:hover {
+  border-color: rgba(168, 85, 247, 0.25);
+  box-shadow: 0 4px 30px rgba(0,0,0,0.5), 0 0 0 1px rgba(168,85,247,0.15);
+}
+.dark .dark-section-alt {
+  background: #080808;
+}
+.dark .dark-pill-purple {
+  background: rgba(88, 28, 135, 0.35);
+  border-color: rgba(168, 85, 247, 0.3);
+  color: #c084fc;
+}
+.dark .dark-pill-rose {
+  background: rgba(136, 19, 55, 0.35);
+  border-color: rgba(251, 113, 133, 0.3);
+  color: #fb7185;
+}
+.dark .dark-pill-indigo {
+  background: rgba(49, 46, 129, 0.35);
+  border-color: rgba(129, 140, 248, 0.3);
+  color: #818cf8;
+}
+.dark .dark-input {
+  background: #0a0a0a;
+  border-color: rgba(255,255,255,0.09);
+  color: #e5e5e5;
+}
+.dark .dark-input:focus {
+  border-color: rgba(168, 85, 247, 0.5);
+  box-shadow: 0 0 0 3px rgba(168,85,247,0.12);
 }
