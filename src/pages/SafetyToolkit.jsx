@@ -412,7 +412,10 @@ export default function SafetyToolkit() {
     <div className={`min-h-screen py-12 px-4 sm:px-6 transition-colors duration-200 ${
       isStrobeActive ? "bg-red-700 animate-pulse text-white" : "bg-slate-50 dark:bg-slate-900 text-slate-900 dark:text-slate-100"
     }`}>
-      {/* Fullscreen Ringing Call Modal */}
+
+      {/* ═══════════════════════════════════════════════════
+          FULLSCREEN RINGING CALL MODAL
+      ═══════════════════════════════════════════════════ */}
       <AnimatePresence>
         {callState === "ringing" && (
           <motion.div
@@ -488,15 +491,18 @@ export default function SafetyToolkit() {
       </AnimatePresence>
 
       <div className="max-w-7xl mx-auto space-y-12">
-        {/* Header */}
+
+        {/* ═══════════════════════════════════════════════════
+            PAGE HEADER
+        ═══════════════════════════════════════════════════ */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
-            <ShieldAlert size={15} className="text-purple-700" /> Instant Tactical Safety Suite
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-700/60 text-purple-900 dark:text-purple-300 text-xs font-bold uppercase tracking-wider">
+            <ShieldAlert size={15} className="text-purple-700 dark:text-purple-400" /> Instant Tactical Safety Suite
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] dark:text-white tracking-tight">
             Emergency Safety & SOS Toolkit
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
             Practical emergency tools designed for fast action: fake an incoming call to escape uncomfortable situations, sound a loud deterrence siren, vault audio evidence, or dispatch live GPS location.
           </p>
         </div>
@@ -516,36 +522,39 @@ export default function SafetyToolkit() {
           )}
         </AnimatePresence>
 
-        {/* 3 Main Tactical Tools Grid */}
+        {/* ═══════════════════════════════════════════════════
+            3 MAIN TACTICAL TOOLS GRID
+        ═══════════════════════════════════════════════════ */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Tool 1: Fake Call Simulator */}
-          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 flex flex-col justify-between space-y-6">
+
+          {/* ── Tool 1: Fake Call Simulator ── */}
+          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 dark:border-slate-700 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-800 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-purple-100 dark:bg-purple-900/40 text-purple-800 dark:text-purple-300 flex items-center justify-center">
                   <PhoneCall size={24} />
                 </div>
-                <span className="text-xs font-bold bg-purple-50 text-purple-900 px-3 py-1 rounded-full border border-purple-200">
+                <span className="text-xs font-bold bg-purple-50 dark:bg-purple-900/30 text-purple-900 dark:text-purple-300 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-700/60">
                   Escort Simulator
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-[#2E003E]">Fake Call Escape</h3>
-                <p className="text-xs text-slate-500 mt-1">
+                <h3 className="text-xl font-bold text-[#2E003E] dark:text-white">Fake Call Escape</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                   Trigger a simulated incoming call with audio ringtone to politely excuse yourself from unsafe encounters.
                 </p>
               </div>
 
               <div className="space-y-3 pt-2">
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                     Caller Name
                   </label>
                   <select
                     value={callerName}
                     onChange={(e) => setCallerName(e.target.value)}
-                    className="w-full p-2.5 bg-purple-50/50 border border-purple-200 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    className="w-full p-2.5 bg-purple-50/50 dark:bg-slate-700 border border-purple-200 dark:border-slate-600 rounded-xl text-xs font-medium focus:outline-none focus:ring-2 focus:ring-purple-400 dark:text-slate-100"
                   >
                     <option value="Mom">Mom</option>
                     <option value="Dad">Dad</option>
@@ -564,20 +573,20 @@ export default function SafetyToolkit() {
                   </button>
                   <button
                     onClick={() => triggerFakeCall(5)}
-                    className="py-2.5 px-3 bg-purple-100 hover:bg-purple-200 text-purple-900 rounded-xl text-xs font-bold transition cursor-pointer"
+                    className="py-2.5 px-3 bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 text-purple-900 dark:text-purple-300 rounded-xl text-xs font-bold transition cursor-pointer border border-transparent dark:border-purple-800/50"
                   >
                     In 5 Sec
                   </button>
                   <button
                     onClick={() => triggerFakeCall(15)}
-                    className="py-2.5 px-3 bg-purple-100 hover:bg-purple-200 text-purple-900 rounded-xl text-xs font-bold transition cursor-pointer"
+                    className="py-2.5 px-3 bg-purple-100 dark:bg-purple-900/30 hover:bg-purple-200 dark:hover:bg-purple-900/50 text-purple-900 dark:text-purple-300 rounded-xl text-xs font-bold transition cursor-pointer border border-transparent dark:border-purple-800/50"
                   >
                     In 15 Sec
                   </button>
                 </div>
 
                 {callState === "timer" && (
-                  <div className="p-3 bg-amber-50 border border-amber-200 rounded-xl flex items-center justify-between text-xs text-amber-900">
+                  <div className="p-3 bg-amber-50 dark:bg-amber-900/25 border border-amber-200 dark:border-amber-700/50 rounded-xl flex items-center justify-between text-xs text-amber-900 dark:text-amber-300">
                     <span className="font-semibold">Call scheduled in {callDelay}s...</span>
                     <button onClick={endCall} className="underline font-bold">Cancel</button>
                   </div>
@@ -585,26 +594,26 @@ export default function SafetyToolkit() {
               </div>
             </div>
 
-            <div className="text-[11px] text-slate-400 border-t border-slate-100 pt-3">
+            <div className="text-[11px] text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-700 pt-3">
               Works completely offline. Synthesizes a real telephone frequency.
             </div>
           </div>
 
-          {/* Tool 2: Deterrence Siren & Strobe Alarm */}
-          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 flex flex-col justify-between space-y-6">
+          {/* ── Tool 2: Deterrence Siren & Strobe Alarm ── */}
+          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 dark:border-slate-700 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-800 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-rose-100 dark:bg-rose-900/40 text-rose-800 dark:text-rose-300 flex items-center justify-center">
                   <AlertOctagon size={24} />
                 </div>
-                <span className="text-xs font-bold bg-rose-50 text-rose-900 px-3 py-1 rounded-full border border-rose-200">
+                <span className="text-xs font-bold bg-rose-50 dark:bg-rose-900/30 text-rose-900 dark:text-rose-300 px-3 py-1 rounded-full border border-rose-200 dark:border-rose-700/60">
                   Deterrence
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-[#2E003E]">SOS Alarm & Strobe</h3>
-                <p className="text-xs text-slate-500 mt-1">
+                <h3 className="text-xl font-bold text-[#2E003E] dark:text-white">SOS Alarm & Strobe</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                   Generates an ear-piercing oscillating siren sound and high-contrast screen flashing to draw immediate bystander attention.
                 </p>
               </div>
@@ -621,32 +630,32 @@ export default function SafetyToolkit() {
                   {isSirenActive ? <VolumeX size={32} /> : <Volume2 size={32} />}
                   <span className="mt-1">{isSirenActive ? "STOP SIREN" : "START ALARM"}</span>
                 </button>
-                <p className="text-xs text-slate-500 text-center font-medium">
+                <p className="text-xs text-slate-500 dark:text-slate-400 text-center font-medium">
                   {isSirenActive ? "Siren is active! Press above to stop." : "Ensure your phone/laptop volume is set to maximum."}
                 </p>
               </div>
             </div>
 
-            <div className="text-[11px] text-slate-400 border-t border-slate-100 pt-3">
+            <div className="text-[11px] text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-700 pt-3">
               Oscillates between 600Hz - 900Hz alarm frequency to cut through noise.
             </div>
           </div>
 
-          {/* Tool 3: Audio Evidence Grabber & Vault */}
-          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 flex flex-col justify-between space-y-6">
+          {/* ── Tool 3: Audio Evidence Grabber & Vault ── */}
+          <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 dark:border-slate-700 flex flex-col justify-between space-y-6">
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <div className="w-12 h-12 rounded-2xl bg-indigo-100 text-indigo-800 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-indigo-100 dark:bg-indigo-900/40 text-indigo-800 dark:text-indigo-300 flex items-center justify-center">
                   <Mic size={24} />
                 </div>
-                <span className="text-xs font-bold bg-indigo-50 text-indigo-900 px-3 py-1 rounded-full border border-indigo-200">
+                <span className="text-xs font-bold bg-indigo-50 dark:bg-indigo-900/30 text-indigo-900 dark:text-indigo-300 px-3 py-1 rounded-full border border-indigo-200 dark:border-indigo-700/60">
                   Evidence Capture
                 </span>
               </div>
 
               <div>
-                <h3 className="text-xl font-bold text-[#2E003E]">Discreet Voice Recorder</h3>
-                <p className="text-xs text-slate-500 mt-1">
+                <h3 className="text-xl font-bold text-[#2E003E] dark:text-white">Discreet Voice Recorder</h3>
+                <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                   Safely record verbal harassment, threats, or confrontations directly with 1-click cloud vaulting.
                 </p>
               </div>
@@ -669,7 +678,7 @@ export default function SafetyToolkit() {
                 )}
 
                 {audioUrl && (
-                  <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 space-y-2">
+                  <div className="p-3 bg-slate-50 dark:bg-slate-700 rounded-xl border border-slate-200 dark:border-slate-600 space-y-2">
                     <p className="text-xs font-semibold text-slate-700 dark:text-slate-300">Recorded Evidence Clip:</p>
                     <audio src={audioUrl} controls className="w-full h-8" />
                     <div className="flex gap-2 pt-1">
@@ -684,7 +693,7 @@ export default function SafetyToolkit() {
                       <a
                         href={audioUrl}
                         download={`incident_audio_${Date.now()}.webm`}
-                        className="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-800 rounded-lg text-xs font-bold flex items-center gap-1"
+                        className="px-3 py-1.5 bg-slate-200 dark:bg-slate-600 hover:bg-slate-300 dark:hover:bg-slate-500 text-slate-800 dark:text-slate-100 rounded-lg text-xs font-bold flex items-center gap-1"
                       >
                         <Download size={12} /> Save
                       </a>
@@ -693,28 +702,30 @@ export default function SafetyToolkit() {
                 )}
 
                 {vaultSuccess && (
-                  <p className="text-xs font-bold text-emerald-700 bg-emerald-50 p-2.5 rounded-xl border border-emerald-200 text-center">
+                  <p className="text-xs font-bold text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-900/30 p-2.5 rounded-xl border border-emerald-200 dark:border-emerald-700/60 text-center">
                     ✓ {vaultSuccess}
                   </p>
                 )}
               </div>
             </div>
 
-            <div className="text-[11px] text-slate-400 border-t border-slate-100 pt-3">
+            <div className="text-[11px] text-slate-400 dark:text-slate-500 border-t border-slate-100 dark:border-slate-700 pt-3">
               Audio is encrypted and vaulted with timestamps for court / POSH evidence.
             </div>
           </div>
         </div>
 
-        {/* Section 2: 1-Tap Geolocation & WhatsApp/SMS SOS Dispatcher */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-purple-100 pb-6">
+        {/* ═══════════════════════════════════════════════════
+            GPS SOS DISPATCHER
+        ═══════════════════════════════════════════════════ */}
+        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 dark:border-slate-700 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-purple-100 dark:border-slate-700 pb-6">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-800 bg-purple-50 px-3 py-1 rounded-full mb-2">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/30 px-3 py-1 rounded-full mb-2">
                 <MapPin size={14} /> Instant Emergency SOS Dispatch
               </div>
-              <h2 className="text-2xl font-black text-[#2E003E]">Live GPS Location & Emergency Alert</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-black text-[#2E003E] dark:text-white">Live GPS Location & Emergency Alert</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Save trusted contacts. In danger, tap to broadcast your live GPS coordinates via WhatsApp or SMS.
               </p>
             </div>
@@ -730,24 +741,24 @@ export default function SafetyToolkit() {
           </div>
 
           {locError && (
-            <div className="p-3 bg-rose-50 border border-rose-200 text-rose-900 text-xs rounded-xl font-medium">
+            <div className="p-3 bg-rose-50 dark:bg-rose-900/30 border border-rose-200 dark:border-rose-700/60 text-rose-900 dark:text-rose-300 text-xs rounded-xl font-medium">
               {locError}
             </div>
           )}
 
           {coords && (
-            <div className="p-4 bg-purple-50 rounded-2xl border border-purple-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-purple-950">
+            <div className="p-4 bg-purple-50 dark:bg-purple-900/25 rounded-2xl border border-purple-200 dark:border-purple-700/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-purple-950 dark:text-purple-200">
               <div>
                 <p className="font-bold flex items-center gap-1.5">
-                  <CheckCircle2 size={16} className="text-emerald-600" /> GPS Locked: Latitude {coords.lat.toFixed(5)}, Longitude {coords.lng.toFixed(5)}
+                  <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400" /> GPS Locked: Latitude {coords.lat.toFixed(5)}, Longitude {coords.lng.toFixed(5)}
                 </p>
-                <p className="text-purple-700 text-[11px] mt-0.5">Accuracy: ~{coords.accuracy} meters radius</p>
+                <p className="text-purple-700 dark:text-purple-400 text-[11px] mt-0.5">Accuracy: ~{coords.accuracy} meters radius</p>
               </div>
               <a
                 href={`https://maps.google.com/?q=${coords.lat},${coords.lng}`}
                 target="_blank"
                 rel="noreferrer"
-                className="underline font-bold text-purple-900 hover:text-purple-700"
+                className="underline font-bold text-purple-900 dark:text-purple-300 hover:text-purple-700 dark:hover:text-purple-200"
               >
                 Open in Google Maps ↗
               </a>
@@ -757,22 +768,22 @@ export default function SafetyToolkit() {
           {/* Emergency Contacts List */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 pt-2">
             <div className="space-y-4">
-              <h4 className="text-sm font-bold text-[#2E003E] uppercase tracking-wider">
+              <h4 className="text-sm font-bold text-[#2E003E] dark:text-white uppercase tracking-wider">
                 Trusted Emergency Contacts ({contacts.length})
               </h4>
 
               <div className="space-y-2">
                 {contacts.length === 0 ? (
-                  <p className="text-xs text-slate-400 italic">No emergency contacts added yet.</p>
+                  <p className="text-xs text-slate-400 dark:text-slate-500 italic">No emergency contacts added yet.</p>
                 ) : (
                   contacts.map((contact, idx) => (
                     <div
                       key={idx}
-                      className="p-4 bg-slate-50 hover:bg-purple-50/50 rounded-2xl border border-slate-200 flex items-center justify-between transition"
+                      className="p-4 bg-slate-50 dark:bg-slate-700 hover:bg-purple-50/50 dark:hover:bg-slate-600 rounded-2xl border border-slate-200 dark:border-slate-600 flex items-center justify-between transition"
                     >
                       <div>
-                        <p className="font-bold text-slate-900 text-sm">{contact.name}</p>
-                        <p className="text-xs text-slate-500 font-mono">{contact.phone}</p>
+                        <p className="font-bold text-slate-900 dark:text-slate-100 text-sm">{contact.name}</p>
+                        <p className="text-xs text-slate-500 dark:text-slate-400 font-mono">{contact.phone}</p>
                       </div>
 
                       <div className="flex items-center gap-2">
@@ -790,7 +801,7 @@ export default function SafetyToolkit() {
                         </button>
                         <button
                           onClick={() => removeContact(idx)}
-                          className="p-1.5 text-slate-400 hover:text-rose-600 transition cursor-pointer"
+                          className="p-1.5 text-slate-400 dark:text-slate-500 hover:text-rose-600 dark:hover:text-rose-400 transition cursor-pointer"
                           title="Remove Contact"
                         >
                           <Trash2 size={16} />
@@ -808,14 +819,14 @@ export default function SafetyToolkit() {
                   placeholder="Contact Name (e.g., Mom)"
                   value={newContactName}
                   onChange={(e) => setNewContactName(e.target.value)}
-                  className="flex-1 p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  className="flex-1 p-2.5 bg-purple-50/40 dark:bg-slate-700 border border-purple-200 dark:border-slate-600 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400 dark:text-slate-100 dark:placeholder-slate-500"
                 />
                 <input
                   type="tel"
                   placeholder="Phone Number (10 digits)"
                   value={newContactPhone}
                   onChange={(e) => setNewContactPhone(e.target.value)}
-                  className="flex-1 p-2.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  className="flex-1 p-2.5 bg-purple-50/40 dark:bg-slate-700 border border-purple-200 dark:border-slate-600 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-purple-400 dark:text-slate-100 dark:placeholder-slate-500"
                 />
                 <button
                   type="submit"
@@ -827,32 +838,34 @@ export default function SafetyToolkit() {
             </div>
 
             {/* Custom SOS Message Config */}
-            <div className="space-y-3 bg-purple-50/60 p-6 rounded-2xl border border-purple-100">
-              <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+            <div className="space-y-3 bg-purple-50/60 dark:bg-slate-700/50 p-6 rounded-2xl border border-purple-100 dark:border-slate-600">
+              <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                 Emergency Message Template
               </label>
               <textarea
                 rows={4}
                 value={customMsg}
                 onChange={(e) => setCustomMsg(e.target.value)}
-                className="w-full p-3 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                className="w-full p-3 bg-white dark:bg-slate-800 border border-purple-200 dark:border-slate-600 rounded-xl text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-purple-400"
               />
-              <p className="text-[11px] text-slate-500">
+              <p className="text-[11px] text-slate-500 dark:text-slate-400">
                 Your live Google Maps coordinates link will automatically be attached at the end of the message when you click send.
               </p>
             </div>
           </div>
         </div>
 
-        {/* Section 3: Community Safety Hotspots & Crowd-sourced Hazard Alerts */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-100 pb-6">
+        {/* ═══════════════════════════════════════════════════
+            COMMUNITY SAFETY HOTSPOTS
+        ═══════════════════════════════════════════════════ */}
+        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 dark:border-slate-700 space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-100 dark:border-slate-700 pb-6">
             <div>
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-rose-800 bg-rose-50 px-3 py-1 rounded-full mb-2">
-                <Flame size={14} className="text-rose-600" /> Crowd-Sourced Safety Heatmap
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-rose-800 dark:text-rose-300 bg-rose-50 dark:bg-rose-900/30 px-3 py-1 rounded-full mb-2 border border-transparent dark:border-rose-700/40">
+                <Flame size={14} className="text-rose-600 dark:text-rose-400" /> Crowd-Sourced Safety Heatmap
               </div>
-              <h2 className="text-2xl font-black text-[#2E003E]">Reported Unsafe Zones & Dark Spots</h2>
-              <p className="text-xs text-slate-500 mt-1">
+              <h2 className="text-2xl font-black text-[#2E003E] dark:text-white">Reported Unsafe Zones & Dark Spots</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
                 Community-verified hazard alerts for poor lighting, isolated transit routes, or eve-teasing areas.
               </p>
             </div>
@@ -870,30 +883,30 @@ export default function SafetyToolkit() {
             {hotspots.map((spot) => (
               <div
                 key={spot.id}
-                className="p-5 bg-slate-50 hover:bg-rose-50/30 rounded-2xl border border-slate-200 transition space-y-3 flex flex-col justify-between"
+                className="p-5 bg-slate-50 dark:bg-slate-700 hover:bg-rose-50/30 dark:hover:bg-rose-900/20 rounded-2xl border border-slate-200 dark:border-slate-600 transition space-y-3 flex flex-col justify-between"
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-900 border border-rose-300">
+                    <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-rose-100 dark:bg-rose-900/40 text-rose-900 dark:text-rose-300 border border-rose-300 dark:border-rose-700/60">
                       {spot.hazard_type}
                     </span>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                      spot.severity === 'Critical' ? 'bg-red-600 text-white' : 'bg-amber-100 text-amber-900'
+                      spot.severity === 'Critical' ? 'bg-red-600 text-white' : 'bg-amber-100 dark:bg-amber-900/40 text-amber-900 dark:text-amber-300'
                     }`}>
                       {spot.severity} Risk
                     </span>
                   </div>
 
-                  <h4 className="font-bold text-[#2E003E] text-sm sm:text-base">{spot.location_name}</h4>
-                  <p className="text-xs text-slate-500 font-medium">{spot.city}, {spot.state}</p>
-                  <p className="text-xs text-slate-700 leading-relaxed">{spot.description}</p>
+                  <h4 className="font-bold text-[#2E003E] dark:text-white text-sm sm:text-base">{spot.location_name}</h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">{spot.city}, {spot.state}</p>
+                  <p className="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">{spot.description}</p>
                 </div>
 
-                <div className="pt-3 border-t border-slate-200 flex items-center justify-between text-xs">
-                  <span className="text-[11px] text-slate-400">Reported by {spot.reported_by}</span>
+                <div className="pt-3 border-t border-slate-200 dark:border-slate-600 flex items-center justify-between text-xs">
+                  <span className="text-[11px] text-slate-400 dark:text-slate-500">Reported by {spot.reported_by}</span>
                   <button
                     onClick={() => handleUpvoteHotspot(spot.id)}
-                    className="inline-flex items-center gap-1 px-3 py-1 bg-white hover:bg-purple-100 text-purple-900 rounded-lg border border-purple-200 text-xs font-bold transition cursor-pointer"
+                    className="inline-flex items-center gap-1 px-3 py-1 bg-white dark:bg-slate-600 hover:bg-purple-100 dark:hover:bg-slate-500 text-purple-900 dark:text-purple-300 rounded-lg border border-purple-200 dark:border-slate-500 text-xs font-bold transition cursor-pointer"
                   >
                     <ThumbsUp size={12} />
                     <span>{spot.upvotes || 1} Confirmations</span>
@@ -904,7 +917,9 @@ export default function SafetyToolkit() {
           </div>
         </div>
 
-        {/* Hotspot Report Modal */}
+        {/* ═══════════════════════════════════════════════════
+            HOTSPOT REPORT MODAL
+        ═══════════════════════════════════════════════════ */}
         <AnimatePresence>
           {showHotspotModal && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
@@ -912,43 +927,43 @@ export default function SafetyToolkit() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-4 shadow-2xl border border-purple-100"
+                className="bg-white dark:bg-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-8 space-y-4 shadow-2xl border border-purple-100 dark:border-slate-700"
               >
-                <div className="flex justify-between items-center border-b pb-3">
-                  <h3 className="font-bold text-[#2E003E] text-lg">Report Unsafe Community Dark Spot</h3>
-                  <button onClick={() => setShowHotspotModal(false)} className="text-slate-400 hover:text-slate-600">✕</button>
+                <div className="flex justify-between items-center border-b border-slate-100 dark:border-slate-700 pb-3">
+                  <h3 className="font-bold text-[#2E003E] dark:text-white text-lg">Report Unsafe Community Dark Spot</h3>
+                  <button onClick={() => setShowHotspotModal(false)} className="text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 text-lg">✕</button>
                 </div>
 
                 <form onSubmit={handleSubmitHotspot} className="space-y-3 text-xs">
                   <div>
-                    <label className="block font-bold text-slate-700 uppercase mb-1">Location Name & Landmark *</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Location Name & Landmark *</label>
                     <input
                       type="text"
                       required
                       placeholder="e.g. Underpass near Metro Gate 3"
                       value={hotspotForm.location_name}
                       onChange={(e) => setHotspotForm({ ...hotspotForm, location_name: e.target.value })}
-                      className="w-full p-2.5 bg-slate-50 border rounded-xl"
+                      className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl dark:text-slate-100 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     />
                   </div>
 
                   <div className="grid grid-cols-2 gap-2">
                     <div>
-                      <label className="block font-bold text-slate-700 uppercase mb-1">City *</label>
+                      <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">City *</label>
                       <input
                         type="text"
                         required
                         value={hotspotForm.city}
                         onChange={(e) => setHotspotForm({ ...hotspotForm, city: e.target.value })}
-                        className="w-full p-2.5 bg-slate-50 border rounded-xl"
+                        className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-400"
                       />
                     </div>
                     <div>
-                      <label className="block font-bold text-slate-700 uppercase mb-1">Hazard Type</label>
+                      <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Hazard Type</label>
                       <select
                         value={hotspotForm.hazard_type}
                         onChange={(e) => setHotspotForm({ ...hotspotForm, hazard_type: e.target.value })}
-                        className="w-full p-2.5 bg-slate-50 border rounded-xl font-medium"
+                        className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl font-medium dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-400"
                       >
                         <option>Poor Lighting</option>
                         <option>Isolated Area</option>
@@ -960,11 +975,11 @@ export default function SafetyToolkit() {
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 uppercase mb-1">Risk Severity</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Risk Severity</label>
                     <select
                       value={hotspotForm.severity}
                       onChange={(e) => setHotspotForm({ ...hotspotForm, severity: e.target.value })}
-                      className="w-full p-2.5 bg-slate-50 border rounded-xl font-medium"
+                      className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl font-medium dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     >
                       <option>Low</option>
                       <option>Medium</option>
@@ -974,14 +989,14 @@ export default function SafetyToolkit() {
                   </div>
 
                   <div>
-                    <label className="block font-bold text-slate-700 uppercase mb-1">Hazard Details & Observation *</label>
+                    <label className="block font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">Hazard Details & Observation *</label>
                     <textarea
                       rows={3}
                       required
                       placeholder="Describe why this spot is unsafe, time of day when it gets risky, missing streetlights..."
                       value={hotspotForm.description}
                       onChange={(e) => setHotspotForm({ ...hotspotForm, description: e.target.value })}
-                      className="w-full p-2.5 bg-slate-50 border rounded-xl"
+                      className="w-full p-2.5 bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl dark:text-slate-100 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     />
                   </div>
 
@@ -989,13 +1004,13 @@ export default function SafetyToolkit() {
                     <button
                       type="button"
                       onClick={() => setShowHotspotModal(false)}
-                      className="flex-1 py-2.5 bg-slate-100 rounded-xl font-bold text-slate-700 dark:text-slate-300"
+                      className="flex-1 py-2.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl font-bold text-slate-700 dark:text-slate-200 transition"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
-                      className="flex-1 py-2.5 bg-rose-700 hover:bg-rose-800 text-white rounded-xl font-bold"
+                      className="flex-1 py-2.5 bg-rose-700 hover:bg-rose-800 text-white rounded-xl font-bold transition"
                     >
                       Publish Safety Alert
                     </button>
@@ -1009,4 +1024,3 @@ export default function SafetyToolkit() {
     </div>
   );
 }
-
