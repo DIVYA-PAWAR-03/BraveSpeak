@@ -422,13 +422,7 @@ Contact: [Complainant Phone / Email]
                 <span>{copied ? "Copied to Clipboard!" : "Copy Complaint"}</span>
               </button>
 
-              <button
-                onClick={handleDownload}
-                className="px-4 py-2 bg-purple-50 text-purple-900 hover:bg-purple-100 border border-purple-200 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
-              >
-                <Download size={15} />
-                <span>Save (.TXT)</span>
-              </button>
+
 
               <button
                 onClick={handlePrint}
@@ -610,6 +604,17 @@ Contact: [Complainant Phone / Email]
               </p>
             </div>
           </div>
+        </div>
+
+        {/* Download Letter Button - Outside the Box */}
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={handleDownload}
+            className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#2E003E] to-purple-700 text-white hover:from-purple-800 hover:to-purple-600 rounded-2xl text-sm font-bold transition-all duration-200 shadow-xl hover:shadow-purple-400/40 hover:-translate-y-0.5 cursor-pointer"
+          >
+            <Download size={20} />
+            <span>Download Complaint Letter (.TXT)</span>
+          </button>
         </div>
       </div>
     </div>
