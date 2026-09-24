@@ -95,6 +95,7 @@ export default function Header() {
   const isResourceActive = resourceItems.some((item) => location.pathname === item.path);
 
   return (
+    <>
     <header className="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-700/80 shadow-sm" ref={navRef}>
       {/* Top Emergency Micro-Bar */}
       <div className="bg-slate-900 dark:bg-slate-950 px-4 py-1 text-xs text-slate-200 border-b border-slate-800">
@@ -357,20 +358,34 @@ export default function Header() {
         </div>
       </nav>
 
+    </header>
+
       {/* Mobile Drawer Backdrop */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden animate-fade-in"
-          onClick={closeMenu}
-        />
-      )}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="backdrop"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-40 lg:hidden"
+            onClick={closeMenu}
+          />
+        )}
+      </AnimatePresence>
 
       {/* Mobile Drawer Sidebar */}
-      <div
-        className={`fixed top-0 right-0 h-full w-84 max-w-[88vw] bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 z-50 transform transition-transform duration-300 ease-in-out shadow-2xl border-l border-slate-200 dark:border-slate-700 flex flex-col justify-between overflow-y-auto ${
-          isOpen ? "translate-x-0" : "translate-x-full"
-        } lg:hidden`}
-      >
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            key="drawer"
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ type: "tween", duration: 0.3, ease: "easeInOut" }}
+            className="fixed top-0 left-0 h-full w-80 max-w-[88vw] bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 z-50 shadow-2xl border-r border-slate-200 dark:border-slate-700 flex flex-col justify-between overflow-y-auto lg:hidden"
+          >
         <div className="p-5 space-y-6">
           <div className="flex justify-between items-center pb-4 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2.5">
@@ -495,7 +510,10 @@ export default function Header() {
             <span>Open Safety Toolkit &amp; GPS</span>
           </Link>
         </div>
-      </div>
-    </header>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+
   );
 }

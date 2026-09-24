@@ -314,6 +314,7 @@ export default function StoriesPage() {
                         <img
                           src={story.img}
                           alt={story.title}
+                          loading="lazy"
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                           onError={(e) => { e.target.src = '/images/news_3.jpg'; }}
                         />

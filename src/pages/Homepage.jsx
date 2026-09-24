@@ -201,7 +201,7 @@ export default function Homepage() {
       readTime: "3 min read",
       preview: "When discriminatory remarks and advances started at my firm, I felt isolated. After learning about the POSH Act, I documented everything and filed a complaint with the ICC...",
       fullStory: "When discriminatory remarks and inappropriate advances started at my firm, I felt completely isolated. After learning about the POSH Internal Complaints Committee, I documented everything and filed a formal complaint. The process was hard, but it resulted in corrective action and created safer policies for every woman in our team.",
-      img: "/images/news_6.png"
+      img: "/images/news_6.webp"
     },
     {
       title: "Taking on Cyber Blackmail & Winning",
@@ -210,7 +210,7 @@ export default function Homepage() {
       readTime: "3 min read",
       preview: "My private photos were leaked and used to blackmail me. Instead of giving in, I preserved all screenshots and called the 1930 helpline...",
       fullStory: "My private photos were leaked and used to blackmail me for money. Instead of giving in, I took screenshots and immediately contacted cybercrime.gov.in and the 1930 helpline. The cyber cell acted swiftly to take down the content and identify the perpetrator.",
-      img: "/images/news_8.png"
+      img: "/images/news_8.webp"
     },
     {
       title: "A Fresh Start After Years of Abuse",
@@ -219,7 +219,7 @@ export default function Homepage() {
       readTime: "5 min read",
       preview: "With the assistance of the District Legal Services Authority (DLSA) providing free legal counsel, I secured a protection order and financial freedom...",
       fullStory: "With the assistance of the District Legal Services Authority (DLSA) providing free legal counsel, I was able to secure a protection order and financial independence. Freedom is real, and help is out there.",
-      img: "/images/news_9.png"
+      img: "/images/news_9.webp"
     }
   ];
 
@@ -765,6 +765,7 @@ export default function Homepage() {
                     <img
                       src={story.img}
                       alt={story.title}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       onError={(e) => { e.target.src = '/images/news_3.jpg'; }}
                     />
