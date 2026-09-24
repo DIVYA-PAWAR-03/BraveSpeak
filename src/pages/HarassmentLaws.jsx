@@ -148,24 +148,24 @@ const HarassmentLaws = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0010] py-12 px-4 sm:px-6 transition-colors duration-300">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header Title Section */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 dark:bg-purple-900/40 dark:border-purple-700/60 dark:text-purple-300 text-xs font-bold uppercase tracking-wider">
             <Scale size={15} /> Legal Empowerment Hub
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] dark:text-purple-100 tracking-tight">
             Indian Harassment Laws & Legal Protections
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             Clear, actionable information on Indian Penal Code (IPC) sections, workplace safety acts, cyber safety laws, and victim rights.
           </p>
 
           <div className="pt-2">
             <Link
               to="/legal-assistant"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white text-sm font-bold rounded-full shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 dark:bg-purple-600 dark:hover:bg-purple-500 text-white text-sm font-bold rounded-full shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
             >
               <Sparkles size={16} className="text-amber-300" />
               <span>Open Interactive Legal Assistant & Complaint Drafter</span>
@@ -180,7 +180,7 @@ const HarassmentLaws = () => {
         </div>
 
         {/* Search & Filter Bar */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-lg border border-purple-100 space-y-4">
+        <div className="bg-white dark:bg-slate-800/80 p-6 rounded-3xl shadow-lg border border-purple-100 dark:border-purple-900/50 space-y-4 backdrop-blur-sm">
           {/* Search input */}
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400" size={20} />
@@ -189,7 +189,7 @@ const HarassmentLaws = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search by law (e.g. IPC 354, POSH, Stalking, Cyber, Domestic)..."
-              className="w-full pl-12 pr-4 py-3.5 bg-purple-50/50 border border-purple-200 rounded-2xl text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+              className="w-full pl-12 pr-4 py-3.5 bg-purple-50/50 border border-purple-200 rounded-2xl text-slate-800 placeholder-purple-400/80 dark:bg-slate-900 dark:border-purple-900/60 dark:text-purple-100 dark:placeholder-purple-400/50 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -201,8 +201,8 @@ const HarassmentLaws = () => {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#2E003E] text-white shadow-md shadow-purple-950/20"
-                    : "bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200/60"
+                    ? "bg-[#2E003E] dark:bg-purple-600 text-white shadow-md shadow-purple-950/20"
+                    : "bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200/60 dark:bg-slate-900 dark:text-purple-300 dark:hover:bg-slate-800 dark:border-purple-900/50"
                 }`}
               >
                 {cat}
@@ -214,10 +214,10 @@ const HarassmentLaws = () => {
         {/* Laws Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredLaws.length === 0 ? (
-            <div className="col-span-2 text-center py-16 bg-white rounded-3xl border border-purple-100 p-8">
+            <div className="col-span-2 text-center py-16 bg-white dark:bg-slate-800/80 rounded-3xl border border-purple-100 dark:border-purple-900/50 p-8">
               <AlertCircle size={40} className="mx-auto text-purple-400 mb-3" />
-              <h3 className="text-xl font-bold text-[#2E003E]">No laws matched your query</h3>
-              <p className="text-slate-500 text-sm mt-1">Try clearing your search query or selecting "All" categories.</p>
+              <h3 className="text-xl font-bold text-[#2E003E] dark:text-purple-100">No laws matched your query</h3>
+              <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">Try clearing your search query or selecting "All" categories.</p>
               <button
                 onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}
                 className="mt-4 px-5 py-2 bg-purple-600 text-white rounded-full text-sm font-semibold hover:bg-purple-700 transition"
@@ -232,12 +232,12 @@ const HarassmentLaws = () => {
                 <motion.div
                   key={index}
                   layout
-                  className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-xl border border-purple-100 transition-all duration-300 flex flex-col justify-between"
+                  className="bg-white dark:bg-slate-800/80 rounded-3xl p-6 sm:p-7 shadow-md hover:shadow-xl border border-purple-100 dark:border-purple-900/50 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
                     {/* Top Row: Category & Severity */}
                     <div className="flex items-center justify-between gap-2 mb-3">
-                      <span className="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100">
+                      <span className="text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full border border-purple-100 dark:bg-purple-950/60 dark:text-purple-300 dark:border-purple-800/50">
                         {item.category}
                       </span>
                       <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${getSeverityBadge(item.severity)}`}>
@@ -246,29 +246,29 @@ const HarassmentLaws = () => {
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl sm:text-2xl font-bold text-[#2E003E] mb-2 leading-snug">
+                    <h2 className="text-xl sm:text-2xl font-bold text-[#2E003E] dark:text-purple-100 mb-2 leading-snug">
                       {item.title}
                     </h2>
 
                     {/* Description */}
-                    <p className="text-slate-600 text-sm leading-relaxed mb-4">
+                    <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
                       {item.description}
                     </p>
 
                     {/* Laws Badge Box */}
-                    <div className="bg-purple-50/70 rounded-2xl p-4 border border-purple-100 mb-4 space-y-2">
+                    <div className="bg-purple-50/70 border border-purple-100 dark:bg-purple-950/40 dark:border-purple-800/50 rounded-2xl p-4 mb-4 space-y-2">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold uppercase tracking-wider text-purple-900 flex items-center gap-1.5">
-                          <BookmarkCheck size={14} className="text-purple-600" /> Applicable Statutes
+                        <span className="text-xs font-bold uppercase tracking-wider text-purple-900 dark:text-purple-300 flex items-center gap-1.5">
+                          <BookmarkCheck size={14} className="text-purple-600 dark:text-purple-400" /> Applicable Statutes
                         </span>
                         <button
                           onClick={() => handleCopy(item.laws, index)}
-                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-purple-700 hover:text-purple-900 bg-white px-2 py-0.5 rounded-md border border-purple-200 transition shadow-sm"
+                          className="inline-flex items-center gap-1 text-[11px] font-semibold text-purple-700 hover:text-purple-900 bg-white border border-purple-200 dark:bg-slate-800 dark:text-purple-300 dark:hover:text-purple-100 dark:border-purple-700/60 px-2 py-0.5 rounded-md transition shadow-sm"
                           title="Copy legal citation"
                         >
                           {copiedIndex === index ? (
                             <>
-                              <Check size={12} className="text-emerald-600" /> Copied
+                              <Check size={12} className="text-emerald-600 dark:text-emerald-400" /> Copied
                             </>
                           ) : (
                             <>
@@ -277,10 +277,10 @@ const HarassmentLaws = () => {
                           )}
                         </button>
                       </div>
-                      <ul className="space-y-1 text-sm font-semibold text-purple-950">
+                      <ul className="space-y-1 text-sm font-semibold text-purple-950 dark:text-purple-200">
                         {item.laws.map((law, idx) => (
                           <li key={idx} className="flex items-start gap-2">
-                            <span className="text-purple-500 font-bold">•</span>
+                            <span className="text-purple-500 dark:text-purple-400 font-bold">•</span>
                             <span>{law}</span>
                           </li>
                         ))}
@@ -288,7 +288,7 @@ const HarassmentLaws = () => {
                     </div>
 
                     {/* Punishment Box */}
-                    <div className="p-3 bg-amber-50/70 border border-amber-200/80 rounded-xl text-xs text-amber-900 mb-4">
+                    <div className="p-3 bg-amber-50/70 border border-amber-200/80 dark:bg-amber-950/40 dark:border-amber-800/50 rounded-xl text-xs text-amber-900 dark:text-amber-200 mb-4">
                       <span className="font-bold">Punishment / Penalty: </span>
                       <span>{item.punishment}</span>
                     </div>
@@ -300,13 +300,13 @@ const HarassmentLaws = () => {
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{ opacity: 0, height: 0 }}
-                          className="space-y-3 pt-2 text-xs text-slate-700 overflow-hidden"
+                          className="space-y-3 pt-2 text-xs text-slate-700 dark:text-slate-300 overflow-hidden"
                         >
-                          <div className="p-3.5 bg-slate-50 rounded-xl border border-slate-200 dark:border-slate-700">
-                            <p className="font-bold text-[#2E003E] mb-1">Key Legal Insight:</p>
+                          <div className="p-3.5 bg-slate-50 dark:bg-slate-900/70 rounded-xl border border-slate-200 dark:border-slate-700/60">
+                            <p className="font-bold text-[#2E003E] dark:text-purple-200 mb-1">Key Legal Insight:</p>
                             <p className="leading-relaxed">{item.more}</p>
                           </div>
-                          <div className="p-3.5 bg-emerald-50/70 rounded-xl border border-emerald-200 text-emerald-900">
+                          <div className="p-3.5 bg-emerald-50/70 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-200">
                             <p className="font-bold mb-1 flex items-center gap-1">
                               <FileText size={13} /> Recommended Reporting Action:
                             </p>
@@ -320,7 +320,7 @@ const HarassmentLaws = () => {
                   {/* Toggle Button */}
                   <button
                     onClick={() => setExpanded(isExpanded ? null : index)}
-                    className="mt-4 pt-3 border-t border-slate-100 w-full flex items-center justify-between text-xs font-bold text-purple-700 hover:text-purple-950 transition cursor-pointer"
+                    className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60 w-full flex items-center justify-between text-xs font-bold text-purple-700 hover:text-purple-950 dark:text-purple-400 dark:hover:text-purple-200 transition cursor-pointer"
                   >
                     <span>{isExpanded ? "Hide Detailed Provisions" : "View Details & Reporting Steps"}</span>
                     {isExpanded ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
@@ -332,8 +332,8 @@ const HarassmentLaws = () => {
         </div>
 
         {/* Essential Survivor Rights Banner */}
-        <div className="bg-[#2E003E] text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-800 pb-4">
+        <div className="bg-[#2E003E] dark:bg-[#1a0029] text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6 border border-purple-900/30 dark:border-purple-800/40">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-800/60 pb-4">
             <div>
               <span className="text-xs font-bold px-3 py-1 bg-purple-500/30 text-purple-200 rounded-full border border-purple-400/30 uppercase tracking-wider">
                 Crucial Protections
@@ -383,48 +383,48 @@ const HarassmentLaws = () => {
 
         {/* Quick Resource & Reporting Channels */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-800/80 p-6 rounded-3xl shadow-md border border-purple-100 dark:border-purple-900/50 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-400 flex items-center justify-center mb-4">
                 <PhoneCall size={20} />
               </div>
-              <h3 className="text-lg font-bold text-[#2E003E] mb-1">National Helplines</h3>
-              <p className="text-xs text-slate-500 mb-4">24x7 toll-free emergency call assistance</p>
-              <ul className="space-y-2 text-xs text-slate-700 font-medium">
-                <li className="flex justify-between items-center py-1 border-b border-slate-100">
+              <h3 className="text-lg font-bold text-[#2E003E] dark:text-purple-100 mb-1">National Helplines</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">24x7 toll-free emergency call assistance</p>
+              <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300 font-medium">
+                <li className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-700/50">
                   <span>Women Helpline:</span>
-                  <a href="tel:181" className="text-purple-700 font-bold hover:underline">181</a>
+                  <a href="tel:181" className="text-purple-700 dark:text-purple-400 font-bold hover:underline">181</a>
                 </li>
-                <li className="flex justify-between items-center py-1 border-b border-slate-100">
+                <li className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-700/50">
                   <span>Police SOS (All-in-one):</span>
-                  <a href="tel:112" className="text-purple-700 font-bold hover:underline">112</a>
+                  <a href="tel:112" className="text-purple-700 dark:text-purple-400 font-bold hover:underline">112</a>
                 </li>
-                <li className="flex justify-between items-center py-1 border-b border-slate-100">
+                <li className="flex justify-between items-center py-1 border-b border-slate-100 dark:border-slate-700/50">
                   <span>Women Police Helpline:</span>
-                  <a href="tel:1091" className="text-purple-700 font-bold hover:underline">1091</a>
+                  <a href="tel:1091" className="text-purple-700 dark:text-purple-400 font-bold hover:underline">1091</a>
                 </li>
                 <li className="flex justify-between items-center py-1">
                   <span>Cyber Crime Helpline:</span>
-                  <a href="tel:1930" className="text-purple-700 font-bold hover:underline">1930</a>
+                  <a href="tel:1930" className="text-purple-700 dark:text-purple-400 font-bold hover:underline">1930</a>
                 </li>
               </ul>
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-800/80 p-6 rounded-3xl shadow-md border border-purple-100 dark:border-purple-900/50 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 dark:bg-purple-950/60 dark:text-purple-400 flex items-center justify-center mb-4">
                 <ExternalLink size={20} />
               </div>
-              <h3 className="text-lg font-bold text-[#2E003E] mb-1">Online Reporting Portals</h3>
-              <p className="text-xs text-slate-500 mb-4">Official government digital complaint desks</p>
+              <h3 className="text-lg font-bold text-[#2E003E] dark:text-purple-100 mb-1">Online Reporting Portals</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Official government digital complaint desks</p>
               <ul className="space-y-2 text-xs">
                 <li>
                   <a 
                     href="https://cybercrime.gov.in" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex items-center justify-between p-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-900 font-medium transition"
+                    className="flex items-center justify-between p-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-900 dark:bg-purple-950/40 dark:hover:bg-purple-900/60 dark:text-purple-200 font-medium transition"
                   >
                     <span>Cyber Crime Reporting Portal</span>
                     <ExternalLink size={14} />
@@ -435,7 +435,7 @@ const HarassmentLaws = () => {
                     href="https://ncw.nic.in" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex items-center justify-between p-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-900 font-medium transition"
+                    className="flex items-center justify-between p-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-900 dark:bg-purple-950/40 dark:hover:bg-purple-900/60 dark:text-purple-200 font-medium transition"
                   >
                     <span>NCW Online Complaint Cell</span>
                     <ExternalLink size={14} />
@@ -446,7 +446,7 @@ const HarassmentLaws = () => {
                     href="https://nalsa.gov.in" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="flex items-center justify-between p-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-900 font-medium transition"
+                    className="flex items-center justify-between p-2 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-900 dark:bg-purple-950/40 dark:hover:bg-purple-900/60 dark:text-purple-200 font-medium transition"
                   >
                     <span>NALSA Free Legal Aid Portal</span>
                     <ExternalLink size={14} />
@@ -456,25 +456,25 @@ const HarassmentLaws = () => {
             </div>
           </div>
 
-          <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-md border border-purple-100 flex flex-col justify-between">
+          <div className="bg-white dark:bg-slate-800/80 p-6 rounded-3xl shadow-md border border-purple-100 dark:border-purple-900/50 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-400 flex items-center justify-center mb-4">
                 <HeartHandshake size={20} />
               </div>
-              <h3 className="text-lg font-bold text-[#2E003E] mb-1">Support & Counseling NGOs</h3>
-              <p className="text-xs text-slate-500 mb-4">Confidential survivor advocacy networks</p>
+              <h3 className="text-lg font-bold text-[#2E003E] dark:text-purple-100 mb-1">Support & Counseling NGOs</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mb-4">Confidential survivor advocacy networks</p>
               <ul className="space-y-2 text-xs text-slate-700 dark:text-slate-300">
-                <li className="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                  <span className="font-bold text-[#2E003E]">SNEHA: </span>
-                  <span className="text-slate-600">Crisis intervention & women safety (+91 98330 52684)</span>
+                <li className="p-2 rounded-lg bg-slate-50 border border-slate-100 dark:bg-slate-900/60 dark:border-slate-700/50">
+                  <span className="font-bold text-[#2E003E] dark:text-purple-200">SNEHA: </span>
+                  <span className="text-slate-600 dark:text-slate-300">Crisis intervention & women safety (+91 98330 52684)</span>
                 </li>
-                <li className="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                  <span className="font-bold text-[#2E003E]">Vandrevala Foundation: </span>
-                  <span className="text-slate-600">24/7 Mental health support (+91 9999 666 555)</span>
+                <li className="p-2 rounded-lg bg-slate-50 border border-slate-100 dark:bg-slate-900/60 dark:border-slate-700/50">
+                  <span className="font-bold text-[#2E003E] dark:text-purple-200">Vandrevala Foundation: </span>
+                  <span className="text-slate-600 dark:text-slate-300">24/7 Mental health support (+91 9999 666 555)</span>
                 </li>
-                <li className="p-2 rounded-lg bg-slate-50 border border-slate-100">
-                  <span className="font-bold text-[#2E003E]">iCall Helpline: </span>
-                  <span className="text-slate-600">Psychosocial counseling (022-25521111)</span>
+                <li className="p-2 rounded-lg bg-slate-50 border border-slate-100 dark:bg-slate-900/60 dark:border-slate-700/50">
+                  <span className="font-bold text-[#2E003E] dark:text-purple-200">iCall Helpline: </span>
+                  <span className="text-slate-600 dark:text-slate-300">Psychosocial counseling (022-25521111)</span>
                 </li>
               </ul>
             </div>

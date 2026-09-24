@@ -295,24 +295,24 @@ export default function CrimeLawAwareness() {
   const getSeverityBadge = (severity) => {
     switch(severity) {
       case 'Critical':
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-100 text-rose-800 border border-rose-200"><AlertTriangle className="w-3 h-3 text-rose-600" /> Critical Offense</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-950/80 text-rose-300 border border-rose-800/60"><AlertTriangle className="w-3 h-3 text-rose-400" /> Critical Offense</span>;
       case 'High':
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-100 text-purple-800 border border-purple-200"><ShieldAlert className="w-3 h-3 text-purple-600" /> High Severity</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-950/80 text-purple-300 border border-purple-800/60"><ShieldAlert className="w-3 h-3 text-purple-400" /> High Severity</span>;
       default:
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-800 border border-amber-200"><AlertCircle className="w-3 h-3 text-amber-600" /> Statutory Offense</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-950/80 text-amber-300 border border-amber-800/60"><AlertCircle className="w-3 h-3 text-amber-400" /> Statutory Offense</span>;
     }
   };
 
   return (
-    <section id="crime-law-awareness" className="py-12 bg-slate-900 text-white relative overflow-hidden">
+    <section id="crime-law-awareness" className="py-12 bg-[#0c0219] text-white relative overflow-hidden transition-colors duration-300">
       {/* Background Glow Overlay */}
-      <div className="absolute inset-0 bg-slate-900/90 pointer-events-none" />
+      <div className="absolute inset-0 bg-[#0c0219]/90 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Title */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/10 border border-purple-400/30 text-purple-300 text-xs font-medium mb-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-500/20 border border-purple-400/40 text-purple-300 text-xs font-bold mb-3">
             <Sparkles className="w-3.5 h-3.5 text-purple-400" />
             <span>Interactive Crime-to-Law Awareness Matrix</span>
           </div>
@@ -325,7 +325,7 @@ export default function CrimeLawAwareness() {
         </div>
 
         {/* Instant Scenario Matcher Dropdown */}
-        <div className="max-w-3xl mx-auto mb-8 bg-slate-800/90 border border-slate-700/80 rounded-2xl p-4 sm:p-5 shadow-xl backdrop-blur-sm">
+        <div className="max-w-3xl mx-auto mb-8 bg-[#16082e]/90 border border-purple-800/60 rounded-2xl p-4 sm:p-5 shadow-xl backdrop-blur-sm">
           <label className="block text-xs font-bold text-purple-300 uppercase tracking-wider mb-2 flex items-center gap-2">
             <HelpCircle className="w-4 h-4 text-purple-400" />
             Quick Scenario Matcher ("What Happened?")
@@ -336,7 +336,7 @@ export default function CrimeLawAwareness() {
               setSelectedScenarioId(e.target.value);
               if (e.target.value) setExpandedId(e.target.value);
             }}
-            className="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all font-medium"
+            className="w-full bg-[#0d021f] border border-purple-800/60 text-purple-100 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all font-medium"
           >
             {SCENARIOS_QUICK.map((sc) => (
               <option key={sc.id} value={sc.id}>
@@ -349,13 +349,13 @@ export default function CrimeLawAwareness() {
         {/* Search Bar & Category Filters */}
         <div className="space-y-4 mb-10">
           <div className="relative max-w-2xl mx-auto">
-            <Search className="absolute left-4 top-3.5 w-5 h-5 text-slate-400" />
+            <Search className="absolute left-4 top-3.5 w-5 h-5 text-purple-400" />
             <input
               type="text"
               placeholder="Search by crime keyword, photo morphing, boss harassment, IPC section, stalking..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-12 pr-10 py-3.5 bg-slate-800/80 border border-slate-700 text-white placeholder-slate-400 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm transition-all"
+              className="w-full pl-12 pr-10 py-3.5 bg-[#16082e]/80 border border-purple-800/60 text-white placeholder-purple-300/50 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm transition-all"
             />
             {searchQuery && (
               <button
@@ -378,8 +378,8 @@ export default function CrimeLawAwareness() {
                 }}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-200 ${
                   selectedCategory === cat
-                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30'
-                    : 'bg-slate-800/60 text-slate-300 hover:bg-slate-800 hover:text-white border border-slate-700/60'
+                    ? 'bg-purple-600 text-white shadow-lg shadow-purple-600/30 font-bold'
+                    : 'bg-[#16082e]/60 text-purple-200 hover:bg-purple-900/50 hover:text-white border border-purple-800/40'
                 }`}
               >
                 {cat}
@@ -407,7 +407,7 @@ export default function CrimeLawAwareness() {
 
         {/* Crime vs Law Cards */}
         {filteredData.length === 0 ? (
-          <div className="text-center py-12 bg-slate-800/40 rounded-2xl border border-slate-800 max-w-2xl mx-auto">
+          <div className="text-center py-12 bg-[#16082e]/40 rounded-2xl border border-purple-900/50 max-w-2xl mx-auto">
             <ShieldAlert className="w-12 h-12 text-slate-500 mx-auto mb-3" />
             <h3 className="text-lg font-semibold text-slate-200 mb-1">No crime matching your search query</h3>
             <p className="text-slate-400 text-xs max-w-md mx-auto mb-4">
@@ -431,10 +431,10 @@ export default function CrimeLawAwareness() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  className={`bg-slate-800/90 border rounded-2xl overflow-hidden transition-all duration-200 ${
+                  className={`bg-[#140728]/90 border rounded-2xl overflow-hidden transition-all duration-200 ${
                     isExpanded 
-                      ? 'border-purple-500/80 ring-1 ring-purple-500/30 bg-slate-800 shadow-2xl' 
-                      : 'border-slate-700/70 hover:border-slate-600 hover:bg-slate-800/80'
+                      ? 'border-purple-500 ring-1 ring-purple-500/40 bg-[#180932] shadow-2xl' 
+                      : 'border-purple-900/50 hover:border-purple-600/80 hover:bg-[#180932]'
                   }`}
                 >
                   {/* Card Header (Clickable to Expand) */}
@@ -444,7 +444,7 @@ export default function CrimeLawAwareness() {
                   >
                     <div className="space-y-1.5 flex-1">
                       <div className="flex items-center gap-2 flex-wrap">
-                        <span className="px-2.5 py-0.5 bg-slate-700 text-slate-300 rounded-md text-[11px] font-medium uppercase tracking-wider">
+                        <span className="px-2.5 py-0.5 bg-purple-950/80 text-purple-300 border border-purple-800/60 rounded-md text-[11px] font-semibold uppercase tracking-wider">
                           {item.category}
                         </span>
                         {getSeverityBadge(item.severity)}
@@ -457,14 +457,14 @@ export default function CrimeLawAwareness() {
                       </p>
                     </div>
 
-                    <div className="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-700/50">
+                    <div className="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 border-purple-900/40">
                       <div className="text-left sm:text-right">
                         <span className="text-[10px] text-slate-400 block font-mono uppercase tracking-wider">Statutory Protection</span>
                         <span className="text-xs sm:text-sm font-bold text-purple-300 block">
                           {item.primaryLaw}
                         </span>
                       </div>
-                      <div className={`p-2 rounded-xl bg-slate-700/60 text-slate-300 transition-transform ${isExpanded ? 'rotate-180 bg-purple-600/30 text-purple-200' : ''}`}>
+                      <div className={`p-2 rounded-xl bg-purple-950/80 border border-purple-800/60 text-purple-300 transition-transform ${isExpanded ? 'rotate-180 bg-purple-600/40 text-purple-200' : ''}`}>
                         <ChevronRight className="w-5 h-5 rotate-90" />
                       </div>
                     </div>
@@ -477,13 +477,13 @@ export default function CrimeLawAwareness() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="border-t border-slate-700/80 bg-slate-900/60 p-5 sm:p-6 space-y-6"
+                        className="border-t border-purple-900/60 bg-[#0d021f]/80 p-5 sm:p-6 space-y-6"
                       >
                         {/* 2-Column Grid: Laws & Punishment */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                           
                           {/* Column 1: Statutory Sections */}
-                          <div className="bg-purple-950/30 border border-purple-800/40 rounded-xl p-4 space-y-2">
+                          <div className="bg-purple-950/50 border border-purple-800/50 rounded-xl p-4 space-y-2">
                             <div className="flex items-center gap-2 text-purple-300 font-semibold text-xs uppercase tracking-wider">
                               <Gavel className="w-4 h-4 text-purple-400" />
                               <span>Statutory Sections & Acts</span>
@@ -502,7 +502,7 @@ export default function CrimeLawAwareness() {
                           </div>
 
                           {/* Column 2: Punishment & Severity */}
-                          <div className="bg-slate-800/80 border border-slate-700 rounded-xl p-4 space-y-2">
+                          <div className="bg-[#140728] border border-purple-900/60 rounded-xl p-4 space-y-2">
                             <div className="flex items-center gap-2 text-rose-300 font-semibold text-xs uppercase tracking-wider">
                               <Scale className="w-4 h-4 text-rose-400" />
                               <span>Maximum Penalty & Punishment</span>
@@ -525,7 +525,7 @@ export default function CrimeLawAwareness() {
                           </h4>
                           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                             {item.victimRights.map((right, idx) => (
-                              <li key={idx} className="bg-slate-800/70 border border-slate-700/60 rounded-xl p-3 text-xs text-slate-200 flex items-start gap-2">
+                              <li key={idx} className="bg-[#16082e]/80 border border-purple-800/40 rounded-xl p-3 text-xs text-slate-200 flex items-start gap-2">
                                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
                                 <span>{right}</span>
                               </li>
@@ -534,7 +534,7 @@ export default function CrimeLawAwareness() {
                         </div>
 
                         {/* Action Steps & Emergency Contacts */}
-                        <div className="bg-purple-900/40 border border-purple-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div className="bg-purple-900/50 border border-purple-500/40 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                           <div className="space-y-1">
                             <span className="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">Immediate Recommended Legal Action</span>
                             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">{item.actionSteps}</p>
@@ -543,7 +543,7 @@ export default function CrimeLawAwareness() {
                           <div className="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto">
                             <a
                               href={`tel:${item.helpline.split(' ')[0]}`}
-                              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-semibold text-xs transition-colors shadow-md"
+                              className="flex-1 sm:flex-initial inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-xs transition-colors shadow-md"
                             >
                               <PhoneCall className="w-3.5 h-3.5" />
                               <span>Call {item.helpline}</span>
@@ -551,7 +551,7 @@ export default function CrimeLawAwareness() {
 
                             <button
                               onClick={() => handleCopy(item)}
-                              className="inline-flex items-center justify-center p-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 text-xs font-medium transition-colors"
+                              className="inline-flex items-center justify-center p-2.5 rounded-xl bg-[#16082e] hover:bg-[#200c40] border border-purple-700/60 text-slate-200 text-xs font-medium transition-colors"
                               title="Copy Crime & Law Legal Details"
                             >
                               {copiedId === item.id ? (
@@ -573,7 +573,7 @@ export default function CrimeLawAwareness() {
         )}
 
         {/* Footer Note */}
-        <div className="mt-12 text-center text-xs text-slate-400 max-w-2xl mx-auto border-t border-slate-800 pt-6">
+        <div className="mt-12 text-center text-xs text-slate-400 max-w-2xl mx-auto border-t border-purple-900/50 pt-6">
           <p>
             <Shield className="w-4 h-4 inline-block text-purple-400 mr-1" />
             Statutory laws detailed according to Indian Penal Code (IPC), Bharatiya Nyaya Sanhita (BNS 2023), POSH Act 2013, IT Act 2000, and POCSO Act 2012. For official legal representation, contact your District Legal Services Authority (DLSA).
