@@ -10,7 +10,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#0f0520] text-white pt-16 pb-8 px-6 relative overflow-hidden">
       {/* Top border accent */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/80 to-transparent" />
 
       {/* Ambient glows */}
       <div className="absolute top-10 left-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
@@ -28,7 +28,7 @@ export default function Footer() {
                 alt="BraveSpeak Logo"
                 className="w-11 h-11 object-contain group-hover:scale-105 transition-transform drop-shadow-[0_2px_12px_rgba(192,132,252,0.5)]"
               />
-              <span className="text-2xl font-extrabold bg-gradient-to-r from-white via-purple-200 to-amber-300 bg-clip-text text-transparent">
+              <span className="text-2xl font-extrabold text-white">
                 BraveSpeak
               </span>
             </Link>
