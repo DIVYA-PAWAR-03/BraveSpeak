@@ -225,25 +225,25 @@ Contact: [Complainant Phone / Email]
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0010] py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-700/60 text-purple-900 dark:text-purple-300 text-xs font-bold uppercase tracking-wider">
             <Scale size={15} /> Legal Empowerment & AI Complaint Drafter
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] dark:text-purple-200 tracking-tight">
             Interactive Legal Assistant & Complaint Drafter
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
             Diagnose your legal rights under Indian criminal & civil laws (IPC, BNS 2023, POSH, IT Act), understand non-bailable provisions, and generate a certified formal complaint letter in seconds.
           </p>
         </div>
 
         {/* Step 1: Select Incident Scenario */}
         <div className="space-y-4">
-          <h2 className="text-xl font-bold text-[#2E003E] flex items-center gap-2">
-            <span className="w-7 h-7 rounded-full bg-purple-900 text-white text-xs flex items-center justify-center font-bold">1</span>
+          <h2 className="text-xl font-bold text-[#2E003E] dark:text-purple-200 flex items-center gap-2">
+            <span className="w-7 h-7 rounded-full bg-purple-700 dark:bg-purple-600 text-white text-xs flex items-center justify-center font-bold">1</span>
             Select Incident Type or Situation
           </h2>
 
@@ -259,25 +259,25 @@ Contact: [Complainant Phone / Email]
                   }}
                   className={`p-5 rounded-3xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? "bg-purple-900 text-white shadow-xl shadow-purple-950/20 border-purple-800 scale-[1.02]"
-                      : "bg-white text-slate-800 hover:border-purple-300 shadow-md border-slate-200 dark:border-slate-700"
+                      ? "bg-gradient-to-br from-purple-800 to-purple-950 text-white shadow-xl shadow-purple-950/30 border-purple-600 scale-[1.02]"
+                      : "bg-white dark:bg-slate-800/60 text-slate-800 dark:text-slate-200 hover:border-purple-300 dark:hover:border-purple-600 shadow-md border-slate-200 dark:border-slate-700/60"
                   }`}
                 >
                   <div className="space-y-2">
                     <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
-                      isSelected ? "bg-purple-800 text-purple-200 border border-purple-600" : "bg-purple-50 text-purple-900 border border-purple-200"
+                      isSelected ? "bg-purple-700/60 text-purple-200 border border-purple-500" : "bg-purple-50 dark:bg-purple-900/40 text-purple-900 dark:text-purple-300 border border-purple-200 dark:border-purple-700/50"
                     }`}>
                       {scenario.badge}
                     </span>
-                    <h3 className={`text-base font-bold ${isSelected ? "text-white" : "text-[#2E003E]"}`}>
+                    <h3 className={`text-base font-bold ${isSelected ? "text-white" : "text-[#2E003E] dark:text-purple-100"}`}>
                       {scenario.title}
                     </h3>
-                    <p className={`text-xs leading-relaxed ${isSelected ? "text-purple-200" : "text-slate-600"}`}>
+                    <p className={`text-xs leading-relaxed ${isSelected ? "text-purple-200" : "text-slate-600 dark:text-slate-400"}`}>
                       {scenario.description}
                     </p>
                   </div>
                   <div className="pt-4 mt-3 border-t border-purple-100/20 flex items-center justify-between text-xs font-semibold">
-                    <span className={isSelected ? "text-purple-200" : "text-purple-700"}>
+                    <span className={isSelected ? "text-purple-200" : "text-purple-700 dark:text-purple-400"}>
                       {scenario.laws.length} Applicable Statutes
                     </span>
                     <ArrowRight size={14} className={isSelected ? "text-purple-300" : "text-purple-600"} />
@@ -399,16 +399,16 @@ Contact: [Complainant Phone / Email]
         </div>
 
         {/* Step 3: Interactive Complaint Letter Drafter */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 p-6 sm:p-10 space-y-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-6">
+        <div className="bg-white dark:bg-slate-900/80 dark:border dark:border-purple-900/40 rounded-3xl shadow-xl border border-purple-100 p-6 sm:p-10 space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/40 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-700/50">
                 Step 3 of 3
               </span>
-              <h2 className="text-2xl font-extrabold text-[#2E003E] mt-2">
+              <h2 className="text-2xl font-extrabold text-[#2E003E] dark:text-purple-200 mt-2">
                 Generate Certified Written Complaint / FIR Application
               </h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Customize details below. The legal draft updates dynamically in real-time.
               </p>
             </div>
@@ -416,7 +416,7 @@ Contact: [Complainant Phone / Email]
             <div className="flex flex-wrap gap-2">
               <button
                 onClick={handleCopy}
-                className="px-4 py-2 bg-purple-50 text-purple-900 hover:bg-purple-100 border border-purple-200 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
+                className="px-4 py-2 bg-purple-50 dark:bg-purple-900/40 text-purple-900 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800/50 border border-purple-200 dark:border-purple-700/50 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
               >
                 {copied ? <CheckCircle2 size={15} className="text-emerald-600" /> : <Copy size={15} />}
                 <span>{copied ? "Copied to Clipboard!" : "Copy Complaint"}</span>
@@ -438,14 +438,14 @@ Contact: [Complainant Phone / Email]
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form Fields */}
             <div className="lg:col-span-6 space-y-4">
-              <h3 className="text-sm font-bold text-slate-800 uppercase tracking-wider flex items-center gap-2">
-                <FileText size={16} className="text-purple-700" />
+              <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-2">
+                <FileText size={16} className="text-purple-700 dark:text-purple-400" />
                 Fill Incident Particulars
               </h3>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                     Complainant Name / Alias
                   </label>
                   <input
@@ -453,18 +453,18 @@ Contact: [Complainant Phone / Email]
                     value={form.complainantName}
                     onChange={(e) => setForm({ ...form, complainantName: e.target.value })}
                     placeholder="Leave blank to remain confidential"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                     Addressed Authority
                   </label>
                   <select
                     value={form.authorityType}
                     onChange={(e) => setForm({ ...form, authorityType: e.target.value })}
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                   >
                     <option>Station House Officer (Police Station)</option>
                     <option>Internal Complaints Committee (ICC Chairperson)</option>
@@ -478,7 +478,7 @@ Contact: [Complainant Phone / Email]
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                     Police Station / Company Name
                   </label>
                   <input
@@ -486,12 +486,12 @@ Contact: [Complainant Phone / Email]
                     value={form.stationOrOrg}
                     onChange={(e) => setForm({ ...form, stationOrOrg: e.target.value })}
                     placeholder="e.g., Connaught Place Police Station"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                     City & State
                   </label>
                   <input
@@ -499,26 +499,26 @@ Contact: [Complainant Phone / Email]
                     value={form.cityState}
                     onChange={(e) => setForm({ ...form, cityState: e.target.value })}
                     placeholder="e.g., New Delhi, Delhi"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                     Incident Date
                   </label>
                   <input
                     type="date"
                     value={form.incidentDate}
                     onChange={(e) => setForm({ ...form, incidentDate: e.target.value })}
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                     Approx. Time
                   </label>
                   <input
@@ -526,12 +526,12 @@ Contact: [Complainant Phone / Email]
                     value={form.incidentTime}
                     onChange={(e) => setForm({ ...form, incidentTime: e.target.value })}
                     placeholder="e.g., 18:30 hrs"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                     Accused Name / Info
                   </label>
                   <input
@@ -539,13 +539,13 @@ Contact: [Complainant Phone / Email]
                     value={form.accusedName}
                     onChange={(e) => setForm({ ...form, accusedName: e.target.value })}
                     placeholder="e.g., Unknown / Colleague name"
-                    className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                    className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                   Location of Occurrence
                 </label>
                 <input
@@ -553,12 +553,12 @@ Contact: [Complainant Phone / Email]
                   value={form.incidentLocation}
                   onChange={(e) => setForm({ ...form, incidentLocation: e.target.value })}
                   placeholder="e.g. 4th floor conference room / Metro Station Gate 2"
-                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                   Statement of Facts & Narrative
                 </label>
                 <textarea
@@ -566,12 +566,12 @@ Contact: [Complainant Phone / Email]
                   value={form.incidentSummary}
                   onChange={(e) => setForm({ ...form, incidentSummary: e.target.value })}
                   placeholder="Provide chronological facts of the incident as it occurred..."
-                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 uppercase mb-1">
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 uppercase mb-1">
                   Evidence Description & Attachments
                 </label>
                 <textarea
@@ -579,7 +579,7 @@ Contact: [Complainant Phone / Email]
                   value={form.evidenceDescription}
                   onChange={(e) => setForm({ ...form, evidenceDescription: e.target.value })}
                   placeholder="e.g. Chat logs dated 12th Aug, CCTV footage requisition, audio recording"
-                  className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white"
+                  className="w-full p-2.5 bg-slate-50 dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-slate-200 dark:border-slate-700 rounded-xl text-xs focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-700 transition"
                 />
               </div>
             </div>
@@ -587,19 +587,19 @@ Contact: [Complainant Phone / Email]
             {/* Live Legal Document Preview */}
             <div className="lg:col-span-6 space-y-2">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                <span className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                   Live Certified Document Output
                 </span>
-                <span className="text-[10px] text-purple-700 font-bold bg-purple-50 px-2 py-0.5 rounded-full border border-purple-200">
+                <span className="text-[10px] text-purple-700 dark:text-purple-300 font-bold bg-purple-50 dark:bg-purple-900/40 px-2 py-0.5 rounded-full border border-purple-200 dark:border-purple-700/50">
                   Ready for Submission
                 </span>
               </div>
 
-              <div className="p-6 bg-slate-900 text-slate-100 rounded-2xl font-mono text-[11px] leading-relaxed max-h-[560px] overflow-y-auto border border-slate-800 shadow-inner whitespace-pre-wrap select-all">
+              <div className="p-6 bg-[#111827] text-[#e2e8f0] rounded-2xl font-mono text-[11px] leading-[1.85] max-h-[560px] overflow-y-auto border border-slate-700/60 shadow-inner whitespace-pre-wrap select-all tracking-wide">
                 {generateComplaintText()}
               </div>
 
-              <p className="text-[11px] text-slate-400 italic">
+              <p className="text-[11px] text-slate-400 dark:text-slate-500 italic">
                 * Tip: Under Section 154 CrPC, you can print this document and take it directly to the police station. Refusal to register an FIR on cognizable offenses is punishable under Section 166A IPC.
               </p>
             </div>

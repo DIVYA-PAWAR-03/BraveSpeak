@@ -133,30 +133,30 @@ export default function DigitalSafety() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 dark:bg-slate-900 py-12 px-4 sm:px-6">
+    <div className="min-h-screen bg-slate-50 dark:bg-[#0a0010] py-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Page Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-900/40 border border-purple-200 dark:border-purple-700/60 text-purple-900 dark:text-purple-300 text-xs font-bold uppercase tracking-wider">
             <Lock size={15} /> Cyber Defense & Privacy Shield
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] dark:text-purple-200 tracking-tight">
             Digital Safety & Privacy Protection Guide
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed">
             Audit your smartphone security score, learn how to proactively block non-consensual image leaks with StopNCII, detect hidden cameras, and secure cyber evidence.
           </p>
         </div>
 
         {/* Section 1: Privacy Audit Scorecard */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-purple-100 pb-6">
+        <div className="bg-white dark:bg-slate-900/70 dark:border dark:border-purple-900/40 rounded-3xl p-6 sm:p-8 shadow-lg border border-purple-100 space-y-6">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-purple-100 dark:border-slate-800 pb-6">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/40 px-3 py-1 rounded-full border border-transparent dark:border-purple-700/40">
                 Interactive Security Audit
               </span>
-              <h2 className="text-2xl font-black text-[#2E003E] mt-2">Personal Privacy Health Meter</h2>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <h2 className="text-2xl font-black text-[#2E003E] dark:text-purple-200 mt-2">Personal Privacy Health Meter</h2>
+              <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                 Check all safety measures currently active on your phone and accounts.
               </p>
             </div>
@@ -179,8 +179,8 @@ export default function DigitalSafety() {
                   onClick={() => toggleItem(item.id)}
                   className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3 ${
                     isDone
-                      ? "bg-purple-50/70 border-purple-300 text-purple-950"
-                      : "bg-white dark:bg-slate-800 border-slate-200 text-slate-700 hover:border-purple-200"
+                      ? "bg-purple-900/30 dark:bg-purple-900/40 border-purple-400 dark:border-purple-600 text-purple-100 dark:text-purple-200"
+                      : "bg-white dark:bg-slate-800/60 border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300 hover:border-purple-300 dark:hover:border-purple-600"
                   }`}
                 >
                   <input
@@ -226,65 +226,65 @@ export default function DigitalSafety() {
         </div>
 
         {/* Section 3: Hidden Camera Detector Walkthrough */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
-          <div className="border-b border-purple-100 pb-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+        <div className="bg-white dark:bg-slate-900/70 dark:border dark:border-purple-900/40 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
+          <div className="border-b border-purple-100 dark:border-slate-800 pb-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/40 px-3 py-1 rounded-full border border-transparent dark:border-purple-700/40">
               Field Guide
             </span>
-            <h2 className="text-2xl font-black text-[#2E003E] mt-2">How to Spot Hidden Cameras in Trial Rooms & Hotels</h2>
+            <h2 className="text-2xl font-black text-[#2E003E] dark:text-purple-200 mt-2">How to Spot Hidden Cameras in Trial Rooms & Hotels</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-700 leading-relaxed">
-            <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
-              <p className="font-bold text-slate-900 text-sm">1. Flashlight Glint Test</p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+            <div className="p-5 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
+              <p className="font-bold text-slate-900 dark:text-purple-200 text-sm">1. Flashlight Glint Test</p>
               <p>Turn off room lights, shine your smartphone flashlight across smoke detectors, power sockets, digital clocks, and air vents. Camera lenses reflect a distinct bluish/purple glint.</p>
             </div>
 
-            <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
-              <p className="font-bold text-slate-900 text-sm">2. Two-Way Mirror Test</p>
+            <div className="p-5 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
+              <p className="font-bold text-slate-900 dark:text-purple-200 text-sm">2. Two-Way Mirror Test</p>
               <p>Place your fingernail against the glass. If there is a visible gap between your nail and reflection, it's genuine. If your nail directly touches its reflection with no gap, it is a two-way observation mirror.</p>
             </div>
 
-            <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
-              <p className="font-bold text-slate-900 text-sm">3. Infrared Front Camera</p>
+            <div className="p-5 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border border-slate-200 dark:border-slate-700/60 space-y-2">
+              <p className="font-bold text-slate-900 dark:text-purple-200 text-sm">3. Infrared Front Camera</p>
               <p>Night-vision spy cameras emit IR diodes. Open your phone's front selfie camera in complete darkness to spot glowing purple or red lights invisible to naked eyes.</p>
             </div>
           </div>
         </div>
 
         {/* Section 4: Secure Digital Evidence Vault */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
-          <div className="border-b border-purple-100 pb-4">
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+        <div className="bg-white dark:bg-slate-900/70 dark:border dark:border-purple-900/40 rounded-3xl p-6 sm:p-8 shadow-xl border border-purple-100 space-y-6">
+          <div className="border-b border-purple-100 dark:border-slate-800 pb-4">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/40 px-3 py-1 rounded-full border border-transparent dark:border-purple-700/40">
               Cloud Evidence Vault
             </span>
-            <h2 className="text-2xl font-black text-[#2E003E] mt-2">Secure Cyber Incident & Evidence Vault</h2>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <h2 className="text-2xl font-black text-[#2E003E] dark:text-purple-200 mt-2">Secure Cyber Incident & Evidence Vault</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
               Securely preserve timestamps, chat logs, and screenshots for cyber police (1930 / cybercrime.gov.in) or POSH inquiries.
             </p>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* Form */}
-            <form onSubmit={handleAddLog} className="lg:col-span-5 space-y-3 bg-purple-50/50 p-5 rounded-2xl border border-purple-200">
-              <h4 className="text-xs font-bold text-purple-900 uppercase tracking-wider">Vault New Incident Record</h4>
+            <form onSubmit={handleAddLog} className="lg:col-span-5 space-y-3 bg-purple-50/50 dark:bg-purple-900/20 p-5 rounded-2xl border border-purple-200 dark:border-purple-800/50">
+              <h4 className="text-xs font-bold text-purple-900 dark:text-purple-300 uppercase tracking-wider">Vault New Incident Record</h4>
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Incident Date</label>
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Incident Date</label>
                   <input
                     type="date"
                     value={newLog.date}
                     onChange={(e) => setNewLog({ ...newLog, date: e.target.value })}
-                    className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs"
+                    className="w-full p-2 bg-white dark:bg-slate-800 dark:text-slate-200 border border-purple-200 dark:border-slate-600 rounded-lg text-xs focus:ring-2 focus:ring-purple-400 transition"
                   />
                 </div>
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-700 mb-1">Platform</label>
+                  <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Platform</label>
                   <select
                     value={newLog.platform}
                     onChange={(e) => setNewLog({ ...newLog, platform: e.target.value })}
-                    className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs font-medium"
+                    className="w-full p-2 bg-white dark:bg-slate-800 dark:text-slate-200 border border-purple-200 dark:border-slate-600 rounded-lg text-xs font-medium focus:ring-2 focus:ring-purple-400 transition"
                   >
                     <option>WhatsApp</option>
                     <option>Instagram</option>
@@ -297,34 +297,34 @@ export default function DigitalSafety() {
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">Perpetrator Handle / Phone</label>
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Perpetrator Handle / Phone</label>
                 <input
                   type="text"
                   placeholder="@username, phone or email"
                   value={newLog.handle}
                   onChange={(e) => setNewLog({ ...newLog, handle: e.target.value })}
-                  className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs"
+                  className="w-full p-2 bg-white dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-purple-200 dark:border-slate-600 rounded-lg text-xs focus:ring-2 focus:ring-purple-400 transition"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">Incident Summary & Specific Threats</label>
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Incident Summary & Specific Threats</label>
                 <textarea
                   rows={3}
                   required
                   placeholder="Record sequence of events, extortion demands, abusive words..."
                   value={newLog.description}
                   onChange={(e) => setNewLog({ ...newLog, description: e.target.value })}
-                  className="w-full p-2 bg-white border border-purple-200 rounded-lg text-xs"
+                  className="w-full p-2 bg-white dark:bg-slate-800 dark:text-slate-200 dark:placeholder-slate-500 border border-purple-200 dark:border-slate-600 rounded-lg text-xs focus:ring-2 focus:ring-purple-400 transition"
                 />
               </div>
 
               <div>
-                <label className="block text-[11px] font-bold text-slate-700 mb-1">Attach Screenshot / File (Optional)</label>
+                <label className="block text-[11px] font-bold text-slate-700 dark:text-slate-300 mb-1">Attach Screenshot / File (Optional)</label>
                 <input
                   type="file"
                   onChange={(e) => setNewLog({ ...newLog, file: e.target.files[0] })}
-                  className="w-full p-1.5 bg-white border border-purple-200 rounded-lg text-xs text-slate-600 dark:text-slate-400"
+                  className="w-full p-1.5 bg-white dark:bg-slate-800 border border-purple-200 dark:border-slate-600 rounded-lg text-xs text-slate-600 dark:text-slate-400 transition"
                 />
               </div>
 
@@ -340,12 +340,12 @@ export default function DigitalSafety() {
 
             {/* Log Entries List */}
             <div className="lg:col-span-7 space-y-3">
-              <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+              <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                 Vaulted Evidence Records ({evidenceLog.length})
               </h4>
 
               {evidenceLog.length === 0 ? (
-                <div className="p-8 text-center bg-slate-50 rounded-2xl border border-slate-200 text-xs text-slate-400">
+                <div className="p-8 text-center bg-slate-50 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/60 text-xs text-slate-400 dark:text-slate-500">
                   No evidence records vaulted yet. Use the form on the left to record digital harassment.
                 </div>
               ) : (
@@ -353,17 +353,17 @@ export default function DigitalSafety() {
                   {evidenceLog.map((log) => (
                     <div
                       key={log.id}
-                      className="p-4 bg-white rounded-2xl border border-purple-100 shadow-sm flex items-start justify-between gap-3"
+                      className="p-4 bg-white dark:bg-slate-800/60 rounded-2xl border border-purple-100 dark:border-purple-900/40 shadow-sm flex items-start justify-between gap-3"
                     >
                       <div className="space-y-1.5 text-xs flex-1">
                         <div className="flex items-center gap-2">
-                          <span className="font-bold text-purple-900">{log.title || log.category}</span>
-                          <span className="text-slate-400">•</span>
-                          <span className="text-slate-500 font-mono text-[11px]">{log.incident_date || new Date(log.created_at).toLocaleDateString()}</span>
+                          <span className="font-bold text-purple-900 dark:text-purple-300">{log.title || log.category}</span>
+                          <span className="text-slate-400 dark:text-slate-600">•</span>
+                          <span className="text-slate-500 dark:text-slate-400 font-mono text-[11px]">{log.incident_date || new Date(log.created_at).toLocaleDateString()}</span>
                         </div>
-                        <p className="text-slate-700 leading-relaxed">{log.notes}</p>
+                        <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{log.notes}</p>
                         {log.file_name && (
-                          <span className="inline-flex items-center gap-1 text-[11px] text-purple-800 bg-purple-50 px-2 py-0.5 rounded-md font-medium">
+                          <span className="inline-flex items-center gap-1 text-[11px] text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-900/40 px-2 py-0.5 rounded-md font-medium border border-transparent dark:border-purple-700/40">
                             <FileText size={11} /> {log.file_name}
                           </span>
                         )}
@@ -371,7 +371,7 @@ export default function DigitalSafety() {
 
                       <button
                         onClick={() => handleDeleteLog(log.id)}
-                        className="text-slate-400 hover:text-rose-600 p-1 transition cursor-pointer"
+                        className="text-slate-400 dark:text-slate-600 hover:text-rose-500 dark:hover:text-rose-400 p-1 transition cursor-pointer"
                         title="Delete entry"
                       >
                         <Trash2 size={16} />
