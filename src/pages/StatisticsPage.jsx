@@ -253,7 +253,7 @@ export default function StatisticsPage() {
         </div>
 
         {/* Key Insights Banner */}
-        <div className="bg-gradient-to-br from-[#2E003E] to-[#4a0060] rounded-3xl p-8 shadow-xl border border-purple-700/40">
+        <div className="bg-[#2E003E] rounded-3xl p-8 shadow-xl border border-purple-700/40">
           <div className="flex items-center gap-3 mb-6">
             <Flame size={22} className="text-amber-400" />
             <h2 className="text-xl font-black text-white tracking-tight">Key Insights You Should Know</h2>

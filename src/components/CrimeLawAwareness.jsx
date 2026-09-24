@@ -306,7 +306,7 @@ export default function CrimeLawAwareness() {
   return (
     <section id="crime-law-awareness" className="py-12 bg-slate-900 text-white relative overflow-hidden">
       {/* Background Glow Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-950/40 via-slate-900 to-indigo-950/40 pointer-events-none" />
+      <div className="absolute inset-0 bg-slate-900/90 pointer-events-none" />
       
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -317,7 +317,7 @@ export default function CrimeLawAwareness() {
             <span>Interactive Crime-to-Law Awareness Matrix</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-white mb-4">
-            Which <span className="bg-gradient-to-r from-rose-400 via-purple-300 to-indigo-300 bg-clip-text text-transparent">Crime</span> Has Which <span className="bg-gradient-to-r from-purple-400 via-indigo-300 to-cyan-300 bg-clip-text text-transparent">Law</span>?
+            Which <span className="text-rose-400">Crime</span> Has Which <span className="text-purple-300">Law</span>?
           </h2>
           <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
             Every form of harassment or assault has a specific legal remedy under Indian Penal Code (IPC) and Bharatiya Nyaya Sanhita (BNS 2023). Match real-world crimes to your exact statutory rights.
@@ -534,7 +534,7 @@ export default function CrimeLawAwareness() {
                         </div>
 
                         {/* Action Steps & Emergency Contacts */}
-                        <div className="bg-gradient-to-r from-purple-900/40 to-slate-800 border border-purple-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div className="bg-purple-900/40 border border-purple-500/30 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                           <div className="space-y-1">
                             <span className="text-[11px] font-bold text-purple-300 uppercase tracking-wider block">Immediate Recommended Legal Action</span>
                             <p className="text-xs sm:text-sm text-slate-200 leading-relaxed">{item.actionSteps}</p>

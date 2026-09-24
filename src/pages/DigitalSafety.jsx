@@ -199,7 +199,7 @@ export default function DigitalSafety() {
         </div>
 
         {/* Section 2: StopNCII & Revenge Porn Prevention */}
-        <div className="bg-gradient-to-br from-[#2E003E] via-purple-950 to-indigo-950 rounded-3xl p-8 sm:p-12 text-white shadow-xl space-y-8 relative overflow-hidden">
+        <div className="bg-[#2E003E] rounded-3xl p-8 sm:p-12 text-white shadow-xl space-y-8 relative overflow-hidden">
           <div className="max-w-3xl space-y-4">
             <span className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-300 bg-purple-500/30 px-3 py-1 rounded-full uppercase tracking-wider">
               <Sparkles size={13} /> Proactive Image Shielding

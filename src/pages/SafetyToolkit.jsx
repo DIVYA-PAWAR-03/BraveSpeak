@@ -486,7 +486,7 @@ export default function SafetyToolkit() {
                   className={`w-28 h-28 rounded-full flex flex-col items-center justify-center shadow-2xl transition-all duration-300 font-bold uppercase tracking-wider text-xs cursor-pointer ${
                     isSirenActive
                       ? "bg-rose-600 text-white animate-ping"
-                      : `bg-gradient-to-br from-rose-700 to-rose-900 text-white hover:scale-105 ${isDark ? "shadow-rose-900/40 hover:shadow-[0_0_30px_rgba(225,29,72,0.35)]" : ""}`
+                      : `bg-rose-800 text-white hover:scale-105 ${isDark ? "shadow-rose-900/40 hover:shadow-[0_0_30px_rgba(225,29,72,0.35)]" : ""}`
                   }`}
                 >
                   {isSirenActive ? <VolumeX size={32} /> : <Volume2 size={32} />}
@@ -572,7 +572,7 @@ export default function SafetyToolkit() {
               </p>
             </div>
             <button onClick={fetchLocation} disabled={locLoading}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-violet-700 to-indigo-700 hover:from-violet-600 hover:to-indigo-600 text-white text-xs font-bold rounded-xl shadow-md transition hover:scale-105 cursor-pointer">
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-violet-700 hover:bg-violet-600 text-white text-xs font-bold rounded-xl shadow-md transition hover:scale-105 cursor-pointer">
               <MapPin size={16} />
               <span>{locLoading ? "Fetching GPS..." : coords ? "Update GPS Coordinates" : "Get My Live Location"}</span>
             </button>

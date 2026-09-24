@@ -127,7 +127,7 @@ export default function ContactUs() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <a
             href="tel:181"
-            className="p-6 bg-gradient-to-br from-rose-900 to-rose-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-rose-700/50"
+            className="p-6 bg-rose-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-rose-700/50"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -151,7 +151,7 @@ export default function ContactUs() {
 
           <a
             href="tel:112"
-            className="p-6 bg-gradient-to-br from-purple-900 to-[#1F002B] rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-purple-700/50"
+            className="p-6 bg-purple-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-purple-700/50"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -175,7 +175,7 @@ export default function ContactUs() {
 
           <a
             href="tel:1091"
-            className="p-6 bg-gradient-to-br from-indigo-900 to-indigo-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-indigo-700/50"
+            className="p-6 bg-indigo-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-indigo-700/50"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -199,7 +199,7 @@ export default function ContactUs() {
 
           <a
             href="tel:1930"
-            className="p-6 bg-gradient-to-br from-slate-900 to-slate-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-slate-700/50"
+            className="p-6 bg-slate-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-slate-700/50"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -225,7 +225,7 @@ export default function ContactUs() {
         {/* Contact Form & Anonymous Case Tracking */}
         <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 overflow-hidden flex flex-col lg:flex-row">
           {/* Left Info Panel */}
-          <div className="lg:w-5/12 bg-gradient-to-br from-[#2E003E] via-purple-950 to-indigo-950 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:w-5/12 bg-[#2E003E] p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
             <div className="space-y-8 relative z-10">
@@ -412,7 +412,7 @@ export default function ContactUs() {
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3.5 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-xl font-bold shadow-lg shadow-purple-950/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3.5 bg-purple-700 hover:bg-purple-800 text-white rounded-xl font-bold shadow-lg shadow-purple-950/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   <Send size={16} />
                   <span>{loading ? "Transmitting Securely..." : "Submit Confidential Inquiry"}</span>

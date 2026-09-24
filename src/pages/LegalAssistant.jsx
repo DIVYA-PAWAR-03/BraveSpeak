@@ -259,7 +259,7 @@ Contact: [Complainant Phone / Email]
                   }}
                   className={`p-5 rounded-3xl border transition-all cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? "bg-gradient-to-br from-purple-800 to-purple-950 text-white shadow-xl shadow-purple-950/30 border-purple-600 scale-[1.02]"
+                      ? "bg-purple-900 text-white shadow-xl shadow-purple-950/30 border-purple-600 scale-[1.02]"
                       : "bg-white dark:bg-slate-800/60 text-slate-800 dark:text-slate-200 hover:border-purple-300 dark:hover:border-purple-600 shadow-md border-slate-200 dark:border-slate-700/60"
                   }`}
                 >
@@ -289,7 +289,7 @@ Contact: [Complainant Phone / Email]
         </div>
 
         {/* Step 2: AI / Intelligent Statutory Diagnostic Engine */}
-        <div className="bg-gradient-to-br from-purple-950 to-[#23002E] rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-purple-800/60 space-y-6">
+        <div className="bg-purple-950 rounded-3xl p-6 sm:p-8 text-white shadow-xl border border-purple-800/60 space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div className="space-y-1">
               <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-purple-300 bg-purple-900/60 px-3 py-1 rounded-full border border-purple-700/50">
@@ -307,7 +307,7 @@ Contact: [Complainant Phone / Email]
               type="button"
               onClick={handleSmartDiagnosis}
               disabled={analyzing}
-              className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white font-bold rounded-2xl shadow-lg transition flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:opacity-50"
+              className="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white font-bold rounded-2xl shadow-lg transition flex items-center justify-center gap-2 shrink-0 cursor-pointer disabled:opacity-50"
             >
               {analyzing ? (
                 <>
@@ -610,7 +610,7 @@ Contact: [Complainant Phone / Email]
         <div className="flex justify-center mt-6">
           <button
             onClick={handleDownload}
-            className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#2E003E] to-purple-700 text-white hover:from-purple-800 hover:to-purple-600 rounded-2xl text-sm font-bold transition-all duration-200 shadow-xl hover:shadow-purple-400/40 hover:-translate-y-0.5 cursor-pointer"
+            className="flex items-center gap-3 px-8 py-4 bg-[#2E003E] hover:bg-purple-800 text-white rounded-2xl text-sm font-bold transition-all duration-200 shadow-xl hover:shadow-purple-400/40 hover:-translate-y-0.5 cursor-pointer"
           >
             <Download size={20} />
             <span>Download Complaint Letter (.TXT)</span>

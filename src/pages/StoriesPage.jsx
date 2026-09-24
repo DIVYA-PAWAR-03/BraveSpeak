@@ -225,7 +225,7 @@ export default function StoriesPage() {
           <div className="pt-2">
             <button
               onClick={() => setShowForm(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-semibold shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-semibold shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
             >
               <PlusCircle size={18} />
               <span>Share Your Story (Anonymous Allowed)</span>
@@ -627,7 +627,7 @@ export default function StoriesPage() {
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="flex-1 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white font-semibold rounded-xl text-sm shadow-md transition disabled:opacity-50 cursor-pointer"
+                      className="flex-1 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-xl text-sm shadow-md transition disabled:opacity-50 cursor-pointer"
                     >
                       {submitting ? 'Submitting...' : 'Submit Story'}
                     </button>

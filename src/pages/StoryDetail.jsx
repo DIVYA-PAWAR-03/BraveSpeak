@@ -126,7 +126,7 @@ export default function StoryDetail() {
         </p>
         <Link
           to="/survivorStories"
-          className="bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition"
+          className="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition"
         >
           Return to Survivor Stories
         </Link>
@@ -203,7 +203,7 @@ export default function StoryDetail() {
             </p>
 
             {/* Helpline box */}
-            <div className="p-6 bg-gradient-to-r from-purple-900 to-[#2E003E] rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-6 bg-purple-900 rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <h4 className="font-bold text-base">You Are Never Alone</h4>
                 <p className="text-xs text-purple-200 mt-0.5">Free 24/7 confidential legal counsel & emergency response.</p>

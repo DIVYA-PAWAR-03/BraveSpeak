@@ -165,7 +165,7 @@ const HarassmentLaws = () => {
           <div className="pt-2">
             <Link
               to="/legal-assistant"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white text-sm font-bold rounded-full shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white text-sm font-bold rounded-full shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
             >
               <Sparkles size={16} className="text-amber-300" />
               <span>Open Interactive Legal Assistant & Complaint Drafter</span>
@@ -332,7 +332,7 @@ const HarassmentLaws = () => {
         </div>
 
         {/* Essential Survivor Rights Banner */}
-        <div className="bg-gradient-to-br from-[#2E003E] to-[#4A0A65] text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
+        <div className="bg-[#2E003E] text-white p-8 sm:p-10 rounded-3xl shadow-xl space-y-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-purple-800 pb-4">
             <div>
               <span className="text-xs font-bold px-3 py-1 bg-purple-500/30 text-purple-200 rounded-full border border-purple-400/30 uppercase tracking-wider">

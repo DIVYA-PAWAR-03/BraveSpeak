@@ -30,7 +30,7 @@ export default function Homepage() {
       subtitle: "24x7 Toll-Free Emergency",
       desc: "Instant connection for rescue, counseling, and crisis response.",
       icon: PhoneCall,
-      color: "from-rose-600 via-rose-700 to-pink-800",
+      color: "bg-rose-700",
       textColor: "text-rose-100",
       badgeColor: "bg-white/20 text-white border-white/30"
     },
@@ -40,7 +40,7 @@ export default function Homepage() {
       subtitle: "All-in-One Emergency",
       desc: "Police, medical ambulance, and fire dispatch across all Indian states.",
       icon: ShieldAlert,
-      color: "from-purple-800 via-indigo-900 to-[#2A0840]",
+      color: "bg-purple-900",
       textColor: "text-purple-100",
       badgeColor: "bg-purple-400/20 text-purple-200 border-purple-300/30"
     },
@@ -50,7 +50,7 @@ export default function Homepage() {
       subtitle: "Dedicated Police Cell",
       desc: "Trained female police personnel for on-ground urgent intervention.",
       icon: Shield,
-      color: "from-indigo-700 via-indigo-800 to-slate-900",
+      color: "bg-indigo-800",
       textColor: "text-indigo-100",
       badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-300/30"
     },
@@ -60,7 +60,7 @@ export default function Homepage() {
       subtitle: "Online Abuse & Blackmail",
       desc: "Emergency takedown of morphed photos, leaks, and cyber harassment.",
       icon: Lock,
-      color: "from-violet-800 via-purple-900 to-slate-900",
+      color: "bg-violet-900",
       textColor: "text-violet-100",
       badgeColor: "bg-violet-400/20 text-violet-200 border-violet-300/30"
     }
@@ -75,7 +75,7 @@ export default function Homepage() {
       link: "/legal-assistant",
       linkText: "Draft Legal Complaint",
       tag: "AI Legal Drafter",
-      accent: "from-purple-600 to-indigo-600",
+      accent: "bg-purple-700",
       glow: "rgba(124,58,237,0.15)"
     },
     {
@@ -86,7 +86,7 @@ export default function Homepage() {
       link: "/safety-toolkit",
       linkText: "Open Safety Toolkit",
       tag: "1-Tap GPS & Alarm",
-      accent: "from-rose-600 to-red-700",
+      accent: "bg-rose-600",
       glow: "rgba(225,29,72,0.15)"
     },
     {
@@ -97,7 +97,7 @@ export default function Homepage() {
       link: "/support-directory",
       linkText: "Find Nearest Crisis Center",
       tag: "Verified Desks",
-      accent: "from-emerald-600 to-teal-700",
+      accent: "bg-emerald-600",
       glow: "rgba(16,185,129,0.15)"
     },
     {
@@ -108,7 +108,7 @@ export default function Homepage() {
       link: "/digital-safety",
       linkText: "Audit Privacy Score",
       tag: "StopNCII & Cyber",
-      accent: "from-indigo-600 to-cyan-700",
+      accent: "bg-indigo-600",
       glow: "rgba(99,102,241,0.15)"
     },
     {
@@ -119,7 +119,7 @@ export default function Homepage() {
       link: "/laws",
       linkText: "Explore Indian Laws",
       tag: "Statutory Rights",
-      accent: "from-violet-600 to-purple-800",
+      accent: "bg-violet-700",
       glow: "rgba(109,40,217,0.15)"
     },
     {
@@ -251,7 +251,7 @@ export default function Homepage() {
     heroBtnRose:   isDark ? "bg-rose-950/60 hover:bg-rose-950/80 text-rose-300 border-rose-800/40" : "bg-rose-50 hover:bg-rose-100 text-rose-700 border-rose-200",
     statCard:      isDark ? "bg-[#0d0d0d] border-white/[0.06] hover:border-purple-500/20" : "bg-white border-slate-200 hover:border-purple-200",
     stepInactive:  isDark ? "bg-[#0d0d0d] border-white/[0.06] text-slate-100 hover:bg-[#111] hover:border-purple-600/30" : "bg-slate-50 border-slate-200 text-slate-800 hover:bg-purple-50/50 hover:border-purple-200",
-    stepPanel:     isDark ? "bg-[#0d0d0d] border-white/[0.05]" : "bg-gradient-to-r from-purple-50/80 via-white to-purple-50/60 border-purple-200/80",
+    stepPanel:     isDark ? "bg-[#0d0d0d] border-white/[0.05]" : "bg-purple-50/70 border-purple-200/80",
     storyCard:     isDark ? "bg-[#0d0d0d] border-white/[0.06] hover:border-purple-500/30" : "bg-white border-slate-200 hover:border-purple-300",
     modalBg:       isDark ? "bg-[#0d0d0d] border-white/[0.08]" : "bg-white border-purple-100",
     closeBtn:      isDark ? "bg-[#1a1a1a] hover:bg-[#222] text-[#888]" : "bg-slate-100 hover:bg-slate-200 text-slate-600",
@@ -265,7 +265,7 @@ export default function Homepage() {
       {/* ══════════════════════════════════════════════════════════════
           1. HERO SECTION
       ══════════════════════════════════════════════════════════════ */}
-      <section className={`relative overflow-hidden pt-16 pb-20 lg:pt-20 lg:pb-28 px-4 sm:px-6 border-b ${dk.sectionDivider} ${isDark ? "bg-[#000]" : "bg-gradient-to-b from-purple-50/80 via-slate-50 to-white"}`}>
+      <section className={`relative overflow-hidden pt-16 pb-20 lg:pt-20 lg:pb-28 px-4 sm:px-6 border-b ${dk.sectionDivider} ${isDark ? "bg-[#000]" : "bg-slate-50"}`}>
         {/* Ambient glow — vivid purple on black */}
         {isDark && (
           <>
@@ -292,7 +292,7 @@ export default function Homepage() {
             {/* Headline */}
             <h1 className={`text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15] ${dk.headingDeep}`}>
               Break The Silence. <br />
-              <span className={`bg-clip-text text-transparent ${isDark ? "bg-gradient-to-r from-violet-400 via-purple-400 to-indigo-400" : "bg-gradient-to-r from-purple-800 via-purple-700 to-indigo-700"}`}>
+              <span className={isDark ? "text-purple-400" : "text-purple-700"}>
                 Demand Your Justice.
               </span>
             </h1>
@@ -306,7 +306,7 @@ export default function Homepage() {
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 pt-2">
               <Link
                 to="/laws"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-900/30 hover:scale-105 transition-all cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-purple-700 hover:bg-purple-800 text-white rounded-full text-sm font-bold shadow-lg shadow-purple-900/30 hover:scale-105 transition-all cursor-pointer"
               >
                 <Scale size={18} />
                 <span>Know Your Legal Rights</span>
@@ -424,7 +424,7 @@ export default function Homepage() {
                 <motion.a
                   key={idx}
                   href={`tel:${helpline.number}`}
-                  className={`p-6 rounded-3xl bg-gradient-to-br ${helpline.color} text-white shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group border border-white/15`}
+                  className={`p-6 rounded-3xl ${helpline.color} text-white shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col justify-between group border border-white/15`}
                   whileHover={{ y: -6, scale: 1.02 }}
                 >
                   <div>
@@ -480,7 +480,7 @@ export default function Homepage() {
                 >
                   <div>
                     <div className="flex items-center justify-between mb-5">
-                      <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${pillar.accent} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
+                      <div className={`w-14 h-14 rounded-2xl ${pillar.accent} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform`}>
                         <IconComponent size={26} />
                       </div>
                       <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${dk.pillPurple}`}>
@@ -514,7 +514,7 @@ export default function Homepage() {
       {/* ══════════════════════════════════════════════════════════════
           4. CRIME REALITY DASHBOARD
       ══════════════════════════════════════════════════════════════ */}
-      <section className={`py-20 px-4 sm:px-6 border-b ${dk.sectionDivider} ${isDark ? "bg-[#000]" : "bg-gradient-to-b from-white via-purple-50/30 to-slate-50"}`}>
+      <section className={`py-20 px-4 sm:px-6 border-b ${dk.sectionDivider} ${isDark ? "bg-[#000]" : "bg-white"}`}>
         {isDark && (
           <div className="absolute left-1/2 -translate-x-1/2 w-[40rem] h-64 bg-rose-950/20 rounded-full blur-3xl pointer-events-none" />
         )}
@@ -542,7 +542,7 @@ export default function Homepage() {
                 <div className={`p-3.5 rounded-2xl ${dk.iconBgRose}`}><AlertTriangle size={28} /></div>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillRose}`}>Daily Registered</span>
               </div>
-              <h3 className="text-5xl font-black bg-gradient-to-r from-rose-500 to-pink-500 bg-clip-text text-transparent mb-2">87+</h3>
+              <h3 className="text-5xl font-black text-rose-500 mb-2">87+</h3>
               <p className={`text-base font-bold ${dk.headingPrimary}`}>Cases Reported Daily in India</p>
               <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 Over 31,500 sexual violence cases are officially recorded every year in NCRB annual data compendiums.
@@ -559,7 +559,7 @@ export default function Homepage() {
                 <div className={`p-3.5 rounded-2xl ${dk.iconBgPurple}`}><Clock size={28} /></div>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillPurple}`}>National Frequency</span>
               </div>
-              <h3 className="text-5xl font-black bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent mb-2">1 / 16</h3>
+              <h3 className="text-5xl font-black text-violet-400 mb-2">1 / 16</h3>
               <p className={`text-base font-bold ${dk.headingPrimary}`}>Minutes per Reported Offense</p>
               <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 On average, one sexual offense or modesty assault is registered every 16 minutes in India.
@@ -576,7 +576,7 @@ export default function Homepage() {
                 <div className={`p-3.5 rounded-2xl ${dk.iconBgIndigo}`}><BarChart3 size={28} /></div>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillIndigo}`}>Live Session</span>
               </div>
-              <h3 className="text-5xl font-black bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent mb-2">+{caseCount}</h3>
+              <h3 className="text-5xl font-black text-indigo-400 mb-2">+{caseCount}</h3>
               <p className={`text-base font-bold ${dk.headingPrimary}`}>Estimated Since You Opened This Page</p>
               <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 A real-time awareness counter emphasizing the constant urgency of speaking up and seeking justice.
@@ -587,7 +587,7 @@ export default function Homepage() {
           <div className="text-center pt-4">
             <Link
               to="/statistics"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-sm shadow-xl transition hover:scale-105"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-bold text-sm shadow-xl transition hover:scale-105"
             >
               <span>Explore Full Statistics & Yearly Charts</span>
               <ArrowRight size={18} />
@@ -622,7 +622,7 @@ export default function Homepage() {
                   onClick={() => setActiveStep(idx)}
                   className={`p-7 rounded-3xl border transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                     isSelected
-                      ? "bg-gradient-to-b from-[#290B3D] to-purple-950 text-white shadow-xl scale-[1.03] border-purple-400/40"
+                      ? "bg-[#290B3D] text-white shadow-xl scale-[1.03] border-purple-400/40"
                       : `${dk.stepInactive}`
                   }`}
                 >
@@ -668,10 +668,10 @@ export default function Homepage() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-3">
-                <a href="tel:181" className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2">
+                <a href="tel:181" className="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2">
                   <PhoneCall size={14} /> Call 181 Now
                 </a>
-                <Link to="/laws" className="px-6 py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2">
+                <Link to="/laws" className="px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-bold text-xs shadow-md transition flex items-center gap-2">
                   <Scale size={14} /> View All Laws
                 </Link>
               </div>
@@ -686,7 +686,7 @@ export default function Homepage() {
       {/* ══════════════════════════════════════════════════════════════
           6. FUNDAMENTAL SURVIVOR RIGHTS (dark gradient — always rich)
       ══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-gradient-to-br from-[#290B3D] via-[#3E0E59] to-[#180424] text-white">
+      <section className="py-20 px-4 sm:px-6 bg-[#2E003E] text-white">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-xs font-bold px-3 py-1 bg-white/10 text-purple-200 rounded-full border border-white/20 uppercase tracking-wider">
@@ -795,7 +795,7 @@ export default function Homepage() {
       {/* ══════════════════════════════════════════════════════════════
           8. COMMUNITY PLEDGE CTA (always dark gradient)
       ══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-gradient-to-r from-[#290B3D] via-[#4F136E] to-[#290B3D] text-white relative overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 bg-[#290B3D] text-white relative overflow-hidden">
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-7">
           <span className="inline-block px-4 py-1.5 bg-white/10 rounded-full text-xs font-bold text-purple-200 border border-white/20 uppercase tracking-wider">
             Join the Movement • #BreakTheSilence
@@ -809,7 +809,7 @@ export default function Homepage() {
           <div className="flex flex-wrap gap-4 justify-center pt-2">
             <button
               onClick={() => setPledgeTaken(true)}
-              className="px-8 py-4 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
+              className="px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
             >
               {pledgeTaken ? (
                 <><Check size={18} /><span>Pledge Taken! Thank You for Standing Strong</span></>
@@ -861,7 +861,7 @@ export default function Homepage() {
               <div className={`pt-4 border-t flex justify-end ${dk.divider}`}>
                 <button
                   onClick={() => setSelectedStoryModal(null)}
-                  className="px-6 py-2 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full font-semibold text-xs transition"
+                  className="px-6 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-semibold text-xs transition"
                 >
                   Close Story
                 </button>

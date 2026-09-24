@@ -120,7 +120,7 @@ export default function Header() {
             </a>
             <Link 
               to="/safety-toolkit" 
-              className="inline-flex items-center gap-1 text-white bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 px-2.5 py-0.5 rounded-full font-bold text-[11px] shadow-sm transition-all"
+              className="inline-flex items-center gap-1 text-white bg-purple-700 hover:bg-purple-800 px-2.5 py-0.5 rounded-full font-bold text-[11px] shadow-sm transition-all"
             >
               <ShieldAlert size={11} />
               <span>Instant Panic SOS</span>
@@ -332,7 +332,7 @@ export default function Header() {
           </button>
           <Link
             to="/safety-toolkit"
-            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white rounded-full text-xs font-bold shadow-md shadow-purple-950/20 hover:scale-105 transition-all"
+            className="flex items-center gap-2 px-4 py-2 bg-purple-700 hover:bg-purple-800 text-white rounded-full text-xs font-bold shadow-md shadow-purple-950/20 hover:scale-105 transition-all"
           >
             <ShieldAlert size={14} />
             <span>Emergency SOS</span>
@@ -504,7 +504,7 @@ export default function Header() {
           <Link
             to="/safety-toolkit"
             onClick={closeMenu}
-            className="w-full py-3 bg-gradient-to-r from-purple-700 to-indigo-700 hover:from-purple-800 hover:to-indigo-800 text-white font-bold rounded-xl text-center flex items-center justify-center gap-2 shadow-md text-xs transition-all"
+            className="w-full py-3 bg-purple-700 hover:bg-purple-800 text-white font-bold rounded-xl text-center flex items-center justify-center gap-2 shadow-md text-xs transition-all"
           >
             <ShieldAlert size={16} />
             <span>Open Safety Toolkit &amp; GPS</span>
