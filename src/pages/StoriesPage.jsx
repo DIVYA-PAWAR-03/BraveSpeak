@@ -212,20 +212,20 @@ export default function StoriesPage() {
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Page Title Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
-            <Heart size={14} className="text-rose-600 fill-rose-600" /> Survivor Voices & Healing
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-950/70 border border-purple-200 dark:border-purple-800/60 text-purple-900 dark:text-purple-300 text-xs font-bold uppercase tracking-wider">
+            <Heart size={14} className="text-rose-600 dark:text-rose-400 fill-rose-600 dark:fill-rose-400" /> Survivor Voices & Healing
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] dark:text-slate-100 tracking-tight">
             Stories of Courage, Justice & Resilience
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             Real experiences from survivors who broke their silence, stood up for their legal rights, and found healing. Your story can inspire someone else to take their first step.
           </p>
 
           <div className="pt-2">
             <button
               onClick={() => setShowForm(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-semibold shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 dark:bg-purple-600 dark:hover:bg-purple-500 text-white rounded-full font-semibold shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
             >
               <PlusCircle size={18} />
               <span>Share Your Story (Anonymous Allowed)</span>
@@ -240,24 +240,24 @@ export default function StoriesPage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="max-w-xl mx-auto bg-emerald-50 border border-emerald-300 text-emerald-900 p-4 rounded-2xl flex items-center gap-3 shadow-lg"
+              className="max-w-xl mx-auto bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700/80 text-emerald-900 dark:text-emerald-200 p-4 rounded-2xl flex items-center gap-3 shadow-lg"
             >
-              <CheckCircle2 size={22} className="text-emerald-600 shrink-0" />
+              <CheckCircle2 size={22} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
               <p className="text-sm font-semibold">{successToast}</p>
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* Search & Category Filter Bar */}
-        <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-lg border border-purple-100 space-y-4">
+        <div className="bg-white dark:bg-slate-800 p-6 rounded-3xl shadow-lg border border-purple-100 dark:border-slate-700/80 space-y-4">
           <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400" size={20} />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-purple-400 dark:text-purple-400" size={20} />
             <input
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search stories by topic, keyword, or author..."
-              className="w-full pl-12 pr-4 py-3.5 bg-purple-50/50 border border-purple-200 rounded-2xl text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+              className="w-full pl-12 pr-4 py-3.5 bg-purple-50/50 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-2xl text-slate-800 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition"
             />
           </div>
 
@@ -268,8 +268,8 @@ export default function StoriesPage() {
                 onClick={() => setSelectedCategory(cat)}
                 className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                   selectedCategory === cat
-                    ? "bg-[#2E003E] text-white shadow-md shadow-purple-950/20"
-                    : "bg-purple-50 text-purple-800 hover:bg-purple-100 border border-purple-200/60"
+                    ? "bg-[#2E003E] dark:bg-purple-600 text-white shadow-md shadow-purple-950/20"
+                    : "bg-purple-50 dark:bg-slate-900 text-purple-800 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-slate-700 border border-purple-200/60 dark:border-slate-700"
                 }`}
               >
                 {cat}
@@ -281,8 +281,8 @@ export default function StoriesPage() {
         {/* Loading Spinner */}
         {loading && (
           <div className="text-center py-12">
-            <div className="w-10 h-10 border-4 border-purple-200 border-t-purple-800 rounded-full animate-spin mx-auto mb-3"></div>
-            <p className="text-xs font-semibold text-purple-900">Loading verified stories...</p>
+            <div className="w-10 h-10 border-4 border-purple-200 dark:border-slate-700 border-t-purple-800 dark:border-t-purple-400 rounded-full animate-spin mx-auto mb-3"></div>
+            <p className="text-xs font-semibold text-purple-900 dark:text-purple-300">Loading verified stories...</p>
           </div>
         )}
 
@@ -290,10 +290,10 @@ export default function StoriesPage() {
         {!loading && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredStories.length === 0 ? (
-              <div className="col-span-full text-center py-16 bg-white rounded-3xl border border-purple-100 p-8">
-                <AlertCircle size={40} className="mx-auto text-purple-400 mb-3" />
-                <h3 className="text-xl font-bold text-[#2E003E]">No stories found</h3>
-                <p className="text-slate-500 text-sm mt-1">Try clearing your search query or selecting "All" categories.</p>
+              <div className="col-span-full text-center py-16 bg-white dark:bg-slate-800 rounded-3xl border border-purple-100 dark:border-slate-700 p-8">
+                <AlertCircle size={40} className="mx-auto text-purple-400 dark:text-purple-400 mb-3" />
+                <h3 className="text-xl font-bold text-[#2E003E] dark:text-slate-100">No stories found</h3>
+                <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">Try clearing your search query or selecting "All" categories.</p>
               </div>
             ) : (
               filteredStories.map((story) => {
@@ -305,12 +305,12 @@ export default function StoriesPage() {
                     key={story.id}
                     layout
                     onClick={() => setSelectedStory(story)}
-                    className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-purple-100 hover:border-purple-300 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
+                    className="bg-white dark:bg-slate-800 rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-purple-100 dark:border-slate-700/80 hover:border-purple-300 dark:hover:border-purple-500/50 transition-all duration-300 flex flex-col justify-between group cursor-pointer"
                     whileHover={{ y: -6 }}
                   >
                     <div>
                       {/* Story Cover Image */}
-                      <div className="relative h-52 overflow-hidden bg-purple-900">
+                      <div className="relative h-52 overflow-hidden bg-purple-900 dark:bg-slate-900">
                         <img
                           src={story.img}
                           alt={story.title}
@@ -320,7 +320,7 @@ export default function StoriesPage() {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
                         <div className="absolute top-3 left-3">
-                          <span className="px-3 py-1 bg-[#2E003E]/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-purple-400/30">
+                          <span className="px-3 py-1 bg-[#2E003E]/80 dark:bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-purple-400/30 dark:border-purple-500/30">
                             {story.category}
                           </span>
                         </div>
@@ -334,25 +334,25 @@ export default function StoriesPage() {
 
                       {/* Content */}
                       <div className="p-6 space-y-3">
-                        <h2 className="text-xl font-bold text-[#2E003E] group-hover:text-purple-700 transition-colors line-clamp-2">
+                        <h2 className="text-xl font-bold text-[#2E003E] dark:text-slate-100 group-hover:text-purple-700 dark:group-hover:text-purple-400 transition-colors line-clamp-2">
                           {story.title}
                         </h2>
-                        <p className="text-slate-600 text-sm leading-relaxed line-clamp-3">
+                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed line-clamp-3">
                           {story.desc}
                         </p>
                       </div>
                     </div>
 
                     {/* Card Bottom Bar */}
-                    <div className="px-6 py-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                      <span className="font-semibold text-purple-900">By {story.author}</span>
+                    <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
+                      <span className="font-semibold text-purple-900 dark:text-purple-300">By {story.author}</span>
                       <div className="flex items-center gap-3">
                         <button
                           onClick={(e) => handleLike(story.id, e)}
                           className={`flex items-center gap-1 px-2.5 py-1 rounded-full border transition cursor-pointer ${
                             isLiked
-                              ? "bg-rose-50 border-rose-300 text-rose-600 font-bold"
-                              : "bg-slate-50 dark:bg-slate-900 border-slate-200 text-slate-600 hover:bg-rose-50 hover:text-rose-600"
+                              ? "bg-rose-50 dark:bg-rose-950/60 border-rose-300 dark:border-rose-800 text-rose-600 dark:text-rose-400 font-bold"
+                              : "bg-slate-50 dark:bg-slate-900 border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:text-rose-600 dark:hover:text-rose-400"
                           }`}
                           title="Show support"
                         >
@@ -361,7 +361,7 @@ export default function StoriesPage() {
                         </button>
                         <button
                           onClick={(e) => handleShare(story, e)}
-                          className="p-1.5 rounded-full bg-slate-50 border border-slate-200 text-slate-600 hover:text-purple-900 transition cursor-pointer"
+                          className="p-1.5 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-purple-900 dark:hover:text-purple-300 transition cursor-pointer"
                           title="Share story"
                         >
                           <Share2 size={14} />
@@ -378,39 +378,39 @@ export default function StoriesPage() {
         {/* Story Detail Reading Modal */}
         <AnimatePresence>
           {selectedStory && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 p-6 sm:p-8 relative"
+                className="bg-white dark:bg-slate-800 rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 dark:border-slate-700 p-6 sm:p-8 relative"
               >
                 <button
                   onClick={() => setSelectedStory(null)}
-                  className="absolute top-5 right-5 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 transition cursor-pointer"
+                  className="absolute top-5 right-5 p-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full text-slate-600 dark:text-slate-200 transition cursor-pointer"
                   aria-label="Close story"
                 >
                   <X size={20} />
                 </button>
 
                 <div className="space-y-5">
-                  <span className="text-xs font-bold px-3 py-1 bg-purple-100 text-purple-900 rounded-full">
+                  <span className="text-xs font-bold px-3 py-1 bg-purple-100 dark:bg-purple-950/80 text-purple-900 dark:text-purple-300 rounded-full border border-purple-200/50 dark:border-purple-800/50">
                     {selectedStory.category}
                   </span>
 
-                  <h1 className="text-2xl sm:text-3xl font-extrabold text-[#2E003E] leading-tight">
+                  <h1 className="text-2xl sm:text-3xl font-extrabold text-[#2E003E] dark:text-slate-100 leading-tight">
                     {selectedStory.title}
                   </h1>
 
-                  <div className="flex items-center gap-3 text-xs text-slate-500 border-b border-slate-100 pb-4">
-                    <span className="font-bold text-purple-900">Shared by {selectedStory.author}</span>
+                  <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400 border-b border-slate-100 dark:border-slate-700/60 pb-4">
+                    <span className="font-bold text-purple-900 dark:text-purple-300">Shared by {selectedStory.author}</span>
                     <span>•</span>
                     <span>{selectedStory.date}</span>
                     <span>•</span>
                     <span>{selectedStory.readTime}</span>
                   </div>
 
-                  <div className="relative h-64 rounded-2xl overflow-hidden shadow-md">
+                  <div className="relative h-64 rounded-2xl overflow-hidden shadow-md bg-purple-900 dark:bg-slate-900">
                     <img
                       src={selectedStory.img}
                       alt={selectedStory.title}
@@ -418,19 +418,19 @@ export default function StoriesPage() {
                     />
                   </div>
 
-                  <p className="text-slate-700 text-base leading-relaxed whitespace-pre-line">
+                  <p className="text-slate-700 dark:text-slate-300 text-base leading-relaxed whitespace-pre-line">
                     {selectedStory.desc}
                   </p>
 
-                  <div className="p-4 bg-purple-50 rounded-2xl border border-purple-200 text-xs text-purple-900 space-y-1">
+                  <div className="p-4 bg-purple-50 dark:bg-purple-950/60 rounded-2xl border border-purple-200 dark:border-purple-800/60 text-xs text-purple-900 dark:text-purple-200 space-y-1">
                     <p className="font-bold">Need assistance or someone to talk to?</p>
-                    <p>Call the 24x7 National Helpline at <a href="tel:181" className="font-bold underline">181</a> or police emergency at <a href="tel:112" className="font-bold underline">112</a>.</p>
+                    <p>Call the 24x7 National Helpline at <a href="tel:181" className="font-bold underline text-purple-950 dark:text-purple-100">181</a> or police emergency at <a href="tel:112" className="font-bold underline text-purple-950 dark:text-purple-100">112</a>.</p>
                   </div>
 
-                  <div className="flex justify-between items-center pt-4 border-t border-slate-100">
+                  <div className="flex justify-between items-center pt-4 border-t border-slate-100 dark:border-slate-700/60">
                     <button
                       onClick={(e) => handleLike(selectedStory.id, e)}
-                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-rose-50 text-rose-600 font-bold rounded-full border border-rose-200 hover:bg-rose-100 transition cursor-pointer"
+                      className="inline-flex items-center gap-1.5 px-4 py-2 bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 font-bold rounded-full border border-rose-200 dark:border-rose-800 hover:bg-rose-100 dark:hover:bg-rose-900/60 transition cursor-pointer"
                     >
                       <Heart size={16} className={likedMap[selectedStory.id] ? "fill-rose-500" : ""} />
                       <span>{selectedStory.likes} People Supported</span>
@@ -438,28 +438,28 @@ export default function StoriesPage() {
 
                     <button
                       onClick={() => setSelectedStory(null)}
-                      className="px-6 py-2 bg-[#2E003E] text-white font-semibold rounded-full hover:bg-purple-950 transition cursor-pointer"
+                      className="px-6 py-2 bg-[#2E003E] dark:bg-purple-600 text-white font-semibold rounded-full hover:bg-purple-950 dark:hover:bg-purple-500 transition cursor-pointer"
                     >
                       Close Reader
                     </button>
                   </div>
 
                   {/* Community Messages / Comments Section */}
-                  <div className="pt-6 border-t border-slate-100 space-y-4">
-                    <h3 className="text-base font-bold text-[#2E003E] flex items-center gap-2">
-                      <MessageCircle size={18} className="text-purple-700" />
+                  <div className="pt-6 border-t border-slate-100 dark:border-slate-700/60 space-y-4">
+                    <h3 className="text-base font-bold text-[#2E003E] dark:text-slate-100 flex items-center gap-2">
+                      <MessageCircle size={18} className="text-purple-700 dark:text-purple-400" />
                       <span>Community Words of Encouragement ({comments.length})</span>
                     </h3>
 
                     {/* Add Comment Form */}
-                    <form onSubmit={handleAddComment} className="space-y-3 bg-purple-50/50 p-4 rounded-2xl border border-purple-200">
+                    <form onSubmit={handleAddComment} className="space-y-3 bg-purple-50/50 dark:bg-slate-900/60 p-4 rounded-2xl border border-purple-200 dark:border-slate-700">
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         <input
                           type="text"
                           value={commentAuthor}
                           onChange={(e) => setCommentAuthor(e.target.value)}
                           placeholder="Your Name / Supporter Alias (Optional)"
-                          className="px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                          className="px-3 py-2 bg-white dark:bg-slate-800 border border-purple-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-400"
                         />
                       </div>
                       <div className="flex gap-2">
@@ -469,12 +469,12 @@ export default function StoriesPage() {
                           value={commentInput}
                           onChange={(e) => setCommentInput(e.target.value)}
                           placeholder="Write a message of solidarity and encouragement..."
-                          className="flex-1 px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                          className="flex-1 px-3 py-2 bg-white dark:bg-slate-800 border border-purple-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-400"
                         />
                         <button
                           type="submit"
                           disabled={commentLoading || !commentInput.trim()}
-                          className="px-4 py-2 bg-purple-900 text-white rounded-xl text-xs font-bold hover:bg-purple-950 transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+                          className="px-4 py-2 bg-purple-900 dark:bg-purple-600 text-white rounded-xl text-xs font-bold hover:bg-purple-950 dark:hover:bg-purple-500 transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
                         >
                           <Send size={13} />
                           <span>Send</span>
@@ -485,20 +485,20 @@ export default function StoriesPage() {
                     {/* Comments List */}
                     <div className="space-y-2.5 max-h-48 overflow-y-auto pr-1">
                       {comments.length === 0 ? (
-                        <p className="text-xs text-slate-400 italic text-center py-2">
+                        <p className="text-xs text-slate-400 dark:text-slate-500 italic text-center py-2">
                           No messages yet. Be the first to leave words of strength!
                         </p>
                       ) : (
                         comments.map((c) => (
-                          <div key={c.id} className="p-3 bg-slate-50 border border-slate-200 dark:border-slate-700/80 rounded-xl text-xs space-y-1">
-                            <div className="flex justify-between items-center text-slate-500">
-                              <span className="font-bold text-purple-950 flex items-center gap-1">
-                                <User size={12} className="text-purple-600" />
+                          <div key={c.id} className="p-3 bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700/80 rounded-xl text-xs space-y-1">
+                            <div className="flex justify-between items-center text-slate-500 dark:text-slate-400">
+                              <span className="font-bold text-purple-950 dark:text-purple-300 flex items-center gap-1">
+                                <User size={12} className="text-purple-600 dark:text-purple-400" />
                                 {c.author}
                               </span>
                               <span className="text-[10px]">{new Date(c.created_at).toLocaleDateString()}</span>
                             </div>
-                            <p className="text-slate-700 leading-relaxed">{c.content}</p>
+                            <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{c.content}</p>
                           </div>
                         ))
                       )}
@@ -513,49 +513,49 @@ export default function StoriesPage() {
         {/* Share Story Submission Modal */}
         <AnimatePresence>
           {showForm && (
-            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fade-in">
+            <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95, y: 20 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                className="bg-white dark:bg-slate-800 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 p-6 sm:p-8 relative"
+                className="bg-white dark:bg-slate-800 rounded-3xl max-w-xl w-full max-h-[90vh] overflow-y-auto shadow-2xl border border-purple-100 dark:border-slate-700 p-6 sm:p-8 relative"
               >
                 <button
                   onClick={() => setShowForm(false)}
-                  className="absolute top-5 right-5 p-2 bg-slate-100 hover:bg-slate-200 rounded-full text-slate-600 transition cursor-pointer"
+                  className="absolute top-5 right-5 p-2 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-full text-slate-600 dark:text-slate-200 transition cursor-pointer"
                   aria-label="Close form"
                 >
                   <X size={20} />
                 </button>
 
                 <div className="space-y-2 mb-6">
-                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 bg-purple-50 px-3 py-1 rounded-full">
+                  <div className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/70 border border-purple-200/50 dark:border-purple-800/50 px-3 py-1 rounded-full">
                     <Sparkles size={14} /> Safe & Confidential
                   </div>
-                  <h2 className="text-2xl font-extrabold text-[#2E003E]">Share Your Experience</h2>
-                  <p className="text-xs text-slate-500">
+                  <h2 className="text-2xl font-extrabold text-[#2E003E] dark:text-slate-100">Share Your Experience</h2>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
                     Your story can provide courage and guidance to other women facing similar challenges.
                   </p>
                 </div>
 
                 <form onSubmit={handleSubmitStory} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Category
                     </label>
                     <select
                       value={form.category}
                       onChange={(e) => setForm({ ...form, category: e.target.value })}
-                      className="w-full p-3 bg-purple-50/50 border border-purple-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+                      className="w-full p-3 bg-purple-50/50 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 text-slate-900 dark:text-slate-100 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
                     >
                       {categories.filter(c => c !== 'All').map(cat => (
-                        <option key={cat} value={cat}>{cat}</option>
+                        <option key={cat} value={cat} className="bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-100">{cat}</option>
                       ))}
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                       Story Title *
                     </label>
                     <input
@@ -565,16 +565,16 @@ export default function StoriesPage() {
                       value={form.title}
                       onChange={(e) => setForm({ ...form, title: e.target.value })}
                       placeholder="e.g., How I Stood Up to Workplace Harassment"
-                      className="w-full p-3 bg-purple-50/50 border border-purple-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+                      className="w-full p-3 bg-purple-50/50 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     />
                   </div>
 
                   <div>
                     <div className="flex justify-between items-center mb-1">
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider">
+                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider">
                         Your Story *
                       </label>
-                      <span className="text-[11px] text-slate-400">{form.desc.length} / 1000</span>
+                      <span className="text-[11px] text-slate-400 dark:text-slate-500">{form.desc.length} / 1000</span>
                     </div>
                     <textarea
                       required
@@ -583,26 +583,26 @@ export default function StoriesPage() {
                       value={form.desc}
                       onChange={(e) => setForm({ ...form, desc: e.target.value })}
                       placeholder="Share what happened, how you addressed it, what laws/resources helped, and what advice you'd give..."
-                      className="w-full p-3 bg-purple-50/50 border border-purple-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+                      className="w-full p-3 bg-purple-50/50 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     />
                   </div>
 
-                  <div className="flex items-center gap-2 p-3 bg-purple-50 rounded-xl border border-purple-200">
+                  <div className="flex items-center gap-2 p-3 bg-purple-50 dark:bg-slate-900/80 rounded-xl border border-purple-200 dark:border-slate-700">
                     <input
                       type="checkbox"
                       id="anonymousCheck"
                       checked={form.isAnonymous}
                       onChange={(e) => setForm({ ...form, isAnonymous: e.target.checked })}
-                      className="w-4 h-4 text-purple-600 rounded focus:ring-purple-400"
+                      className="w-4 h-4 text-purple-600 rounded focus:ring-purple-400 cursor-pointer"
                     />
-                    <label htmlFor="anonymousCheck" className="text-xs font-semibold text-purple-900 cursor-pointer">
+                    <label htmlFor="anonymousCheck" className="text-xs font-semibold text-purple-900 dark:text-purple-300 cursor-pointer">
                       Post as Anonymous (Recommended for complete privacy)
                     </label>
                   </div>
 
                   {!form.isAnonymous && (
                     <div>
-                      <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                      <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1">
                         Your Name / Display Alias
                       </label>
                       <input
@@ -611,7 +611,7 @@ export default function StoriesPage() {
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder="e.g., Priya S. or Survivor from Delhi"
-                        className="w-full p-3 bg-purple-50/50 border border-purple-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-purple-400"
+                        className="w-full p-3 bg-purple-50/50 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
                       />
                     </div>
                   )}
@@ -620,14 +620,14 @@ export default function StoriesPage() {
                     <button
                       type="button"
                       onClick={() => setShowForm(false)}
-                      className="flex-1 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition cursor-pointer"
+                      className="flex-1 py-3 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 font-semibold rounded-xl text-sm transition cursor-pointer"
                     >
                       Cancel
                     </button>
                     <button
                       type="submit"
                       disabled={submitting}
-                      className="flex-1 py-3 bg-purple-700 hover:bg-purple-800 text-white font-semibold rounded-xl text-sm shadow-md transition disabled:opacity-50 cursor-pointer"
+                      className="flex-1 py-3 bg-purple-700 hover:bg-purple-800 dark:bg-purple-600 dark:hover:bg-purple-500 text-white font-semibold rounded-xl text-sm shadow-md transition disabled:opacity-50 cursor-pointer"
                     >
                       {submitting ? 'Submitting...' : 'Submit Story'}
                     </button>
@@ -641,4 +641,5 @@ export default function StoriesPage() {
     </div>
   );
 }
+
 

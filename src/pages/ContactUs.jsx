@@ -112,13 +112,13 @@ export default function ContactUs() {
       <div className="max-w-7xl mx-auto space-y-12">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 border border-purple-200 text-purple-900 text-xs font-bold uppercase tracking-wider">
-            <PhoneCall size={14} className="text-purple-700" /> 24/7 Crisis & Support Network
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-purple-100 dark:bg-purple-950/70 border border-purple-200 dark:border-purple-800/60 text-purple-900 dark:text-purple-300 text-xs font-bold uppercase tracking-wider">
+            <PhoneCall size={14} className="text-purple-700 dark:text-purple-400" /> 24/7 Crisis & Support Network
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] tracking-tight">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#2E003E] dark:text-slate-100 tracking-tight">
             We Are Here to Listen & Support You
           </h1>
-          <p className="text-slate-600 text-base sm:text-lg leading-relaxed">
+          <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg leading-relaxed">
             Need emergency assistance, legal advice, or a safe confidential inquiry? Reach out directly to verified national helplines or contact our team below.
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function ContactUs() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <a
             href="tel:181"
-            className="p-6 bg-rose-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-rose-700/50"
+            className="p-6 bg-rose-900 dark:bg-rose-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-rose-700/50 dark:border-rose-800/70"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -151,7 +151,7 @@ export default function ContactUs() {
 
           <a
             href="tel:112"
-            className="p-6 bg-purple-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-purple-700/50"
+            className="p-6 bg-purple-900 dark:bg-purple-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-purple-700/50 dark:border-purple-800/70"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -175,7 +175,7 @@ export default function ContactUs() {
 
           <a
             href="tel:1091"
-            className="p-6 bg-indigo-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-indigo-700/50"
+            className="p-6 bg-indigo-900 dark:bg-indigo-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-indigo-700/50 dark:border-indigo-800/70"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -199,7 +199,7 @@ export default function ContactUs() {
 
           <a
             href="tel:1930"
-            className="p-6 bg-slate-900 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-slate-700/50"
+            className="p-6 bg-slate-900 dark:bg-slate-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-slate-700/50 dark:border-slate-800/70"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
@@ -223,9 +223,9 @@ export default function ContactUs() {
         </div>
 
         {/* Contact Form & Anonymous Case Tracking */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 overflow-hidden flex flex-col lg:flex-row">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 dark:border-slate-700 overflow-hidden flex flex-col lg:flex-row">
           {/* Left Info Panel */}
-          <div className="lg:w-5/12 bg-[#2E003E] p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="lg:w-5/12 bg-[#2E003E] dark:bg-slate-950 p-8 sm:p-12 text-white flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 left-0 w-64 h-64 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
             <div className="space-y-8 relative z-10">
@@ -274,7 +274,7 @@ export default function ContactUs() {
               </div>
             </div>
 
-            <div className="mt-8 pt-6 border-t border-purple-800/60 relative z-10 text-xs text-purple-300">
+            <div className="mt-8 pt-6 border-t border-purple-800/60 dark:border-slate-800 relative z-10 text-xs text-purple-300">
               <p className="flex items-center gap-1.5 font-medium">
                 <CheckCircle2 size={16} className="text-emerald-400" />
                 <span>Your information is strictly confidential & encrypted.</span>
@@ -284,41 +284,41 @@ export default function ContactUs() {
 
           {/* Right Message Form & Tracker */}
           <div className="lg:w-7/12 p-8 sm:p-12 space-y-6">
-            <div className="border-b border-slate-100 pb-4">
-              <h3 className="text-2xl font-extrabold text-[#2E003E] mb-1">Send a Confidential Message</h3>
-              <p className="text-xs text-slate-500">
+            <div className="border-b border-slate-100 dark:border-slate-700/60 pb-4">
+              <h3 className="text-2xl font-extrabold text-[#2E003E] dark:text-slate-100 mb-1">Send a Confidential Message</h3>
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 You will receive an encrypted Reference ID to track case updates without providing personal credentials.
               </p>
             </div>
 
             {formSubmitted ? (
-              <div className="p-8 bg-purple-50 border border-purple-200 rounded-3xl text-center space-y-4 animate-fade-in">
-                <CheckCircle2 size={44} className="mx-auto text-emerald-600" />
-                <h4 className="text-2xl font-black text-[#2E003E]">Inquiry Submitted Safely</h4>
-                <p className="text-xs text-slate-600 max-w-sm mx-auto">
+              <div className="p-8 bg-purple-50 dark:bg-slate-900 border border-purple-200 dark:border-slate-700 rounded-3xl text-center space-y-4 animate-fade-in">
+                <CheckCircle2 size={44} className="mx-auto text-emerald-600 dark:text-emerald-400" />
+                <h4 className="text-2xl font-black text-[#2E003E] dark:text-slate-100">Inquiry Submitted Safely</h4>
+                <p className="text-xs text-slate-600 dark:text-slate-300 max-w-sm mx-auto">
                   Thank you for reaching out to BraveSpeak. Your inquiry has been logged securely in our support queue.
                 </p>
 
                 {submissionData?.refId && (
-                  <div className="p-4 bg-white border border-purple-300 rounded-2xl max-w-xs mx-auto space-y-2">
-                    <p className="text-[11px] uppercase font-bold text-purple-900 tracking-wider">Your Confidential Reference ID</p>
+                  <div className="p-4 bg-white dark:bg-slate-800 border border-purple-300 dark:border-slate-700 rounded-2xl max-w-xs mx-auto space-y-2">
+                    <p className="text-[11px] uppercase font-bold text-purple-900 dark:text-purple-300 tracking-wider">Your Confidential Reference ID</p>
                     <div className="flex items-center justify-center gap-2">
-                      <span className="font-mono text-xl font-black text-[#2E003E]">{submissionData.refId}</span>
+                      <span className="font-mono text-xl font-black text-[#2E003E] dark:text-slate-100">{submissionData.refId}</span>
                       <button
                         onClick={handleCopyRef}
-                        className="p-1.5 rounded-lg bg-purple-100 text-purple-900 hover:bg-purple-200 transition cursor-pointer"
+                        className="p-1.5 rounded-lg bg-purple-100 dark:bg-slate-700 text-purple-900 dark:text-slate-200 hover:bg-purple-200 dark:hover:bg-slate-600 transition cursor-pointer"
                         title="Copy Reference ID"
                       >
-                        {copiedRef ? <CheckCircle2 size={16} className="text-emerald-600" /> : <Copy size={16} />}
+                        {copiedRef ? <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400" /> : <Copy size={16} />}
                       </button>
                     </div>
-                    <p className="text-[10px] text-slate-400">Save this code to check response status anonymously.</p>
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500">Save this code to check response status anonymously.</p>
                   </div>
                 )}
 
                 <button
                   onClick={() => setFormSubmitted(false)}
-                  className="mt-4 px-6 py-2.5 bg-[#2E003E] text-white rounded-full text-xs font-semibold hover:bg-purple-950 transition cursor-pointer"
+                  className="mt-4 px-6 py-2.5 bg-[#2E003E] dark:bg-purple-600 text-white rounded-full text-xs font-semibold hover:bg-purple-950 dark:hover:bg-purple-500 transition cursor-pointer"
                 >
                   Send Another Inquiry
                 </button>
@@ -327,76 +327,76 @@ export default function ContactUs() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                       Your Name / Display Alias *
                     </label>
                     <div className="relative">
-                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={17} />
+                      <User className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400 dark:text-purple-400" size={17} />
                       <input
                         type="text"
                         required
                         value={form.name}
                         onChange={(e) => setForm({ ...form, name: e.target.value })}
                         placeholder="Enter your name or alias"
-                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                       Support Category
                     </label>
                     <select
                       value={form.category}
                       onChange={(e) => setForm({ ...form, category: e.target.value })}
-                      className="w-full p-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                      className="w-full p-3 bg-purple-50/40 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm font-medium text-slate-800 dark:text-slate-100 focus:outline-none focus:ring-2 focus:ring-purple-400"
                     >
-                      <option>General Support & Counseling</option>
-                      <option>Legal Aid & FIR Guidance</option>
-                      <option>POSH Workplace Harassment</option>
-                      <option>Cybercrime & Takedown Assistance</option>
-                      <option>NGO Collaboration / Volunteering</option>
+                      <option className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100">General Support & Counseling</option>
+                      <option className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100">Legal Aid & FIR Guidance</option>
+                      <option className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100">POSH Workplace Harassment</option>
+                      <option className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100">Cybercrime & Takedown Assistance</option>
+                      <option className="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100">NGO Collaboration / Volunteering</option>
                     </select>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                       Email Address (Optional)
                     </label>
                     <div className="relative">
-                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={17} />
+                      <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400 dark:text-purple-400" size={17} />
                       <input
                         type="email"
                         value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })}
                         placeholder="For private email updates"
-                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                       Phone Number (Optional)
                     </label>
                     <div className="relative">
-                      <PhoneIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400" size={17} />
+                      <PhoneIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 text-purple-400 dark:text-purple-400" size={17} />
                       <input
                         type="tel"
                         value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })}
                         placeholder="For confidential callback"
-                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                        className="w-full pl-10 pr-4 py-3 bg-purple-50/40 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition"
                       />
                     </div>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                  <label className="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-1.5">
                     Your Message / Situation *
                   </label>
                   <textarea
@@ -405,14 +405,14 @@ export default function ContactUs() {
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
                     placeholder="Describe how we can support you. All communications are confidential..."
-                    className="w-full p-3.5 bg-purple-50/40 border border-purple-200 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-purple-400/80 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white transition"
+                    className="w-full p-3.5 bg-purple-50/40 dark:bg-slate-900/80 border border-purple-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-slate-800 dark:text-slate-100 placeholder-purple-400/80 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400 focus:bg-white dark:focus:bg-slate-900 transition"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3.5 bg-purple-700 hover:bg-purple-800 text-white rounded-xl font-bold shadow-lg shadow-purple-950/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3.5 bg-purple-700 hover:bg-purple-800 dark:bg-purple-600 dark:hover:bg-purple-500 text-white rounded-xl font-bold shadow-lg shadow-purple-950/20 transition flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
                   <Send size={16} />
                   <span>{loading ? "Transmitting Securely..." : "Submit Confidential Inquiry"}</span>
@@ -421,9 +421,9 @@ export default function ContactUs() {
             )}
 
             {/* Anonymous Status Tracker Box */}
-            <div className="pt-6 border-t border-slate-100">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-purple-950 mb-2 flex items-center gap-1.5">
-                <Search size={14} className="text-purple-600" />
+            <div className="pt-6 border-t border-slate-100 dark:border-slate-700/60">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-purple-950 dark:text-purple-300 mb-2 flex items-center gap-1.5">
+                <Search size={14} className="text-purple-600 dark:text-purple-400" />
                 Track Anonymous Case / Inquiry Status
               </h4>
 
@@ -433,32 +433,32 @@ export default function ContactUs() {
                   value={trackRefId}
                   onChange={(e) => setTrackRefId(e.target.value)}
                   placeholder="Enter Reference ID (e.g. BS-A1B2C3)"
-                  className="flex-1 px-3 py-2.5 bg-slate-50 border border-purple-200 rounded-xl text-xs font-mono uppercase focus:outline-none focus:ring-2 focus:ring-purple-400"
+                  className="flex-1 px-3 py-2.5 bg-slate-50 dark:bg-slate-900 border border-purple-200 dark:border-slate-700 rounded-xl text-xs font-mono uppercase text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-400"
                 />
                 <button
                   type="submit"
                   disabled={trackingLoading || !trackRefId.trim()}
-                  className="px-4 py-2.5 bg-[#2E003E] text-white rounded-xl text-xs font-bold hover:bg-purple-950 transition disabled:opacity-50 cursor-pointer"
+                  className="px-4 py-2.5 bg-[#2E003E] dark:bg-purple-600 text-white rounded-xl text-xs font-bold hover:bg-purple-950 dark:hover:bg-purple-500 transition disabled:opacity-50 cursor-pointer"
                 >
                   {trackingLoading ? "Checking..." : "Track Status"}
                 </button>
               </form>
 
               {trackError && (
-                <p className="text-xs text-rose-600 mt-2 font-semibold flex items-center gap-1">
+                <p className="text-xs text-rose-600 dark:text-rose-400 mt-2 font-semibold flex items-center gap-1">
                   <AlertCircle size={13} /> {trackError}
                 </p>
               )}
 
               {trackResult && (
-                <div className="mt-3 p-4 bg-purple-50/70 border border-purple-200 rounded-2xl space-y-2 text-xs">
+                <div className="mt-3 p-4 bg-purple-50/70 dark:bg-slate-900/90 border border-purple-200 dark:border-slate-700 rounded-2xl space-y-2 text-xs">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-purple-950">Status: <span className="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full font-extrabold">{trackResult.status}</span></span>
-                    <span className="text-slate-500 text-[10px]">{new Date(trackResult.created_at).toLocaleDateString()}</span>
+                    <span className="font-bold text-purple-950 dark:text-purple-300">Status: <span className="text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-2 py-0.5 rounded-full font-extrabold">{trackResult.status}</span></span>
+                    <span className="text-slate-500 dark:text-slate-400 text-[10px]">{new Date(trackResult.created_at).toLocaleDateString()}</span>
                   </div>
-                  <p className="text-slate-700"><strong>Category:</strong> {trackResult.category}</p>
+                  <p className="text-slate-700 dark:text-slate-300"><strong>Category:</strong> {trackResult.category}</p>
                   {trackResult.admin_note && (
-                    <div className="p-2.5 bg-white border border-purple-200 rounded-xl text-slate-800 dark:text-slate-200">
+                    <div className="p-2.5 bg-white dark:bg-slate-800 border border-purple-200 dark:border-slate-700 rounded-xl text-slate-800 dark:text-slate-200">
                       <strong>Support Desk Update:</strong> {trackResult.admin_note}
                     </div>
                   )}
@@ -469,12 +469,12 @@ export default function ContactUs() {
         </div>
 
         {/* FAQs */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 p-8 sm:p-12 space-y-6">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 dark:border-slate-700 p-8 sm:p-12 space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200">
+            <span className="text-xs font-bold uppercase tracking-wider text-purple-800 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/70 px-3 py-1 rounded-full border border-purple-200 dark:border-purple-800/60">
               Knowledge Base
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#2E003E]">Frequently Asked Questions</h3>
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#2E003E] dark:text-slate-100">Frequently Asked Questions</h3>
           </div>
 
           <div className="space-y-3 max-w-3xl mx-auto">
@@ -483,14 +483,14 @@ export default function ContactUs() {
               return (
                 <div
                   key={index}
-                  className="border border-purple-100 rounded-2xl overflow-hidden transition-all bg-purple-50/30"
+                  className="border border-purple-100 dark:border-slate-700/80 rounded-2xl overflow-hidden transition-all bg-purple-50/30 dark:bg-slate-900/60"
                 >
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : index)}
-                    className="w-full p-4 sm:p-5 text-left font-bold text-[#2E003E] flex items-center justify-between gap-4 cursor-pointer hover:bg-purple-50/80 transition text-sm sm:text-base"
+                    className="w-full p-4 sm:p-5 text-left font-bold text-[#2E003E] dark:text-slate-100 flex items-center justify-between gap-4 cursor-pointer hover:bg-purple-50/80 dark:hover:bg-slate-900/90 transition text-sm sm:text-base"
                   >
                     <span>{faq.q}</span>
-                    {isOpen ? <ChevronUp size={18} className="text-purple-700 shrink-0" /> : <ChevronDown size={18} className="text-purple-700 shrink-0" />}
+                    {isOpen ? <ChevronUp size={18} className="text-purple-700 dark:text-purple-400 shrink-0" /> : <ChevronDown size={18} className="text-purple-700 dark:text-purple-400 shrink-0" />}
                   </button>
 
                   <AnimatePresence>
@@ -499,7 +499,7 @@ export default function ContactUs() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: "auto" }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="px-5 pb-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-purple-100 pt-3"
+                        className="px-5 pb-5 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed border-t border-purple-100 dark:border-slate-700/60 pt-3"
                       >
                         {faq.a}
                       </motion.div>
@@ -514,4 +514,5 @@ export default function ContactUs() {
     </div>
   );
 }
+
 

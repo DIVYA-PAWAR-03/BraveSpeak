@@ -108,8 +108,8 @@ export default function StoryDetail() {
   if (loading) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center">
-        <div className="w-10 h-10 border-4 border-purple-200 border-t-purple-800 rounded-full animate-spin mb-3"></div>
-        <p className="text-xs font-semibold text-purple-900">Loading story details...</p>
+        <div className="w-10 h-10 border-4 border-purple-200 dark:border-slate-700 border-t-purple-800 dark:border-t-purple-400 rounded-full animate-spin mb-3"></div>
+        <p className="text-xs font-semibold text-purple-900 dark:text-purple-300">Loading story details...</p>
       </div>
     );
   }
@@ -117,16 +117,16 @@ export default function StoryDetail() {
   if (!story) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center p-6 text-center">
-        <div className="w-16 h-16 bg-purple-100 text-purple-700 rounded-full flex items-center justify-center mb-4">
+        <div className="w-16 h-16 bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 rounded-full flex items-center justify-center mb-4">
           <Shield size={32} />
         </div>
-        <h2 className="text-2xl font-bold text-[#2E003E] mb-2">Story Not Found</h2>
-        <p className="text-slate-600 text-sm max-w-sm mb-6">
+        <h2 className="text-2xl font-bold text-[#2E003E] dark:text-slate-100 mb-2">Story Not Found</h2>
+        <p className="text-slate-600 dark:text-slate-300 text-sm max-w-sm mb-6">
           The story you are looking for might have been moved or is currently unavailable.
         </p>
         <Link
           to="/survivorStories"
-          className="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition"
+          className="bg-purple-700 hover:bg-purple-800 dark:bg-purple-600 dark:hover:bg-purple-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:scale-105 transition"
         >
           Return to Survivor Stories
         </Link>
@@ -140,15 +140,15 @@ export default function StoryDetail() {
         {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center gap-2 text-sm font-bold text-purple-700 hover:text-purple-950 transition cursor-pointer"
+          className="inline-flex items-center gap-2 text-sm font-bold text-purple-700 dark:text-purple-400 hover:text-purple-950 dark:hover:text-purple-300 transition cursor-pointer"
         >
           <ArrowLeft size={18} />
           <span>Back to Stories</span>
         </button>
 
         {/* Story Card */}
-        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 overflow-hidden">
-          <div className="relative h-72 sm:h-96 w-full">
+        <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-purple-100 dark:border-slate-700/80 overflow-hidden">
+          <div className="relative h-72 sm:h-96 w-full bg-purple-900 dark:bg-slate-900">
             <img 
               src={story.img} 
               alt={story.title} 
@@ -158,7 +158,7 @@ export default function StoryDetail() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
             {story.category && (
               <div className="absolute top-4 left-4">
-                <span className="px-3.5 py-1.5 bg-[#2E003E]/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-purple-400/30">
+                <span className="px-3.5 py-1.5 bg-[#2E003E]/80 dark:bg-slate-900/80 backdrop-blur-md text-white text-xs font-bold rounded-full border border-purple-400/30 dark:border-purple-500/30">
                   {story.category}
                 </span>
               </div>
@@ -166,13 +166,13 @@ export default function StoryDetail() {
           </div>
 
           <div className="p-6 sm:p-10 space-y-6">
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E003E] leading-tight">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-[#2E003E] dark:text-slate-100 leading-tight">
               {story.title}
             </h1>
 
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 pb-4 text-xs text-slate-500">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-100 dark:border-slate-700/60 pb-4 text-xs text-slate-500 dark:text-slate-400">
               <div className="flex items-center gap-3">
-                <span className="font-bold text-purple-900">By {story.author || 'Anonymous Survivor'}</span>
+                <span className="font-bold text-purple-900 dark:text-purple-300">By {story.author || 'Anonymous Survivor'}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1"><Clock size={12} /> {story.readTime || '3 min read'}</span>
                 <span>•</span>
@@ -183,7 +183,9 @@ export default function StoryDetail() {
                 <button
                   onClick={handleLike}
                   className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold transition cursor-pointer ${
-                    isLiked ? 'bg-rose-50 text-rose-600 border border-rose-300' : 'bg-slate-50 text-slate-600 hover:bg-rose-50 hover:text-rose-600'
+                    isLiked 
+                      ? 'bg-rose-50 dark:bg-rose-950/60 text-rose-600 dark:text-rose-400 border border-rose-300 dark:border-rose-800' 
+                      : 'bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-rose-50 dark:hover:bg-rose-950/40 hover:text-rose-600 dark:hover:text-rose-400'
                   }`}
                 >
                   <Heart size={13} className={isLiked ? 'fill-rose-500 text-rose-500' : ''} />
@@ -191,19 +193,19 @@ export default function StoryDetail() {
                 </button>
                 <button
                   onClick={handleShare}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 text-purple-700 hover:bg-purple-100 rounded-lg text-xs font-bold transition cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-purple-50 dark:bg-purple-950/60 border border-purple-200/50 dark:border-purple-800/50 text-purple-700 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-900/60 rounded-lg text-xs font-bold transition cursor-pointer"
                 >
                   <Share2 size={13} /> Share
                 </button>
               </div>
             </div>
 
-            <p className="text-slate-700 text-base sm:text-lg leading-relaxed whitespace-pre-line">
+            <p className="text-slate-700 dark:text-slate-300 text-base sm:text-lg leading-relaxed whitespace-pre-line">
               {story.desc}
             </p>
 
             {/* Helpline box */}
-            <div className="p-6 bg-purple-900 rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-6 bg-purple-900 dark:bg-purple-950 border dark:border-purple-800/80 rounded-2xl text-white flex flex-col sm:flex-row items-center justify-between gap-4">
               <div>
                 <h4 className="font-bold text-base">You Are Never Alone</h4>
                 <p className="text-xs text-purple-200 mt-0.5">Free 24/7 confidential legal counsel & emergency response.</p>
@@ -219,20 +221,20 @@ export default function StoryDetail() {
             </div>
 
             {/* Comments / Messages of Support Section */}
-            <div className="pt-6 border-t border-slate-100 space-y-4">
-              <h3 className="text-lg font-bold text-[#2E003E] flex items-center gap-2">
-                <MessageCircle size={20} className="text-purple-700" />
+            <div className="pt-6 border-t border-slate-100 dark:border-slate-700/60 space-y-4">
+              <h3 className="text-lg font-bold text-[#2E003E] dark:text-slate-100 flex items-center gap-2">
+                <MessageCircle size={20} className="text-purple-700 dark:text-purple-400" />
                 <span>Messages of Support ({comments.length})</span>
               </h3>
 
-              <form onSubmit={handleAddComment} className="space-y-3 bg-purple-50/60 p-4 rounded-2xl border border-purple-200">
+              <form onSubmit={handleAddComment} className="space-y-3 bg-purple-50/60 dark:bg-slate-900/60 p-4 rounded-2xl border border-purple-200 dark:border-slate-700">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   <input
                     type="text"
                     value={commentAuthor}
                     onChange={(e) => setCommentAuthor(e.target.value)}
                     placeholder="Your Name / Supporter Alias (Optional)"
-                    className="px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                    className="px-3 py-2 bg-white dark:bg-slate-800 border border-purple-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-400"
                   />
                 </div>
                 <div className="flex gap-2">
@@ -242,12 +244,12 @@ export default function StoryDetail() {
                     value={commentInput}
                     onChange={(e) => setCommentInput(e.target.value)}
                     placeholder="Write a warm note of encouragement or solidarity..."
-                    className="flex-1 px-3 py-2 bg-white border border-purple-200 rounded-xl text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-purple-400"
+                    className="flex-1 px-3 py-2 bg-white dark:bg-slate-800 border border-purple-200 dark:border-slate-700 rounded-xl text-xs text-slate-800 dark:text-slate-100 placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-purple-400"
                   />
                   <button
                     type="submit"
                     disabled={submittingComment || !commentInput.trim()}
-                    className="px-4 py-2 bg-purple-900 text-white rounded-xl text-xs font-bold hover:bg-purple-950 transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
+                    className="px-4 py-2 bg-purple-900 dark:bg-purple-600 text-white rounded-xl text-xs font-bold hover:bg-purple-950 dark:hover:bg-purple-500 transition flex items-center gap-1.5 disabled:opacity-50 cursor-pointer"
                   >
                     <Send size={13} />
                     <span>Send</span>
@@ -257,20 +259,20 @@ export default function StoryDetail() {
 
               <div className="space-y-3">
                 {comments.length === 0 ? (
-                  <p className="text-xs text-slate-400 italic text-center py-4">
+                  <p className="text-xs text-slate-400 dark:text-slate-500 italic text-center py-4">
                     No messages yet. Be the first to leave a message of strength!
                   </p>
                 ) : (
                   comments.map((c) => (
-                    <div key={c.id} className="p-4 bg-slate-50 border border-slate-200 dark:border-slate-700/80 rounded-xl text-xs space-y-1.5">
-                      <div className="flex justify-between items-center text-slate-500">
-                        <span className="font-bold text-purple-950 flex items-center gap-1.5">
-                          <User size={13} className="text-purple-600" />
+                    <div key={c.id} className="p-4 bg-slate-50 dark:bg-slate-900/80 border border-slate-200 dark:border-slate-700/80 rounded-xl text-xs space-y-1.5">
+                      <div className="flex justify-between items-center text-slate-500 dark:text-slate-400">
+                        <span className="font-bold text-purple-950 dark:text-purple-300 flex items-center gap-1.5">
+                          <User size={13} className="text-purple-600 dark:text-purple-400" />
                           {c.author}
                         </span>
                         <span className="text-[10px]">{new Date(c.created_at).toLocaleDateString()}</span>
                       </div>
-                      <p className="text-slate-700 text-sm leading-relaxed">{c.content}</p>
+                      <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">{c.content}</p>
                     </div>
                   ))
                 )}
@@ -282,4 +284,5 @@ export default function StoryDetail() {
     </div>
   );
 }
+
 
