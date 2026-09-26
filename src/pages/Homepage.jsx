@@ -684,41 +684,41 @@ export default function Homepage() {
       <CrimeLawAwareness />
 
       {/* ══════════════════════════════════════════════════════════════
-          6. FUNDAMENTAL SURVIVOR RIGHTS (dark gradient — always rich)
+          6. FUNDAMENTAL SURVIVOR RIGHTS
       ══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-[#2E003E] text-white">
+      <section className="py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold px-3 py-1 bg-white/10 text-purple-200 rounded-full border border-white/20 uppercase tracking-wider">
+            <span className={`text-xs font-bold px-3 py-1 rounded-full border uppercase tracking-wider ${dk.pillPurple}`}>
               Constitutional & Legal Rights
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            <h2 className={`text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight ${dk.headingPrimary}`}>
               4 Non-Negotiable Rights of Every Survivor
             </h2>
-            <p className="text-purple-100/90 text-base sm:text-lg">
+            <p className={`text-base sm:text-lg ${dk.bodyText}`}>
               Knowledge is your greatest shield. Under Indian law, these 4 protections are guaranteed by statute.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {fundamentalRights.map((right, idx) => (
-              <div key={idx} className="p-8 bg-white/10 backdrop-blur-md rounded-3xl border border-white/15 shadow-xl hover:bg-white/15 transition-all duration-300 space-y-4 flex flex-col justify-between">
+              <div key={idx} className={`p-8 rounded-3xl border shadow-xl transition-all duration-300 space-y-4 flex flex-col justify-between ${dk.cardBg} ${dk.cardBorder} ${dk.hoverCardBg}`}>
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-purple-300 uppercase tracking-wider">{right.section}</span>
-                    <span className="w-8 h-8 rounded-full bg-purple-500/30 flex items-center justify-center text-purple-200 font-bold text-xs">0{idx + 1}</span>
+                    <span className={`text-xs font-bold uppercase tracking-wider ${isDark ? "text-purple-400" : "text-purple-700"}`}>{right.section}</span>
+                    <span className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs ${isDark ? "bg-purple-900/50 text-purple-300" : "bg-purple-100 text-purple-800"}`}>0{idx + 1}</span>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{right.title}</h3>
-                  <p className="text-purple-100/90 text-sm leading-relaxed">{right.desc}</p>
+                  <h3 className={`text-2xl font-bold mb-2 ${dk.headingPrimary}`}>{right.title}</h3>
+                  <p className={`text-sm leading-relaxed ${dk.bodyText}`}>{right.desc}</p>
                 </div>
-                <div className="p-3 bg-white/10 rounded-2xl border border-white/10 text-xs font-semibold text-emerald-300 flex items-center gap-2">
-                  <CheckCircle2 size={16} className="shrink-0 text-emerald-400" />
+                <div className={`p-3 rounded-2xl border text-xs font-semibold flex items-center gap-2 ${isDark ? "bg-emerald-950/40 border-emerald-800/40 text-emerald-300" : "bg-emerald-50 border-emerald-200 text-emerald-800"}`}>
+                  <CheckCircle2 size={16} className={`shrink-0 ${isDark ? "text-emerald-400" : "text-emerald-600"}`} />
                   <span>{right.highlight}</span>
                 </div>
               </div>
             ))}
           </div>
           <div className="text-center pt-4">
-            <Link to="/laws" className="inline-flex items-center gap-2 px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold text-sm shadow-2xl transition hover:scale-105">
+            <Link to="/laws" className="inline-flex items-center gap-2 px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-bold text-sm shadow-xl transition hover:scale-105">
               <Scale size={18} />
               <span>Explore Complete Indian Laws & Penalties Guide</span>
               <ArrowRight size={16} />
@@ -793,17 +793,19 @@ export default function Homepage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════
-          8. COMMUNITY PLEDGE CTA (always dark gradient)
+          8. COMMUNITY PLEDGE CTA (matching CrimeLawAwareness dark background #0c0219)
       ══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-[#290B3D] text-white relative overflow-hidden">
+      <section className="py-20 px-4 sm:px-6 bg-[#0c0219] text-white relative overflow-hidden transition-colors duration-300">
+        {/* Background Glow Overlay */}
+        <div className="absolute inset-0 bg-[#0c0219]/90 pointer-events-none" />
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-7">
-          <span className="inline-block px-4 py-1.5 bg-white/10 rounded-full text-xs font-bold text-purple-200 border border-white/20 uppercase tracking-wider">
+          <span className="inline-block px-4 py-1.5 bg-purple-500/20 rounded-full text-xs font-bold text-purple-300 border border-purple-400/40 uppercase tracking-wider">
             Join the Movement • #BreakTheSilence
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
-            You Are Not Alone. We Stand With You.
+            You Are Not Alone. <span className="text-purple-300">We Stand With You.</span>
           </h2>
-          <p className="text-purple-100/90 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
             Whether you need confidential guidance, wish to report an incident, or want to support someone in distress, BraveSpeak is always here for you.
           </p>
           <div className="flex flex-wrap gap-4 justify-center pt-2">
