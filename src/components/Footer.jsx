@@ -8,15 +8,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-[#0f0520] text-white pt-16 pb-8 px-6 relative overflow-hidden">
-      {/* Top border accent */}
-      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-purple-500/80 to-transparent" />
-
-      {/* Ambient glows */}
-      <div className="absolute top-10 left-1/4 w-80 h-80 bg-purple-600/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-10 right-1/4 w-80 h-80 bg-rose-600/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-20 right-10 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none" />
-
+    <footer className="bg-[#0f0520] text-white pt-16 pb-8 px-6 relative overflow-hidden border-t border-purple-900/50">
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
 
