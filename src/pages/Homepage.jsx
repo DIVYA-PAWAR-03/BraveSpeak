@@ -793,25 +793,45 @@ export default function Homepage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════════
-          8. COMMUNITY PLEDGE CTA (matching CrimeLawAwareness dark background #0c0219)
+          8. COMMUNITY PLEDGE CTA — Glassmorphism
       ══════════════════════════════════════════════════════════════ */}
-      <section className="py-20 px-4 sm:px-6 bg-[#0c0219] text-white relative overflow-hidden transition-colors duration-300">
-        {/* Background Glow Overlay */}
-        <div className="absolute inset-0 bg-[#0c0219]/90 pointer-events-none" />
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-7">
-          <span className="inline-block px-4 py-1.5 bg-purple-500/20 rounded-full text-xs font-bold text-purple-300 border border-purple-400/40 uppercase tracking-wider">
+      <section className="py-20 px-4 sm:px-6 relative overflow-hidden transition-colors duration-300">
+
+        {/* Ambient glow orbs */}
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className={`absolute -top-20 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-30 ${isDark ? "bg-purple-700" : "bg-purple-300"}`} />
+          <div className={`absolute -bottom-20 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-25 ${isDark ? "bg-violet-600" : "bg-indigo-200"}`} />
+          <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-3xl opacity-20 ${isDark ? "bg-rose-800" : "bg-rose-200"}`} />
+        </div>
+
+        {/* Frosted Glass Card */}
+        <div className={`relative z-10 max-w-4xl mx-auto rounded-3xl px-8 py-14 sm:px-14 text-center space-y-7
+          border backdrop-blur-xl shadow-2xl
+          ${isDark
+            ? "bg-white/5 border-white/10 shadow-black/40"
+            : "bg-white/50 border-purple-200/60 shadow-purple-200/50"
+          }`}
+        >
+          {/* Inner shimmer border */}
+          <div className={`absolute inset-0 rounded-3xl pointer-events-none ${isDark ? "ring-1 ring-inset ring-white/5" : "ring-1 ring-inset ring-purple-300/30"}`} />
+
+          <span className={`inline-block px-4 py-1.5 rounded-full text-xs font-bold border uppercase tracking-wider ${dk.pillPurple}`}>
             Join the Movement • #BreakTheSilence
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
-            You Are Not Alone. <span className="text-purple-300">We Stand With You.</span>
+
+          <h2 className={`text-3xl sm:text-4xl md:text-5xl font-black leading-tight ${dk.headingPrimary}`}>
+            You Are Not Alone.{" "}
+            <span className={isDark ? "text-purple-300" : "text-purple-700"}>We Stand With You.</span>
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+
+          <p className={`text-base sm:text-lg max-w-2xl mx-auto leading-relaxed ${dk.bodyText}`}>
             Whether you need confidential guidance, wish to report an incident, or want to support someone in distress, BraveSpeak is always here for you.
           </p>
+
           <div className="flex flex-wrap gap-4 justify-center pt-2">
             <button
               onClick={() => setPledgeTaken(true)}
-              className="px-8 py-4 bg-purple-700 hover:bg-purple-800 text-white rounded-full font-bold shadow-2xl transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
+              className="px-8 py-4 bg-purple-700 hover:bg-purple-600 text-white rounded-full font-bold shadow-lg shadow-purple-900/40 transition hover:scale-105 flex items-center gap-2 cursor-pointer text-sm"
             >
               {pledgeTaken ? (
                 <><Check size={18} /><span>Pledge Taken! Thank You for Standing Strong</span></>
@@ -819,8 +839,15 @@ export default function Homepage() {
                 <><Heart size={18} className="fill-white" /><span>Take the #BreakTheSilence Pledge</span></>
               )}
             </button>
-            <Link to="/contact" className="px-8 py-4 bg-white text-purple-950 hover:bg-purple-50 rounded-full font-bold shadow-2xl transition hover:scale-105 text-sm">
-              Get Confidential Help & Support
+            <Link
+              to="/contact"
+              className={`px-8 py-4 rounded-full font-bold shadow-lg transition hover:scale-105 text-sm border
+                ${isDark
+                  ? "bg-white/10 hover:bg-white/20 text-white border-white/20 shadow-black/30"
+                  : "bg-purple-900 hover:bg-purple-950 text-white border-purple-800 shadow-purple-300/30"
+                }`}
+            >
+              Get Confidential Help &amp; Support
             </Link>
           </div>
         </div>
