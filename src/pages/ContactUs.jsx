@@ -175,25 +175,25 @@ export default function ContactUs() {
 
           <a
             href="tel:1091"
-            className="p-6 bg-indigo-900 dark:bg-indigo-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-indigo-700/50 dark:border-indigo-800/70"
+            className="p-6 bg-purple-900 dark:bg-purple-950 rounded-3xl text-white shadow-xl hover:scale-105 transition-all flex flex-col justify-between group border border-purple-700/50 dark:border-purple-800/70"
           >
             <div>
               <div className="flex items-center justify-between mb-4">
-                <div className="w-12 h-12 rounded-2xl bg-indigo-500/30 flex items-center justify-center text-indigo-300">
+                <div className="w-12 h-12 rounded-2xl bg-purple-500/30 flex items-center justify-center text-purple-300">
                   <PhoneIcon size={24} />
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-indigo-500/20 text-indigo-200 rounded-full border border-indigo-400/30">
+                <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 bg-purple-500/20 text-purple-200 rounded-full border border-purple-400/30">
                   Police Women Cell
                 </span>
               </div>
               <h3 className="text-xl font-bold text-white mb-1">Women Police Cell</h3>
-              <p className="text-xs text-indigo-200/90 leading-relaxed mb-4">
+              <p className="text-xs text-purple-200/90 leading-relaxed mb-4">
                 Direct connection to district special women police officers.
               </p>
             </div>
-            <div className="pt-3 border-t border-indigo-800/60 flex items-center justify-between">
-              <span className="text-2xl font-black text-indigo-200">Dial 1091</span>
-              <span className="text-xs font-semibold text-indigo-300 group-hover:translate-x-1 transition-transform">Call Now →</span>
+            <div className="pt-3 border-t border-purple-800/60 flex items-center justify-between">
+              <span className="text-2xl font-black text-purple-200">Dial 1091</span>
+              <span className="text-xs font-semibold text-purple-300 group-hover:translate-x-1 transition-transform">Call Now →</span>
             </div>
           </a>
 
@@ -276,7 +276,7 @@ export default function ContactUs() {
 
             <div className="mt-8 pt-6 border-t border-purple-800/60 dark:border-slate-800 relative z-10 text-xs text-purple-300">
               <p className="flex items-center gap-1.5 font-medium">
-                <CheckCircle2 size={16} className="text-emerald-400" />
+                <CheckCircle2 size={16} className="text-purple-400" />
                 <span>Your information is strictly confidential & encrypted.</span>
               </p>
             </div>
@@ -293,7 +293,7 @@ export default function ContactUs() {
 
             {formSubmitted ? (
               <div className="p-8 bg-purple-50 dark:bg-slate-900 border border-purple-200 dark:border-slate-700 rounded-3xl text-center space-y-4 animate-fade-in">
-                <CheckCircle2 size={44} className="mx-auto text-emerald-600 dark:text-emerald-400" />
+                <CheckCircle2 size={44} className="mx-auto text-purple-600 dark:text-purple-400" />
                 <h4 className="text-2xl font-black text-[#2E003E] dark:text-slate-100">Inquiry Submitted Safely</h4>
                 <p className="text-xs text-slate-600 dark:text-slate-300 max-w-sm mx-auto">
                   Thank you for reaching out to BraveSpeak. Your inquiry has been logged securely in our support queue.
@@ -309,7 +309,7 @@ export default function ContactUs() {
                         className="p-1.5 rounded-lg bg-purple-100 dark:bg-slate-700 text-purple-900 dark:text-slate-200 hover:bg-purple-200 dark:hover:bg-slate-600 transition cursor-pointer"
                         title="Copy Reference ID"
                       >
-                        {copiedRef ? <CheckCircle2 size={16} className="text-emerald-600 dark:text-emerald-400" /> : <Copy size={16} />}
+                        {copiedRef ? <CheckCircle2 size={16} className="text-purple-600 dark:text-purple-400" /> : <Copy size={16} />}
                       </button>
                     </div>
                     <p className="text-[10px] text-slate-400 dark:text-slate-500">Save this code to check response status anonymously.</p>
@@ -453,7 +453,7 @@ export default function ContactUs() {
               {trackResult && (
                 <div className="mt-3 p-4 bg-purple-50/70 dark:bg-slate-900/90 border border-purple-200 dark:border-slate-700 rounded-2xl space-y-2 text-xs">
                   <div className="flex justify-between items-center">
-                    <span className="font-bold text-purple-950 dark:text-purple-300">Status: <span className="text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/80 px-2 py-0.5 rounded-full font-extrabold">{trackResult.status}</span></span>
+                    <span className="font-bold text-purple-950 dark:text-purple-300">Status: <span className="text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-950/80 px-2 py-0.5 rounded-full font-extrabold">{trackResult.status}</span></span>
                     <span className="text-slate-500 dark:text-slate-400 text-[10px]">{new Date(trackResult.created_at).toLocaleDateString()}</span>
                   </div>
                   <p className="text-slate-700 dark:text-slate-300"><strong>Category:</strong> {trackResult.category}</p>

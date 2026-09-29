@@ -63,7 +63,7 @@ export default function Header() {
       desc: "Privacy score audit, anti-blackmail & spy cam detector",
       icon: Lock,
       badge: "Cyber Defense",
-      color: "text-indigo-600 bg-indigo-50"
+      color: "text-purple-600 bg-purple-50"
     }
   ];
 
@@ -80,14 +80,14 @@ export default function Header() {
       path: "/support-directory",
       desc: "Sakhi One Stop Centres, DLSA Free Aid & Mahila Thana",
       icon: Building2,
-      color: "text-emerald-600 bg-emerald-50"
+      color: "text-purple-600 bg-purple-50"
     },
     {
       name: "National Crime Statistics",
       path: "/statistics",
       desc: "NCRB trends, reporting frequency & data analytics",
       icon: BarChart3,
-      color: "text-amber-600 bg-amber-50"
+      color: "text-slate-600 bg-slate-50"
     }
   ];
 
@@ -300,7 +300,7 @@ export default function Header() {
                   : "text-slate-700 dark:text-slate-300 hover:text-purple-800 dark:hover:text-purple-300 hover:bg-purple-50 dark:hover:bg-purple-900/40"
               }`}
             >
-              <Heart size={14} className="text-pink-600" />
+              <Heart size={14} className="text-rose-600" />
               <span>Stories</span>
             </Link>
           </li>
@@ -328,7 +328,7 @@ export default function Header() {
             aria-label="Toggle dark mode"
             className="p-2 rounded-full text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-700 transition-all"
           >
-            {isDark ? <Sun size={18} className="text-amber-400" /> : <Moon size={18} className="text-slate-600" />}
+            {isDark ? <Sun size={18} className="text-slate-400" /> : <Moon size={18} className="text-slate-600" />}
           </button>
           <Link
             to="/safety-toolkit"
@@ -346,7 +346,7 @@ export default function Header() {
             aria-label="Toggle dark mode"
             className="p-2 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
           >
-            {isDark ? <Sun size={20} className="text-amber-400" /> : <Moon size={20} />}
+            {isDark ? <Sun size={20} className="text-slate-400" /> : <Moon size={20} />}
           </button>
           <button 
             onClick={toggleMenu}
@@ -473,7 +473,7 @@ export default function Header() {
                 location.pathname === "/survivorStories" ? "bg-purple-100 dark:bg-purple-900/60 text-purple-900 dark:text-purple-200 font-bold border-l-4 border-purple-600" : "text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800"
               }`}
             >
-              <Heart size={16} className="text-pink-600 shrink-0" />
+              <Heart size={16} className="text-rose-600 shrink-0" />
               <span>Survivor Stories &amp; Community</span>
             </Link>
 

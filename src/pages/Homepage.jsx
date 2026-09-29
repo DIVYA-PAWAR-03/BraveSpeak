@@ -50,9 +50,9 @@ export default function Homepage() {
       subtitle: "Dedicated Police Cell",
       desc: "Trained female police personnel for on-ground urgent intervention.",
       icon: Shield,
-      color: "bg-indigo-800",
-      textColor: "text-indigo-100",
-      badgeColor: "bg-indigo-400/20 text-indigo-200 border-indigo-300/30"
+      color: "bg-purple-800",
+      textColor: "text-purple-100",
+      badgeColor: "bg-purple-400/20 text-purple-200 border-purple-300/30"
     },
     {
       number: "1930",
@@ -60,9 +60,9 @@ export default function Homepage() {
       subtitle: "Online Abuse & Blackmail",
       desc: "Emergency takedown of morphed photos, leaks, and cyber harassment.",
       icon: Lock,
-      color: "bg-violet-900",
-      textColor: "text-violet-100",
-      badgeColor: "bg-violet-400/20 text-violet-200 border-violet-300/30"
+      color: "bg-purple-900",
+      textColor: "text-purple-100",
+      badgeColor: "bg-purple-400/20 text-purple-200 border-purple-300/30"
     }
   ];
 
@@ -97,7 +97,7 @@ export default function Homepage() {
       link: "/support-directory",
       linkText: "Find Nearest Crisis Center",
       tag: "Verified Desks",
-      accent: "bg-emerald-600",
+      accent: "bg-purple-600",
       glow: "rgba(16,185,129,0.15)"
     },
     {
@@ -108,7 +108,7 @@ export default function Homepage() {
       link: "/digital-safety",
       linkText: "Audit Privacy Score",
       tag: "StopNCII & Cyber",
-      accent: "bg-indigo-600",
+      accent: "bg-purple-600",
       glow: "rgba(99,102,241,0.15)"
     },
     {
@@ -119,7 +119,7 @@ export default function Homepage() {
       link: "/laws",
       linkText: "Explore Indian Laws",
       tag: "Statutory Rights",
-      accent: "bg-violet-700",
+      accent: "bg-purple-700",
       glow: "rgba(109,40,217,0.15)"
     },
     {
@@ -130,7 +130,7 @@ export default function Homepage() {
       link: "/survivorStories",
       linkText: "Read Survivor Stories",
       tag: "Empowerment",
-      accent: "from-pink-600 to-rose-600",
+      accent: "from-rose-600 to-rose-600",
       glow: "rgba(219,39,119,0.15)"
     }
   ];
@@ -237,14 +237,14 @@ export default function Homepage() {
     mutedText:     isDark ? "text-[#6b6b6b]"  : "text-slate-500",
     pillPurple:    isDark ? "bg-purple-950/70 border-purple-700/40 text-purple-300"  : "bg-purple-100 border-purple-200 text-purple-900",
     pillRose:      isDark ? "bg-rose-950/70 border-rose-700/40 text-rose-300"        : "bg-rose-100 border-rose-200 text-rose-800",
-    pillIndigo:    isDark ? "bg-indigo-950/70 border-indigo-700/40 text-indigo-300"  : "bg-indigo-100 border-indigo-200 text-indigo-800",
-    pillEmerald:   isDark ? "bg-emerald-950/70 border-emerald-700/40 text-emerald-400" : "bg-emerald-50 border-emerald-200 text-emerald-800",
+    pillIndigo:    isDark ? "bg-purple-950/70 border-purple-700/40 text-purple-300"  : "bg-purple-100 border-purple-200 text-purple-800",
+    pillEmerald:   isDark ? "bg-purple-950/70 border-purple-700/40 text-purple-400" : "bg-purple-50 border-purple-200 text-purple-800",
     innerPanel:    isDark ? "bg-[#111] border-white/[0.06]" : "bg-purple-50/60 border-purple-100",
     innerPanelRose:isDark ? "bg-[#111] border-rose-900/40"  : "bg-rose-50/60 border-rose-100",
-    innerPanelIndigo:isDark ? "bg-[#111] border-indigo-900/40" : "bg-indigo-50/60 border-indigo-100",
+    innerPanelIndigo:isDark ? "bg-[#111] border-purple-900/40" : "bg-purple-50/60 border-purple-100",
     iconBgPurple:  isDark ? "bg-purple-900/40 text-purple-400" : "bg-purple-100 text-purple-800",
     iconBgRose:    isDark ? "bg-rose-900/40 text-rose-400"     : "bg-rose-100 text-rose-800",
-    iconBgIndigo:  isDark ? "bg-indigo-900/40 text-indigo-400" : "bg-indigo-100 text-indigo-800",
+    iconBgIndigo:  isDark ? "bg-purple-900/40 text-purple-400" : "bg-purple-100 text-purple-800",
     linkText:      isDark ? "text-purple-400 hover:text-purple-300" : "text-purple-700 hover:text-purple-900",
     linkRose:      isDark ? "text-rose-400 hover:text-rose-300"     : "text-rose-600 hover:text-rose-800",
     heroBtnOutline:isDark ? "bg-[#0d0d0d] hover:bg-[#151515] text-slate-100 border-white/10" : "bg-white hover:bg-slate-50 text-slate-800 border-slate-300",
@@ -270,7 +270,7 @@ export default function Homepage() {
         {isDark && (
           <>
             <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[60rem] h-96 bg-purple-900/20 rounded-full blur-3xl pointer-events-none" />
-            <div className="absolute top-0 right-0 w-96 h-80 bg-indigo-900/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute top-0 right-0 w-96 h-80 bg-purple-900/10 rounded-full blur-3xl pointer-events-none" />
           </>
         )}
         {!isDark && (
@@ -283,8 +283,8 @@ export default function Homepage() {
             {/* Trust Pill */}
             <div className={`inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border text-xs font-bold uppercase tracking-wider shadow-sm ${dk.pillPurple}`}>
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
               </span>
               <span>100% Confidential • Free Legal Aid • 24/7 Crisis Dispatch</span>
             </div>
@@ -325,7 +325,7 @@ export default function Homepage() {
                 to="/legal-assistant"
                 className={`inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-sm font-bold border shadow-sm hover:scale-105 transition-all cursor-pointer ${dk.heroBtnOutline}`}
               >
-                <FileText size={18} className={isDark ? "text-violet-400" : "text-purple-700"} />
+                <FileText size={18} className={isDark ? "text-purple-400" : "text-purple-700"} />
                 <span>Draft Zero FIR / Complaint</span>
               </Link>
             </div>
@@ -333,13 +333,13 @@ export default function Homepage() {
             {/* Micro Highlights */}
             <div className={`pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs font-medium ${dk.mutedText}`}>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={15} className={isDark ? "text-emerald-400" : "text-emerald-600"} /> Free DLSA Court Advocates
+                <CheckCircle2 size={15} className={isDark ? "text-purple-400" : "text-purple-600"} /> Free DLSA Court Advocates
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={15} className={isDark ? "text-emerald-400" : "text-emerald-600"} /> Universal Zero FIR
+                <CheckCircle2 size={15} className={isDark ? "text-purple-400" : "text-purple-600"} /> Universal Zero FIR
               </span>
               <span className="flex items-center gap-1.5">
-                <CheckCircle2 size={15} className={isDark ? "text-emerald-400" : "text-emerald-600"} /> Identity Protected under 228A IPC
+                <CheckCircle2 size={15} className={isDark ? "text-purple-400" : "text-purple-600"} /> Identity Protected under 228A IPC
               </span>
             </div>
           </div>
@@ -487,10 +487,10 @@ export default function Homepage() {
                         {pillar.tag}
                       </span>
                     </div>
-                    <h3 className={`text-xl font-bold mb-1 transition-colors ${dk.headingPrimary} ${isDark ? "group-hover:text-violet-400" : "group-hover:text-purple-700"}`}>
+                    <h3 className={`text-xl font-bold mb-1 transition-colors ${dk.headingPrimary} ${isDark ? "group-hover:text-purple-400" : "group-hover:text-purple-700"}`}>
                       {pillar.title}
                     </h3>
-                    <p className={`text-xs font-semibold mb-3 ${isDark ? "text-violet-400" : "text-purple-700"}`}>
+                    <p className={`text-xs font-semibold mb-3 ${isDark ? "text-purple-400" : "text-purple-700"}`}>
                       {pillar.subtitle}
                     </p>
                     <p className={`text-sm leading-relaxed mb-6 ${dk.bodyText}`}>
@@ -499,7 +499,7 @@ export default function Homepage() {
                   </div>
                   <Link
                     to={pillar.link}
-                    className={`inline-flex items-center justify-between text-sm font-bold pt-4 border-t transition ${dk.divider} ${isDark ? "text-violet-400 hover:text-violet-300" : "text-purple-700 hover:text-purple-950"}`}
+                    className={`inline-flex items-center justify-between text-sm font-bold pt-4 border-t transition ${dk.divider} ${isDark ? "text-purple-400 hover:text-purple-300" : "text-purple-700 hover:text-purple-950"}`}
                   >
                     <span>{pillar.linkText}</span>
                     <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform" />
@@ -559,7 +559,7 @@ export default function Homepage() {
                 <div className={`p-3.5 rounded-2xl ${dk.iconBgPurple}`}><Clock size={28} /></div>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillPurple}`}>National Frequency</span>
               </div>
-              <h3 className="text-5xl font-black text-violet-400 mb-2">1 / 16</h3>
+              <h3 className="text-5xl font-black text-purple-400 mb-2">1 / 16</h3>
               <p className={`text-base font-bold ${dk.headingPrimary}`}>Minutes per Reported Offense</p>
               <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 On average, one sexual offense or modesty assault is registered every 16 minutes in India.
@@ -571,12 +571,12 @@ export default function Homepage() {
               className={`rounded-3xl p-8 border transition-all relative overflow-hidden ${dk.statCard} ${isDark ? "shadow-[0_1px_20px_rgba(0,0,0,0.6)]" : "shadow-md"}`}
               whileHover={{ y: -6 }}
             >
-              {isDark && <div className="absolute inset-0 bg-gradient-to-br from-indigo-950/30 via-transparent to-transparent pointer-events-none rounded-3xl" />}
+              {isDark && <div className="absolute inset-0 bg-gradient-to-br from-purple-950/30 via-transparent to-transparent pointer-events-none rounded-3xl" />}
               <div className="relative flex items-center justify-between mb-4">
                 <div className={`p-3.5 rounded-2xl ${dk.iconBgIndigo}`}><BarChart3 size={28} /></div>
                 <span className={`text-xs font-bold px-3 py-1 rounded-full border ${dk.pillIndigo}`}>Live Session</span>
               </div>
-              <h3 className="text-5xl font-black text-indigo-400 mb-2">+{caseCount}</h3>
+              <h3 className="text-5xl font-black text-purple-400 mb-2">+{caseCount}</h3>
               <p className={`text-base font-bold ${dk.headingPrimary}`}>Estimated Since You Opened This Page</p>
               <p className={`text-xs mt-2 leading-relaxed ${dk.mutedText}`}>
                 A real-time awareness counter emphasizing the constant urgency of speaking up and seeking justice.
@@ -645,9 +645,9 @@ export default function Homepage() {
                     </p>
                   </div>
                   <div className={`pt-3 border-t text-[11px] font-medium flex items-start gap-1.5 ${
-                    isSelected ? "border-purple-800/80 text-purple-200" : `${dk.divider} ${isDark ? "text-violet-400" : "text-purple-900"}`
+                    isSelected ? "border-purple-800/80 text-purple-200" : `${dk.divider} ${isDark ? "text-purple-400" : "text-purple-900"}`
                   }`}>
-                    <CheckCircle2 size={15} className={`shrink-0 mt-0.5 ${isSelected ? "text-emerald-400" : isDark ? "text-violet-500" : "text-purple-600"}`} />
+                    <CheckCircle2 size={15} className={`shrink-0 mt-0.5 ${isSelected ? "text-purple-400" : isDark ? "text-purple-500" : "text-purple-600"}`} />
                     <span>{step.actionTip}</span>
                   </div>
                 </div>
@@ -659,7 +659,7 @@ export default function Homepage() {
           <div className={`p-8 rounded-3xl border shadow-md ${dk.stepPanel}`}>
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="space-y-2">
-                <span className={`text-xs font-bold uppercase tracking-wider ${isDark ? "text-violet-400" : "text-purple-700"}`}>
+                <span className={`text-xs font-bold uppercase tracking-wider ${isDark ? "text-purple-400" : "text-purple-700"}`}>
                   Detailed Guidance for Step {emergencySteps[activeStep].num}
                 </span>
                 <h3 className={`text-2xl font-bold ${dk.headingPrimary}`}>{emergencySteps[activeStep].title}</h3>
@@ -710,8 +710,8 @@ export default function Homepage() {
                   <h3 className={`text-2xl font-bold mb-2 ${dk.headingPrimary}`}>{right.title}</h3>
                   <p className={`text-sm leading-relaxed ${dk.bodyText}`}>{right.desc}</p>
                 </div>
-                <div className={`p-3 rounded-2xl border text-xs font-semibold flex items-center gap-2 ${isDark ? "bg-emerald-950/40 border-emerald-800/40 text-emerald-300" : "bg-emerald-50 border-emerald-200 text-emerald-800"}`}>
-                  <CheckCircle2 size={16} className={`shrink-0 ${isDark ? "text-emerald-400" : "text-emerald-600"}`} />
+                <div className={`p-3 rounded-2xl border text-xs font-semibold flex items-center gap-2 ${isDark ? "bg-purple-950/40 border-purple-800/40 text-purple-300" : "bg-purple-50 border-purple-200 text-purple-800"}`}>
+                  <CheckCircle2 size={16} className={`shrink-0 ${isDark ? "text-purple-400" : "text-purple-600"}`} />
                   <span>{right.highlight}</span>
                 </div>
               </div>
@@ -776,15 +776,15 @@ export default function Homepage() {
                     </div>
                   </div>
                   <div className="p-6 space-y-3">
-                    <h3 className={`text-xl font-bold transition-colors ${dk.headingPrimary} ${isDark ? "group-hover:text-violet-400" : "group-hover:text-purple-700"}`}>
+                    <h3 className={`text-xl font-bold transition-colors ${dk.headingPrimary} ${isDark ? "group-hover:text-purple-400" : "group-hover:text-purple-700"}`}>
                       {story.title}
                     </h3>
                     <p className={`text-xs leading-relaxed line-clamp-3 ${dk.bodyText}`}>"{story.preview}"</p>
                   </div>
                 </div>
                 <div className={`px-6 py-4 border-t flex items-center justify-between text-xs ${dk.divider} ${dk.mutedText}`}>
-                  <span className={`font-bold ${isDark ? "text-violet-400" : "text-purple-900"}`}>By {story.author}</span>
-                  <span className={`font-bold group-hover:underline ${isDark ? "text-violet-400" : "text-purple-700"}`}>Read Full Story →</span>
+                  <span className={`font-bold ${isDark ? "text-purple-400" : "text-purple-900"}`}>By {story.author}</span>
+                  <span className={`font-bold group-hover:underline ${isDark ? "text-purple-400" : "text-purple-700"}`}>Read Full Story →</span>
                 </div>
               </div>
             ))}
@@ -800,7 +800,7 @@ export default function Homepage() {
         {/* Ambient glow orbs */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
           <div className={`absolute -top-20 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-30 ${isDark ? "bg-purple-700" : "bg-purple-300"}`} />
-          <div className={`absolute -bottom-20 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-25 ${isDark ? "bg-violet-600" : "bg-indigo-200"}`} />
+          <div className={`absolute -bottom-20 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-25 ${isDark ? "bg-purple-600" : "bg-purple-200"}`} />
           <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 rounded-full blur-3xl opacity-20 ${isDark ? "bg-rose-800" : "bg-rose-200"}`} />
         </div>
 

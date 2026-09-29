@@ -73,8 +73,8 @@ export default function DigitalSafety() {
   }, 0);
 
   const getScoreColor = () => {
-    if (totalScore >= 80) return "text-emerald-600 bg-emerald-50 border-emerald-300";
-    if (totalScore >= 50) return "text-amber-600 bg-amber-50 border-amber-300";
+    if (totalScore >= 80) return "text-purple-600 bg-purple-50 border-purple-300";
+    if (totalScore >= 50) return "text-slate-600 bg-slate-50 border-slate-300";
     return "text-rose-600 bg-rose-50 border-rose-300";
   };
 

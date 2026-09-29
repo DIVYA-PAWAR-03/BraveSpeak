@@ -344,13 +344,13 @@ Contact: [Complainant Phone / Email]
               >
                 <div className="flex flex-wrap items-center justify-between gap-3 border-b border-purple-700/60 pb-3">
                   <div className="flex items-center gap-2">
-                    <ShieldCheck size={20} className="text-emerald-400" />
+                    <ShieldCheck size={20} className="text-purple-400" />
                     <h3 className="font-bold text-white text-sm sm:text-base">{analysisResult.diagnosisSummary}</h3>
                   </div>
                   <span className={`text-xs font-bold px-3 py-1 rounded-full ${
                     analysisResult.severityGrade.includes('High') || analysisResult.severityGrade.includes('Non-Bailable')
                       ? 'bg-rose-500/30 text-rose-200 border border-rose-400/40'
-                      : 'bg-amber-500/30 text-amber-200 border border-amber-400/40'
+                      : 'bg-slate-500/30 text-slate-200 border border-slate-400/40'
                   }`}>
                     {analysisResult.severityGrade}
                   </span>
@@ -374,7 +374,7 @@ Contact: [Complainant Phone / Email]
                     <ul className="space-y-1 text-purple-100">
                       {analysisResult.recommendedActions.map((act, idx) => (
                         <li key={idx} className="flex items-start gap-1.5">
-                          <span className="text-emerald-400 font-bold">✓</span>
+                          <span className="text-purple-400 font-bold">✓</span>
                           <span>{act}</span>
                         </li>
                       ))}
@@ -386,7 +386,7 @@ Contact: [Complainant Phone / Email]
                     <ul className="space-y-1 text-purple-100">
                       {analysisResult.evidenceRequired.map((ev, idx) => (
                         <li key={idx} className="flex items-start gap-1.5">
-                          <span className="text-amber-400 font-bold">!</span>
+                          <span className="text-slate-400 font-bold">!</span>
                           <span>{ev}</span>
                         </li>
                       ))}
@@ -418,7 +418,7 @@ Contact: [Complainant Phone / Email]
                 onClick={handleCopy}
                 className="px-4 py-2 bg-purple-50 dark:bg-purple-900/40 text-purple-900 dark:text-purple-300 hover:bg-purple-100 dark:hover:bg-purple-800/50 border border-purple-200 dark:border-purple-700/50 rounded-xl text-xs font-bold transition flex items-center gap-1.5 cursor-pointer"
               >
-                {copied ? <CheckCircle2 size={15} className="text-emerald-600" /> : <Copy size={15} />}
+                {copied ? <CheckCircle2 size={15} className="text-purple-600" /> : <Copy size={15} />}
                 <span>{copied ? "Copied to Clipboard!" : "Copy Complaint"}</span>
               </button>
 

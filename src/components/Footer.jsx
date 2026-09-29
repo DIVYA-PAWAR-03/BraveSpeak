@@ -105,14 +105,14 @@ export default function Footer() {
 
               <a
                 href="tel:1091"
-                className="flex items-center justify-between p-3.5 bg-indigo-900/30 border border-indigo-600/40 rounded-xl hover:bg-indigo-800/50 hover:border-indigo-500/60 transition-all group"
+                className="flex items-center justify-between p-3.5 bg-purple-900/30 border border-purple-600/40 rounded-xl hover:bg-purple-800/50 hover:border-purple-500/60 transition-all group"
               >
                 <div>
-                  <p className="text-[11px] font-semibold text-indigo-300 uppercase tracking-wide">Women Police Assistance</p>
+                  <p className="text-[11px] font-semibold text-purple-300 uppercase tracking-wide">Women Police Assistance</p>
                   <p className="font-bold text-white text-sm mt-0.5">1091 — Toll-Free</p>
                 </div>
-                <div className="w-9 h-9 rounded-full bg-indigo-600/30 border border-indigo-500/40 flex items-center justify-center group-hover:bg-indigo-600/50 transition-colors">
-                  <Phone size={16} className="text-indigo-300" />
+                <div className="w-9 h-9 rounded-full bg-purple-600/30 border border-purple-500/40 flex items-center justify-center group-hover:bg-purple-600/50 transition-colors">
+                  <Phone size={16} className="text-purple-300" />
                 </div>
               </a>
             </div>
@@ -179,7 +179,7 @@ export default function Footer() {
             </span>
           </p>
           <div className="flex items-center gap-6">
-            <span className="inline-flex items-center gap-1.5 text-emerald-400 font-semibold">
+            <span className="inline-flex items-center gap-1.5 text-purple-400 font-semibold">
               <Sparkles size={13} /> 100% Confidential &amp; Secure
             </span>
             <button

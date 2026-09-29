@@ -240,9 +240,9 @@ export default function StoriesPage() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="max-w-xl mx-auto bg-emerald-50 dark:bg-emerald-950/80 border border-emerald-300 dark:border-emerald-700/80 text-emerald-900 dark:text-emerald-200 p-4 rounded-2xl flex items-center gap-3 shadow-lg"
+              className="max-w-xl mx-auto bg-purple-50 dark:bg-purple-950/80 border border-purple-300 dark:border-purple-700/80 text-purple-900 dark:text-purple-200 p-4 rounded-2xl flex items-center gap-3 shadow-lg"
             >
-              <CheckCircle2 size={22} className="text-emerald-600 dark:text-emerald-400 shrink-0" />
+              <CheckCircle2 size={22} className="text-purple-600 dark:text-purple-400 shrink-0" />
               <p className="text-sm font-semibold">{successToast}</p>
             </motion.div>
           )}

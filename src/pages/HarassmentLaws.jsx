@@ -141,7 +141,7 @@ const HarassmentLaws = () => {
       case "Critical":
         return "bg-rose-100 text-rose-800 border-rose-300";
       case "High":
-        return "bg-amber-100 text-amber-800 border-amber-300";
+        return "bg-slate-100 text-slate-800 border-slate-300";
       default:
         return "bg-purple-100 text-purple-800 border-purple-300";
     }
@@ -167,7 +167,7 @@ const HarassmentLaws = () => {
               to="/legal-assistant"
               className="inline-flex items-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-800 dark:bg-purple-600 dark:hover:bg-purple-500 text-white text-sm font-bold rounded-full shadow-lg shadow-purple-950/20 hover:scale-105 transition-all cursor-pointer"
             >
-              <Sparkles size={16} className="text-amber-300" />
+              <Sparkles size={16} className="text-slate-300" />
               <span>Open Interactive Legal Assistant & Complaint Drafter</span>
               <ArrowRight size={16} />
             </Link>
@@ -268,7 +268,7 @@ const HarassmentLaws = () => {
                         >
                           {copiedIndex === index ? (
                             <>
-                              <Check size={12} className="text-emerald-600 dark:text-emerald-400" /> Copied
+                              <Check size={12} className="text-purple-600 dark:text-purple-400" /> Copied
                             </>
                           ) : (
                             <>
@@ -288,7 +288,7 @@ const HarassmentLaws = () => {
                     </div>
 
                     {/* Punishment Box */}
-                    <div className="p-3 bg-amber-50/70 border border-amber-200/80 dark:bg-amber-950/40 dark:border-amber-800/50 rounded-xl text-xs text-amber-900 dark:text-amber-200 mb-4">
+                    <div className="p-3 bg-slate-50/70 border border-slate-200/80 dark:bg-slate-950/40 dark:border-slate-800/50 rounded-xl text-xs text-slate-900 dark:text-slate-200 mb-4">
                       <span className="font-bold">Punishment / Penalty: </span>
                       <span>{item.punishment}</span>
                     </div>
@@ -306,7 +306,7 @@ const HarassmentLaws = () => {
                             <p className="font-bold text-[#2E003E] dark:text-purple-200 mb-1">Key Legal Insight:</p>
                             <p className="leading-relaxed">{item.more}</p>
                           </div>
-                          <div className="p-3.5 bg-emerald-50/70 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-800/50 text-emerald-900 dark:text-emerald-200">
+                          <div className="p-3.5 bg-purple-50/70 dark:bg-purple-950/40 rounded-xl border border-purple-200 dark:border-purple-800/50 text-purple-900 dark:text-purple-200">
                             <p className="font-bold mb-1 flex items-center gap-1">
                               <FileText size={13} /> Recommended Reporting Action:
                             </p>
@@ -458,7 +458,7 @@ const HarassmentLaws = () => {
 
           <div className="bg-white dark:bg-slate-800/80 p-6 rounded-3xl shadow-md border border-purple-100 dark:border-purple-900/50 flex flex-col justify-between">
             <div>
-              <div className="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 dark:bg-indigo-950/60 dark:text-indigo-400 flex items-center justify-center mb-4">
+              <div className="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 dark:bg-purple-950/60 dark:text-purple-400 flex items-center justify-center mb-4">
                 <HeartHandshake size={20} />
               </div>
               <h3 className="text-lg font-bold text-[#2E003E] dark:text-purple-100 mb-1">Support & Counseling NGOs</h3>

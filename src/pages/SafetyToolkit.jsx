@@ -290,30 +290,30 @@ export default function SafetyToolkit() {
     labelText:     isDark ? "text-[#a0a0a0]"        : "text-slate-700",
     pillPurple:    isDark ? "bg-purple-950/70 border-purple-700/40 text-purple-300"   : "bg-purple-50 border-purple-200 text-purple-900",
     pillRose:      isDark ? "bg-rose-950/70 border-rose-700/40 text-rose-300"         : "bg-rose-50 border-rose-200 text-rose-900",
-    pillIndigo:    isDark ? "bg-indigo-950/70 border-indigo-700/40 text-indigo-300"   : "bg-indigo-50 border-indigo-200 text-indigo-900",
+    pillIndigo:    isDark ? "bg-purple-950/70 border-purple-700/40 text-purple-300"   : "bg-purple-50 border-purple-200 text-purple-900",
     iconBgPurple:  isDark ? "bg-purple-900/40 text-purple-400" : "bg-purple-100 text-purple-800",
     iconBgRose:    isDark ? "bg-rose-900/40 text-rose-400"     : "bg-rose-100 text-rose-800",
-    iconBgIndigo:  isDark ? "bg-indigo-900/40 text-indigo-400" : "bg-indigo-100 text-indigo-800",
+    iconBgIndigo:  isDark ? "bg-purple-900/40 text-purple-400" : "bg-purple-100 text-purple-800",
     innerPanel:    isDark ? "bg-[#111] border-white/[0.06]"    : "bg-purple-50/60 border-purple-100",
-    inputBg:       isDark ? "bg-[#0a0a0a] border-white/[0.08] text-[#e0e0e0] placeholder-[#444] focus:border-violet-500/60 focus:ring-violet-500/15" : "bg-purple-50/40 border-purple-200 focus:ring-purple-400",
+    inputBg:       isDark ? "bg-[#0a0a0a] border-white/[0.08] text-[#e0e0e0] placeholder-[#444] focus:border-purple-500/60 focus:ring-purple-500/15" : "bg-purple-50/40 border-purple-200 focus:ring-purple-400",
     contactRow:    isDark ? "bg-[#111] border-white/[0.06] hover:bg-[#161616]" : "bg-slate-50 border-slate-200 hover:bg-purple-50/50",
     hotspotCard:   isDark ? "bg-[#111] border-white/[0.06] hover:bg-[#161616] hover:border-rose-700/30" : "bg-slate-50 border-slate-200 hover:bg-rose-50/30",
     hotspotDivider:isDark ? "border-white/[0.05]"   : "border-slate-200",
-    upvoteBtn:     isDark ? "bg-[#0d0d0d] border-white/[0.08] text-violet-400 hover:bg-[#161616] hover:border-violet-600/40" : "bg-white border-purple-200 text-purple-900 hover:bg-purple-100",
+    upvoteBtn:     isDark ? "bg-[#0d0d0d] border-white/[0.08] text-purple-400 hover:bg-[#161616] hover:border-purple-600/40" : "bg-white border-purple-200 text-purple-900 hover:bg-purple-100",
     cancelBtn:     isDark ? "bg-[#1a1a1a] hover:bg-[#222] text-[#bbb]" : "bg-slate-100 text-slate-700",
     divider:       isDark ? "border-white/[0.05]"   : "border-slate-100",
-    timerBanner:   isDark ? "bg-amber-950/40 border-amber-700/40 text-amber-300"  : "bg-amber-50 border-amber-200 text-amber-900",
-    gpsBanner:     isDark ? "bg-violet-950/40 border-violet-700/30 text-violet-200" : "bg-purple-50 border-purple-200 text-purple-950",
+    timerBanner:   isDark ? "bg-slate-950/40 border-slate-700/40 text-slate-300"  : "bg-slate-50 border-slate-200 text-slate-900",
+    gpsBanner:     isDark ? "bg-purple-950/40 border-purple-700/30 text-purple-200" : "bg-purple-50 border-purple-200 text-purple-950",
     errorBanner:   isDark ? "bg-rose-950/40 border-rose-700/40 text-rose-300" : "bg-rose-50 border-rose-200 text-rose-900",
     audioclip:     isDark ? "bg-[#111] border-white/[0.06]"   : "bg-slate-50 border-slate-200",
-    vaultSuccess:  isDark ? "text-emerald-400 bg-emerald-950/40 border-emerald-700/40" : "text-emerald-700 bg-emerald-50 border-emerald-200",
+    vaultSuccess:  isDark ? "text-purple-400 bg-purple-950/40 border-purple-700/40" : "text-purple-700 bg-purple-50 border-purple-200",
     modalBg:       isDark ? "bg-[#0d0d0d] border-white/[0.08]" : "bg-white border-purple-100",
     sosPanel:      isDark ? "bg-[#111] border-white/[0.05]"    : "bg-purple-50/60 border-purple-100",
   };
 
   return (
     <div className={`min-h-screen py-12 px-4 sm:px-6 transition-colors duration-300 ${
-      isStrobeActive ? "bg-red-700 animate-pulse text-white" : `${dk.pageBg} ${dk.headingPrimary}`
+      isStrobeActive ? "bg-rose-700 animate-pulse text-white" : `${dk.pageBg} ${dk.headingPrimary}`
     }`}>
 
       {/* ── FULLSCREEN RINGING CALL MODAL ── */}
@@ -338,10 +338,10 @@ export default function SafetyToolkit() {
                 <span className="text-xs text-rose-400 font-semibold">Decline</span>
               </button>
               <button onClick={answerCall} className="flex flex-col items-center gap-2 group cursor-pointer">
-                <div className="w-16 h-16 rounded-full bg-emerald-600 hover:bg-emerald-500 flex items-center justify-center shadow-lg shadow-emerald-900/60 transition-transform group-hover:scale-110 animate-pulse">
+                <div className="w-16 h-16 rounded-full bg-purple-600 hover:bg-purple-500 flex items-center justify-center shadow-lg shadow-purple-900/60 transition-transform group-hover:scale-110 animate-pulse">
                   <PhoneCall size={28} />
                 </div>
-                <span className="text-xs text-emerald-400 font-semibold">Accept</span>
+                <span className="text-xs text-purple-400 font-semibold">Accept</span>
               </button>
             </div>
           </motion.div>
@@ -357,10 +357,10 @@ export default function SafetyToolkit() {
                 <User size={36} className="text-purple-300" />
               </div>
               <h2 className="text-2xl font-bold text-white">{callerName}</h2>
-              <p className="text-emerald-400 font-mono text-sm">{formatTimer(callSeconds)}</p>
+              <p className="text-purple-400 font-mono text-sm">{formatTimer(callSeconds)}</p>
             </div>
             <div className="bg-[#111] p-6 rounded-2xl border border-white/[0.06] max-w-md w-full space-y-2 text-center text-sm text-[#aaa]">
-              <p className="text-xs font-bold text-amber-400 uppercase tracking-wider">Helpful phrases to say out loud:</p>
+              <p className="text-xs font-bold text-slate-400 uppercase tracking-wider">Helpful phrases to say out loud:</p>
               <p className="italic font-medium text-white">"Hey! Yes, I'm right here on the corner. I see your car approaching now."</p>
               <p className="italic font-medium text-white">"Yes, my brother and police officer uncle are with me. We are coming in 2 minutes."</p>
             </div>
@@ -396,7 +396,7 @@ export default function SafetyToolkit() {
               initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
               className="max-w-xl mx-auto bg-purple-950/80 border border-purple-600/40 text-white p-4 rounded-2xl flex items-center gap-3 shadow-2xl"
             >
-              <Radio size={22} className="text-emerald-400 animate-pulse shrink-0" />
+              <Radio size={22} className="text-purple-400 animate-pulse shrink-0" />
               <p className="text-xs font-bold">{sosSentToast}</p>
             </motion.div>
           )}
@@ -408,7 +408,7 @@ export default function SafetyToolkit() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
           {/* Tool 1: Fake Call Simulator */}
-          <div className={`rounded-3xl p-6 sm:p-8 border flex flex-col justify-between space-y-6 ${dk.cardBg} ${dk.cardBorder} ${dk.cardShadow} ${isDark ? "hover:border-violet-600/25 transition-colors" : ""}`}>
+          <div className={`rounded-3xl p-6 sm:p-8 border flex flex-col justify-between space-y-6 ${dk.cardBg} ${dk.cardBorder} ${dk.cardShadow} ${isDark ? "hover:border-purple-600/25 transition-colors" : ""}`}>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${dk.iconBgPurple}`}>
@@ -440,7 +440,7 @@ export default function SafetyToolkit() {
                   </select>
                 </div>
                 <div className="grid grid-cols-3 gap-2 pt-1">
-                  <button onClick={() => triggerFakeCall(0)} className="py-2.5 px-3 bg-violet-700 hover:bg-violet-600 text-white rounded-xl text-xs font-bold transition shadow-sm cursor-pointer">
+                  <button onClick={() => triggerFakeCall(0)} className="py-2.5 px-3 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-xs font-bold transition shadow-sm cursor-pointer">
                     Call Now
                   </button>
                   <button onClick={() => triggerFakeCall(5)} className={`py-2.5 px-3 rounded-xl text-xs font-bold transition cursor-pointer border ${dk.pillPurple}`}>
@@ -503,7 +503,7 @@ export default function SafetyToolkit() {
           </div>
 
           {/* Tool 3: Audio Evidence Grabber & Vault */}
-          <div className={`rounded-3xl p-6 sm:p-8 border flex flex-col justify-between space-y-6 ${dk.cardBg} ${dk.cardBorder} ${dk.cardShadow} ${isDark ? "hover:border-indigo-600/25 transition-colors" : ""}`}>
+          <div className={`rounded-3xl p-6 sm:p-8 border flex flex-col justify-between space-y-6 ${dk.cardBg} ${dk.cardBorder} ${dk.cardShadow} ${isDark ? "hover:border-purple-600/25 transition-colors" : ""}`}>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${dk.iconBgIndigo}`}>
@@ -521,7 +521,7 @@ export default function SafetyToolkit() {
               </div>
               <div className="space-y-4 pt-2">
                 {!isRecording ? (
-                  <button onClick={startRecording} className="w-full py-3 bg-indigo-700 hover:bg-indigo-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer transition">
+                  <button onClick={startRecording} className="w-full py-3 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-md cursor-pointer transition">
                     <Mic size={16} /> Start Incident Recording
                   </button>
                 ) : (
@@ -535,7 +535,7 @@ export default function SafetyToolkit() {
                     <audio src={audioUrl} controls className="w-full h-8" />
                     <div className="flex gap-2 pt-1">
                       <button onClick={handleVaultAudio} disabled={vaultingAudio}
-                        className="flex-1 py-1.5 bg-violet-800 hover:bg-violet-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1 transition disabled:opacity-50 cursor-pointer">
+                        className="flex-1 py-1.5 bg-purple-800 hover:bg-purple-700 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-1 transition disabled:opacity-50 cursor-pointer">
                         <Upload size={12} />
                         <span>{vaultingAudio ? "Vaulting..." : "Vault Securely"}</span>
                       </button>
@@ -572,7 +572,7 @@ export default function SafetyToolkit() {
               </p>
             </div>
             <button onClick={fetchLocation} disabled={locLoading}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-violet-700 hover:bg-violet-600 text-white text-xs font-bold rounded-xl shadow-md transition hover:scale-105 cursor-pointer">
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-purple-700 hover:bg-purple-600 text-white text-xs font-bold rounded-xl shadow-md transition hover:scale-105 cursor-pointer">
               <MapPin size={16} />
               <span>{locLoading ? "Fetching GPS..." : coords ? "Update GPS Coordinates" : "Get My Live Location"}</span>
             </button>
@@ -586,13 +586,13 @@ export default function SafetyToolkit() {
             <div className={`p-4 rounded-2xl border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs ${dk.gpsBanner}`}>
               <div>
                 <p className="font-bold flex items-center gap-1.5">
-                  <CheckCircle2 size={16} className="text-emerald-400" />
+                  <CheckCircle2 size={16} className="text-purple-400" />
                   GPS Locked: Latitude {coords.lat.toFixed(5)}, Longitude {coords.lng.toFixed(5)}
                 </p>
-                <p className={`text-[11px] mt-0.5 ${isDark ? "text-violet-400" : "text-purple-700"}`}>Accuracy: ~{coords.accuracy} meters radius</p>
+                <p className={`text-[11px] mt-0.5 ${isDark ? "text-purple-400" : "text-purple-700"}`}>Accuracy: ~{coords.accuracy} meters radius</p>
               </div>
               <a href={`https://maps.google.com/?q=${coords.lat},${coords.lng}`} target="_blank" rel="noreferrer"
-                className={`underline font-bold ${isDark ? "text-violet-300 hover:text-violet-200" : "text-purple-900 hover:text-purple-700"}`}>
+                className={`underline font-bold ${isDark ? "text-purple-300 hover:text-purple-200" : "text-purple-900 hover:text-purple-700"}`}>
                 Open in Google Maps ↗
               </a>
             </div>
@@ -614,11 +614,11 @@ export default function SafetyToolkit() {
                     </div>
                     <div className="flex items-center gap-2">
                       <button onClick={() => sendWhatsAppSOS(contact.phone)}
-                        className="px-3 py-1.5 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm transition cursor-pointer">
+                        className="px-3 py-1.5 bg-purple-700 hover:bg-purple-600 text-white rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm transition cursor-pointer">
                         <Send size={12} /> WhatsApp SOS
                       </button>
                       <button onClick={() => sendSmsSOS(contact.phone)}
-                        className="px-3 py-1.5 bg-indigo-700 hover:bg-indigo-600 text-white rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm transition cursor-pointer">
+                        className="px-3 py-1.5 bg-purple-700 hover:bg-purple-600 text-white rounded-lg text-xs font-bold flex items-center gap-1 shadow-sm transition cursor-pointer">
                         SMS SOS
                       </button>
                       <button onClick={() => removeContact(idx)}
@@ -637,7 +637,7 @@ export default function SafetyToolkit() {
                   onChange={(e) => setNewContactPhone(e.target.value)}
                   className={`flex-1 p-2.5 rounded-xl text-xs focus:outline-none focus:ring-2 border ${dk.inputBg}`} />
                 <button type="submit"
-                  className="px-4 py-2.5 bg-violet-700 hover:bg-violet-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1 cursor-pointer transition">
+                  className="px-4 py-2.5 bg-purple-700 hover:bg-purple-600 text-white rounded-xl text-xs font-bold flex items-center justify-center gap-1 cursor-pointer transition">
                   <Plus size={14} /> Add
                 </button>
               </form>
@@ -687,7 +687,7 @@ export default function SafetyToolkit() {
                       {spot.hazard_type}
                     </span>
                     <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                      spot.severity === 'Critical' ? 'bg-red-600 text-white' : isDark ? 'bg-amber-950/60 border border-amber-700/40 text-amber-300' : 'bg-amber-100 text-amber-900'
+                      spot.severity === 'Critical' ? 'bg-rose-600 text-white' : isDark ? 'bg-slate-950/60 border border-slate-700/40 text-slate-300' : 'bg-slate-100 text-slate-900'
                     }`}>
                       {spot.severity} Risk
                     </span>

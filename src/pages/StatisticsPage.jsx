@@ -137,10 +137,10 @@ export default function StatisticsPage() {
           >
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 dark:bg-indigo-950/70 dark:text-indigo-300 dark:border-indigo-800/60 px-2.5 py-1 rounded-full">
+                <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 dark:bg-purple-950/70 dark:text-purple-300 dark:border-purple-800/60 px-2.5 py-1 rounded-full">
                   Judicial Rate
                 </span>
-                <Scale size={20} className="text-indigo-600 dark:text-indigo-400" />
+                <Scale size={20} className="text-purple-600 dark:text-purple-400" />
               </div>
               <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-purple-100">34.1%</h3>
               <p className="text-xs font-semibold text-slate-500 dark:text-slate-300 mt-1">National Conviction Rate</p>
@@ -156,10 +156,10 @@ export default function StatisticsPage() {
           >
             <div>
               <div className="flex items-center justify-between mb-3">
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 dark:bg-emerald-950/70 dark:text-emerald-300 dark:border-emerald-800/60 px-2.5 py-1 rounded-full">
+                <span className="text-xs font-bold text-purple-700 bg-purple-50 border border-purple-200 dark:bg-purple-950/70 dark:text-purple-300 dark:border-purple-800/60 px-2.5 py-1 rounded-full">
                   Support Hubs
                 </span>
-                <Building2 size={20} className="text-emerald-600 dark:text-emerald-400" />
+                <Building2 size={20} className="text-purple-600 dark:text-purple-400" />
               </div>
               <h3 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-purple-100">{summary.totalCenters} Centers</h3>
               <p className="text-xs font-semibold text-slate-500 dark:text-slate-300 mt-1">Verified Institutional Desks</p>
@@ -244,8 +244,8 @@ export default function StatisticsPage() {
                   <YAxis stroke="#94A3B8" fontSize={12} tickLine={false} unit="%" domain={[0, 100]} />
                   <Tooltip content={<CustomTooltip />} />
                   <Legend wrapperStyle={{ fontSize: '12px', paddingTop: '10px' }} />
-                  <Bar dataKey="chargeSheetRate" fill="#818CF8" name="Charge-sheet Rate (%)" radius={[6, 6, 0, 0]} unit="%" />
-                  <Bar dataKey="convictionRate" fill="#34D399" name="Conviction Rate (%)" radius={[6, 6, 0, 0]} unit="%" />
+                  <Bar dataKey="chargeSheetRate" fill="#9333EA" name="Charge-sheet Rate (%)" radius={[6, 6, 0, 0]} unit="%" />
+                  <Bar dataKey="convictionRate" fill="#C084FC" name="Conviction Rate (%)" radius={[6, 6, 0, 0]} unit="%" />
                 </BarChart>
               )}
             </ResponsiveContainer>
@@ -255,7 +255,7 @@ export default function StatisticsPage() {
         {/* Key Insights Banner */}
         <div className="bg-[#2E003E] dark:bg-[#1a0029] rounded-3xl p-8 shadow-xl border border-purple-700/40 dark:border-purple-800/40 text-white">
           <div className="flex items-center gap-3 mb-6">
-            <Flame size={22} className="text-amber-400" />
+            <Flame size={22} className="text-slate-400" />
             <h2 className="text-xl font-black text-white tracking-tight">Key Insights You Should Know</h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -263,7 +263,7 @@ export default function StatisticsPage() {
               className="bg-white/10 dark:bg-purple-950/40 backdrop-blur-sm border border-white/20 dark:border-purple-700/40 rounded-2xl p-5 flex flex-col gap-2"
               whileHover={{ scale: 1.03 }}
             >
-              <span className="text-3xl font-black text-amber-300">93%</span>
+              <span className="text-3xl font-black text-slate-300">93%</span>
               <p className="text-sm font-semibold text-purple-100">of sexual assault cases go unreported due to stigma, fear, and lack of awareness.</p>
               <span className="text-[10px] text-purple-300/80 mt-auto">Source: RAINN / National Survey Data</span>
             </motion.div>
@@ -279,7 +279,7 @@ export default function StatisticsPage() {
               className="bg-white/10 dark:bg-purple-950/40 backdrop-blur-sm border border-white/20 dark:border-purple-700/40 rounded-2xl p-5 flex flex-col gap-2"
               whileHover={{ scale: 1.03 }}
             >
-              <span className="text-3xl font-black text-emerald-300">181</span>
+              <span className="text-3xl font-black text-purple-300">181</span>
               <p className="text-sm font-semibold text-purple-100">is the free national helpline available 24×7 — yet over 70% of survivors are unaware it exists.</p>
               <span className="text-[10px] text-purple-300/80 mt-auto">Source: Ministry of Women &amp; Child Development</span>
             </motion.div>

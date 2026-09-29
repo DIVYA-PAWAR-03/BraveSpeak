@@ -243,7 +243,7 @@ export default function SupportDirectory() {
                         {center.type}
                       </span>
                       {center.distanceKm !== undefined && (
-                        <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-emerald-50 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-800/60 flex items-center gap-1">
+                        <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-purple-50 dark:bg-purple-950/70 text-purple-800 dark:text-purple-300 border border-purple-300 dark:border-purple-800/60 flex items-center gap-1">
                           <Crosshair size={11} /> {center.distanceKm} km away
                         </span>
                       )}

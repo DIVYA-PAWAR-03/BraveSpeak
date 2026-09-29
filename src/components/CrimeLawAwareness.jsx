@@ -299,7 +299,7 @@ export default function CrimeLawAwareness() {
       case 'High':
         return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-950/80 text-purple-300 border border-purple-800/60"><ShieldAlert className="w-3 h-3 text-purple-400" /> High Severity</span>;
       default:
-        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-950/80 text-amber-300 border border-amber-800/60"><AlertCircle className="w-3 h-3 text-amber-400" /> Statutory Offense</span>;
+        return <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-950/80 text-slate-300 border border-slate-800/60"><AlertCircle className="w-3 h-3 text-slate-400" /> Statutory Offense</span>;
     }
   };
 
@@ -494,7 +494,7 @@ export default function CrimeLawAwareness() {
                             </div>
                             <div className="pt-1">
                               <span className="text-[11px] text-slate-400 block">Bharatiya Nyaya Sanhita (BNS 2023):</span>
-                              <p className="text-sm font-bold text-indigo-300">{item.bnsLaw}</p>
+                              <p className="text-sm font-bold text-purple-300">{item.bnsLaw}</p>
                             </div>
                             <div className="pt-1 text-xs text-slate-300">
                               <span className="font-semibold text-slate-200">Offense Classification:</span> {item.nature}
@@ -511,7 +511,7 @@ export default function CrimeLawAwareness() {
                               {item.punishment}
                             </p>
                             <div className="pt-2 flex items-center gap-2 text-xs text-slate-300">
-                              <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                              <ShieldCheck className="w-4 h-4 text-purple-400" />
                               <span>Legal Protection Level: <strong>{item.severity} Priority Enforcement</strong></span>
                             </div>
                           </div>
@@ -519,14 +519,14 @@ export default function CrimeLawAwareness() {
 
                         {/* Guaranteed Victim Rights */}
                         <div className="space-y-2">
-                          <h4 className="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-2">
-                            <UserCheck className="w-4 h-4 text-emerald-400" />
+                          <h4 className="text-xs font-bold text-purple-400 uppercase tracking-wider flex items-center gap-2">
+                            <UserCheck className="w-4 h-4 text-purple-400" />
                             Guaranteed Victim Legal Rights
                           </h4>
                           <ul className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                             {item.victimRights.map((right, idx) => (
                               <li key={idx} className="bg-[#16082e]/80 border border-purple-800/40 rounded-xl p-3 text-xs text-slate-200 flex items-start gap-2">
-                                <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
+                                <CheckCircle2 className="w-4 h-4 text-purple-400 flex-shrink-0 mt-0.5" />
                                 <span>{right}</span>
                               </li>
                             ))}
@@ -555,7 +555,7 @@ export default function CrimeLawAwareness() {
                               title="Copy Crime & Law Legal Details"
                             >
                               {copiedId === item.id ? (
-                                <Check className="w-4 h-4 text-emerald-400" />
+                                <Check className="w-4 h-4 text-purple-400" />
                               ) : (
                                 <Copy className="w-4 h-4 text-slate-300" />
                               )}

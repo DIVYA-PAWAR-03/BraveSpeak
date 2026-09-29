@@ -53,26 +53,6 @@
   --color-rose-900: #1a0810;
   --color-rose-950: #0d0408;
 
-  /* Indigo accents */
-  --color-indigo-50:  #0d0f2e;
-  --color-indigo-100: #121535;
-  --color-indigo-200: #232b6e;
-  --color-indigo-300: #a5b4fc;
-  --color-indigo-400: #818cf8;
-  --color-indigo-800: #3730a3;
-  --color-indigo-900: #121535;
-  --color-indigo-950: #08091a;
-
-  /* Amber / Emerald accents */
-  --color-amber-50:  #1c1200;
-  --color-amber-100: #231800;
-  --color-amber-200: #4d3500;
-  --color-amber-300: #fcd34d;
-  --color-amber-900: #231800;
-  --color-emerald-50:  #031a0e;
-  --color-emerald-100: #052014;
-  --color-emerald-400: #34d399;
-  --color-emerald-900: #052014;
 }
 
 /* ── Premium dark glow utilities ── */
@@ -98,10 +78,10 @@
   border-color: rgba(251, 113, 133, 0.3);
   color: #fb7185;
 }
-.dark .dark-pill-indigo {
-  background: rgba(49, 46, 129, 0.35);
-  border-color: rgba(129, 140, 248, 0.3);
-  color: #818cf8;
+.dark .dark-pill-purple-alt {
+  background: rgba(88, 28, 135, 0.25);
+  border-color: rgba(168, 85, 247, 0.25);
+  color: #a78bfa;
 }
 .dark .dark-input {
   background: #0a0a0a;
